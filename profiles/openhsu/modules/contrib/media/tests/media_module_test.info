@@ -1,0 +1,5 @@
+name = Media test
+description = Provides hooks for testing Media module functionality.
+package = Media
+core = 7.x
+hidden = TRUE

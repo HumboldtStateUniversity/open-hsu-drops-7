@@ -1,10 +1,18 @@
-name = openhsu
-distribution_name = Oepn HU
-description = Humboldt State University Drupal 7 Distribution
-core = 7.x
-;exclusive = 1
-version = VERSION
-;version = 1.13.4
+; Packaging information for OpenHSU
+name = OpenHSU
+distribution_name = "OpenHSU"
+description = "A Panopoly based sub-distro for Humboldt State University"
+version = "7.x-1.x"
+core = "7.x"
+exclusive = 1
+
+base[] = panopoly
+
+files[] = openhsu.profile
+
+; ------------
+; Dependencies
+; ------------
 
 ; Drupal Core
 dependencies[] = menu
@@ -27,20 +35,27 @@ dependencies[] = panopoly_core
 dependencies[] = panopoly_images
 dependencies[] = panopoly_theme
 dependencies[] = panopoly_magic
+dependencies[] = panopoly_widgets
 dependencies[] = panopoly_admin
 dependencies[] = panopoly_users
-; moved widgets below panopoly_users
-dependencies[] = panopoly_widgets
 
 ; Panopoly Toolset
 dependencies[] = panopoly_pages
 dependencies[] = panopoly_search
 dependencies[] = panopoly_wysiwyg
 
-; Panopoly Recommended - Admin
+; Panopoly Recommended - Admin & UI
 dependencies[] = navbar
+dependencies[] = breakpoints
 dependencies[] = backports
 dependencies[] = simplified_menu_admin
 dependencies[] = save_draft
 dependencies[] = module_filter
 dependencies[] = date_popup_authored
+dependencies[] = views_ui
+
+; Panopoly Recommended - Other
+dependencies[] = devel
+dependencies[] = uuid
+dependencies[] = apps
+

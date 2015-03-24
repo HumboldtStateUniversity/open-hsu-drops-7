@@ -1,0 +1,10 @@
+name = Media: YouTube
+description = Adds YouTube as a supported media provider.
+package = Media
+core = 7.x
+
+dependencies[] = media_internet
+
+files[] = includes/MediaYouTubeStreamWrapper.inc
+files[] = includes/MediaInternetYouTubeHandler.inc
+files[] = includes/MediaYouTubeBrowser.inc

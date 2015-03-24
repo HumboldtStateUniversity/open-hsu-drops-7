@@ -1,0 +1,6 @@
+name = "Date Popup Authored"
+description = "Provides a datepicker for the 'Authored on' field on node forms."
+core = 7.x
+files[] = date_popup_authored.test
+package = Date/Time
+dependencies[] = date_popup
