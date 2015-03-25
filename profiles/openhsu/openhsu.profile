@@ -17,8 +17,8 @@ function openhsu_install_tasks($install_state) {
   drupal_add_css(drupal_get_path('profile', 'openhsu') . '/openhsu.css');
 
   // Add subtheme generator to installation workflow
-  $tasks['openhsu_theme_configure_form'] = array(
-    'display_name' => t('Configure theme'),
+  $tasks['openhsu_hsu_configure_form'] = array(
+    'display_name' => t('Configure OpenHSU'),
     'type' => 'form',
   );
 
@@ -44,40 +44,26 @@ function openhsu_install_tasks_alter(&$tasks, $install_state) {
 }
 
 /**
- * Form to configure the Kalatheme
+ * Form to configure the OpenHSU
  * @todo we should move this stuff into kalatheme so it can be used in other
  * install profiles
  */
-function openhsu_theme_configure_form($form, &$form_state) {
+function openhsu_hsu_configure_form($form, &$form_state) {
+  // Grab some forms we can use
+  require_once dirname(__FILE__) . '/themes/hsu_kalatheme/includes/config.inc';
+
   // Set the page title
-  drupal_set_title(t('Configure theme'));
+  drupal_set_title(t('Configure OpenHSU'));
 
-  // Get the form from Kalatheme
-  require_once dirname(__FILE__) . '/themes/kalatheme/includes/config.inc';
-
-  // Kalatheme settings
-  $form = array_merge($form, kalatheme_bootstrap_library_form());
-  $form['bootstrap']['bootstrap_library']['#default_value'] = theme_get_setting('bootstrap_library');
-  $form['bootstrap']['fontawesome']['#default_value'] = theme_get_setting('fontawesome');
-  $form['bootstrap']['bootstrap_upload']['#default_value'] = theme_get_setting('bootstrap_upload');
-  // Subtheme settings
-  // @todo: subthemes don't work yet here.
-  //$form = array_merge($form, kalatheme_subtheme_form());
-  // Make sure the callback function and other fun things are actually loaded
+  // OpenHSU settings
+  $form = array();
+  $form += hsu_kalatheme_location_form();
+  $form += hsu_kalatheme_header_image_form();
   $form = system_settings_form($form);
   // We don't want to call system_settings_form_submit(), so change #submit.
   array_pop($form['#submit']);
-  $form['#submit'][] = 'system_theme_settings_submit';
-
-  // Prepasre the form so it can handle subtheme things
-  $form = kalatheme_prepare_config_form($form);
-  // Kalatheme normally assumes that it is enabled and set default
-  // In the installer this is not true so we should set default and enable
-  // if appropriate
+  // Add the theme enable magix here
   array_unshift($form['#submit'], 'openhsu_enable_theme');
-
-  $form_state['build_info']['files'][] = drupal_get_path('theme', 'kalatheme') . '/includes/config.inc';
-  $form_state['build_info']['files'][] = drupal_get_path('theme', 'kalatheme') . '/kalatheme.updater.inc';
 
   return $form;
 }
@@ -85,39 +71,22 @@ function openhsu_theme_configure_form($form, &$form_state) {
 /**
  * Wrapper function to the Kalatheme validation magic
  */
-function openhsu_theme_configure_form_validate($form, &$form_state) {
-  if (function_exists('kalatheme_custom_bootstrap_library_validate')) {
-    kalatheme_custom_bootstrap_library_validate($form, $form_state);
-  }
-}
-
-/**
- * Wrapper function to the Kalatheme validation magic
- */
 function openhsu_enable_theme($form, &$form_state) {
-  // Generate subtheme and build its settings var
-  // @todo we should move this stuff into kalatheme so it can be used in other
-  // install profiles
-  //
-  // @todo: support for subtheme generation.
-  //if (isset($form_state['values']['build_subtheme']) && !$form_state['values']['build_subtheme']) {
-    // Set basic settings
-    $theme_settings['bootstrap_library'] = $form_state['values']['bootstrap_library'];
-    $theme_settings['fontawesome'] = $form_state['values']['fontawesome'];
-    // We do this to trick kalatheme_custom_subtheme_vars
-    $theme_settings['subtheme_name'] = 'kalatheme';
-    kalatheme_custom_subtheme_vars($theme_settings);
-    // Enable and redirect if required
-    // Rebuild theme registry stuff
-    system_rebuild_theme_data();
-    drupal_theme_rebuild();
-    // Enable new theme
-    theme_enable(array('kalatheme'));
-    variable_set('theme_default', 'kalatheme');
-    // We need to do the big dump
-    // @todo: should figure out the actual caches we need to clear
-    drupal_flush_all_caches();
- // }
+  // Rebuild theme registry stuff
+  system_rebuild_theme_data();
+  drupal_theme_rebuild();
+  // Enable new theme
+  theme_enable(array('hsu_kalatheme'));
+  $theme_settings = variable_get('theme_hsu_kalatheme_settings');
+  $theme_settings['street'] = $form_state['values']['street'];
+  $theme_settings['citystatezip'] = $form_state['values']['citystatezip'];
+  $theme_settings['phone'] = $form_state['values']['phone'];
+  $theme_settings['fax'] = $form_state['values']['fax'];
+  $theme_settings['header_file'] = $form_state['values']['header_file'];
+  variable_set('theme_hsu_kalatheme_settings', $theme_settings);
+  variable_set('theme_default', 'hsu_kalatheme');
+  // We need to do the big dump
+  drupal_flush_all_caches();
 }
 
 /**

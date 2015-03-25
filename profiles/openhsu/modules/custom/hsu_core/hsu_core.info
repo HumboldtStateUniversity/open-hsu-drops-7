@@ -1,0 +1,12 @@
+name = OpenHSU Core
+description = A place for core OpenHSU things.
+core = 7.x
+package = OpenHSU
+version = 7.x-1.0-dev
+project = hsu_core
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = theme_default
+features[variable][] = theme_hsu_kalatheme_settings

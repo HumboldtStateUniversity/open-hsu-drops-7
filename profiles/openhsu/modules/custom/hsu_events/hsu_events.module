@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the HSU Events feature.
+ */
+
+include_once 'hsu_events.features.inc';

@@ -1,0 +1,6 @@
+<?php
+
+
+function hsu_cas_enable() {
+  db_query("UPDATE {system} SET weight = 1 WHERE name = 'hsu_cas'");
+}
