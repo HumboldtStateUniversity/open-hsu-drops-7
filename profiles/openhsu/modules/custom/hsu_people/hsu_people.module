@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OpenHSU People feature.
+ */
+
+include_once 'hsu_people.features.inc';

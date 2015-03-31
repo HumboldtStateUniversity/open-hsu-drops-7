@@ -1,0 +1,79 @@
+<?php
+/**
+ * @file
+ * Code for the OpenHSU Core feature.
+ */
+
+include_once 'hsu_core.features.inc';
+/**
+ * @file
+ * Code for hsu_core
+ */
+
+/**
+ * Implements hook_filter_default_formats_alter()
+ *
+ * THIS REALLY SHOULD BE IN ITS OWN MODULE BUT IM PUTTING IT HERE FOR NOW
+ */
+if (!function_exists('panopoly_wysiwyg_filter_default_formats_alter')) {
+  function panopoly_wysiwyg_filter_default_formats_alter(&$data) {
+    // This allows users to enter in more then one extra line
+    if (isset($data['panopoly_wysiwyg_text'])) {
+      $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['valid_elements'] .= ',#p';
+    }
+  }
+}
+
+/**
+ * Implements hook_update_projects_alter()
+ *
+ * This function will remove any module managed by hsu WebSpark from
+ * the list of modules in the Drupal Update Manager.
+ */
+function hsu_core_update_projects_alter(&$projects) {
+  // Setup information about managed components to remove from the update managed
+  $managed_things = array();
+  $managed_things[] = 'kalatheme'; // adding base theme
+  $managed_things[] = 'hsu_kalatheme'; // adding subtheme
+  $managed_things[] = 'cas'; // CAS library module
+  $managed_things[] = 'hsu_cas'; // hsu CAS and More
+  $managed_things[] = 'admin_menu';
+
+  // Determine any dependencies to components manged by the distribution
+  $profile_info = install_profile_info('openhsu');
+  foreach ($profile_info['dependencies'] as $module) {
+    $managed_things[] = $module;
+    $module_info = drupal_parse_info_file(drupal_get_path('module', $module) . '/' . $module . '.info');
+    if (!empty($module_info['dependencies'])) {
+      foreach ($module_info['dependencies'] as $dependency) {
+        $parts = explode(' (', $dependency, 2);
+        $managed_things[] = array_shift($parts);
+      }
+    }
+  }
+
+  // Remove modules and themes managed by distribution
+  foreach ($managed_things as $managed_module) {
+    unset($projects[$managed_module]);
+  }
+}
+
+/**
+ * Implements hook_update_status_alter()
+ *
+ * This function will remove any module managed by hsu WebSpark from
+ * the list of modules in the Drupal Update Manager.
+ */
+function hsu_core_update_status_alter(&$projects) {
+  // Don't want to unset this in hook_update_projects_later as per
+  // https://drupal.org/node/1875386
+  // But we do want to make sure the user isn't aware of updates through the GUI
+  // so we mark as always up to date.
+  foreach ($projects as $project_name => $project_info) {
+    if ($project_name == 'drupal') {
+      $projects[$project_name]['status'] = UPDATE_CURRENT;
+      $projects[$project_name]['reason'] = t('Drupal core is managed by OpenHSU. Do not update manually.');
+    }
+  }
+}
+
