@@ -21,6 +21,7 @@ function hsu_kalatheme_theme($existing, $type, $theme, $path) {
         'hide_site_name' => FALSE,
         'site_slogan' => '',
         'hide_site_slogan' => FALSE,
+        'hsu_banner' => '',
         'hsu_header' => '',
       ),
     ),
@@ -134,7 +135,13 @@ function hsu_kalatheme_process_page(&$variables) {
   $variables['hsu_phone'] = theme_get_setting('phone') ? theme_get_setting('phone') : NULL;
   $variables['hsu_fax'] = theme_get_setting('fax') ? theme_get_setting('fax') : NULL;
 
-  // Add header file
+  // Add header info
+  $variables['hsu_banner'] = theme_get_setting('use_banner') ? theme_get_setting('use_banner') : NULL;
   $variables['hsu_header'] = theme_get_setting('header_file') ? theme_get_setting('header_file') : NULL;
 
+  // Add social info
+  $variables['hsu_twitter'] = theme_get_setting('twitter') ? theme_get_setting('twitter') : NULL;
+  $variables['hsu_facebook'] = theme_get_setting('facebook') ? theme_get_setting('facebook') : NULL;
+  $variables['hsu_instagram'] = theme_get_setting('instagram') ? theme_get_setting('instagram') : NULL;
+  $variables['hsu_youtube'] = theme_get_setting('youtube') ? theme_get_setting('youtube') : NULL;
 }

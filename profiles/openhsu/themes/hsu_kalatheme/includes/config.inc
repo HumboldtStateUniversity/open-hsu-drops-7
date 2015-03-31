@@ -40,6 +40,43 @@ function hsu_kalatheme_location_form() {
   return $form;
 }
 
+function hsu_kalatheme_social_form() {
+  $form = array();
+
+  $form['open_hsu_social_info'] = array (
+    '#type' => 'fieldset',
+    '#title' => 'Social Media Info',
+    '#weight' => -97,
+  );
+
+  $form['open_hsu_social_info']['twitter'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter URL'),
+    '#default_value' =>theme_get_setting('twitter'),
+  );
+
+  $form['open_hsu_social_info']['facebook'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook URL'),
+    '#default_value' =>theme_get_setting('facebook'),
+  );
+
+  $form['open_hsu_social_info']['instagram'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Instagram URL'),
+    '#default_value' =>theme_get_setting('instagram'),
+  );
+
+  $form['open_hsu_social_info']['youtube'] = array(
+    '#type' => 'textfield',
+    '#title' => t('YouTube URL'),
+    '#default_value' =>theme_get_setting('youtube'),
+  );
+
+  return $form;
+}
+
+
 
 function hsu_kalatheme_header_image_form() {
   $form = array();
@@ -50,11 +87,22 @@ function hsu_kalatheme_header_image_form() {
     '#weight' => -99,
   );
 
+  $form['open_hsu_header_image']['use_banner'] = array (
+    '#type' => 'checkbox',
+    '#title' => t('Add a custom banner image.'),
+    '#default_value' => theme_get_setting('use_banner'),
+  );
+
   $form['open_hsu_header_image']['header_file'] = array(
     '#type' => 'file',
     '#title' => t('File'),
     '#description' => t('Upload a file, allowed extensions: jpg, jpeg, png'),
-    '#default_value' =>theme_get_setting('header_file'),
+    '#default_value' => theme_get_setting('header_file'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="use_banner"]' => array('checked' => TRUE),
+      ),
+    ),
   );
 
   if (theme_get_setting('header_file')) {

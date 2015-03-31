@@ -55,6 +55,40 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_hsu_people_job_class'
+  $field_bases['field_hsu_people_job_class'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_hsu_people_job_class',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'hsu_people_job_classifications',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_hsu_people_job_title'
   $field_bases['field_hsu_people_job_title'] = array(
     'active' => 1,

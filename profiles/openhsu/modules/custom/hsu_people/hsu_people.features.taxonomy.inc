@@ -9,6 +9,14 @@
  */
 function hsu_people_taxonomy_default_vocabularies() {
   return array(
+    'hsu_people_job_classifications' => array(
+      'name' => 'Job classification',
+      'machine_name' => 'hsu_people_job_classifications',
+      'description' => 'Splits people into two listings in the HSU People Feature, either Faculty or Staff.',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'hsu_people_job_titles' => array(
       'name' => 'Job titles',
       'machine_name' => 'hsu_people_job_titles',

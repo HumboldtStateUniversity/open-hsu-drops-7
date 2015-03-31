@@ -161,6 +161,52 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_job_class'
+  $field_instances['node-hsu_people-field_hsu_people_job_class'] = array(
+    'bundle' => 'hsu_people',
+    'default_value' => array(
+      0 => array(
+        'tid' => 4,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_hsu_people_job_class',
+    'label' => 'Job classification',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-hsu_people-field_hsu_people_job_title'
   $field_instances['node-hsu_people-field_hsu_people_job_title'] = array(
     'bundle' => 'hsu_people',
@@ -514,6 +560,7 @@ function hsu_people_field_default_field_instances() {
   t('Bio');
   t('E-mail');
   t('First name');
+  t('Job classification');
   t('Job title');
   t('Last name');
   t('Location');

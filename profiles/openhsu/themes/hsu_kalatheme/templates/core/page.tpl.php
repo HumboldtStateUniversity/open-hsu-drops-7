@@ -94,6 +94,7 @@
     'site_slogan' => $site_slogan,
     'hide_site_slogan' => $hide_site_slogan,
     'hsu_header' => $hsu_header,
+    'hsu_banner' => $hsu_banner,
   ));
 
   ?>
@@ -152,42 +153,63 @@
   <div class="footer-wrapper">
     <div class="container">
       <div class="circleh"><a href="/"><span class="element-invisible">Humboldt State University</span></a></div>
-      <div class="col-sm-3"><div id="block-block-6" class="block block-block">
-        <div class="content">
-          <p>
-            <?php if ($site_name): ?>
-              <span class="heading"><?php print $site_name; ?></span>
-            <?php endif; ?>
+      <div class="row">
+        <div class="col-sm-4"><div id="block-block-6" class="block block-block">
+          <div class="content">
+            <p>
+              <?php if ($site_name): ?>
+                <span class="heading"><?php print $site_name; ?></span>
+              <?php endif; ?>
 
-            <?php if ($hsu_street): ?>
-              <br /><?php print $hsu_street; ?>
-            <?php endif; ?>
+              <?php if ($hsu_street): ?>
+                <br /><?php print $hsu_street; ?>
+              <?php endif; ?>
 
-            <?php if ($hsu_city): ?>
-              <br /><?php print $hsu_city; ?>
-            <?php endif; ?>
+              <?php if ($hsu_city): ?>
+                <br /><?php print $hsu_city; ?>
+              <?php endif; ?>
 
-            <?php if ($hsu_phone): ?>
-              <br />Phone: <?php print $hsu_phone; ?>
-            <?php endif; ?>
+              <?php if ($hsu_phone): ?>
+                <br />Phone: <?php print $hsu_phone; ?>
+              <?php endif; ?>
 
-            <?php if ($hsu_fax): ?>
-              <br />Fax: <?php print $hsu_fax; ?>
-            <?php endif; ?>
+              <?php if ($hsu_fax): ?>
+                <br />Fax: <?php print $hsu_fax; ?>
+              <?php endif; ?>
 
+          </div>
+          </div>
         </div>
+        <div class="col-sm-4">
+          <a href="http://www.humboldt.edu/green" class="logos">
+            <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/greenscene.svg" alt="The Green Scene: Sustainability Matters at HSU" class="footer-logos greenscene">
+          </a>
+          <a href="http://www.humboldt.edu/giving" class="logos">
+            <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/giving2014.svg" class="footer-logos" alt="Giving to HSU">
+          </a>
         </div>
-      </div>
-      <div class="col-sm-3"></div>
-      <div class="col-sm-3">
-        <a href="http://www.humboldt.edu/giving" class="logos">
-        <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/giving2014.svg" class="footer-logos" alt="Giving to HSU">
-      </a>
-      </div>
-      <div class="col-sm-3 last-col">
-        <a href="http://www.humboldt.edu/green" class="logos">
-          <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/greenscene.svg" alt="The Green Scene: Sustainability Matters at HSU" class="footer-logos greenscene">
-        </a>
+        <div class="col-sm-4 last-col">
+          <?php if ($hsu_twitter): ?>
+            <a href="<?php print $hsu_twitter; ?>">
+              <i class="fa fa-twitter-square fa-3x"></i>
+            </a>
+          <?php endif; ?>
+          <?php if ($hsu_facebook): ?>
+            <a href="<?php print $hsu_facebook; ?>">
+              <i class="fa fa-facebook-square fa-3x"></i>
+            </a>
+          <?php endif; ?>
+          <?php if ($hsu_instagram): ?>
+            <a href="<?php print $hsu_instagram; ?>">
+              <i class="fa fa-instagram fa-3x"></i>
+            </a>
+          <?php endif; ?>
+          <?php if ($hsu_youtube): ?>
+            <a href="<?php print $hsu_youtube; ?>">
+              <i class="fa fa-youtube-square fa-3x"></i>
+            </a>
+          <?php endif; ?>
+        </div>
       </div>
     </div>
   </div>

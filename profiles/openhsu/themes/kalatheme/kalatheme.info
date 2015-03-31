@@ -5,12 +5,8 @@ php = 5.3
 
 regions[content] = content
 
-stylesheets[all][] = dist/css/kalatheme.min.css
-
-scripts[] = dist/js/kalatheme.pkg.min.js
-
-;Uncomment if needed
-;scripts[] = dist/js/kalatheme.pkg.js
+stylesheets[screen][] = css/tweaks.css
+stylesheets[screen][] = css/panopoly.css
 
 features[] = logo
 features[] = name
@@ -33,7 +29,13 @@ settings[responsive_toggle] = 1
 settings[pane_styles_toggle] = 1
 settings[always_show_page_title] = 0
 settings[build_subtheme] = 0
-settings[icon_font_library] = font_awesome
-settings[font_awesome_cdn] = 1
+settings[fontawesome] = 1
 
 plugins[panels][styles] = styles
+
+; Information added by Drupal.org packaging script on 2014-05-10
+version = "7.x-3.0-rc3"
+core = "7.x"
+project = "kalatheme"
+datestamp = "1399740528"
+

@@ -57,8 +57,9 @@ function openhsu_hsu_configure_form($form, &$form_state) {
 
   // OpenHSU settings
   $form = array();
-  $form += hsu_kalatheme_location_form();
   $form += hsu_kalatheme_header_image_form();
+  $form += hsu_kalatheme_location_form();
+  $form += hsu_kalatheme_social_form();
   $form = system_settings_form($form);
   // We don't want to call system_settings_form_submit(), so change #submit.
   array_pop($form['#submit']);
@@ -78,11 +79,19 @@ function openhsu_enable_theme($form, &$form_state) {
   // Enable new theme
   theme_enable(array('hsu_kalatheme'));
   $theme_settings = variable_get('theme_hsu_kalatheme_settings');
+  // Location things
   $theme_settings['street'] = $form_state['values']['street'];
   $theme_settings['citystatezip'] = $form_state['values']['citystatezip'];
   $theme_settings['phone'] = $form_state['values']['phone'];
   $theme_settings['fax'] = $form_state['values']['fax'];
+  // Banner things
+  $theme_settings['use_banner'] = $form_state['values']['use_banner'];
   $theme_settings['header_file'] = $form_state['values']['header_file'];
+  // Social things
+  $theme_settings['twitter'] = $form_state['values']['twitter'];
+  $theme_settings['facebook'] = $form_state['values']['facebook'];
+  $theme_settings['instagram'] = $form_state['values']['instagram'];
+  $theme_settings['youtube'] = $form_state['values']['youtube'];
   variable_set('theme_hsu_kalatheme_settings', $theme_settings);
   variable_set('theme_default', 'hsu_kalatheme');
   // We need to do the big dump
