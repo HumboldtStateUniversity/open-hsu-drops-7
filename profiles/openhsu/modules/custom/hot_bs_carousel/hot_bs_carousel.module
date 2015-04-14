@@ -1,0 +1,172 @@
+<?php
+/**
+ * @file
+ * Code for the hot-bs-carousel feature.
+ */
+
+include_once 'hot_bs_carousel.features.inc';
+
+/**
+ * Implements hook_theme().
+ */
+function hot_bs_carousel_theme() {
+  $theme = array(
+    'carousel' => array(
+      'variables' => array(
+        'slides' => NULL,
+      ),
+      'template' => 'templates/carousel',
+      'type' => 'module',
+    ),
+    'carousel_slide' => array(
+      'variables' => array(
+        'image' => NULL,
+        'title' => NULL,
+        'caption' => NULL,
+        'active' => FALSE,
+      ),
+      'template' => 'templates/carousel-slide',
+      'type' => 'module',
+    ),
+    'carousel_indicators' => array(
+      'template' => 'templates/carousel-indicators',
+      'variables' => array(
+        'items' => NULL,
+        'target' => NULL,
+      ),
+      'type' => 'module',
+    ),
+    'carousel_controls' => array(
+      'template'  => 'templates/carousel-controls',
+      'variables' => array('target' => NULL),
+    ),
+    'fieldable_panels_pane__hot_bs_carousel' => array(
+      'template' => 'templates/fieldable-panels-pane--hot-bs-carousel',
+    ),
+  );
+  return $theme;
+}
+/**
+ * Implements templates_process_carousel().
+ */
+function template_process_carousel(&$vars) {
+  // Merge all the classes together.
+  $attr_classes = !empty($vars['attributes_array']['class']) ? $vars['attributes_array']['class'] : array();
+  $class_classes = !empty($vars['classes_array']) ? $vars['classes_array'] : array();
+  $vars['attributes_array']['class'] = $attr_classes + $class_classes;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * Defines the field-able pane for bootstrap carousels
+ * @link( Bootstrap JS, http://getbootstrap.com/javascript/)
+ */
+function hot_bs_carousel_entity_info_alter(&$entity_info) {
+
+  // Fieldable panel pane bundle to support Bootstrap carousels:
+  $entity_info['fieldable_panels_pane']['bundles']['hot_bs_carousel'] = array(
+    'label' => t('Carousel'),
+    'pane category' => t('Media'),
+    'pane top level' => FALSE,
+    'admin' => array(
+      'path' => 'admin/structure/fieldable-panels-panes/manage/%fieldable_panels_panes_type',
+      'bundle argument' => 4,
+      'real path' => 'admin/structure/fieldable-panels-panes/manage/hot-bs-carousel',
+      'access arguments' => array('administer fieldable panels panes'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_panels_pane().
+ */
+function hot_bs_carousel_preprocess_carousel(&$vars) {
+  $id_string = 'hotBsCarousel' . $vars['id'];
+  
+  // Add some attributes that will get printed in the template.
+  $vars['attributes_array'] = array(
+    'id' => $id_string,
+    'data-ride' => 'carousel',
+  );
+
+  $vars['classes_array'][] = 'slide';
+  
+  // Build a render array for the indicators.
+  $vars['carousel_indicators'] = array(
+    '#theme' => 'carousel_indicators',
+    '#items' => count($vars['slides']),
+    '#target' => $id_string,
+  );
+
+  // Build a render array for the controls.
+  $vars['carousel_controls'] = array(
+    '#theme' => 'carousel_controls',
+    '#target' => $id_string,
+  );
+}
+
+
+/**
+ * Implements hook_preprocess_panels_pane().
+ */
+function hot_bs_carousel_preprocess_fieldable_panels_pane(&$vars) {
+  if(isset($vars['elements']['#bundle']) && $vars['elements']['#bundle'] === 'hot_bs_carousel') {
+    // Add carousel js.
+    $path = drupal_get_path('module','hot_bs_carousel');
+    drupal_add_js($path . '/hot_bs_carousel.min.js');
+    drupal_add_css($path . '/css/hot_bs_carousel.css');
+    
+    // Add the slides.
+    $vars['fields'] = array(
+      '#theme' => 'carousel',
+      '#slides' => _hot_bs_carousel_get_slides($vars),
+    );
+  }
+}
+
+/**
+ * Helper function to theme out the carousel contents.
+ */
+function _hot_bs_carousel_get_slides(array $vars){
+  $carousel = '';
+  $slides = array();
+  $field_hot_bs_carousel_slide = $vars['elements']['field_hot_bs_carousel_slide'];
+  $count = 0;
+  
+  foreach ($field_hot_bs_carousel_slide as $key => $item) {
+    if (is_numeric($key)) {
+      foreach ($item['entity']['field_collection_item'] as $k => $i) {
+        $active = $count < 1 ? TRUE : FALSE;
+        $url = $i['field_hot_bs_carousel_s_title'][0]['#element']['url'];
+        $image = $i['field_hot_bs_carousel_s_img'][0];
+        
+        // Wrap the image in a a link if we have a url.
+        if (!empty($url)) {
+          // theme_link is slower than l() but far more customizable. After all
+          // slideshows don't usually have more than a handful of slides.
+          $image = array(
+            '#theme' => 'link',
+            '#text' => render($image),
+            '#path' => $url,
+            '#options' => array(
+              'html' => TRUE,
+              'attributes' => array(),
+            ),
+          );
+        }
+        
+        $slides[$key] = array(
+          '#theme' => 'carousel_slide',
+          '#title' => $i['field_hot_bs_carousel_s_title'][0],
+          '#caption' => $i['field_hot_bs_carousel_slide_capt'][0],
+          '#image' => $image,
+          '#active' => $active,
+        );
+        $count++;
+      }
+    }
+  }
+  
+  return $slides;
+}

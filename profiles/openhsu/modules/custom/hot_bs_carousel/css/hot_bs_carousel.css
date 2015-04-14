@@ -1,0 +1,5 @@
+[data-ride="carousel"] .carousel-inner {
+  max-height: 500px;
+  overflow: hidden; }
+  [data-ride="carousel"] .carousel-inner img {
+    width: 100%; }

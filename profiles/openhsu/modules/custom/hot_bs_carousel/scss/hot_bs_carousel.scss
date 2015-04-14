@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+[data-ride="carousel"] {
+  .carousel-inner {
+    max-height: 500px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+    }  
+  }
+}
+
