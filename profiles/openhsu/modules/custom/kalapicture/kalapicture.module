@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the kalapicture feature.
+ */
+
+include_once 'kalapicture.features.inc';
