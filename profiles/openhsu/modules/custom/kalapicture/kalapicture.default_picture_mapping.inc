@@ -133,6 +133,66 @@ function kalapicture_default_picture_mapping() {
   $picture_mapping = new PictureMapping();
   $picture_mapping->disabled = FALSE; /* Edit this to true to make a default picture_mapping disabled initially */
   $picture_mapping->api_version = 2;
+  $picture_mapping->label = 'kalapicture_6';
+  $picture_mapping->machine_name = 'kalapicture_6';
+  $picture_mapping->breakpoint_group = 'kalapicture_6';
+  $picture_mapping->mapping = array(
+    'breakpoints.kalapicture.screen-xxs' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-xxs_1x',
+      ),
+      '2x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-xxs_2x',
+      ),
+    ),
+    'breakpoints.kalapicture.screen-xs' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-xs_1x',
+      ),
+      '2x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-sm_2x',
+      ),
+    ),
+    'breakpoints.kalapicture.screen-sm' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-sm_1x',
+      ),
+      '2x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-sm_2x',
+      ),
+    ),
+    'breakpoints.kalapicture.screen-md' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-md_1x',
+      ),
+      '2x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-md_2x',
+      ),
+    ),
+    'breakpoints.kalapicture.screen-lg' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_3_breakpoints_kalapicture_screen-lg_1x',
+      ),
+      '2x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-lg_2x',
+      ),
+    ),
+  );
+  $export['kalapicture_6'] = $picture_mapping;
+
+  $picture_mapping = new PictureMapping();
+  $picture_mapping->disabled = FALSE; /* Edit this to true to make a default picture_mapping disabled initially */
+  $picture_mapping->api_version = 2;
   $picture_mapping->label = 'kalapicture_col_md_9';
   $picture_mapping->machine_name = 'kalapicture_col_md_9';
   $picture_mapping->breakpoint_group = 'kalapicture_col_md_9';
