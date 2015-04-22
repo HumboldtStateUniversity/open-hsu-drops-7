@@ -33,7 +33,7 @@ You\'re media will be scaled to 900px by 500px by default. Think about editing y
           ),
           'fallback_image_style' => 'large',
           'image_link' => '',
-          'picture_mapping' => 'bs_picture_map',
+          'picture_mapping' => 'kalapicture_12',
         ),
         'type' => 'picture',
         'weight' => 0,
