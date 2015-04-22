@@ -13,10 +13,10 @@ function hot_bs_carousel_theme() {
   $theme = array(
     'carousel' => array(
       'variables' => array(
+        'entity_id' => NULL, // The id of the FPP the carousel is appearing on.
         'slides' => NULL,
       ),
       'template' => 'templates/carousel',
-      'type' => 'module',
     ),
     'carousel_slide' => array(
       'variables' => array(
@@ -26,7 +26,6 @@ function hot_bs_carousel_theme() {
         'active' => FALSE,
       ),
       'template' => 'templates/carousel-slide',
-      'type' => 'module',
     ),
     'carousel_indicators' => array(
       'template' => 'templates/carousel-indicators',
@@ -34,7 +33,6 @@ function hot_bs_carousel_theme() {
         'items' => NULL,
         'target' => NULL,
       ),
-      'type' => 'module',
     ),
     'carousel_controls' => array(
       'template'  => 'templates/carousel-controls',
@@ -47,7 +45,7 @@ function hot_bs_carousel_theme() {
   return $theme;
 }
 /**
- * Implements templates_process_carousel().
+ * Implements template_process_carousel().
  */
 function template_process_carousel(&$vars) {
   // Merge all the classes together.
@@ -63,7 +61,6 @@ function template_process_carousel(&$vars) {
  * @link( Bootstrap JS, http://getbootstrap.com/javascript/)
  */
 function hot_bs_carousel_entity_info_alter(&$entity_info) {
-
   // Fieldable panel pane bundle to support Bootstrap carousels:
   $entity_info['fieldable_panels_pane']['bundles']['hot_bs_carousel'] = array(
     'label' => t('Carousel'),
@@ -79,7 +76,7 @@ function hot_bs_carousel_entity_info_alter(&$entity_info) {
 }
 
 /**
- * Implements hook_preprocess_panels_pane().
+ * Implements hook_preprocess_carousel().
  */
 function hot_bs_carousel_preprocess_carousel(&$vars) {
   $id_string = 'hotBsCarousel' . $vars['id'];
@@ -108,18 +105,18 @@ function hot_bs_carousel_preprocess_carousel(&$vars) {
 
 
 /**
- * Implements hook_preprocess_panels_pane().
+ * Implements hook_preprocess_fieldable_panels_pane().
  */
 function hot_bs_carousel_preprocess_fieldable_panels_pane(&$vars) {
-  if(isset($vars['elements']['#bundle']) && $vars['elements']['#bundle'] === 'hot_bs_carousel') {
+  if (isset($vars['elements']['#bundle']) && $vars['elements']['#bundle'] === 'hot_bs_carousel') {
     // Add carousel js.
     $path = drupal_get_path('module','hot_bs_carousel');
     drupal_add_js($path . '/hot_bs_carousel.min.js');
     drupal_add_css($path . '/css/hot_bs_carousel.css');
-    
     // Add the slides.
     $vars['fields'] = array(
       '#theme' => 'carousel',
+      '#entity_id' => $vars['elements']['#element']->fpid, // The id of the FPP.
       '#slides' => _hot_bs_carousel_get_slides($vars),
     );
   }
@@ -128,7 +125,7 @@ function hot_bs_carousel_preprocess_fieldable_panels_pane(&$vars) {
 /**
  * Helper function to theme out the carousel contents.
  */
-function _hot_bs_carousel_get_slides(array $vars){
+function _hot_bs_carousel_get_slides($vars){
   $carousel = '';
   $slides = array();
   $field_hot_bs_carousel_slide = $vars['elements']['field_hot_bs_carousel_slide'];

@@ -318,7 +318,7 @@ You\'re media will be scaled to 900px by 500px by default. Think about editing y
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => -4,
+      'weight' => 2,
     ),
   );
 

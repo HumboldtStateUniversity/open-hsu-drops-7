@@ -440,7 +440,7 @@ You\'re media will be scaled to 900px by 500px by default. Think about editing y
         'module' => 'field_collection',
         'settings' => array(),
         'type' => 'field_collection_embed',
-        'weight' => -4,
+        'weight' => 2,
       ),
     ),
   );
@@ -492,7 +492,7 @@ function hot_bs_carousel_defaultconfig_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '1',
         ),
       ),
       'display' => array(
