@@ -1,0 +1,15 @@
+name = OpenHSU Carousel
+description = Extends the hot_bs_carousel widget with customizations for HSU
+core = 7.x
+package = OpenHSU
+version = 7.x-1.0-dev
+project = hsu_carousel
+dependencies[] = entity
+dependencies[] = features
+dependencies[] = hot_bs_carousel
+dependencies[] = list
+dependencies[] = options
+features[features_api][] = api:2
+features[field_base][] = field_hot_bs_carousel_style
+features[field_instance][] = fieldable_panels_pane-hot_bs_carousel-field_hot_bs_carousel_style
+project path = profiles/openhsu/modules/custom
