@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     cssmin: {
       target: {
         files: {
-          'css/main.css': 'css/main.css'
+          'css/hot_bs_carousel.css': 'css/hot_bs_carousel.css'
         }
       }
     },
@@ -86,8 +86,8 @@ module.exports = function(grunt) {
     },
   });
 
-  grunt.registerTask("productionbuild", ['newer:concat', 'uglify', 'sass:dist', 'cssmin', 'guide']);
-  grunt.registerTask("devbuild", ['newer:concat', 'sass:dev', 'guide']);
+  grunt.registerTask("productionbuild", ['newer:concat', 'uglify', 'sass:dist', 'cssmin']);
+  grunt.registerTask("devbuild", ['newer:concat', 'sass:dev',]);
   grunt.registerTask("develop", ['devbuild','watch']);
   grunt.registerTask("default", ['develop']);
   return grunt.registerTask('guide');
