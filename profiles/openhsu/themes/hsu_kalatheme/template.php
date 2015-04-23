@@ -125,23 +125,37 @@ function hsu_kalatheme_process_page(&$variables) {
 
   // If panels arent being used at all.
   $variables['no_panels'] = !(module_exists('page_manager') && page_manager_get_current_page());
+  
+  // Add theme settings as variables available to the page.tpl.php
+  hsu_kalatheme_add_theme_setting_vars($variables);
+}
 
-  // Check if we're to always print the page title, even on panelized pages.
-  $variables['always_show_page_title'] = theme_get_setting('always_show_page_title') ? TRUE : FALSE;
+/**
+ * Add theme settings as variables available to the page.tpl.php.
+ */
+function hsu_kalatheme_add_theme_setting_vars(&$variables){
+  $theme_settings = array(
+    // Check if we're to always print the page title, even on panelized pages.
+    'always_show_page_title' => 'always_show_page_title',
+    
+    // Add in location theme settings into vars
+    'hsu_street' => 'street',
+    'hsu_city' => 'citystatezip',
+    'hsu_phone' => 'phone',
+    'hsu_fax' => 'fax',
+    
+    // Add header info
+    'hsu_banner' => 'use_banner',
+    'hsu_header' => 'header_file',
 
-  // Add in location theme settings into vars
-  $variables['hsu_street'] = theme_get_setting('street') ? theme_get_setting('street') : NULL;
-  $variables['hsu_city'] = theme_get_setting('citystatezip') ? theme_get_setting('citystatezip') : NULL;
-  $variables['hsu_phone'] = theme_get_setting('phone') ? theme_get_setting('phone') : NULL;
-  $variables['hsu_fax'] = theme_get_setting('fax') ? theme_get_setting('fax') : NULL;
-
-  // Add header info
-  $variables['hsu_banner'] = theme_get_setting('use_banner') ? theme_get_setting('use_banner') : NULL;
-  $variables['hsu_header'] = theme_get_setting('header_file') ? theme_get_setting('header_file') : NULL;
-
-  // Add social info
-  $variables['hsu_twitter'] = theme_get_setting('twitter') ? theme_get_setting('twitter') : NULL;
-  $variables['hsu_facebook'] = theme_get_setting('facebook') ? theme_get_setting('facebook') : NULL;
-  $variables['hsu_instagram'] = theme_get_setting('instagram') ? theme_get_setting('instagram') : NULL;
-  $variables['hsu_youtube'] = theme_get_setting('youtube') ? theme_get_setting('youtube') : NULL;
+    // Add social info
+    'hsu_twitter' => 'twitter',
+    'hsu_facebook' => 'facebook',
+    'hsu_instagram' => 'instagram',
+    'hsu_youtube' => 'youtube',
+  );
+  
+  foreach ($theme_settings as $key => $setting) {
+    $variables[$key] = theme_get_setting($setting) ? theme_get_setting($setting) : NULL;
+  }  
 }
