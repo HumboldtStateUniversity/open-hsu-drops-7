@@ -66,7 +66,7 @@ function hsu_kalatheme_preprocess_hsu_site_header(&$vars){
     $picture_mapping = picture_mapping_load('kalapicture_12');
     $breakpoints = picture_get_mapping_breakpoints($picture_mapping);
     $image_size = getimagesize($vars['hsu_header']);
-    xdebug_break();
+
     // Add a render array that will output the goods.
     $vars['hsu_header_image'] = array(
       '#theme' => 'picture',
