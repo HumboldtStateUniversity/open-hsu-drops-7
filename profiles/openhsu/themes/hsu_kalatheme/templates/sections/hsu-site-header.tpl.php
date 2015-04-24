@@ -37,7 +37,7 @@
   <?php if ($hsu_banner && $hsu_header): ?>
     <div class="row">
       <div class="hsu-header">
-        <img src="<?php print $hsu_header; ?>" />
+        <?php print render($hsu_header_image); ?>
         <?php if ($site_name): ?>
           <div class="container">
             <span class="hsu-header-site-name"><?php print $site_name; ?></span>

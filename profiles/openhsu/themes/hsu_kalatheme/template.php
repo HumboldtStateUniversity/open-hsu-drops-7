@@ -40,6 +40,46 @@ function hsu_kalatheme_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements hook_preprocess_hsu_site_header.
+ */
+function hsu_kalatheme_preprocess_hsu_site_header(&$vars){
+  // Find the managed file the the url that matches what we got in the 
+  // hsu_header var. The file entity already has the height and width of the 
+  // image in it's metadata (which theme_picture NEEDS) so this is quicker than 
+  // using something like getimagesize() which seems to be super slow.
+  $files_dir = file_create_url('public://');
+  $file_path = str_replace($files_dir, '', $vars['hsu_header']);
+  $entity_type = 'file';
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', $entity_type)
+    ->propertyCondition('uri', 'public://' . $file_path);
+    
+  $result = $query->execute();
+  
+  // Make sure we have a match.
+  if (isset($result[$entity_type])) {
+    // Load the file entity.
+    $fid = reset($result[$entity_type])->fid;
+    $file_entity = file_load($fid);
+    
+    // Load the picture mappping.
+    $picture_mapping = picture_mapping_load('kalapicture_12');
+    $breakpoints = picture_get_mapping_breakpoints($picture_mapping);
+    $image_size = getimagesize($vars['hsu_header']);
+    xdebug_break();
+    // Add a render array that will output the goods.
+    $vars['hsu_header_image'] = array(
+      '#theme' => 'picture',
+      '#uri' => $file_path, // Note: picture module seems to need a path relative to the files dir.
+      '#width' => $file_entity->metadata['width'], 
+      '#height' => $file_entity->metadata['height'], 
+      '#alt' => $vars['site_name'],
+      '#breakpoints' => $breakpoints, 
+    );
+  }  
+}
+
+/**
  * Override or insert variables into the page template.
  *
  * Implements template_process_page().
