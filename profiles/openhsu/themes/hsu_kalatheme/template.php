@@ -84,10 +84,11 @@ function hsu_kalatheme_preprocess_hsu_site_header(&$vars){
  *
  * Implements template_process_page().
  */
-function hsu_kalatheme_process_page(&$variables) {
+function hsu_kalatheme_preprocess_page(&$variables) {
   // Add Bootstrap JS and stock CSS.
   global $base_url;
   $base = parse_url($base_url);
+  
   // Use the CDN if not using libraries.
   if (!kalatheme_use_libraries()) {
     $library = theme_get_setting('bootstrap_library');
@@ -100,13 +101,60 @@ function hsu_kalatheme_process_page(&$variables) {
     }
   }
   $font_awesome_active = FALSE;
+  
   // Use Font Awesome.
   if (theme_get_setting('font_awesome_cdn')) {
     $font_awesome_active = TRUE;
     drupal_add_css($base['scheme'] . ":" . KALATHEME_FONTAWESOME_CSS, 'external');
   }
+  
   // Let JS know that we have this enabled.
   drupal_add_js(array('kalatheme' => array('fontawesome' => $font_awesome_active)), 'setting');
+  
+  // Various menu tweaks.
+  hsu_kalatheme_handle_menu($variables);
+
+  // Always print the site name and slogan, but if they are toggled off, we'll
+  // just hide them visually.
+  hsu_kalatheme_handle_site_name_slogan($variables);
+
+  // Since the title and the shortcut link are both block level elements,
+  // positioning them next to each other is much simpler with a wrapper div.
+  hsu_kalatheme_handle_title($variables);
+
+  // If panels arent being used at all.
+  $variables['no_panels'] = !(module_exists('page_manager') && page_manager_get_current_page());
+  
+  // Add theme settings as variables available to the page.tpl.php
+  hsu_kalatheme_add_theme_setting_vars($variables);
+  
+  // Add render arrays for the header and navbar.
+  $variables['page']['hsu_site_header'] = array(
+    '#theme' => 'hsu_site_header',
+    '#front_page' => $variables['front_page'],
+    '#logo' => $variables['logo'],
+    '#site_name' => $variables['site_name'],
+    '#hide_site_name' => $variables['hide_site_name'],
+    '#site_slogan' => $variables['site_slogan'],
+    '#hide_site_slogan' => $variables['hide_site_slogan'],
+    '#hsu_header' => $variables['hsu_header'],
+    '#hsu_banner' => $variables['hsu_banner'],
+  );
+
+  $variables['page']['hsu_navbar'] = array(
+    '#theme' => 'hsu_navbar',
+    '#main_menu' => $variables['main_menu'],
+    '#main_menu_expanded' => $variables['main_menu_expanded'],
+    '#secondary_menu'=> $variables['secondary_menu'],
+    '#site_name' => $variables['site_name'],
+    '#front_page' => $variables['front_page'],
+  );  
+}
+
+/**
+ * Various menu tweaks.
+ */
+function hsu_kalatheme_handle_menu(&$variables){
   // Define variables to theme local actions as a dropdown.
   $dropdown_attributes = array(
     'container' => array(
@@ -131,11 +179,16 @@ function hsu_kalatheme_process_page(&$variables) {
   // Get the entire main menu tree.
   $main_menu_tree = array();
   $main_menu_tree = menu_tree_all_data('main-menu', NULL, 2);
+  
   // Add the rendered output to the $main_menu_expanded variable.
   $variables['main_menu_expanded'] = menu_tree_output($main_menu_tree);
+}
 
-  // Always print the site name and slogan, but if they are toggled off, we'll
-  // just hide them visually.
+/**
+ * Always print the site name and slogan, but if they are toggled off, we'll
+ * just hide them visually.
+ */
+function hsu_kalatheme_handle_site_name_slogan(&$variables){
   $variables['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
   $variables['hide_site_slogan'] = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
   if ($variables['hide_site_name']) {
@@ -147,8 +200,13 @@ function hsu_kalatheme_process_page(&$variables) {
     // so we rebuild it.
     $variables['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
   }
-  // Since the title and the shortcut link are both block level elements,
-  // positioning them next to each other is much simpler with a wrapper div.
+}
+
+/**
+ * Since the title and the shortcut link are both block level elements,
+ * positioning them next to each other is much simpler with a wrapper div.
+ */
+function hsu_kalatheme_handle_title(&$variables){
   if (!empty($variables['title_suffix']['add_or_remove_shortcut']) && $variables['title']) {
     // Add a wrapper div using title_prefix and title_suffix render elements.
     $variables['title_prefix']['shortcut_wrapper'] = array(
@@ -162,12 +220,6 @@ function hsu_kalatheme_process_page(&$variables) {
     // Make sure the shortcut link is the first item in title_suffix.
     $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
-
-  // If panels arent being used at all.
-  $variables['no_panels'] = !(module_exists('page_manager') && page_manager_get_current_page());
-  
-  // Add theme settings as variables available to the page.tpl.php
-  hsu_kalatheme_add_theme_setting_vars($variables);
 }
 
 /**

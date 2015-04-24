@@ -86,29 +86,10 @@
 <div id="page-wrapper"><div id="page">
 
   <!-- Site Header -->
-  <?php print theme('hsu_site_header', array(
-    'front_page' => $front_page,
-    'logo' => $logo,
-    'site_name' => $site_name,
-    'hide_site_name' => $hide_site_name,
-    'site_slogan' => $site_slogan,
-    'hide_site_slogan' => $hide_site_slogan,
-    'hsu_header' => $hsu_header,
-    'hsu_banner' => $hsu_banner,
-  ));
-
-  ?>
+  <?php print render($page['hsu_site_header']); ?>
 
   <!-- Site Navigation -->
-  <?php print theme('hsu_navbar', array(
-    'main_menu' => $main_menu,
-    'main_menu_expanded' => $main_menu_expanded,
-    'secondary_menu'=> $secondary_menu,
-    'site_name' => $site_name,
-    'front_page' => $front_page,
-  ));
-
-  ?>
+  <?php print render($page['hsu_navbar']); ?>
 
   <!-- Page Main -->
   <div id="main-wrapper" class="clearfix">
