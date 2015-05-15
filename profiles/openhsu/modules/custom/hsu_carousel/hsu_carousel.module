@@ -28,7 +28,8 @@ function hsu_carousel_preprocess_carousel_slide(&$vars) {
   $fc_wrapper = entity_metadata_wrapper($entity_type, $vars['fc_id']);
 
   // Set the picture mapping depending on what style was chosen for this 
-  // carousel.   
+  // carousel.
+  xdebug_break();
   switch ($fpp_wrapper->field_hot_bs_carousel_style->value()){
     // Image full width, text over-layed.
     case 'img_12_text_over':
@@ -70,7 +71,7 @@ function hsu_carousel_preprocess_carousel_controls(&$vars){
  */
 function hsu_carousel_get_carousel_style($fpp_id){
   $fpp_wrapper = entity_metadata_wrapper('fieldable_panels_pane', $fpp_id);
-  return $fpp_wrapper->field_hot_bs_carousel_style->value();
+  return $fpp_wrapper->__isset('field_hot_bs_carousel_style') ? $fpp_wrapper->field_hot_bs_carousel_style->value() : '';
 }
 
 /**
