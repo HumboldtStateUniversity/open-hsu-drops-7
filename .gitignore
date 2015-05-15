@@ -3,6 +3,7 @@
 /sites/*/private
 /files/*
 /cache
+bower_components
 
 # Ignore any node stuffs
 node_modules
