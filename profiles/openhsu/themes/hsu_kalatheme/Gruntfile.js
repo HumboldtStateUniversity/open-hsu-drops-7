@@ -3,8 +3,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   var themeJs = [
-        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js',
-        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js',
+        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
         'js/hsu_kalatheme.js'
       ];
 
@@ -98,6 +97,4 @@ module.exports = function(grunt) {
   grunt.registerTask("devbuild", ['newer:concat', 'sass:dev']);
   grunt.registerTask("develop", ['devbuild','watch']);
   return grunt.registerTask("default", ['develop']);
-  //return grunt.registerTask('guide', ['kss', 'copy:ksscss', 'copy:kssfonts', 'copy:kssscripts']);
-
 };

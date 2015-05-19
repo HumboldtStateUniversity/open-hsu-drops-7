@@ -1,0 +1,67 @@
+
+
+/*!
+ * Kalatheme (http://drupal.org/project/kalatheme)
+ */
+
+.masthead {
+  background: #25551b;
+  margin: 0 auto;
+}
+
+.footer-wrapper {
+  background: #25551b;
+  margin: 0 auto;
+  padding: 0rem 1rem;
+  clear: both;
+  background: #0c4301;
+  color: white;
+  margin-top: 48px;
+  margin-top: 3rem;
+}
+
+.circleh {
+  background: transparent url(../img/circleh-footer.svg) no-repeat center top;
+  width: 100%;
+  float: left;
+  height: 50px;
+  margin-top: -22px;
+  position: relative;
+}
+
+.brand {
+  padding: 24px 0px 16px;
+  padding: 1.5rem 0rem 1rem;
+  margin: 0;
+}
+
+.hsumark {
+  padding: 1.5rem 0rem 1rem;
+  margin: 0;
+  width: 110%;
+}
+
+.hsumark img {
+  width: 100%;
+}
+
+.hsu-header img {
+  width: 100%;
+}
+
+.hsu-header {
+  position: relative;
+}
+
+.hsu-header-site-name{
+  font-family: "Droid Serif",Georgia,serif;
+  font-size: 2em;
+  margin: 2em 0;
+  font-weight: 400;
+  line-height: 1.1;
+  background: #fff;
+  background: rgba(255,255,255,0.68);
+  padding: 0.5em;
+  position: absolute;
+  bottom: 0px;
+}
