@@ -162,12 +162,7 @@
           </div>
         </div>
         <div class="col-sm-4">
-          <a href="http://www.humboldt.edu/green" class="logos">
-            <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/greenscene.svg" alt="The Green Scene: Sustainability Matters at HSU" class="footer-logos greenscene">
-          </a>
-          <a href="http://www.humboldt.edu/giving" class="logos">
-            <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/giving2014.svg" class="footer-logos" alt="Giving to HSU">
-          </a>
+          
         </div>
         <div class="col-sm-4 last-col">
           <?php if ($hsu_twitter): ?>

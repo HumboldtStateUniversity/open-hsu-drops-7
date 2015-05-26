@@ -10,8 +10,7 @@
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
           </a>
           <span class="element-invisible">Humboldt State University</span>
-          <span class="csu"><img src="<?php print "/" . path_to_theme() ?>/img/csu-wm.svg" alt="A California State University Campus"></span>
-          <span class="element-invisible">a California State University</span>
+          
         </p>
 
 
