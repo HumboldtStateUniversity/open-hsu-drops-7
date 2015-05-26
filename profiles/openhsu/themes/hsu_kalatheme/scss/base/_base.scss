@@ -5,17 +5,16 @@
  */
 
 .masthead {
-  background: #25551b;
+  background: $green;
   margin: 0 auto;
 }
 
 .footer-wrapper {
-  background: #25551b;
+  background: $green;
   margin: 0 auto;
   padding: 0rem 1rem;
   clear: both;
-  background: #0c4301;
-  color: white;
+  color: $white;
   margin-top: 48px;
   margin-top: 3rem;
 }
@@ -38,30 +37,5 @@
 .hsumark {
   padding: 1.5rem 0rem 1rem;
   margin: 0;
-  width: 110%;
-}
-
-.hsumark img {
   width: 100%;
-}
-
-.hsu-header img {
-  width: 100%;
-}
-
-.hsu-header {
-  position: relative;
-}
-
-.hsu-header-site-name{
-  font-family: "Droid Serif",Georgia,serif;
-  font-size: 2em;
-  margin: 2em 0;
-  font-weight: 400;
-  line-height: 1.1;
-  background: #fff;
-  background: rgba(255,255,255,0.68);
-  padding: 0.5em;
-  position: absolute;
-  bottom: 0px;
 }
