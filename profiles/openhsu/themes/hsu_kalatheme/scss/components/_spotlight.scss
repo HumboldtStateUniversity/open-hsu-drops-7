@@ -1,0 +1,34 @@
+// Override some panopoly spotlight styles
+
+.panopoly-spotlight-wrapper,.pane-bundle-spotlight .panopoly-spotlight-label, .panopoly-spotlight img {
+  width:100%;
+  box-sizing:border-box;
+  max-width: 100%;
+}
+.pane-bundle-spotlight {
+  .panopoly-spotlight-wrapper {
+    bottom: 5%;
+  }
+  .panopoly-spotlight-label {
+    padding: 2rem 1.5rem;
+    font-weight: 300;
+    opacity: .80;
+  }
+}
+.ui-widget {
+  font-family: $font-family-sans-serif; 
+}
+.pane-bundle-spotlight .panopoly-spotlight-buttons-wrapper {
+  top: 50%;
+  right: 0;
+  width: 100%;
+}
+.panopoly-spotlight-previous, .panopoly-spotlight-pause-play, .panopoly-spotlight-next {
+  position: absolute;
+}
+.panopoly-spotlight-next {
+  right: 0;
+}
+.panopoly-spotlight-pause-play {
+  left: 50%;
+}
