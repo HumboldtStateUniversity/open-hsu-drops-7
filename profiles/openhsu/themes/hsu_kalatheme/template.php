@@ -79,6 +79,23 @@ function hsu_kalatheme_preprocess_hsu_site_header(&$vars){
   }  
 }
 
+function hsu_kalatheme_preprocess_html(&$variables) {
+
+  /**
+  * loading web fonts and external css
+  */
+  drupal_add_css('//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic', array('type' => 'external'));
+
+  /**
+  * adds path segments as body classes
+  */
+  $path = drupal_get_path_alias($_GET['q']);
+  $aliases = explode('/', $path);
+
+  foreach($aliases as $alias) {
+    $variables['classes_array'][] = drupal_clean_css_identifier($alias);
+  }
+} 
 /**
  * Override or insert variables into the page template.
  *
