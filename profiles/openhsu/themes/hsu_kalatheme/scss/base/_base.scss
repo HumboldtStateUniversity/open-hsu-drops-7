@@ -5,12 +5,12 @@
  */
  
 .masthead {
-  background: $green;
+  background: $brand-primary;
   margin: 0 auto;
 }
 
 .footer-wrapper {
-  background: $green;
+  background: $brand-primary;
   margin: 0 auto;
   padding: 0rem 1rem;
   clear: both;
@@ -37,4 +37,7 @@
   padding: 1.5rem 0rem 1rem;
   margin: 0;
   width: 100%;
+}
+a{
+  color:$orange;
 }
