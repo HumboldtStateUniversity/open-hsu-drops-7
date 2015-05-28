@@ -1,5 +1,8 @@
 // Override some panopoly spotlight styles
 
+.panopoly-spotlight {
+  margin-bottom:$padding-large-vertical*2;
+}
 .panopoly-spotlight-wrapper,.pane-bundle-spotlight .panopoly-spotlight-label, .panopoly-spotlight img {
   width:100%;
   box-sizing:border-box;
@@ -7,12 +10,16 @@
 }
 .pane-bundle-spotlight {
   .panopoly-spotlight-wrapper {
-    bottom: 5%;
+    @media (min-width: $screen-sm-min){
+      bottom: 5%;  
+  }
   }
   .panopoly-spotlight-label {
-    padding: 2rem 1.5rem;
     font-weight: 300;
     opacity: .80;
+    @media (min-width: $screen-sm-min){
+      padding: $padding-large-horizontal $padding-large-vertical;
+    }
   }
 }
 .ui-widget {
@@ -30,5 +37,13 @@
   right: 0;
 }
 .panopoly-spotlight-pause-play {
-  left: 50%;
+  left: 45%;
+}
+h3{
+  font-size: $font-size-h4;
+  text-align: center;
+    @media (min-width: $screen-sm-min){
+      font-size: $font-size-h3;
+      text-align: left;
+  }
 }
