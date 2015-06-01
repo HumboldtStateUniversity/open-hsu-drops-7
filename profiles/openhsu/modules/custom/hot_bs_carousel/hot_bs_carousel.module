@@ -135,25 +135,32 @@ function hot_bs_carousel_preprocess_fieldable_panels_pane(&$vars) {
 function _hot_bs_carousel_get_slides($vars){
   $carousel = '';
   $slides = array();
-  $field_hot_bs_carousel_slide = $vars['elements']['field_hot_bs_carousel_slide'];
-  $count = 0;
-
-  foreach ($field_hot_bs_carousel_slide as $key => $item) {
-    if (is_numeric($key)) {
-      foreach ($item['entity']['field_collection_item'] as $k => $i) {
-        $active = $count < 1 ? TRUE : FALSE;
-        $image = $i['field_hot_bs_carousel_s_img'][0];
-        $image['#path'] = $i['field_hot_bs_carousel_s_title'][0]['#element']['url'];        
-        $slides[$key] = array(
-          '#theme' => 'carousel_slide',
-          '#fc_id' => $i['#entity']->item_id, // The id of the field collection.
-          '#fpp_id' => $vars['elements']['#element']->fpid, // The id of the field collection.
-          '#title' => $i['field_hot_bs_carousel_s_title'][0],
-          '#caption' => $i['field_hot_bs_carousel_slide_capt'][0],
-          '#image' => $image,
-          '#active' => $active,
-        );
-        $count++;
+  
+  // Make sure the field exists first to prevent errors on the pane preview when
+  // the user hasn't uploaded an image yet.
+  if (isset($vars['elements']['field_hot_bs_carousel_slide'])) {
+    $field_hot_bs_carousel_slide = $vars['elements']['field_hot_bs_carousel_slide'];
+    $count = 0;
+  
+    foreach ($field_hot_bs_carousel_slide as $key => $item) {
+      if (is_numeric($key)) {
+        foreach ($item['entity']['field_collection_item'] as $k => $i) {
+          $active = $count < 1 ? TRUE : FALSE;
+          $image = $i['field_hot_bs_carousel_s_img'][0];
+          $image['#path'] = isset($i['field_hot_bs_carousel_s_title']) ? $i['field_hot_bs_carousel_s_title'][0]['#element']['url'] : '';
+          $title = isset($i['field_hot_bs_carousel_s_title'][0]) ? $i['field_hot_bs_carousel_s_title'][0] : '';        
+          $caption = isset($i['field_hot_bs_carousel_slide_capt'][0]) ? $i['field_hot_bs_carousel_slide_capt'][0] : '';        
+          $slides[$key] = array(
+            '#theme' => 'carousel_slide',
+            '#fc_id' => $i['#entity']->item_id, // The id of the field collection.
+            '#fpp_id' => $vars['elements']['#element']->fpid, // The id of the field collection.
+            '#title' => $title,
+            '#caption' => $caption,
+            '#image' => $image,
+            '#active' => $active,
+          );
+          $count++;
+        }
       }
     }
   }
