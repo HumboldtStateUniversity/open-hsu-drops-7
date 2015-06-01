@@ -4658,3 +4658,18 @@ h3 {
     h3 {
       font-size: 24px;
       text-align: left; } }
+
+.view-panopoly-news ul {
+  list-style-type: none; }
+  .view-panopoly-news ul li {
+    margin: 16px 0 0 0;
+    padding-left: 40px;
+    padding-bottom: 24px;
+    padding-top: 8px;
+    background: url(../img/bullet.png) no-repeat 0 4px;
+    font-size: 16px;
+    border-bottom: solid 1px rgba(128, 128, 128, 0.2); }
+  .view-panopoly-news ul li:last-child {
+    border-bottom: none; }
+
+/*# sourceMappingURL=main.css.map */
