@@ -54,7 +54,7 @@ module.exports = function(grunt) {
     },
     sass: {
       options: {
-        sourcemap: true,
+        sourceMap: true,
         trace: true,
         includePaths: [
           'bower_components',
