@@ -29,7 +29,6 @@ function hsu_carousel_preprocess_carousel_slide(&$vars) {
 
   // Set the picture mapping depending on what style was chosen for this 
   // carousel.
-  xdebug_break();
   switch ($fpp_wrapper->field_hot_bs_carousel_style->value()){
     // Image full width, text over-layed.
     case 'img_12_text_over':
