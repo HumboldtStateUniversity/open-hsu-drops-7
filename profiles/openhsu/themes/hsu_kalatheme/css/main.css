@@ -4659,17 +4659,25 @@ h3 {
       font-size: 24px;
       text-align: left; } }
 
-.view-panopoly-news ul {
+.view-hsu-news ul, .view-hsu-events ul {
   list-style-type: none; }
-  .view-panopoly-news ul li {
-    margin: 16px 0 0 0;
-    padding-left: 40px;
-    padding-bottom: 24px;
-    padding-top: 8px;
-    background: url(../img/bullet.png) no-repeat 0 4px;
+  .view-hsu-news ul li, .view-hsu-events ul li {
     font-size: 16px;
     border-bottom: solid 1px rgba(128, 128, 128, 0.2); }
-  .view-panopoly-news ul li:last-child {
+  .view-hsu-news ul li:last-child, .view-hsu-events ul li:last-child {
     border-bottom: none; }
+
+.view-hsu-news ul li {
+  margin: 16px 0 0 0;
+  padding: 8px 0 24px 40px;
+  background: url(../img/bullet.png) no-repeat 0 4px; }
+
+.view-hsu-events ul li {
+  margin: 16px 0 0 0;
+  padding: 8px 0 24px 0; }
+  .view-hsu-events ul li span {
+    display: block;
+    font-weight: 700;
+    color: #b65300; }
 
 /*# sourceMappingURL=main.css.map */
