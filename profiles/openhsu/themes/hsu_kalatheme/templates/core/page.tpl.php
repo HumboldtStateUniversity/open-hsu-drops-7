@@ -122,7 +122,7 @@
         </div>
       </div> <!-- /.section, /#top-content -->
 
-      <div id="content">
+      <div id="content" class="container">
         <div class="column <?php $no_panels ? print 'container' : ''; ?>">
           <?php print render($page['content']); ?>
         </div>
