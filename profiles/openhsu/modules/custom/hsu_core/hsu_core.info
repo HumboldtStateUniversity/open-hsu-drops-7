@@ -6,6 +6,7 @@ version = 7.x-1.0-dev
 project = hsu_core
 dependencies[] = ctools
 dependencies[] = defaultconfig
+dependencies[] = panopoly_override
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[defaultconfig][] = strongarm:theme_hsu_kalatheme_settings
