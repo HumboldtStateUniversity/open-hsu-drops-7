@@ -116,10 +116,11 @@ function hot_bs_carousel_preprocess_carousel(&$vars) {
  */
 function hot_bs_carousel_preprocess_fieldable_panels_pane(&$vars) {
   if (isset($vars['elements']['#bundle']) && $vars['elements']['#bundle'] === 'hot_bs_carousel') {
-    // Add carousel js.
     $path = drupal_get_path('module','hot_bs_carousel');
+    // Add swipe detection for carousel.
     drupal_add_js($path . '/hot_bs_carousel.min.js');
     drupal_add_css($path . '/css/hot_bs_carousel.css');
+    
     // Add the slides.
     $vars['fields'] = array(
       '#theme' => 'carousel',
