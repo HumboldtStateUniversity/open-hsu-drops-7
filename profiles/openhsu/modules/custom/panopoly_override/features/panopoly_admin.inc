@@ -9,12 +9,9 @@
  */
 if (!function_exists('panopoly_admin_strongarm_alter')) {
   function panopoly_admin_strongarm_alter(&$data) {
-    /* Example: Change default admin role
-    if (isset($data['user_admin_role'])) {
-      $data['user_admin_role']->value = '6';
-    }*/
-    
-    
+    if (isset($data['jquery_update_jquery_version'])) {
+      $data['jquery_update_jquery_version']->value = '1.11';
+    }
   }
 }
     
