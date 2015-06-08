@@ -115,6 +115,12 @@ function hsu_events_views_default_views() {
   /* Display: Events Page */
   $handler = $view->new_display('page', 'Events Page', 'page_1');
   $handler->display->display_options['path'] = 'events';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Events';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $export['hsu_events'] = $view;
 
   return $export;

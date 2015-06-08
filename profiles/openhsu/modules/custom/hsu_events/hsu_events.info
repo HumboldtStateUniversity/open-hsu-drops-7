@@ -15,7 +15,6 @@ dependencies[] = views
 dependencies[] = views_content
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
-features[defaultconfig][] = strongarm:date_format_hsu_events_listing
 features[features_api][] = api:2
 features[field_base][] = field_hsu_event_date
 features[field_base][] = field_hsu_event_location
