@@ -3,7 +3,9 @@
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
- 
+ body {
+  font-family: $font-family-sans-serif;
+ }
 .masthead {
   background: $brand-primary;
   margin: 0 auto;
@@ -12,11 +14,9 @@
 .footer-wrapper {
   background: $brand-primary;
   margin: 0 auto;
-  padding: 0rem 1rem;
+  @include rem-fallback(padding, 0, $pad);
   clear: both;
   color: $white;
-  margin-top: 48px;
-  margin-top: 3rem;
 }
 
 .circleh {
@@ -24,17 +24,16 @@
   width: 100%;
   float: left;
   height: 50px;
-  margin-top: -22px;
+  @include rem-fallback(margin-top, -$pad-and-half);
   position: relative;
 }
-//explore bootstrap padding/marging variables
+//swap out padding/marging with variables
 .brand {
-  padding: 24px 0px 16px;
-  padding: 1.5rem 0rem 1rem;
+  @include rem-fallback(padding, $pad, 0, $pad);
   margin: 0;
 }
 .hsumark {
-  padding: 1.5rem 0rem 1rem;
+  @include rem-fallback(padding, $pad-half, 0, $pad);
   margin: 0;
   width: 100%;
 }
@@ -42,3 +41,9 @@
 a{
   color:$orange;
 }
+
+.social {
+  a {
+    color:$white;
+  }
+} 

@@ -3,8 +3,7 @@ p.button-wrap{
 	a.button{
 		width:auto;
 		float:left;
-		// @include rem-fallback(padding-right, $pad*3);
-		padding-right: $padding-large-horizontal*2;
+		@include rem-fallback(padding-right, $pad*3);
 	}
 }
 .center{
@@ -17,8 +16,7 @@ a.button{
 		background:darken($dark-green, 2%);
 	}
 	color:$white;
-	// @include rem-fallback(padding, $pad-half);
-	padding: $padding-small-horizontal;
+	@include rem-fallback(padding, $pad-half);
 	text-decoration:none;
 	position:relative;
 	display:inline-block;
@@ -31,7 +29,7 @@ a.button{
 		position: absolute;
 		right: 0;
 		top: 0;
-		// @include rem-fallback(width, 2);
+		@include rem-fallback(width, 2);
 		background:$brand-primary;
 		&:before {
 			position: absolute;
@@ -46,12 +44,10 @@ a.button{
 	}
 }
 a.small{
-  // @include rem-fallback(font-size, .8);
-  // @include rem-fallback(padding, $pad-half, 3.8, $pad-half, $pad);
-  padding: 8px 60.8px 8px 16px;
+  @include rem-fallback(font-size, .8);
+  @include rem-fallback(padding, $pad-half, 3.8, $pad-half, $pad);
 	span{
-		// @include rem-fallback(width, 2);
-		width:$padding-large-horizontal*2;
+		@include rem-fallback(width, 2);
 	}
 }
 a.orange {

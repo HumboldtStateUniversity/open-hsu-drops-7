@@ -5,9 +5,11 @@
 @import "bootstrap";
 
 // Pull in structure
+@import "mixins/mixins";
 @import "base/base";
 @import "layouts/layouts";
 @import "components/components";
+@import "components/type";
 @import "components/buttons";
 @import "components/spotlight";
 @import "components/news";

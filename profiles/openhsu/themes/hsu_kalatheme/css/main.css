@@ -188,8 +188,8 @@ td, th {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/bootstrap/glyphicons-halflings-regular.eot');
-  src: url('../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg'); }
+  src: url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot');
+  src: url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'), url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'), url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg'); }
 
 .glyphicon {
   position: relative;
@@ -4582,6 +4582,9 @@ button.close {
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
+body {
+  font-family: 'Lato', sans-serif; }
+
 .masthead {
   background: #25551b;
   margin: 0 auto; }
@@ -4589,32 +4592,130 @@ button.close {
 .footer-wrapper {
   background: #25551b;
   margin: 0 auto;
+  padding: 0px 16px;
   padding: 0rem 1rem;
   clear: both;
-  color: #fff;
-  margin-top: 48px;
-  margin-top: 3rem; }
+  color: #fff; }
 
 .circleh {
   background: transparent url(../img/circleh-footer.svg) no-repeat center top;
   width: 100%;
   float: left;
   height: 50px;
-  margin-top: -22px;
+  margin-top: -24px;
+  margin-top: -1.5rem;
   position: relative; }
 
 .brand {
-  padding: 24px 0px 16px;
-  padding: 1.5rem 0rem 1rem;
+  padding: 16px 0px 16px;
+  padding: 1rem 0rem 1rem;
   margin: 0; }
 
 .hsumark {
-  padding: 1.5rem 0rem 1rem;
+  padding: 8px 0px 16px;
+  padding: 0.5rem 0rem 1rem;
   margin: 0;
   width: 100%; }
 
 a {
   color: #b65300; }
+
+.social a {
+  color: #fff; }
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'hsu-main';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -moz-osx-font-smoothing: grayscale; }
+
+/* Define your base font-size here; most elements will inherit this. */
+html {
+  font-size: 1em;
+  /* Assuming 16px... */
+  line-height: 1.5;
+  /* 24px (This is now our magic number; all subsequent margin-bottoms and line-heights want to be a multiple of this number in order to maintain vertical rhythm.) */
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
+
+/* Common margin-bottom for vertical rhythm. */
+h1, h2, h3, h4, h5, h6, ul, ol, dl, fieldset, p, table, pre, hr {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  font-family: 'Lato', sans-serif; }
+
+h1, h2, h3, h4, h5, h6, .light {
+  font-weight: 400;
+  color: #b65300; }
+
+/* These handle massive type, for less frequently occuring bits of text (e.g. in mastheads and banners). */
+.giga {
+  font-size: 80px;
+  font-size: 5rem;
+  line-height: 1.2; }
+
+.mega {
+  font-size: 64px;
+  font-size: 4rem;
+  line-height: 1.125; }
+
+.kilo, h1.title {
+  font-size: 48px;
+  font-size: 3rem;
+  line-height: 1; }
+
+/* Define headings and their associated classes here. */
+h1, .alpha {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.2; }
+
+h2, .beta {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1; }
+
+p.beta, p.gamma, p.delta {
+  line-height: 1.5; }
+
+h3, .gamma {
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 1.2; }
+
+h4, .delta {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.333; }
+
+h5, .epsilon {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5; }
+
+h6, .zeta {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5; }
+
+/* Smaller-than-body-copy sizes here. */
+small, .milli {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2; }
 
 p.button-wrap:before, p.button-wrap:after {
   content: " ";
@@ -4624,7 +4725,8 @@ p.button-wrap:after {
 p.button-wrap a.button {
   width: auto;
   float: left;
-  padding-right: 32px; }
+  padding-right: 48px;
+  padding-right: 3rem; }
 
 .center {
   display: table;
@@ -4633,7 +4735,8 @@ p.button-wrap a.button {
 a.button {
   background: #0c4301;
   color: #fff;
-  padding: 10px;
+  padding: 8px;
+  padding: 0.5rem;
   text-decoration: none;
   position: relative;
   display: inline-block;
@@ -4648,6 +4751,8 @@ a.button {
     position: absolute;
     right: 0;
     top: 0;
+    width: 32px;
+    width: 2rem;
     background: #25551b; }
     a.button span:before {
       position: absolute;
@@ -4660,9 +4765,13 @@ a.button {
       left: 25%; }
 
 a.small {
-  padding: 8px 60.8px 8px 16px; }
+  font-size: 12.8px;
+  font-size: 0.8rem;
+  padding: 8px 60.8px 8px 16px;
+  padding: 0.5rem 3.8rem 0.5rem 1rem; }
   a.small span {
-    width: 32px; }
+    width: 32px;
+    width: 2rem; }
 
 a.orange {
   background: #b65300; }
@@ -4692,7 +4801,8 @@ a.more {
     border-radius: 0 3px 3px 0; }
 
 .panopoly-spotlight {
-  margin-bottom: 20px; }
+  margin-bottom: 32px;
+  margin-bottom: 2rem; }
 
 .panopoly-spotlight-wrapper, .pane-bundle-spotlight .panopoly-spotlight-label, .panopoly-spotlight img {
   width: 100%;
@@ -4707,10 +4817,8 @@ a.more {
   opacity: .80; }
   @media (min-width: 768px) {
     .pane-bundle-spotlight .panopoly-spotlight-label {
-      padding: 16px 10px; } }
-
-.ui-widget {
-  font-family: 'Lato', sans-serif; }
+      padding: 16px 8px;
+      padding: 1rem 0.5rem; } }
 
 .pane-bundle-spotlight .panopoly-spotlight-buttons-wrapper {
   top: 50%;
@@ -4727,7 +4835,6 @@ a.more {
   left: 45%; }
 
 h3 {
-  font-size: 18px;
   text-align: center; }
   @media (min-width: 768px) {
     h3 {
@@ -4737,21 +4844,25 @@ h3 {
 .view-hsu-news ul, .view-hsu-events ul {
   list-style-type: none; }
   .view-hsu-news ul li, .view-hsu-events ul li {
-    font-size: 16px;
     border-bottom: solid 1px rgba(128, 128, 128, 0.2); }
   .view-hsu-news ul li:last-child, .view-hsu-events ul li:last-child {
     border-bottom: none; }
 
 .view-hsu-news ul li {
-  margin: 16px 0 0 0;
-  padding: 8px 0 24px 40px;
-  background: url(../img/bullet.png) no-repeat 0 4px; }
+  margin: 16px 0px 0px 0px;
+  margin: 1rem 0rem 0rem 0rem;
+  padding: 8px 0px 24px 40px;
+  padding: 0.5rem 0rem 1.5rem 2.5rem;
+  background: url(../img/bullet.png) no-repeat 0 0.25rem; }
 
 .view-hsu-events ul {
-  margin-top: 16px; }
+  margin-top: 16px;
+  margin-top: 1rem; }
   .view-hsu-events ul li {
-    margin: 16px 0 0 0;
-    padding: 8px 0 24px 0; }
+    margin: 16px 0px 0px 0px;
+    margin: 1rem 0rem 0rem 0rem;
+    padding: 8px 0px 24px 0px;
+    padding: 0.5rem 0rem 1.5rem 0rem; }
     .view-hsu-events ul li span {
       display: block;
       font-weight: 700;

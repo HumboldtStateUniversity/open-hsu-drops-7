@@ -1,6 +1,12 @@
 //Fonts
 $font-family-sans-serif: 'Lato', sans-serif;
 
+// When true, asset path helpers are used, otherwise the regular CSS `url()` is used.
+// When there no function is defined, `fn('')` is parsed as string that equals the right hand side
+// NB: in Sass 3.3 there is a native function: function-exists(twbs-font-path)
+$bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")')) !default;
+// [converter] Asset helpers such as Sprockets and Node.js Mincer do not resolve relative paths
+$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/") !default;
 
 //Colors
 $black : #333;
@@ -24,3 +30,17 @@ $dark-brick:#5e2417;
 $orange:#b65300;
 $dark-orange:#984907;
 $brown: #543e2a;
+
+//Defaults
+$space : 1rem;
+$space-and-half : $space*1.5;
+$space-double : $space*2;
+$space-triple : $space*3;
+$space-quad : $space*4;
+$space-half : $space/2;
+$space-quarter : $space/4;
+$pad : 1rem;
+$pad-and-half : $pad*1.5;
+$pad-double : $pad*2;
+$pad-half : $pad/2;
+$pad-quarter :$pad/4;

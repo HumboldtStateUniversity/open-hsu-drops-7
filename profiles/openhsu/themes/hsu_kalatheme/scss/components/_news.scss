@@ -4,7 +4,6 @@
 	ul {
 		list-style-type: none;
 		li{
-			font-size: ceil(($font-size-base * 1.125)); //16px
 			border-bottom: solid 1px rgba($gray, .2);
 		}
 		li:last-child {
@@ -16,9 +15,9 @@
 .view-hsu-news {
 	ul {
 		li {
-			margin: $padding-large-horizontal 0 0 0;
-			padding:$padding-large-horizontal/2 0 $padding-large-horizontal*1.5 $padding-large-horizontal*2.5;
-			background: url(../img/bullet.png) no-repeat 0 $padding-large-horizontal/4;
+			@include rem-fallback(margin, $pad, 0, 0, 0);
+			@include rem-fallback(padding, $pad-half, 0, $pad-and-half, $pad*2.5);
+			background: url(../img/bullet.png) no-repeat 0 $pad-quarter;
 		}
 	}
 
@@ -26,10 +25,10 @@
 
 .view-hsu-events{
 	ul {
-		margin-top: $padding-large-horizontal;
+		@include rem-fallback(margin-top, $pad);
 		li {
-			margin: $padding-large-horizontal 0 0 0;
-			padding:$padding-large-horizontal/2 0 $padding-large-horizontal*1.5 0;
+			@include rem-fallback(margin, $pad, 0, 0, 0);
+			@include rem-fallback(padding, $pad-half, 0, $pad-and-half, 0);
 
 			// Handles Date Field Display
 			span {
