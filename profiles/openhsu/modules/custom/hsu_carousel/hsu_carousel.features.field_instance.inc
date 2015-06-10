@@ -10,8 +10,8 @@
 function hsu_carousel_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'fieldable_panels_pane-hot_bs_carousel-field_hot_bs_carousel_style'
-  $field_instances['fieldable_panels_pane-hot_bs_carousel-field_hot_bs_carousel_style'] = array(
+  // Exported field_instance: 'fieldable_panels_pane-hot_bs_carousel-field_hsu_carousel_style'
+  $field_instances['fieldable_panels_pane-hot_bs_carousel-field_hsu_carousel_style'] = array(
     'bundle' => 'hot_bs_carousel',
     'default_value' => NULL,
     'deleted' => 0,
@@ -26,7 +26,7 @@ function hsu_carousel_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'fieldable_panels_pane',
-    'field_name' => 'field_hot_bs_carousel_style',
+    'field_name' => 'field_hsu_carousel_style',
     'label' => 'Style',
     'required' => 1,
     'settings' => array(
