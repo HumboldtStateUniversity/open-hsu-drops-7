@@ -43,20 +43,20 @@ $override_path = drupal_get_path('module', 'panopoly_override');
 // Extend panopoly_admin
 require_once $override_path . '/features/panopoly_admin.inc';
 // Extend panopoly_core
-require_once $override_path . '/features/panopoly_core.inc';
+// require_once $override_path . '/features/panopoly_core.inc';
 // Extend panopoly_images - This has no overrides as of now
 // require_once $override_path . '/features/panopoly_images.inc';
 // Extend panopoly_magic - This has no overrides as of now
 // require_once $override_path . '/features/panopoly_magic.inc';
 // Extend panopoly_pages
-require_once $override_path . '/features/panopoly_pages.inc';
+// require_once $override_path . '/features/panopoly_pages.inc';
 // Extend panopoly_theme - This has no overrides as of now
 // require_once $override_path . '/features/panopoly_theme.inc';
 // Extend panopoly_users - This has no overrides as of now
 // require_once $override_path . '/features/panopoly_users.inc';
 // Extend panopoly_search
-require_once $override_path . '/features/panopoly_search.inc';
+// require_once $override_path . '/features/panopoly_search.inc';
 // Extend panopoly_widgets
-require_once $override_path . '/features/panopoly_widgets.inc';
+// require_once $override_path . '/features/panopoly_widgets.inc';
 // Extend panopoly_wysiwyg
-require_once $override_path . '/features/panopoly_wysiwyg.inc';
+// require_once $override_path . '/features/panopoly_wysiwyg.inc';
