@@ -9,8 +9,16 @@
  */
 function hsu_carousel_preprocess_carousel(&$vars) {
   // Output a class on the carousel to indentify which style was chosen.
-  $style = hsu_carousel_get_carousel_style($vars['entity_id']);
+  $style = hsu_carousel_get_field_value('field_hsu_carousel_style', $vars['entity_id']);
   $vars['classes_array'][] = drupal_html_class($style);
+  
+  // Check whether the slideshow should autoplay or not.
+  $autoplay = hsu_carousel_get_field_value('field_hsu_carousel_autoplay', $vars['entity_id']);
+  if (!$autoplay) {
+    // We want to turn off autoplay. This is happening by virtue of 
+    // data-ride="carousel" on the wrapping div.
+    unset($vars['attributes_array']['data-ride']);
+  }
   
   // Add some custom css.
   $path = drupal_get_path('module', 'hsu_carousel');
@@ -29,7 +37,7 @@ function hsu_carousel_preprocess_carousel_slide(&$vars) {
 
   // Set the picture mapping depending on what style was chosen for this 
   // carousel.
-  switch ($fpp_wrapper->field_hot_bs_carousel_style->value()){
+  switch ($fpp_wrapper->field_hsu_carousel_style->value()){
     // Image full width, text over-layed.
     case 'img_12_text_over':
       $picture_mapping = 'kalapicture_12';
@@ -61,16 +69,18 @@ function hsu_carousel_preprocess_carousel_slide(&$vars) {
  */
 function hsu_carousel_preprocess_carousel_controls(&$vars){
   // Add template suggestion for each style. 
-  $style = hsu_carousel_get_carousel_style($vars['entity_id']);
+  $style = hsu_carousel_get_field_value('field_hsu_carousel_style', $vars['entity_id']);
   $vars['theme_hook_suggestions'][] = 'carousel_controls__' . $style;
 }
 
 /**
- * Get the carousel style chosen for the given FPP.
+ * Get the given field value for the given FPP.
+ * This extra layer is needed to avoid errors in preview when a field doesn't
+ * exist yet.
  */
-function hsu_carousel_get_carousel_style($fpp_id){
+function hsu_carousel_get_field_value($field_name, $fpp_id){
   $fpp_wrapper = entity_metadata_wrapper('fieldable_panels_pane', $fpp_id);
-  return $fpp_wrapper->__isset('field_hot_bs_carousel_style') ? $fpp_wrapper->field_hot_bs_carousel_style->value() : '';
+  return $fpp_wrapper->__isset($field_name) ? $fpp_wrapper->{$field_name}->value() : '';
 }
 
 /**
@@ -78,5 +88,5 @@ function hsu_carousel_get_carousel_style($fpp_id){
  */
 function hsu_carousel_theme_registry_alter(&$registry) {
   $path = drupal_get_path('module', 'hsu_carousel') . '/templates';
-  $registry += drupal_find_theme_templates($registry, '.tpl.php', $path);
+  $registry += drupal_find_theme_templates($registry, '.tpl.php', $path);  
 }
