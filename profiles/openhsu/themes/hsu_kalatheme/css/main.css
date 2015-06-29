@@ -4582,9 +4582,6 @@ button.close {
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
-body {
-  font-family: 'Lato', sans-serif; }
-
 .masthead {
   background: #25551b;
   margin: 0 auto; }
@@ -4622,6 +4619,10 @@ a {
 
 .social a {
   color: #fff; }
+
+/* Increase the z-index of the UI dialog so it is higher than Panels 'add content' modal */
+.ui-dialog.ui-front {
+  z-index: 1002; }
 
 [class^="icon-"], [class*=" icon-"] {
   font-family: 'hsu-main';
