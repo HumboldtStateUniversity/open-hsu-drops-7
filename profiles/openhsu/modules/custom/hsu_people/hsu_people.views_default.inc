@@ -34,19 +34,113 @@ function hsu_people_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_hsu_people_job_title',
+      'field' => 'field_hsu_people_job_class',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_hsu_people_profile_image' => 'field_hsu_people_profile_image',
+    'field_hsu_people_first_name' => 'field_hsu_people_first_name',
+    'field_hsu_people_last_name' => 'field_hsu_people_last_name',
+    'title' => 'title',
+    'field_hsu_people_job_title' => 'title',
+    'nothing' => 'nothing',
+    'field_hsu_people_email' => 'nothing',
+    'field_hsu_people_phone_number' => 'nothing',
+    'field_hsu_people_location' => 'nothing',
+    'field_hsu_people_job_class' => 'field_hsu_people_job_class',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_hsu_people_profile_image' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_hsu_people_first_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_hsu_people_last_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_hsu_people_job_title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_hsu_people_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_hsu_people_phone_number' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_hsu_people_location' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_hsu_people_job_class' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Relationship: Content: Job classification (field_hsu_people_job_class) */
   $handler->display->display_options['relationships']['field_hsu_people_job_class_tid']['id'] = 'field_hsu_people_job_class_tid';
   $handler->display->display_options['relationships']['field_hsu_people_job_class_tid']['table'] = 'field_data_field_hsu_people_job_class';
   $handler->display->display_options['relationships']['field_hsu_people_job_class_tid']['field'] = 'field_hsu_people_job_class_tid';
+  /* Field: Content: Profile Image */
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['id'] = 'field_hsu_people_profile_image';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['table'] = 'field_data_field_hsu_people_profile_image';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['field'] = 'field_hsu_people_profile_image';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['settings'] = array(
+    'image_style' => 'hsu_people_listing',
+    'image_link' => '',
+  );
   /* Field: Content: First name */
   $handler->display->display_options['fields']['field_hsu_people_first_name']['id'] = 'field_hsu_people_first_name';
   $handler->display->display_options['fields']['field_hsu_people_first_name']['table'] = 'field_data_field_hsu_people_first_name';
@@ -68,21 +162,35 @@ function hsu_people_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'hsu-people-name';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   /* Field: Content: Job title */
   $handler->display->display_options['fields']['field_hsu_people_job_title']['id'] = 'field_hsu_people_job_title';
   $handler->display->display_options['fields']['field_hsu_people_job_title']['table'] = 'field_data_field_hsu_people_job_title';
   $handler->display->display_options['fields']['field_hsu_people_job_title']['field'] = 'field_hsu_people_job_title';
   $handler->display->display_options['fields']['field_hsu_people_job_title']['label'] = '';
-  $handler->display->display_options['fields']['field_hsu_people_job_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_hsu_people_job_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_hsu_people_job_title']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_hsu_people_job_title']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<strong>Contact Information</strong>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'hsu-people-contact-information';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   /* Field: Content: E-mail */
   $handler->display->display_options['fields']['field_hsu_people_email']['id'] = 'field_hsu_people_email';
   $handler->display->display_options['fields']['field_hsu_people_email']['table'] = 'field_data_field_hsu_people_email';
   $handler->display->display_options['fields']['field_hsu_people_email']['field'] = 'field_hsu_people_email';
   $handler->display->display_options['fields']['field_hsu_people_email']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_email']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_hsu_people_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_hsu_people_email']['hide_empty'] = TRUE;
   /* Field: Content: Phone number */
@@ -90,21 +198,26 @@ function hsu_people_views_default_views() {
   $handler->display->display_options['fields']['field_hsu_people_phone_number']['table'] = 'field_data_field_hsu_people_phone_number';
   $handler->display->display_options['fields']['field_hsu_people_phone_number']['field'] = 'field_hsu_people_phone_number';
   $handler->display->display_options['fields']['field_hsu_people_phone_number']['label'] = 'Phone';
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_hsu_people_phone_number']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_hsu_people_phone_number']['hide_empty'] = TRUE;
   /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_hsu_event_location']['id'] = 'field_hsu_event_location';
-  $handler->display->display_options['fields']['field_hsu_event_location']['table'] = 'field_data_field_hsu_event_location';
-  $handler->display->display_options['fields']['field_hsu_event_location']['field'] = 'field_hsu_event_location';
-  $handler->display->display_options['fields']['field_hsu_event_location']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_hsu_event_location']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_location']['id'] = 'field_hsu_people_location';
+  $handler->display->display_options['fields']['field_hsu_people_location']['table'] = 'field_data_field_hsu_people_location';
+  $handler->display->display_options['fields']['field_hsu_people_location']['field'] = 'field_hsu_people_location';
+  $handler->display->display_options['fields']['field_hsu_people_location']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_location']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_hsu_people_location']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_location']['hide_empty'] = TRUE;
   /* Field: Content: Job classification */
   $handler->display->display_options['fields']['field_hsu_people_job_class']['id'] = 'field_hsu_people_job_class';
   $handler->display->display_options['fields']['field_hsu_people_job_class']['table'] = 'field_data_field_hsu_people_job_class';
   $handler->display->display_options['fields']['field_hsu_people_job_class']['field'] = 'field_hsu_people_job_class';
   $handler->display->display_options['fields']['field_hsu_people_job_class']['label'] = '';
   $handler->display->display_options['fields']['field_hsu_people_job_class']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['element_type'] = 'h2';
   $handler->display->display_options['fields']['field_hsu_people_job_class']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['type'] = 'taxonomy_term_reference_plain';
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
@@ -123,9 +236,9 @@ function hsu_people_views_default_views() {
   $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['arguments']['name']['field'] = 'name';
   $handler->display->display_options['arguments']['name']['relationship'] = 'field_hsu_people_job_class_tid';
-  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['exception']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['name']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['name']['default_argument_options']['argument'] = 'staff';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['argument'] = 'all';
   $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
@@ -177,6 +290,7 @@ function hsu_people_views_default_views() {
   $handler->display->display_options['arguments']['name']['field'] = 'name';
   $handler->display->display_options['arguments']['name']['relationship'] = 'field_hsu_people_job_class_tid';
   $handler->display->display_options['arguments']['name']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['name']['exception']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['name']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['name']['summary']['format'] = 'unformatted_summary';
@@ -187,8 +301,8 @@ function hsu_people_views_default_views() {
   $handler->display->display_options['arguments']['name']['limit'] = '0';
   $handler->display->display_options['arguments']['name']['path_case'] = 'lower';
   $handler->display->display_options['displays'] = array(
-    'page' => 'page',
     'default' => 0,
+    'page' => 0,
   );
   $handler->display->display_options['inherit_arguments'] = FALSE;
   $export['hsu_people_directory'] = $view;
