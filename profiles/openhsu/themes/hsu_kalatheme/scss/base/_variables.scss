@@ -1,6 +1,9 @@
 //Fonts
 $font-family-sans-serif: 'Lato', sans-serif;
 
+//Fontawesome path to font files
+$fa-font-path:        "../bower_components/fontawesome/fonts";
+
 // When true, asset path helpers are used, otherwise the regular CSS `url()` is used.
 // When there no function is defined, `fn('')` is parsed as string that equals the right hand side
 // NB: in Sass 3.3 there is a native function: function-exists(twbs-font-path)
