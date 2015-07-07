@@ -12,6 +12,7 @@ p.button-wrap{
 }
 a.button{
 	background:$dark-green;
+	border-radius: 3px;
 	&:hover{
 		background:darken($dark-green, 2%);
 	}
@@ -25,6 +26,7 @@ a.button{
 	text-align:left;
 	span{
 		display: block;
+		border-radius: 0 3px 3px 0;
 		height: 100%;
 		position: absolute;
 		right: 0;
@@ -33,7 +35,6 @@ a.button{
 		background:$brand-primary;
 		&:before {
 			position: absolute;
-			content: "\e175";
 			color: rgba($white, .35);
 			width: 0;
 			height: 0;
