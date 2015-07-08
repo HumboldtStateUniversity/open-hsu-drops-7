@@ -802,99 +802,6 @@ td, th {
 .glyphicon-tree-deciduous:before {
   content: "\e200"; }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-*:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-html {
-  font-size: 10px;
-  -webkit-tap-highlight-color: transparent; }
-
-body {
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #333333;
-  background-color: #fff; }
-
-input, button, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit; }
-
-a {
-  color: #25551b;
-  text-decoration: none; }
-  a:hover, a:focus {
-    color: #0c1b09;
-    text-decoration: underline; }
-  a:focus {
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px; }
-
-figure {
-  margin: 0; }
-
-img {
-  vertical-align: middle; }
-
-.img-responsive {
-  display: block;
-  width: 100% \9;
-  max-width: 100%;
-  height: auto; }
-
-.img-rounded {
-  border-radius: 6px; }
-
-.img-thumbnail {
-  padding: 4px;
-  line-height: 1.428571429;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-  display: inline-block;
-  width: 100% \9;
-  max-width: 100%;
-  height: auto; }
-
-.img-circle {
-  border-radius: 50%; }
-
-hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 0;
-  border-top: 1px solid #eeeeee; }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0; }
-
-.sr-only-focusable:active, .sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto; }
-
 code, kbd, pre, samp {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace; }
 
@@ -1617,7 +1524,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #808080; }
+  color: #555555; }
 
 .form-control {
   display: block;
@@ -1626,7 +1533,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #808080;
+  color: #555555;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
@@ -2402,7 +2309,7 @@ tbody.collapse.in {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #808080;
+  color: #555555;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #ccc;
@@ -2497,7 +2404,7 @@ tbody.collapse.in {
       .nav-tabs > li > a:hover {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-      color: #808080;
+      color: #555555;
       background-color: #fff;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
@@ -6053,6 +5960,9 @@ button.close {
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
+html {
+  font-family: 'Lato', sans-serif; }
+
 .masthead {
   background: #25551b;
   margin: 0 auto; }
@@ -6295,19 +6205,17 @@ a.more {
       padding: 16px 8px;
       padding: 1rem 0.5rem; } }
 
+.panopoly-spotlight-label a:hover {
+  text-decoration: none; }
+
 .pane-bundle-spotlight .panopoly-spotlight-buttons-wrapper {
-  top: 50%;
-  right: 0;
-  width: 100%; }
+  top: 1rem;
+  right: 1rem; }
 
-.panopoly-spotlight-previous, .panopoly-spotlight-pause-play, .panopoly-spotlight-next {
-  position: absolute; }
-
-.panopoly-spotlight-next {
-  right: 0; }
-
-.panopoly-spotlight-pause-play {
-  left: 45%; }
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a {
+  background: rgba(255, 255, 255, 0.8);
+  border: solid 1px #fff !important;
+  color: #333; }
 
 h3 {
   text-align: center; }
@@ -6315,6 +6223,9 @@ h3 {
     h3 {
       font-size: 24px;
       text-align: left; } }
+
+.ui-widget-header, .ui-widget {
+  font-family: 'Lato', sans-serif; }
 
 .view-hsu-news ul, .view-hsu-events ul {
   list-style-type: none; }
