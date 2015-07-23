@@ -164,7 +164,7 @@
         <div class="col-sm-4">
           
         </div>
-        <div class="social col-sm-4 last-col">
+        <div class="col-sm-4 last-col">
           <?php if ($hsu_twitter): ?>
             <a href="<?php print $hsu_twitter; ?>">
               <i class="fa fa-twitter-square fa-3x"></i>

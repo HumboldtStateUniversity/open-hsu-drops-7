@@ -1,14 +1,11 @@
+
+
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
  // body {
  //  font-family: $font-family-sans-serif;
  // }
- html {
-  font-family: $font-family-sans-serif;
- }
-
-
 .masthead {
   background: $brand-primary;
   margin: 0 auto;
@@ -44,8 +41,8 @@
 a{
   color:$orange;
 }
+
 .social {
-  text-align: right;
   a {
     color:$white;
   }
