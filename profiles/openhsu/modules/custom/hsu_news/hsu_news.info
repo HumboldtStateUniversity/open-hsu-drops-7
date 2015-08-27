@@ -10,7 +10,6 @@ dependencies[] = views
 dependencies[] = views_content
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
-features[defaultconfig][] = strongarm:date_format_hsu_news_listing
 features[features_api][] = api:2
 features[variable][] = date_format_hsu_news_listing
 features[views_view][] = hsu_news

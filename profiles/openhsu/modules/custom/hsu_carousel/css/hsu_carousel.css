@@ -1,0 +1,61 @@
+.img-6-text-left .carousel-inner .item .carousel-caption, .img-6-text-left .carousel-control-wrapper .carousel-control.left, .img-6-text-left .carousel-control-wrapper .carousel-control.right, .img-6-text-left .carousel-control-wrapper .carousel-control.left span, .img-6-text-left .carousel-control-wrapper .carousel-control.right span {
+  position: static;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto; }
+
+[data-ride=carousel] .carousel-caption {
+  text-align: left; }
+[data-ride=carousel] .carousel-control {
+  width: 5%; }
+
+.img-12-text-over .carousel-caption {
+  top: 20px;
+  left: 80px;
+  right: 80px;
+  bottom: auto; }
+  .img-12-text-over .carousel-caption h3 a {
+    font-size: 52px;
+    color: #fff;
+    font-weight: 700; }
+  .img-12-text-over .carousel-caption p {
+    font-size: 22px;
+    font-weight: 700; }
+
+.img-6-text-left .carousel-inner .item .carousel-caption {
+  width: 47.5%;
+  float: left;
+  padding-top: 0;
+  text-shadow: none;
+  color: #333; }
+  .img-6-text-left .carousel-inner .item .carousel-caption h3 {
+    margin-top: 0; }
+.img-6-text-left .carousel-inner .item img {
+  width: 47.5%;
+  float: left;
+  margin-right: 5%; }
+.img-6-text-left .carousel-indicators {
+  display: none; }
+.img-6-text-left .carousel-control-wrapper {
+  padding-top: 20px; }
+  .img-6-text-left .carousel-control-wrapper .carousel-control.left, .img-6-text-left .carousel-control-wrapper .carousel-control.right {
+    float: left;
+    width: auto;
+    background-image: none;
+    opacity: 1;
+    text-shadow: none;
+    color: #333;
+    font-size: 14px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 10px; }
+    .img-6-text-left .carousel-control-wrapper .carousel-control.left span, .img-6-text-left .carousel-control-wrapper .carousel-control.right span {
+      font-size: 14px; }
+      .img-6-text-left .carousel-control-wrapper .carousel-control.left span.glyphicon, .img-6-text-left .carousel-control-wrapper .carousel-control.right span.glyphicon {
+        height: 20px;
+        margin-left: -5px; }
+  .img-6-text-left .carousel-control-wrapper .carousel-control.right {
+    float: right; }
+    .img-6-text-left .carousel-control-wrapper .carousel-control.right span.glyphicon {
+      margin-right: -5px; }
