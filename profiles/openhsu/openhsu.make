@@ -80,6 +80,12 @@ projects[hsu_people][type] = module
 projects[hsu_people][download][revision] = 6023169
 projects[hsu_people][download][url] = https://github.com/kalamuna/hsu_people.git
 
+projects[hsu_carousel][version] = 1.0-dev
+projects[hsu_carousel][subdir] = custom
+projects[hsu_carousel][type] = module
+projects[hsu_carousel][download][revision] = 4f79ab9
+projects[hsu_carousel][download][url] = https://github.com/kalamuna/hsu_carousel.git
+
 ; Bootstrap and Theme Framework
 ; Base Theme - Kalatheme
 
