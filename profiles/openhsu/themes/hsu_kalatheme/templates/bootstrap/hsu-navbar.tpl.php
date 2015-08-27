@@ -14,6 +14,7 @@
         <span class="icon-bar" aria-hidden="true"></span>
         <span class="icon-bar" aria-hidden="true"></span>
         <span class="icon-bar" aria-hidden="true"></span>
+        <span class="menu-text">Menu</span>
       </button>
     </div><!-- /.navbar-header -->
 
@@ -44,11 +45,6 @@
           $sec_attributes['class'][] = 'element-invisible';
         }
       ?>
-
-      <?php print theme('links__system_secondary_menu', array(
-        'links' => $secondary_menu,
-        'attributes' => $sec_attributes
-      )); ?>
     </div>
   </div>
 </nav>

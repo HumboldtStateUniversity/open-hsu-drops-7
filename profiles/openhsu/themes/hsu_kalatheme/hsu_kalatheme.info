@@ -6,3 +6,5 @@ core = 7.x
 regions[content] = Content
 
 stylesheets[all][] = css/main.css
+
+scripts[] = js/dist/hsu_kalatheme.js

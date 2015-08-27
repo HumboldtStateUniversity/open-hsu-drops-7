@@ -1,0 +1,95 @@
+
+
+/*!
+ * Kalatheme (http://drupal.org/project/kalatheme)
+ */
+ body {
+  font-family: $font-family-sans-serif;
+ }
+.masthead {
+  background: $brand-primary;
+  margin: 0 auto;
+}
+.footer-wrapper {
+  background: $brand-primary;
+  margin: 0 auto;
+  @include rem-fallback(padding, 0, $pad);
+  clear: both;
+  color: $white;
+}
+
+.circleh {
+  background: transparent url(../img/circleh-footer.svg) no-repeat center top;
+  width: 100%;
+  float: left;
+  height: 50px;
+  @include rem-fallback(margin-top, -$pad-and-half);
+  position: relative;
+}
+//swap out padding/marging with variables
+.brand {
+  @include rem-fallback(padding, $pad-half, 0, 0);
+  margin: 0;
+}
+.hsumark {
+  @include rem-fallback(padding, $pad-half, 0, $pad);
+  margin: 0;
+  width: 100%;
+}
+
+a{
+  color:$orange;
+}
+.social {
+  text-align: left;
+   @media screen and (min-width: $screen-sm-min) {
+    text-align: right;
+   }
+  @include rem-fallback(margin-bottom, $pad);
+  @include rem-fallback(font-size , $pad/1.5);
+
+  a {
+    color:$white;
+    text-decoration: none;
+  }
+} 
+
+// Some weirdness on the IPE.
+.panels-ipe-portlet-marker .panels-ipe-newblock {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  top: 25%;
+}
+
+#modal-content #panopoly-form-widget-preview {
+  margin-bottom: 20px;
+}
+
+fieldset legend,
+.form-control {
+  box-sizing: border-box;
+}
+
+.ctools-auto-submit-full-form .form-actions .form-submit {
+  margin-right: 30px;
+}
+
+// Align more links
+.more-link {
+  text-align: left;
+}
+// add z-index to place over footer. Seems to be a bootstrap issue
+#module-filter-tabs {
+  z-index: 3;
+}
+
+// A couple of views rules clash with Bootstrap.
+#edit-options .collapsible {
+  float: none;
+  width: 95%;
+}
+
+#edit-options-alter-text-wrapper {
+  height: auto;
+  width: 95%;
+}

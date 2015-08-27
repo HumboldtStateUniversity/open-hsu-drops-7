@@ -40,14 +40,62 @@ function hsu_kalatheme_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements hook_preprocess_hsu_site_header.
+ */
+function hsu_kalatheme_preprocess_hsu_site_header(&$vars){
+  // Find the managed file the the url that matches what we got in the 
+  // hsu_header var. The file entity already has the height and width of the 
+  // image in it's metadata (which theme_picture NEEDS) so this is quicker than 
+  // using something like getimagesize() which seems to be super slow.
+  $files_dir = file_create_url('public://');
+  $file_path = str_replace($files_dir, '', $vars['hsu_header']);
+  $entity_type = 'file';
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', $entity_type)
+    ->propertyCondition('uri', 'public://' . $file_path);
+    
+  $result = $query->execute();
+  
+  // Make sure we have a match.
+  if (isset($result[$entity_type])) {
+    // Load the file entity.
+    $fid = reset($result[$entity_type])->fid;
+    $file_entity = file_load($fid);
+    
+    // Load the picture mappping.
+    $picture_mapping = picture_mapping_load('kalapicture_12');
+    $breakpoints = picture_get_mapping_breakpoints($picture_mapping);
+    $image_size = getimagesize($vars['hsu_header']);
+
+    // Add a render array that will output the goods.
+    $vars['hsu_header_image'] = array(
+      '#theme' => 'picture',
+      '#uri' => $file_path, // Note: picture module seems to need a path relative to the files dir.
+      '#width' => $file_entity->metadata['width'], 
+      '#height' => $file_entity->metadata['height'], 
+      '#alt' => $vars['site_name'],
+      '#breakpoints' => $breakpoints, 
+    );
+  }  
+}
+
+function hsu_kalatheme_preprocess_html(&$variables) {
+
+  /**
+  * loading web fonts and external css
+  */
+  drupal_add_css('//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic', array('type' => 'external'));  
+} 
+/**
  * Override or insert variables into the page template.
  *
  * Implements template_process_page().
  */
-function hsu_kalatheme_process_page(&$variables) {
+function hsu_kalatheme_preprocess_page(&$variables) {
   // Add Bootstrap JS and stock CSS.
   global $base_url;
   $base = parse_url($base_url);
+  
   // Use the CDN if not using libraries.
   if (!kalatheme_use_libraries()) {
     $library = theme_get_setting('bootstrap_library');
@@ -60,13 +108,60 @@ function hsu_kalatheme_process_page(&$variables) {
     }
   }
   $font_awesome_active = FALSE;
+  
   // Use Font Awesome.
   if (theme_get_setting('font_awesome_cdn')) {
     $font_awesome_active = TRUE;
     drupal_add_css($base['scheme'] . ":" . KALATHEME_FONTAWESOME_CSS, 'external');
   }
+  
   // Let JS know that we have this enabled.
   drupal_add_js(array('kalatheme' => array('fontawesome' => $font_awesome_active)), 'setting');
+  
+  // Various menu tweaks.
+  hsu_kalatheme_handle_menu($variables);
+
+  // Always print the site name and slogan, but if they are toggled off, we'll
+  // just hide them visually.
+  hsu_kalatheme_handle_site_name_slogan($variables);
+
+  // Since the title and the shortcut link are both block level elements,
+  // positioning them next to each other is much simpler with a wrapper div.
+  hsu_kalatheme_handle_title($variables);
+
+  // If panels arent being used at all.
+  $variables['no_panels'] = !(module_exists('page_manager') && page_manager_get_current_page());
+  
+  // Add theme settings as variables available to the page.tpl.php
+  hsu_kalatheme_add_theme_setting_vars($variables);
+  
+  // Add render arrays for the header and navbar.
+  $variables['page']['hsu_site_header'] = array(
+    '#theme' => 'hsu_site_header',
+    '#front_page' => $variables['front_page'],
+    '#logo' => $variables['logo'],
+    '#site_name' => $variables['site_name'],
+    '#hide_site_name' => $variables['hide_site_name'],
+    '#site_slogan' => $variables['site_slogan'],
+    '#hide_site_slogan' => $variables['hide_site_slogan'],
+    '#hsu_header' => $variables['hsu_header'],
+    '#hsu_banner' => $variables['hsu_banner'],
+  );
+
+  $variables['page']['hsu_navbar'] = array(
+    '#theme' => 'hsu_navbar',
+    '#main_menu' => $variables['main_menu'],
+    '#main_menu_expanded' => $variables['main_menu_expanded'],
+    '#secondary_menu'=> $variables['secondary_menu'],
+    '#site_name' => $variables['site_name'],
+    '#front_page' => $variables['front_page'],
+  );  
+}
+
+/**
+ * Various menu tweaks.
+ */
+function hsu_kalatheme_handle_menu(&$variables){
   // Define variables to theme local actions as a dropdown.
   $dropdown_attributes = array(
     'container' => array(
@@ -91,11 +186,16 @@ function hsu_kalatheme_process_page(&$variables) {
   // Get the entire main menu tree.
   $main_menu_tree = array();
   $main_menu_tree = menu_tree_all_data('main-menu', NULL, 2);
+  
   // Add the rendered output to the $main_menu_expanded variable.
   $variables['main_menu_expanded'] = menu_tree_output($main_menu_tree);
+}
 
-  // Always print the site name and slogan, but if they are toggled off, we'll
-  // just hide them visually.
+/**
+ * Always print the site name and slogan, but if they are toggled off, we'll
+ * just hide them visually.
+ */
+function hsu_kalatheme_handle_site_name_slogan(&$variables){
   $variables['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
   $variables['hide_site_slogan'] = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
   if ($variables['hide_site_name']) {
@@ -107,8 +207,13 @@ function hsu_kalatheme_process_page(&$variables) {
     // so we rebuild it.
     $variables['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
   }
-  // Since the title and the shortcut link are both block level elements,
-  // positioning them next to each other is much simpler with a wrapper div.
+}
+
+/**
+ * Since the title and the shortcut link are both block level elements,
+ * positioning them next to each other is much simpler with a wrapper div.
+ */
+function hsu_kalatheme_handle_title(&$variables){
   if (!empty($variables['title_suffix']['add_or_remove_shortcut']) && $variables['title']) {
     // Add a wrapper div using title_prefix and title_suffix render elements.
     $variables['title_prefix']['shortcut_wrapper'] = array(
@@ -122,26 +227,34 @@ function hsu_kalatheme_process_page(&$variables) {
     // Make sure the shortcut link is the first item in title_suffix.
     $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
+}
 
-  // If panels arent being used at all.
-  $variables['no_panels'] = !(module_exists('page_manager') && page_manager_get_current_page());
+/**
+ * Add theme settings as variables available to the page.tpl.php.
+ */
+function hsu_kalatheme_add_theme_setting_vars(&$variables){
+  $theme_settings = array(
+    // Check if we're to always print the page title, even on panelized pages.
+    'always_show_page_title' => 'always_show_page_title',
+    
+    // Add in location theme settings into vars
+    'hsu_street' => 'street',
+    'hsu_city' => 'citystatezip',
+    'hsu_phone' => 'phone',
+    'hsu_fax' => 'fax',
+    
+    // Add header info
+    'hsu_banner' => 'use_banner',
+    'hsu_header' => 'header_file',
 
-  // Check if we're to always print the page title, even on panelized pages.
-  $variables['always_show_page_title'] = theme_get_setting('always_show_page_title') ? TRUE : FALSE;
-
-  // Add in location theme settings into vars
-  $variables['hsu_street'] = theme_get_setting('street') ? theme_get_setting('street') : NULL;
-  $variables['hsu_city'] = theme_get_setting('citystatezip') ? theme_get_setting('citystatezip') : NULL;
-  $variables['hsu_phone'] = theme_get_setting('phone') ? theme_get_setting('phone') : NULL;
-  $variables['hsu_fax'] = theme_get_setting('fax') ? theme_get_setting('fax') : NULL;
-
-  // Add header info
-  $variables['hsu_banner'] = theme_get_setting('use_banner') ? theme_get_setting('use_banner') : NULL;
-  $variables['hsu_header'] = theme_get_setting('header_file') ? theme_get_setting('header_file') : NULL;
-
-  // Add social info
-  $variables['hsu_twitter'] = theme_get_setting('twitter') ? theme_get_setting('twitter') : NULL;
-  $variables['hsu_facebook'] = theme_get_setting('facebook') ? theme_get_setting('facebook') : NULL;
-  $variables['hsu_instagram'] = theme_get_setting('instagram') ? theme_get_setting('instagram') : NULL;
-  $variables['hsu_youtube'] = theme_get_setting('youtube') ? theme_get_setting('youtube') : NULL;
+    // Add social info
+    'hsu_twitter' => 'twitter',
+    'hsu_facebook' => 'facebook',
+    'hsu_instagram' => 'instagram',
+    'hsu_youtube' => 'youtube',
+  );
+  
+  foreach ($theme_settings as $key => $setting) {
+    $variables[$key] = theme_get_setting($setting) ? theme_get_setting($setting) : NULL;
+  }  
 }

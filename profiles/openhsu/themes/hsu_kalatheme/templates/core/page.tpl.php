@@ -86,29 +86,10 @@
 <div id="page-wrapper"><div id="page">
 
   <!-- Site Header -->
-  <?php print theme('hsu_site_header', array(
-    'front_page' => $front_page,
-    'logo' => $logo,
-    'site_name' => $site_name,
-    'hide_site_name' => $hide_site_name,
-    'site_slogan' => $site_slogan,
-    'hide_site_slogan' => $hide_site_slogan,
-    'hsu_header' => $hsu_header,
-    'hsu_banner' => $hsu_banner,
-  ));
-
-  ?>
+  <?php print render($page['hsu_site_header']); ?>
 
   <!-- Site Navigation -->
-  <?php print theme('hsu_navbar', array(
-    'main_menu' => $main_menu,
-    'main_menu_expanded' => $main_menu_expanded,
-    'secondary_menu'=> $secondary_menu,
-    'site_name' => $site_name,
-    'front_page' => $front_page,
-  ));
-
-  ?>
+  <?php print render($page['hsu_navbar']); ?>
 
   <!-- Page Main -->
   <div id="main-wrapper" class="clearfix">
@@ -141,7 +122,7 @@
         </div>
       </div> <!-- /.section, /#top-content -->
 
-      <div id="content">
+      <div id="content" class="container">
         <div class="column <?php $no_panels ? print 'container' : ''; ?>">
           <?php print render($page['content']); ?>
         </div>
@@ -181,14 +162,9 @@
           </div>
         </div>
         <div class="col-sm-4">
-          <a href="http://www.humboldt.edu/green" class="logos">
-            <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/greenscene.svg" alt="The Green Scene: Sustainability Matters at HSU" class="footer-logos greenscene">
-          </a>
-          <a href="http://www.humboldt.edu/giving" class="logos">
-            <img src="http://www.humboldt.edu/sites/all/themes/hsu/img/svg/giving2014.svg" class="footer-logos" alt="Giving to HSU">
-          </a>
+          
         </div>
-        <div class="col-sm-4 last-col">
+        <div class="col-sm-4 last-col social">
           <?php if ($hsu_twitter): ?>
             <a href="<?php print $hsu_twitter; ?>">
               <i class="fa fa-twitter-square fa-3x"></i>

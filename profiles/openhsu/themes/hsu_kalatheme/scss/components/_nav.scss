@@ -1,0 +1,26 @@
+//customizations to bootstrap nav
+
+.navbar-nav {
+    > li > a {
+    	text-decoration: none;
+    }
+  }
+.navbar-toggle {
+	overflow: hidden;
+	padding-left: 55px;
+		.icon-bar {
+			height: 3px !important;
+	}
+}
+
+.menu-text {
+    display: inline;
+    text-transform: uppercase;
+    right: 37px;
+    top: 8px;
+    position: absolute;
+    color: $white;
+    font-size: .85em;
+    font-weight: 700;
+}
+

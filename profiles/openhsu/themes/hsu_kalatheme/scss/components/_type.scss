@@ -1,0 +1,87 @@
+//Custom icon fonts
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'hsu-main';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Define your base font-size here; most elements will inherit this. */
+html{
+	font-size:1em;      /* Assuming 16px... */
+	line-height:1.5;    /* 24px (This is now our magic number; all subsequent margin-bottoms and line-heights want to be a multiple of this number in order to maintain vertical rhythm.) */
+
+	-webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; -ms-text-rendering: optimizeLegibility; -o-text-rendering: optimizeLegibility; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; -ms-font-smoothing: antialiased; -o-font-smoothing: antialiased; font-smoothing: antialiased; 
+
+}
+
+/* Common margin-bottom for vertical rhythm. */
+h1,h2,h3,h4,h5,h6,
+ul,ol,dl,
+fieldset,
+p,
+table,
+pre,
+hr{
+	@include rem-fallback(margin-bottom, 1.5);
+	font-family:$font-family-sans-serif;
+}
+h1,h2,h3,h4,h5,h6,.light{
+	font-weight:400;
+	color:$orange;
+}
+/* These handle massive type, for less frequently occuring bits of text (e.g. in mastheads and banners). */
+.giga{
+	@include rem-fallback(font-size, 5); //80px
+	line-height:1.2; //96px
+}
+.mega{
+	@include rem-fallback(font-size, 4); //64px
+	line-height:1.125; //72px
+}
+.kilo, h1.title{
+	@include rem-fallback(font-size, 3); //48px
+	line-height:1; //48px
+}
+
+/* Define headings and their associated classes here. */
+h1,.alpha{
+	@include rem-fallback(font-size, 2); //32px
+	line-height:1.2; //48px
+}
+h2,.beta{
+	@include rem-fallback(font-size, 1.5); //24px
+	line-height:1; //24px
+}
+p.beta, p.gamma, p.delta{
+	line-height:1.5;
+}
+h3,.gamma{
+	@include rem-fallback(font-size, 1.25); //20px
+	line-height:1.2; //24px
+}
+h4,.delta{
+	@include rem-fallback(font-size, 1.125); //18px
+	line-height:1.333; //24px
+}
+h5,.epsilon{
+	@include rem-fallback(font-size, 1); //16px
+	line-height:1.5; //24px
+}
+h6,.zeta{
+	@include rem-fallback(font-size, 1); //16px
+	line-height:1.5; //24px
+}
+
+/* Smaller-than-body-copy sizes here. */
+small,.milli {
+	@include rem-fallback(font-size, .75); //12px
+	line-height:2; //24px
+}

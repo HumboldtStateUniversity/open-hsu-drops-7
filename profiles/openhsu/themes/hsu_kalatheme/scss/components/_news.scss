@@ -1,0 +1,44 @@
+// Override some panopoly news styles
+.pane-hsu-news-panel-pane-1 .pane-title{
+	@include rem-fallback(padding, $pad/2, 0, $pad/4, $pad*2.5);
+	background: url(../img/bullet.png) no-repeat 0 $pad-quarter;
+}
+.pane-hsu-events-panel-pane-1 .pane-title{
+	@include rem-fallback(padding, $pad/2, 0, $pad/4, $pad*2.5);
+	background: url(../img/calendar.png) no-repeat 0 $pad-quarter;
+}
+
+.view-hsu-news, .view-hsu-events {
+	ul {
+		list-style-type: none;
+		li{
+			border-bottom: solid 1px rgba($gray, .2);
+		}
+		li:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+.view-hsu-news, .view-hsu-events {
+	ul {
+		li {
+			@include rem-fallback(margin, 0);
+			@include rem-fallback(padding, $pad-half, 0, $pad-half, 0);
+		}
+	}
+	a {
+		text-decoration: none;
+	}
+}
+
+.view-hsu-events{
+	// Handles Date Field Display
+	span.date-display-single {
+		display: block;
+		font-weight: 700;
+		color: #b65300;
+	}
+
+}
+
