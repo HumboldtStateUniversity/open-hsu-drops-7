@@ -1,8 +1,11 @@
-
-
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
+ *,:after,:before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
  body {
   font-family: $font-family-sans-serif;
  }
