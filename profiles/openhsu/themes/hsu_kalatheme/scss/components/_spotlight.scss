@@ -9,37 +9,112 @@
   max-width: 100%;
 }
 .pane-bundle-spotlight {
-  .panopoly-spotlight-wrapper {
-    @media (min-width: $screen-sm-min){
-      bottom: 5%;  
-    }
-  }
   .panopoly-spotlight-label {
-    font-weight: 300;
+    color: $orange;
     opacity: .80;
+    a {
+    text-decoration: none;
+    color: $orange;
+    &:after {
+      font: normal normal normal 14px/1 FontAwesome;
+      content: " \f101";
+    }
+  }
     @media (min-width: $screen-sm-min){
-      @include rem-fallback(padding, $pad, $pad-half);
+      @include rem-fallback(padding, $pad-half);
     }
   }
 }
-.pane-bundle-spotlight .panopoly-spotlight-buttons-wrapper {
-  top: 50%;
-  right: 0;
-  width: 100%;
+.pane-bundle-spotlight .panopoly-spotlight-wrapper {
+  position: relative;
+        border-bottom: solid 1px rgba($gray, .2);
+  @media (min-width: $screen-sm-min){
+      position: absolute;
+    }
 }
-.panopoly-spotlight-previous, .panopoly-spotlight-pause-play, .panopoly-spotlight-next {
-  position: absolute;
+h3{
+    @media (min-width: $screen-sm-min){
+      font-size: $font-size-h3;
+      text-align: left;
+  }
 }
+// full pager
+.pane-bundle-spotlight .ui-tabs .ui-tabs-nav li.ui-state-default {
+  background: $orange;
+  color:$white;
+  border: none !important;
+}
+.pane-bundle-spotlight .ui-tabs .ui-tabs-nav li a {
+  padding:2.4px 11.1px;
+  &:hover {
+      background: $white;
+      color:$orange;
+    }
+}
+.pane-bundle-spotlight .ui-tabs .ui-tabs-nav li.ui-state-active {
+  background: $white;
+  a {
+    color:$orange;
+  }
+}
+
+// mini pager
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  transform: translate(0, 0);
+  text-decoration:none;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  border-color:$white;
+  background: $orange;
+  border: none !important;
+    &:hover {
+      background: $white;
+      color:$orange;
+    }
+}
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-previous {  
+      @include rem-fallback(padding, $pad-half, 0, $pad-half, .5);
+  &:before {
+    margin-bottom:$pad-half;
+    content: "\f053";
+    font-size:1em;
+    display: inline-block;
+  }
+}
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-next {  
+  @include rem-fallback(padding, $pad-half, 0, $pad-half, .5);
+  &:before {
+    content: "\f054";
+    margin-bottom:$pad-half;
+    font-size:1em;
+    display: inline-block;
+  }
+}
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-pause-play {  
+  @include rem-fallback(padding, $pad-half, 0, $pad-half, .5);
+  &:before {
+    content: "\f04c";
+    margin-bottom:$pad-half;
+    font-size:1em;
+    display: inline-block;
+  }
+}
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-pause-play.paused {
+    &:before {
+    content: "\f04b";
+    font-size:1em;
+    display: inline-block;
+  }
+}
+
 .panopoly-spotlight-next {
   right: 0;
 }
 .panopoly-spotlight-pause-play {
   left: 45%;
-}
-h3{
-  text-align: center;
-    @media (min-width: $screen-sm-min){
-      font-size: $font-size-h3;
-      text-align: left;
-  }
 }
