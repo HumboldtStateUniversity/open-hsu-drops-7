@@ -5960,6 +5960,11 @@ button.close {
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
+*, :after, :before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
 body {
   font-family: 'Lato', sans-serif; }
 
@@ -6248,37 +6253,102 @@ a.more {
   box-sizing: border-box;
   max-width: 100%; }
 
-@media (min-width: 768px) {
-  .pane-bundle-spotlight .panopoly-spotlight-wrapper {
-    bottom: 5%; } }
 .pane-bundle-spotlight .panopoly-spotlight-label {
-  font-weight: 300;
+  color: #b65300;
   opacity: .80; }
+  .pane-bundle-spotlight .panopoly-spotlight-label a {
+    text-decoration: none;
+    color: #b65300; }
+    .pane-bundle-spotlight .panopoly-spotlight-label a:after {
+      font: normal normal normal 14px/1 FontAwesome;
+      content: " \f101"; }
   @media (min-width: 768px) {
     .pane-bundle-spotlight .panopoly-spotlight-label {
-      padding: 16px 8px;
-      padding: 1rem 0.5rem; } }
+      padding: 8px;
+      padding: 0.5rem; } }
 
-.pane-bundle-spotlight .panopoly-spotlight-buttons-wrapper {
-  top: 50%;
-  right: 0;
-  width: 100%; }
+.pane-bundle-spotlight .panopoly-spotlight-wrapper {
+  position: relative;
+  border-bottom: solid 1px rgba(128, 128, 128, 0.2); }
+  @media (min-width: 768px) {
+    .pane-bundle-spotlight .panopoly-spotlight-wrapper {
+      position: absolute; } }
 
-.panopoly-spotlight-previous, .panopoly-spotlight-pause-play, .panopoly-spotlight-next {
-  position: absolute; }
+@media (min-width: 768px) {
+  h3 {
+    font-size: 24px;
+    text-align: left; } }
+
+.pane-bundle-spotlight .ui-tabs .ui-tabs-nav li.ui-state-default {
+  background: #b65300;
+  color: #fff;
+  border: none !important; }
+
+.pane-bundle-spotlight .ui-tabs .ui-tabs-nav li a {
+  padding: 2.4px 11.1px; }
+  .pane-bundle-spotlight .ui-tabs .ui-tabs-nav li a:hover {
+    background: #fff;
+    color: #b65300; }
+
+.pane-bundle-spotlight .ui-tabs .ui-tabs-nav li.ui-state-active {
+  background: #fff; }
+  .pane-bundle-spotlight .ui-tabs .ui-tabs-nav li.ui-state-active a {
+    color: #b65300; }
+
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  transform: translate(0, 0);
+  text-decoration: none;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  border-color: #fff;
+  background: #b65300;
+  border: none !important; }
+  .pane-bundle-spotlight .panopoly-spotlight-function-buttons a:hover {
+    background: #fff;
+    color: #b65300; }
+
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-previous {
+  padding: 8px 0px 8px 8px;
+  padding: 0.5rem 0rem 0.5rem 0.5rem; }
+  .pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-previous:before {
+    margin-bottom: 0.5rem;
+    content: "\f053";
+    font-size: 1em;
+    display: inline-block; }
+
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-next {
+  padding: 8px 0px 8px 8px;
+  padding: 0.5rem 0rem 0.5rem 0.5rem; }
+  .pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-next:before {
+    content: "\f054";
+    margin-bottom: 0.5rem;
+    font-size: 1em;
+    display: inline-block; }
+
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-pause-play {
+  padding: 8px 0px 8px 8px;
+  padding: 0.5rem 0rem 0.5rem 0.5rem; }
+  .pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-pause-play:before {
+    content: "\f04c";
+    margin-bottom: 0.5rem;
+    font-size: 1em;
+    display: inline-block; }
+
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-pause-play.paused:before {
+  content: "\f04b";
+  font-size: 1em;
+  display: inline-block; }
 
 .panopoly-spotlight-next {
   right: 0; }
 
 .panopoly-spotlight-pause-play {
   left: 45%; }
-
-h3 {
-  text-align: center; }
-  @media (min-width: 768px) {
-    h3 {
-      font-size: 24px;
-      text-align: left; } }
 
 .pane-hsu-news-panel-pane-1 .pane-title {
   padding: 8px 0px 4px 40px;
