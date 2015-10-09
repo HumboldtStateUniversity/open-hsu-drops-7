@@ -90,20 +90,11 @@ module.exports = function(grunt) {
           jshintrc: '.jshintrc'
         }
       }
-    },
-    copy: {
-      fontawesome: {
-        expand: true,
-        src: '**',
-        dest: 'webfonts/',
-        cwd: 'bower_components/fontawesome/fonts',
-        flatten: true
-      }
     }
   });
 
   grunt.registerTask("productionbuild", ['newer:concat', 'uglify', 'sass:dist', 'cssmin', 'guide']);
-  grunt.registerTask("devbuild", ['newer:concat', 'sass:dev', 'copy:fontawesome']);
+  grunt.registerTask("devbuild", ['newer:concat', 'sass:dev']);
   grunt.registerTask("develop", ['devbuild','watch']);
   return grunt.registerTask("default", ['develop']);
 };

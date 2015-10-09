@@ -1,1 +1,12 @@
-
+/* override conflict with kalatheme and bootstrap features display */
+.features-export-component .radio input[type="radio"], .features-export-component .radio-inline input[type="radio"], .features-export-component .checkbox input[type="checkbox"], .features-export-component .checkbox-inline input[type="checkbox"], .features-export-list .radio input[type="radio"], .features-export-list .radio-inline input[type="radio"], .features-export-list .checkbox input[type="checkbox"], .features-export-list .checkbox-inline input[type="checkbox"] {
+  margin-left: -20px;
+}
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{
+	margin-left: -7px;
+}
+// overrides bootstraps negative margin for form elements in tables
+.table-responsive input[type="checkbox"]{
+  position:relative;
+  margin-left: 0;
+}

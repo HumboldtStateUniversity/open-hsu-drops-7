@@ -626,7 +626,7 @@ abstract class DatabaseConnection extends PDO {
    *   A sanitized version of the query comment string.
    */
   protected function filterComment($comment = '') {
-    return strtr($comment, array('*' => ' * '));
+    return preg_replace('/(\/\*\s*)|(\s*\*\/)/', '', $comment);
   }
 
   /**

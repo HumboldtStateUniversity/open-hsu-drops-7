@@ -19,5 +19,5 @@ if [ -f openhsu.make ]; then
    echo "Invalid selection."
   fi
 else
-  echo 'Could not locate file "drupal-org.make"'
+  echo 'Could not locate file "openhsu.make"'
 fi

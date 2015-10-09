@@ -9,7 +9,7 @@
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
           </a>
-          <span class="visuallyhidden">Humboldt State University</span>
+          <span class="element-invisible">Humboldt State University</span>
           
         </p>
 

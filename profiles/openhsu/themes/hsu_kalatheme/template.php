@@ -258,18 +258,3 @@ function hsu_kalatheme_add_theme_setting_vars(&$variables){
     $variables[$key] = theme_get_setting($setting) ? theme_get_setting($setting) : NULL;
   }  
 }
-
-/**
- * Implements template_preprocess_views_view().
- */
-function hsu_kalatheme_preprocess_views_view(&$variables) {
-  $view = $variables['view'];
-xdebug_break();
-  // Add a .row class to wrap .views-row.
-  $variables['view_content_class'] = 'view-content';
-/*
-  if ($view->style_plugin->plugin_name != 'list') {
-    $variables['view_content_class'] .= ' row';
-  }
-*/
-}

@@ -8,3 +8,10 @@ dependencies[] = multiform
 dependencies[] = plupload
 
 files[] = includes/MediaBrowserBulkUpload.inc
+
+; Information added by Drupal.org packaging script on 2014-10-04
+version = "7.x-2.0-alpha4"
+core = "7.x"
+project = "media"
+datestamp = "1412422430"
+
