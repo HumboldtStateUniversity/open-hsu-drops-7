@@ -16,7 +16,7 @@
     text-decoration: none;
     color: $orange;
     &:after {
-      font: normal normal normal 14px/1 FontAwesome;
+      font: $icon-font;
       content: " \f101";
     }
   }
@@ -31,12 +31,6 @@
   @media (min-width: $screen-sm-min){
       position: absolute;
     }
-}
-h3{
-    @media (min-width: $screen-sm-min){
-      font-size: $font-size-h3;
-      text-align: left;
-  }
 }
 // full pager
 .pane-bundle-spotlight .ui-tabs .ui-tabs-nav li.ui-state-default {
@@ -61,7 +55,7 @@ h3{
 // mini pager
 .pane-bundle-spotlight .panopoly-spotlight-function-buttons a {
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: $icon-font;
   font-size: inherit;
   text-rendering: auto;
   transform: translate(0, 0);

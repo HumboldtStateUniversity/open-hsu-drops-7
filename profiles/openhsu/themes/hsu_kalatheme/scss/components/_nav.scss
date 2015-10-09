@@ -23,4 +23,63 @@
     font-size: .85em;
     font-weight: 700;
 }
+// Dropdowns
+.navbar-default .navbar-nav > .open > a:focus {
+    background-color: rgba($white, .5);
+}
+.caret {
+    margin:0 5px;
+}
+.dropdown-menu {
+    min-width: 190px;
+    > li > a {
+    text-decoration: none;
+    border-bottom: solid 1px $mid-gray;
+    padding:9px 20px;
+        &.last {
+            border-bottom:0;
+        }
+    }
+}
+.navbar .nav>li>.dropdown-menu:before {
+   @media (min-width: $screen-sm) {
+        position: absolute;
+        top: -7px;
+        left: 9px;
+        display: inline-block;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $white;
+        border-left: 7px solid transparent;
+        border-bottom-color: $white;
+        content: '';
+    }
+}
+.dropdown-menu > .active > a {
+    background:transparent;
+    color: $navbar-default-bg;
+    font-weight: 700;
+}
+.navbar .nav > .dropdown > a { /* Dropdowns in main menu */
+  float: none;
+}
+// pane style to apply to sub-nav panes "Section Links"
+.section-links {
+    h4.pane-title {
+        @include rem-fallback(margin-bottom, -$pad-half);
+    }
+    @extend .view-hsu-news;
+    ul {
+        @include rem-fallback(padding, 0);
+        border-top: solid 3px $light-green2;
+    }
+    a.active {
+        &:before {
+            font: $icon-font;
+            content: "\f054  ";
+        }
+    }
 
+}
+a.active {
+        color:$black;
+}
