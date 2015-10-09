@@ -41,7 +41,7 @@
 
 $override_path = drupal_get_path('module', 'panopoly_override');
 // Extend panopoly_admin
-require_once $override_path . '/features/panopoly_admin.inc';
+//require_once $override_path . '/features/panopoly_admin.inc';
 // Extend panopoly_core
 // require_once $override_path . '/features/panopoly_core.inc';
 // Extend panopoly_images - This has no overrides as of now

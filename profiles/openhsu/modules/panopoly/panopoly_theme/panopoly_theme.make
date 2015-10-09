@@ -4,12 +4,12 @@ api = 2
 core = 7.x
 
 ; Radix Layouts
-projects[radix_layouts][version] = 3.3
+projects[radix_layouts][version] = 3.4
 projects[radix_layouts][subdir] = contrib
 
 ; Summon the Power of Respond.js
 
-projects[respondjs][version] = 1.4
+projects[respondjs][version] = 1.5
 projects[respondjs][subdir] = contrib
 
 libraries[respondjs][download][type] = git

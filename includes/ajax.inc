@@ -230,6 +230,10 @@
  *   functions.
  */
 function ajax_render($commands = array()) {
+  // Although ajax_deliver() does this, some contributed and custom modules
+  // render Ajax responses without using that delivery callback.
+  ajax_set_verification_header();
+
   // Ajax responses aren't rendered with html.tpl.php, so we have to call
   // drupal_get_css() and drupal_get_js() here, in order to have new files added
   // during this request to be loaded by the page. We only want to send back
@@ -328,16 +332,8 @@ function ajax_get_form() {
     // system/ajax without actually viewing the concerned form in the browser.
     // This is likely a hacking attempt as it never happens under normal
     // circumstances, so we just do nothing.
-    // This also seems to happen when you try to use #ajax in an install profile
-    // form. So we can check for that scenario as well and just load the form
-    // from its constructor function instead.
-    if (isset($_POST['form_id']) && isset($GLOBALS['conf']['install_task']) && $GLOBALS['conf']['install_task'] !== 'done') {
-      $form = drupal_get_form($_POST['form_id']);
-    }
-    else {
-      watchdog('ajax', 'Invalid form POST data.', array(), WATCHDOG_WARNING);
-      drupal_exit();
-    }
+    watchdog('ajax', 'Invalid form POST data.', array(), WATCHDOG_WARNING);
+    drupal_exit();
   }
 
   // When a page level cache is enabled, the form-build id might have been
@@ -448,14 +444,6 @@ function ajax_base_page_theme() {
     if ($theme === variable_get('theme_default', 'bartik') || drupal_valid_token($token, $theme)) {
       return $theme;
     }
-
-    // If running an AJAX request on an install profile form this will always
-    // return Bartik which is bad since Seven is the install profile theme.
-    // Here is a weak check that probably needs some TLC to return the right
-    // value.
-    if ($theme === 'undefined' && isset($GLOBALS['conf']['install_task']) && $GLOBALS['conf']['install_task'] !== 'done') {
-      return 'seven';
-    }
   }
 }
 
@@ -502,6 +490,9 @@ function ajax_deliver($page_callback_result) {
       drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
     }
   }
+
+  // Let ajax.js know that this response is safe to process.
+  ajax_set_verification_header();
 
   // Print the response.
   $commands = ajax_prepare_response($page_callback_result);
@@ -590,6 +581,29 @@ function ajax_prepare_response($page_callback_result) {
   }
 
   return $commands;
+}
+
+/**
+ * Sets a response header for ajax.js to trust the response body.
+ *
+ * It is not safe to invoke Ajax commands within user-uploaded files, so this
+ * header protects against those being invoked.
+ *
+ * @see Drupal.ajax.options.success()
+ */
+function ajax_set_verification_header() {
+  $added = &drupal_static(__FUNCTION__);
+
+  // User-uploaded files cannot set any response headers, so a custom header is
+  // used to indicate to ajax.js that this response is safe. Note that most
+  // Ajax requests bound using the Form API will be protected by having the URL
+  // flagged as trusted in Drupal.settings, so this header is used only for
+  // things like custom markup that gets Ajax behaviors attached.
+  if (empty($added)) {
+    drupal_add_http_header('X-Drupal-Ajax-Token', '1');
+    // Avoid sending the header twice.
+    $added = TRUE;
+  }
 }
 
 /**
@@ -780,7 +794,12 @@ function ajax_pre_render_element($element) {
 
     $element['#attached']['js'][] = array(
       'type' => 'setting',
-      'data' => array('ajax' => array($element['#id'] => $settings)),
+      'data' => array(
+        'ajax' => array($element['#id'] => $settings),
+        'urlIsAjaxTrusted' => array(
+          $settings['url'] => TRUE,
+        ),
+      ),
     );
 
     // Indicate that Ajax processing was successful.

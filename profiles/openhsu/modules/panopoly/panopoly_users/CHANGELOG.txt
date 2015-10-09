@@ -1,5 +1,41 @@
-Panopoly Users 7.x-1.19, 2015-03-18 ---------------------------- - Perform
-  coding style fixes on panopoly_users.Panopoly Users 7.x-1.18, 2015-02-26
+Panopoly Users 7.x-1.27, 2015-09-02
+----------------------------
+- No changes since last release.
+
+Panopoly Users 7.x-1.26, 2015-08-19
+----------------------------
+- No changes since last release.
+
+Panopoly Users 7.x-1.25, 2015-07-08
+----------------------------
+- No changes since last release.
+
+Panopoly Users 7.x-1.24, 2015-07-02
+----------------------------
+- No changes since last release.
+
+Panopoly Users 7.x-1.23, 2015-06-17
+----------------------------
+- No changes since last release.
+
+Panopoly Users 7.x-1.22, 2015-06-04
+----------------------------
+- No changes since last release.
+
+Panopoly Users 7.x-1.21, 2015-04-29
+----------------------------
+- Update Features module to version 2.5.
+
+Panopoly Users 7.x-1.20, 2015-03-25
+----------------------------
+- CHANGELOG.txt updates for 1.19 went wrong.
+
+Panopoly Users 7.x-1.19, 2015-03-19
+-----------------------------
+- Updated CHANGELOG.txt for 7.x-1.19 release.
+- Perform coding style fixes on panopoly_users.
+
+Panopoly Users 7.x-1.18, 2015-02-26
 ----------------------------
 - No changes since last release.
 
