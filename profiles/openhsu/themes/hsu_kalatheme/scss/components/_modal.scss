@@ -1,0 +1,28 @@
+// Name space collision on .button() is causing us to loose the close button on 
+// node add/edit pages. 
+// See https://trello.com/c/9z67jnKD/75-close-icon-disappeared-in-add-media-modal
+// and 
+// https://github.com/drupalprojects/kalatheme/issues/217
+$close-png: url(/profiles/openhsu/modules/panopoly/panopoly_core/images/close-popup.png) no-repeat;
+
+.page-node-add,
+.page-node-edit,
+.page-admin-structure-views {
+  .ui-dialog {
+    button.ui-dialog-titlebar-close {
+      display: block;
+      padding: 0;
+      height: 15px;
+      width: 16px;
+      margin: 0;
+      margin-top: 15px;
+      background: $close-png left top;
+      
+      &:hover,
+      &:active,
+      &:focus {
+        background: $close-png left bottom;
+      }
+    }
+  }
+}

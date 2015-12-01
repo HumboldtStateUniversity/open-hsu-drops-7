@@ -1,0 +1,50 @@
+.carousel {
+	@include rem-fallback(margin-bottom, 1);
+}
+
+.img-6-text-left .carousel-control-wrapper {
+	.carousel-control.left, .carousel-control.right {
+		color: $white;
+		text-decoration: none;
+    }
+}
+
+
+.carousel-caption {
+	text-align: left;
+}
+.img-6-text-left .carousel-inner .item img {
+	width: 100%;
+	margin-right: 0;
+	float: none;
+	@media screen and (min-width: $screen-sm-min) {
+		width: 47.5%;
+        float: left;
+        margin-right: 5%;
+	}
+}
+.img-6-text-left .carousel-inner .item .carousel-caption{
+	width: 100%;
+	float: none;	
+}
+.img-6-text-left .carousel-inner .item .carousel-caption h3 {
+	@include rem-fallback(margin-top, 1);
+
+}
+
+.carousel-prev {  
+  &:before {
+    // margin-bottom:$pad-half;
+    content: "\f053";
+    font-size:1em;
+    display: inline-block;
+  }
+}
+.carousel-next {  
+  &:before {
+    content: "\f054";
+    // margin-bottom:$pad-half;
+    font-size:1em;
+    display: inline-block;
+  }
+}

@@ -1,0 +1,4 @@
+.well {
+  padding: 0 $pad;
+  @include rem-fallback(margin-top, 3);
+}

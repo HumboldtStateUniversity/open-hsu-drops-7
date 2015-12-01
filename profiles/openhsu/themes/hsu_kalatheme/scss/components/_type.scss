@@ -1,18 +1,3 @@
-//Custom icon fonts
-
-[class^="icon-"], [class*=" icon-"] {
-	font-family: 'hsu-main';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-moz-osx-font-smoothing: grayscale;
-}
-
 /* Define your base font-size here; most elements will inherit this. */
 html{
 	font-size:1em;      /* Assuming 16px... */
@@ -30,11 +15,12 @@ p,
 table,
 pre,
 hr{
-	@include rem-fallback(margin-bottom, 1.5);
+
 	font-family:$font-family-sans-serif;
 }
 h1,h2,h3,h4,h5,h6,.light{
-	font-weight:400;
+	@include rem-fallback(margin-bottom, 1);
+	@include rem-fallback(margin-top, 3);
 	color:$orange;
 }
 /* These handle massive type, for less frequently occuring bits of text (e.g. in mastheads and banners). */
@@ -53,35 +39,59 @@ h1,h2,h3,h4,h5,h6,.light{
 
 /* Define headings and their associated classes here. */
 h1,.alpha{
-	@include rem-fallback(font-size, 2); //32px
+	@include rem-fallback(font-size, 3.5); //32px
 	line-height:1.2; //48px
+	font-weight: 300;
 }
 h2,.beta{
-	@include rem-fallback(font-size, 1.5); //24px
+	@include rem-fallback(font-size, 2.75); //24px
 	line-height:1; //24px
+	font-weight: 300;
 }
 p.beta, p.gamma, p.delta{
 	line-height:1.5;
 }
 h3,.gamma{
-	@include rem-fallback(font-size, 1.25); //20px
+	@include rem-fallback(font-size, 2); //20px
 	line-height:1.2; //24px
+	font-weight: 300;
 }
 h4,.delta{
-	@include rem-fallback(font-size, 1.125); //18px
+	@include rem-fallback(font-size, 1.5); //18px
 	line-height:1.333; //24px
+	font-weight: 400;
 }
 h5,.epsilon{
-	@include rem-fallback(font-size, 1); //16px
+	@include rem-fallback(font-size, 1.25); //16px
 	line-height:1.5; //24px
+	font-weight: 400;
 }
 h6,.zeta{
 	@include rem-fallback(font-size, 1); //16px
-	line-height:1.5; //24px
+	line-height:1.25; //24px
+	font-weight: 400;
 }
 
 /* Smaller-than-body-copy sizes here. */
 small,.milli {
 	@include rem-fallback(font-size, .75); //12px
 	line-height:2; //24px
+}
+
+blockquote {
+	padding: ($line-height-computed / 2) $line-height-computed;
+	margin: 0 0 $line-height-computed;
+	font-size: $blockquote-font-size;
+	border-left: 3px solid $blockquote-border-color;
+}
+.department-brand {
+	h1 {
+		color:$white;
+		font-weight: 300;
+		@include rem-fallback(margin, $pad, 0, 0);
+	}
+	p {
+		@include rem-fallback(margin, $pad-quarter, $pad, 0);	
+		text-transform: capitalize;
+	}
 }

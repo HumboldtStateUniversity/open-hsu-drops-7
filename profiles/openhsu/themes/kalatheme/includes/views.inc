@@ -9,18 +9,6 @@
 // since we cant use the files[] directive in a theme .info file
 require_once dirname(__FILE__) . '/../views/plugins/views_plugin_style_grid_bootstrap.inc';
 
-/**
- * Implements template_preprocess().
- */
-function kalatheme_preprocess_views_view(&$variables) {
-  $view = $variables['view'];
-
-  // Add a .row class to wrap .views-row.
-  $variables['view_content_class'] = 'view-content';
-  if ($view->style_plugin->plugin_name != 'list') {
-    $variables['view_content_class'] .= ' row';
-  }
-}
 
 /**
  * Implement hook_views_plugins_alter()
