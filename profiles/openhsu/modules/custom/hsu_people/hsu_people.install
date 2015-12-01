@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Set default image on field base.
+ */
+/*
+function hsu_people_install() {
+  watchdog('hsu_people', 'hello, is this thing on?');
+  $field_name = 'field_user_picture';
+  $filename = 'default-user-icon-profile.png';
+  $source = drupal_get_path('module', 'hsu_people') . '/images/' . $filename;
+  // Replace default image for $field_name field base.
+  
+  watchdog('hsu_people', 'hello, is this thing on? !field, !filename, !source', array('!field' => $field_name, '!filename' => $filename, '!source' => $source));
+
+  _hsu_people_replace_default_image($field_name, $filename, $source);
+  
+  watchdog('hsu_people', 'ahem,');
+}
+*/
+ 

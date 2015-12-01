@@ -92,7 +92,6 @@ function hsu_core_defaultconfig_strongarm() {
     'favicon_upload' => '',
     'bootstrap_library' => 'none',
     'fontawesome' => '',
-    'font_awesome_cdn' => '',
     'bootstrap_upload' => '',
     'build_subtheme' => FALSE,
     'magic' => TRUE,
@@ -101,7 +100,20 @@ function hsu_core_defaultconfig_strongarm() {
     'always_show_page_title' => 0,
     'responsive_toggle' => 1,
     'pane_styles_toggle' => 1,
-    'pane_classes' => array(),
+    'pane_classes' => array(
+      'josh' => 'josh',
+      'matt' => 'matt',
+    ),
+    'use_banner' => 0,
+    'header_file' => '',
+    'street' => '1 Harpst St',
+    'citystatezip' => 'Arcata',
+    'phone' => '7078263396',
+    'fax' => '',
+    'twitter' => 'http://twitter.com/hodgie',
+    'facebook' => 'http://facebook.com/hodgie95501',
+    'instagram' => 'http://instagram/hodgie',
+    'youtube' => 'http://youtube.com/hodgie95501',
   );
   $export['theme_hsu_kalatheme_settings'] = $strongarm;
 

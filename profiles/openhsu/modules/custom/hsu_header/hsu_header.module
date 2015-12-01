@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * Adds hsu utility links to the top of the site.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function hsu_header_theme($existing, $type, $theme, $path) {
+  $items['hsu_header'] = array(
+    'variables' => array(),
+    'template' => 'hsu-header',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function hsu_header_page_build(&$page){
+  $page['page_top']['hsu_header'] = array(
+    '#pre_render' => array('hsu_header_attach'),
+  );
+}
+
+/**
+ * Attach js & css.
+ */
+function hsu_header_attach() {
+  $module_path = drupal_get_path('module', 'hsu_header');
+  $build = array(
+    '#theme' => 'hsu_header',
+    '#attached'=> array(
+      'js' => array(
+        $module_path . '/hsu-header.js',
+      ),
+      'css' => array(
+        $module_path . '/hsu-header.css',
+      ),
+    ),
+  );
+  return $build;
+}

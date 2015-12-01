@@ -85,4 +85,3 @@ features[picture_mapping][] = kalapicture_3
 features[picture_mapping][] = kalapicture_6
 features[picture_mapping][] = kalapicture_col_md_9
 features[picture_mapping][] = kalapicture_jumbotron
-project path = profiles/openhsu/modules/custom

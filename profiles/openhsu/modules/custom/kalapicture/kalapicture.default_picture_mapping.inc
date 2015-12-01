@@ -140,21 +140,21 @@ function kalapicture_default_picture_mapping() {
     'breakpoints.kalapicture.screen-xxs' => array(
       '1x' => array(
         'mapping_type' => 'image_style',
-        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-xxs_1x',
+        'image_style' => 'kalapicture_12_breakpoints_kalapicture_screen-xxs_1x',
       ),
       '2x' => array(
         'mapping_type' => 'image_style',
-        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-xxs_2x',
+        'image_style' => 'kalapicture_12_breakpoints_kalapicture_screen-xxs_2x',
       ),
     ),
     'breakpoints.kalapicture.screen-xs' => array(
       '1x' => array(
         'mapping_type' => 'image_style',
-        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-xs_1x',
+        'image_style' => 'kalapicture_12_breakpoints_kalapicture_screen-xs_1x',
       ),
       '2x' => array(
         'mapping_type' => 'image_style',
-        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-sm_2x',
+        'image_style' => 'kalapicture_12_breakpoints_kalapicture_screen-xs_2x',
       ),
     ),
     'breakpoints.kalapicture.screen-sm' => array(
@@ -180,7 +180,7 @@ function kalapicture_default_picture_mapping() {
     'breakpoints.kalapicture.screen-lg' => array(
       '1x' => array(
         'mapping_type' => 'image_style',
-        'image_style' => 'kalapicture_3_breakpoints_kalapicture_screen-lg_1x',
+        'image_style' => 'kalapicture_6_breakpoints_kalapicture_screen-lg_1x',
       ),
       '2x' => array(
         'mapping_type' => 'image_style',

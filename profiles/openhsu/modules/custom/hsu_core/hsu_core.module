@@ -76,12 +76,3 @@ function hsu_core_update_status_alter(&$projects) {
     }
   }
 }
-
-/**
- * Implements hook_preprocess_panelizer_view_mode.
- */
-function hsu_core_preprocess_panelizer_view_mode(&$vars){
-  // Prevent Panel titles from hanging off the edge because the panel content is
-  // wrapped in this same class.
-  $vars['title_attributes_array']['class'][] = 'col-md-12';
-}

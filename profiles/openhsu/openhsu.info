@@ -66,3 +66,4 @@ dependencies[] = hsu_events
 dependencies[] = hsu_people
 dependencies[] = hsu_news
 dependencies[] = hsu_carousel
+dependencies[] = hsu_header

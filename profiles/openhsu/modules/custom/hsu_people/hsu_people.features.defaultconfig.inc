@@ -10,53 +10,134 @@
 function hsu_people_defaultconfig_features() {
   return array(
     'hsu_people' => array(
-      'field_group_info' => 'field_group_info',
+      'field_default_fields' => 'field_default_fields',
     ),
   );
 }
 
 /**
- * Implements hook_defaultconfig_field_group_info().
+ * Implements hook_defaultconfig_field_default_fields().
  */
-function hsu_people_defaultconfig_field_group_info() {
-  $export = array();
+function hsu_people_defaultconfig_field_default_fields() {
+  $fields = array();
 
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_hsu_people_right|node|hsu_people|default';
-  $field_group->group_name = 'group_hsu_people_right';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'hsu_people';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Right Sidebar',
-    'weight' => '0',
-    'children' => array(
-      0 => 'field_hsu_people_email',
-      1 => 'field_hsu_people_location',
-      2 => 'field_hsu_people_phone_number',
-      3 => 'field_hsu_people_profile_image',
-      4 => 'field_hsu_people_website',
-      5 => 'field_hsu_people_cv',
-    ),
-    'format_type' => 'div',
-    'format_settings' => array(
-      'label' => 'Right Sidebar',
-      'instance_settings' => array(
-        'id' => '',
-        'classes' => '',
-        'description' => '',
-        'show_label' => '0',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
+  // Exported field: 'user-user-field_user_picture'.
+  $fields['user-user-field_user_picture'] = array(
+    'field_config' => array(
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
+      'entity_types' => array(),
+      'field_name' => 'field_user_picture',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
       ),
-      'formatter' => 'open',
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => 0,
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => 0,
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'user',
+      'deleted' => 0,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 2,
+        ),
+        'featured' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'user',
+      'field_name' => 'field_user_picture',
+      'label' => 'Picture',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 1,
+        'default_image' => 20,
+        'default_image_ft_source_var' => 'default_user_image',
+        'file_directory' => 'pictures',
+        'file_extensions' => 'png gif jpg jpeg',
+        'filefield_paths' => array(
+          'active_updating' => 0,
+          'file_name' => array(
+            'options' => array(
+              'pathauto' => 0,
+              'transliterate' => 0,
+            ),
+            'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+          ),
+          'file_path' => array(
+            'options' => array(
+              'pathauto' => 0,
+              'transliterate' => 0,
+            ),
+            'value' => '',
+          ),
+          'retroactive_update' => 0,
+        ),
+        'filefield_paths_enabled' => 1,
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '80x80',
+        'title_field' => 0,
+        'user_register_form' => 0,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'manualcrop_crop_info' => 1,
+          'manualcrop_default_crop_area' => 1,
+          'manualcrop_enable' => 1,
+          'manualcrop_inline_crop' => 0,
+          'manualcrop_instant_crop' => 0,
+          'manualcrop_instant_preview' => 1,
+          'manualcrop_keyboard' => 1,
+          'manualcrop_maximize_default_crop_area' => 1,
+          'manualcrop_require_cropping' => array(),
+          'manualcrop_styles_list' => array(
+            'panopoly_image_full' => 'panopoly_image_full',
+          ),
+          'manualcrop_styles_mode' => 'include',
+          'manualcrop_thumblist' => 0,
+          'preview_image_style' => 'panopoly_image_featured',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => 3,
+      ),
     ),
   );
-  $export['group_hsu_people_right|node|hsu_people|default'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Picture');
+
+  return $fields;
 }

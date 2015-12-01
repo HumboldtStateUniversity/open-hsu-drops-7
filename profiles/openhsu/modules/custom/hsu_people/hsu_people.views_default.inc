@@ -271,6 +271,150 @@ function hsu_people_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_hsu_people_job_class',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Profile Image */
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['id'] = 'field_hsu_people_profile_image';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['table'] = 'field_data_field_hsu_people_profile_image';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['field'] = 'field_hsu_people_profile_image';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_hsu_people_profile_image']['settings'] = array(
+    'image_style' => 'hsu_people_detail',
+    'image_link' => 'content',
+  );
+  /* Field: Content: First name */
+  $handler->display->display_options['fields']['field_hsu_people_first_name']['id'] = 'field_hsu_people_first_name';
+  $handler->display->display_options['fields']['field_hsu_people_first_name']['table'] = 'field_data_field_hsu_people_first_name';
+  $handler->display->display_options['fields']['field_hsu_people_first_name']['field'] = 'field_hsu_people_first_name';
+  $handler->display->display_options['fields']['field_hsu_people_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_first_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Last name */
+  $handler->display->display_options['fields']['field_hsu_people_last_name']['id'] = 'field_hsu_people_last_name';
+  $handler->display->display_options['fields']['field_hsu_people_last_name']['table'] = 'field_data_field_hsu_people_last_name';
+  $handler->display->display_options['fields']['field_hsu_people_last_name']['field'] = 'field_hsu_people_last_name';
+  $handler->display->display_options['fields']['field_hsu_people_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_last_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'hsu-people-name';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Job title */
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['id'] = 'field_hsu_people_job_title';
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['table'] = 'field_data_field_hsu_people_job_title';
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['field'] = 'field_hsu_people_job_title';
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_job_title']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<strong>Contact Information</strong>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'hsu-people-contact-information';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
+  /* Field: Content: Phone number */
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['id'] = 'field_hsu_people_phone_number';
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['table'] = 'field_data_field_hsu_people_phone_number';
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['field'] = 'field_hsu_people_phone_number';
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_phone_number']['hide_empty'] = TRUE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<a href="[path]">[title]</a>';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['empty'] = '[title]';
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_hsu_people_location']['id'] = 'field_hsu_people_location';
+  $handler->display->display_options['fields']['field_hsu_people_location']['table'] = 'field_data_field_hsu_people_location';
+  $handler->display->display_options['fields']['field_hsu_people_location']['field'] = 'field_hsu_people_location';
+  $handler->display->display_options['fields']['field_hsu_people_location']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_location']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_location']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_hsu_people_location']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_location']['hide_empty'] = TRUE;
+  /* Field: Content: E-mail */
+  $handler->display->display_options['fields']['field_hsu_people_email']['id'] = 'field_hsu_people_email';
+  $handler->display->display_options['fields']['field_hsu_people_email']['table'] = 'field_data_field_hsu_people_email';
+  $handler->display->display_options['fields']['field_hsu_people_email']['field'] = 'field_hsu_people_email';
+  $handler->display->display_options['fields']['field_hsu_people_email']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_email']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_email']['alter']['text'] = '<div class="col-sm-6 people-list">
+	<div class="col-sm-4">
+	[field_hsu_people_profile_image]	
+	</div>
+	<div class="col-sm-8">
+	<h3>[body]</h3>	
+	<h4>[field_hsu_people_job_title]</h4>
+	<ul>
+		<li class="email">[field_hsu_people_email]</li>
+		<li class="phone">[field_hsu_people_phone_number] </li>
+		<li class="location">[field_hsu_people_location] </li>
+	</ul> 
+	</div>
+</div>';
+  $handler->display->display_options['fields']['field_hsu_people_email']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_hsu_people_email']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_email']['hide_empty'] = TRUE;
+  /* Field: Content: Job classification */
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['id'] = 'field_hsu_people_job_class';
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['table'] = 'field_data_field_hsu_people_job_class';
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['field'] = 'field_hsu_people_job_class';
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['label'] = '';
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_hsu_people_job_class']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['path'] = 'people';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'People';

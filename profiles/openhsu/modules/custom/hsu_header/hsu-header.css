@@ -1,0 +1,254 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box; }
+
+.utility-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: .75rem;
+  line-height: 2;
+  background: #fff;
+  position: relative;
+  z-index: 200;
+  max-height: 0;
+  overflow: hidden; }
+  .utility-wrap.active {
+    max-height: 150em;
+    overflow: visible; }
+  @media screen and (min-width: 43.75em) {
+    .utility-wrap {
+      max-height: none;
+      overflow: visible; } }
+  .utility-wrap ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+
+a.utility-menu-link {
+  font-size: .875rem;
+  position: relative;
+  z-index: 200;
+  display: block;
+  background: url(img/menu-white.svg) no-repeat 98% 9px #25551b;
+  color: #fff;
+  text-align: right;
+  padding: .4375rem 2rem .4375rem 0;
+  text-decoration: none;
+}
+  a.utility-menu-link:hover, a.utility-menu-link.active {
+    background: url(img/menu-black.svg) no-repeat 98% 9px #fff;
+    color: #25551b;
+     }
+@media screen and (min-width: 30em) {
+  a.utility-menu-link {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(img/menu-black.svg) no-repeat 94% 12px transparent;
+    padding-top: .5rem;
+    color: #333;
+  }
+  a.utility-menu-link:hover, a.utility-menu-link.active {
+    background: url(img/menu-black.svg) no-repeat 94% 12px transparent;
+  }
+}
+  @media screen and (min-width: 43.75em) {
+    a.utility-menu-link {
+      display: none; } 
+.hsumark img {
+    width:80% !important;
+  }
+}
+
+.no-js a.utility-menu-link {
+  display: none;
+}
+
+.utility-links {
+  display: block;
+  width: 100%;
+}
+.utility-wrap > ul ul {
+  overflow: hidden;
+  max-height: 0;
+}
+/*@media screen and (min-width: 43.75em) {
+  .utility-wrap > ul ul {
+    max-height: none;
+    overflow: visible; 
+  } 
+}*/
+@media screen and (min-width: 43.75em) {
+  .utility-wrap > ul ul {
+    background: #fff;
+  }
+}
+
+.utility-wrap > ul ul.active {
+  max-height: 150em;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+
+.utility-wrap li a {
+  color: #000;
+  display: block;
+  position: relative;
+  text-decoration: none;
+  padding: .25rem;
+}
+
+.utility-wrap li a:hover, .utility-wrap li a:focus {
+  background: #25551b;
+  color: #fff;
+}
+/*added fontawesome to handle these could use these for fall back on sites that don't have it.*/
+/*.utility-wrap .utility-links > li.has-subnav span {
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.5rem;
+}*/
+/*  .utility-wrap .utility-links > li.has-subnav span:before {
+    position: absolute;
+    content: "▼";
+    width: 0;
+    height: 0;
+    display: block;
+    top: 15%;
+    left: 25%;
+}*/
+
+/*.utility-wrap li.has-subnav > a.active span:before {
+  content: "▲";
+}*/
+
+.utility-wrap > ul ul.index-list {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+@media screen and (min-width: 43.75em) {
+    .utility-wrap > ul ul.index-list {
+      width: 240px;
+      position: absolute;
+   }
+}
+@media screen and (min-width: 67em) {
+  .utility-wrap > ul ul.index-list {
+    background: #fff;
+    border: 0; }
+}
+.utility-wrap > ul ul.index-list li {
+    display: inline-block;
+}
+@media screen and (min-width: 43.75em) {
+  .utility-wrap > ul ul.index-list li {
+    float: left;
+    margin: 0; }
+}
+.utility-wrap > ul ul.index-list li a {
+  border-bottom: 0;
+  padding: 1rem;
+}
+@media screen and (min-width: 43.75em) {
+  .utility-wrap > ul ul.index-list li a {
+      padding: .25rem; }
+}
+
+.utility-wrap > ul li.index ul.active {
+  border-top: solid 1px #808080;
+}
+  @media screen and (min-width: 43.75em) {
+    .utility-wrap > ul li.index ul.active {
+      border-bottom: none; }
+}
+
+.utility-wrap > ul.utility-links li {
+  margin: 0;
+}
+@media screen and (min-width: 43.75em) {
+  .utility-wrap > ul.utility-links li {
+    width: 33.333%;
+    text-align: center;
+  }
+}
+  @media screen and (min-width: 61.25em) {
+    .utility-wrap > ul.utility-links li a {
+        white-space: nowrap;
+      }
+}
+.utility-wrap > ul.utility-links li ul li {
+    width: auto;
+    text-align: left;
+}
+
+.utility-wrap > ul > li {
+  border-bottom: 1px solid #000;
+}
+@media screen and (min-width: 43.75em) {
+  .utility-wrap > ul > li {
+    float: left;
+    position: relative;
+    border-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 43.75em) {
+  .utility-wrap > ul ul {
+    position: absolute;
+    width: 100%;
+    z-index: 200;
+  }
+}
+
+@media screen and (min-width: 43.75em) {
+  li.quicklinks, li.family, li.alumni, li.myhumboldt, li.elearning {
+    border-left: solid 1px #808080; }
+  }
+.quicklinks li.heading {
+  border-bottom: solid 1px #444;
+  border-top: solid 1px #444;
+  font-weight: 700;
+  background: #e0e4e0;
+  padding: 0 .5rem;
+}
+.quicklinks li a {
+  padding: 0 .5rem;
+}
+
+ @media screen and (min-width: 43.75em) {
+  .col-6 {
+    width:50%;
+    float: left;
+  }
+}
+.utility-wrap li a.top {
+  padding:0.45rem .25rem 0.55rem;
+}
+.masthead-row {
+  margin:0 -15px;
+}
+.masthead {
+  background: $white;
+  margin: 0 auto;
+  position: relative;
+}
+.brand {
+  padding: 0 15px;
+}
+.hsumark {
+  padding: 8px 0px 0px;
+  padding: 0.5rem 0rem 0rem;
+  margin: 0 auto;
+  width: 100%; }
+  .hsumark img {
+    width: 100%;
+    text-align: center; }
+    @media screen and (min-width: 480px) {
+      .hsumark img {
+        width: 75%; } }
+    @media screen and (min-width: 768px) {
+      .hsumark img {
+        width: 450px; } }

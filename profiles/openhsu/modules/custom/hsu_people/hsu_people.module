@@ -5,3 +5,47 @@
  */
 
 include_once 'hsu_people.features.inc';
+
+
+/**
+ * Helper to replace default field base image.
+ * 
+ * @param $field_name
+ * @param $filename
+ * @param $source
+ */
+/*
+function _hsu_people_replace_default_image($field_name, $filename, $source) {
+  // Load field info.
+  $field = field_info_instance('user', $field_name, 'user');
+  
+  // Create new file object and get new fid.
+  if (file_exists($source)) {
+    // Make sure we have a directory to write to.
+    $dir = 'public://default_images'; 
+    file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+    
+    // Create the file.
+    $file = new stdClass;
+    $file->filename = $filename;
+    $file->timestamp = REQUEST_TIME;
+    $file->uri = $source;
+    $file->filemime = file_get_mimetype($source);
+    $file->uid = 1;
+    $file->status = 1;
+    
+    // Copy the file out of the module into the files directory.
+    $file = file_copy($file, $dir, FILE_EXISTS_REPLACE);
+    $fid = $file->fid;
+
+    // Replace old fid with new fid.
+    $field['settings']['default_image'] = (string)$fid;
+
+watchdog('hsu_people', '<pre>' . print_r($file, true) . '</pre>');
+watchdog('hsu_people', '<pre>' . print_r($field, true) . '</pre>');
+
+    // Update field.
+    field_update_instance($field);
+  }
+}
+*/

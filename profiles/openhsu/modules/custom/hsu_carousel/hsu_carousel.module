@@ -90,3 +90,15 @@ function hsu_carousel_theme_registry_alter(&$registry) {
   $path = drupal_get_path('module', 'hsu_carousel') . '/templates';
   $registry += drupal_find_theme_templates($registry, '.tpl.php', $path);  
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter
+ */
+function hsu_carousel_form_fieldable_panels_panes_fieldable_panels_pane_content_type_edit_form_alter(&$form, &$form_state, $form_id){
+  // So we did a bunch of work to add custom carousel styles but now we we only
+  // want one, so rather than remove the fields, logic and styling, I'm leaving
+  // it in and just hiding it from the user. This way we can add custom style
+  // options back in by removing these two lines.
+  $form['field_hsu_carousel_style'][LANGUAGE_NONE]['#default_value'] = 'img_6_text_left';
+  $form['field_hsu_carousel_style']['#access'] = FALSE;
+}
