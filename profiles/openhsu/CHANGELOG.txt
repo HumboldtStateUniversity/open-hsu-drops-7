@@ -1,0 +1,5 @@
+OpenHSU 7.x-1.0 2016-03-08
+-----------------------
+- Updated Drupal to 7.43: security issues (multiple vulnerabilities). See SA-CORE-2016-001
+- Updated to Panopoly 1.32: https://www.drupal.org/node/2680513.
+- Fixed an issue that made it impossible to remove the custom banner image.

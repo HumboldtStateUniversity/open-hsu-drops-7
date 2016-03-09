@@ -22,7 +22,7 @@
     <?php endif; ?>
         </div> <!-- /#name-and-slogan -->
 
-   <?php if ($hsu_header): ?>
+   <?php if ($hsu_banner && $hsu_header): ?>
       <div class="header-image">
         <?php print render($hsu_header_image); ?>
       </div>
