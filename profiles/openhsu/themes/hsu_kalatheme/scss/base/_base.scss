@@ -52,6 +52,13 @@
   @include rem-fallback(padding, 0, $pad);
   clear: both;
   color: $white;
+
+  a{
+    color:$gold;
+    &:hover {
+      color:$white;
+    }
+  }
 }
 
 .circleh {
@@ -66,27 +73,15 @@
   // @include rem-fallback(padding, $pad-half, $pad, 0, $pad);
   margin: 0;
 }
-.hsumark {
-  @include rem-fallback(padding, $pad-half, 0, 0);
-  margin:0 auto;
-  width: 100%;
-  img {
-    width: 100%;
-     @media screen and (min-width: $screen-xs-min) {
-      width: 75%;
-     }
-    text-align: center;
-
-  @media screen and (min-width: $screen-sm-min) {
-      width:450px;
-    }
-  }
-}
-
 a{
   color:$orange;
   &:hover {
     color:$brand-primary;
+  }
+}
+h1,h2,h3,h4,h5,h6{
+  a {
+    text-decoration: none;
   }
 }
 .social {

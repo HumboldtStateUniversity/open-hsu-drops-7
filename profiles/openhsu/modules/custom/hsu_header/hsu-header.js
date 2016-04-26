@@ -14,9 +14,13 @@
     
     $menuTrigger.click(function(e) {
       e.preventDefault();
+      event.stopPropagation();
       var $this = $(this);
-      $this.toggleClass('active').next('ul').toggleClass('active');
+      $this.toggleClass('test').next('ul').toggleClass('active');
     });
+    $(document).click(function(){
+      $('ul').removeClass('active');
+     });
 
   });
 }) (jQuery);

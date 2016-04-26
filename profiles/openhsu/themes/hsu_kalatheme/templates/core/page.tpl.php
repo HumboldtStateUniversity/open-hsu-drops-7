@@ -158,6 +158,10 @@
                 <br />Fax: <?php print $hsu_fax; ?>
               <?php endif; ?>
 
+              <?php if ($hsu_email): ?>
+                <br /><a href="mailto:<?php print $hsu_email; ?>"><?php print $hsu_email; ?></a>
+              <?php endif; ?>
+
           </div>
           </div>
         </div>

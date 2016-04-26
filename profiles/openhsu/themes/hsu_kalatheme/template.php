@@ -242,6 +242,7 @@ function hsu_kalatheme_add_theme_setting_vars(&$variables){
     'hsu_city' => 'citystatezip',
     'hsu_phone' => 'phone',
     'hsu_fax' => 'fax',
+    'hsu_email' => 'email',
     
     // Add header info
     'hsu_banner' => 'use_banner',

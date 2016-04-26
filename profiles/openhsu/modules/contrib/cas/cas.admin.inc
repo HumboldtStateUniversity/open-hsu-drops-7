@@ -47,10 +47,11 @@ function cas_admin_settings() {
   $form['server']['cas_version'] = array(
     '#type' => 'radios',
     '#title' => t('Version'),
-    '#default_value' => variable_get('cas_version', '2.0'),
+    '#default_value' => variable_get('cas_version', '3.0'),
     '#options' => array(
       '1.0' => '1.0',
-      '2.0' => t('2.0 or higher'),
+      '2.0' => t('2.0'),
+      '3.0' => t('3.0 or higher (requires phpCAS >= 1.3.3)'),
       'S1' => t('SAML Version 1.1'),
     ),
   );
@@ -105,7 +106,9 @@ function cas_admin_settings() {
     '#options' => array(
       CAS_NO_LINK => t('Do not add link to login forms'),
       CAS_ADD_LINK => t('Add link to login forms'),
-      CAS_MAKE_DEFAULT => t('Make CAS login default on login forms')),
+      CAS_MAKE_DEFAULT => t('Make CAS login default on login forms'),
+      CAS_REDIRECT => t('Redirect the login form to CAS'),
+    ),
   );
 
   $form['login']['cas_login_invite'] = array(
@@ -129,7 +132,7 @@ function cas_admin_settings() {
     '#description' => t('Message users see at the top of the CAS login form to warn them that they are being redirected to the CAS server.'),
   );
 
-  // Setting for message displayed to user upon successfull login
+  // Setting for message displayed to user upon successful login
   $form['login']['cas_login_message'] = array(
     '#type' => 'textfield',
     '#title' => t('Successful login message'),
@@ -212,11 +215,16 @@ function cas_admin_settings() {
     '#collapsed' => TRUE,
   );
 
-  $form['pages']['cas_check_first'] = array(
-    '#type' => 'checkbox',
+  $form['pages']['cas_check_frequency'] = array(
+    '#type' => 'radios',
     '#title' => t('Check with the CAS server to see if the user is already logged in?'),
-    '#default_value' => variable_get('cas_check_first', 0),
-    '#description' => t('This implements the <a href="@cas-gateway">Gateway feature</a> of the CAS Protocol. The check is only performed the first time a user visits your site, so that the local drupal logout is still useful for site admins.', array('@cas-gateway' => 'https://wiki.jasig.org/display/CAS/gateway')),
+    '#default_value' => variable_get('cas_check_frequency', CAS_CHECK_NEVER),
+    '#options' => array(
+      CAS_CHECK_NEVER => 'Never',
+      CAS_CHECK_ONCE => 'Once per browser session',
+      CAS_CHECK_ALWAYS => 'Always (every page load)',
+    ),
+    '#description' => t('This implements the') . ' <a href="https://wiki.jasig.org/display/CAS/gateway">Gateway feature</a> ' . t('of the CAS Protocol.') . ' <strong>WARNING:</strong> ' . t('Enabling it at all will') . ' <em>' . t('completely disable page caching') . '</em>' . t(', and will prevent users from logging out locally unless also logged out of CAS. Setting it to "Always" will perform redirects on EVERY page load unless the user is already logged in, and is not recommended in most circumstances.'),
   );
 
   $form['pages']['cas_access'] = array(
@@ -310,11 +318,13 @@ function cas_admin_settings() {
       ),
     ),
   );
+
   $form['advanced']['cas_proxy_settings']['cas_pgtformat'] = array(
     '#type' => 'radios',
     '#title' => t('CAS PGT storage file format'),
     '#default_value' => variable_get('cas_pgtformat', 'plain'),
     '#options' => array('plain' => t('Plain Text'), 'xml' => t('XML')),
+    '#after_build' => array('cas_pgtformat_version_check'),
   );
 
   $form['advanced']['cas_proxy_settings']['cas_pgtpath'] = array(
@@ -325,12 +335,20 @@ function cas_admin_settings() {
     '#description' => t("Only needed if 'Use CAS proxy initializer' is configured. Leave empty for default."),
   );
 
+  $form['advanced']['cas_proxy_list'] = array(
+    '#type' => 'textarea',
+    '#title' => t('CAS proxy list'),
+    '#description' => t("If CAS client could be proxied, indicate each proxy server absolute url per line. If not provided, phpCAS will exclude by default all tickets provided by proxy. Each proxy server url could be a plain url or a regular expression. IMPORTANT : regular expression delimiter must be a slash. For example : https://proxy.example.com/ AND/OR regular expression : /^https:\/\/app[0-9]\.example\.com\/rest\//."),
+    '#default_value' => variable_get('cas_proxy_list', ''),
+    '#after_build' => array('cas_proxy_list_version_check'),
+  );
+
   $form['advanced']['cas_debugfile'] = array(
     '#type' => 'textfield',
-    '#title' => t('CAS debugging output filename'),
+    '#title' => t('CAS debugging output file'),
     '#default_value' => variable_get('cas_debugfile', ''),
     '#maxlength' => 255,
-    '#description' => t("Leave empty if you don't want debugging output."),
+    '#description' => "<p>" . t("A file system path and filename where the CAS debug log will be written. May be either a full path or a path relative to the Drupal installation root. The directory and file must be writable by Drupal.") . "</p> <p>" . t("Leave blank to disable logging.") . "</p> <p><strong>" . t("Debugging should not be enabled on production systems.") . "</strong></p>",
   );
 
   return system_settings_form($form);
@@ -356,6 +374,27 @@ function cas_library_version_check($element, &$form_state) {
   }
   else {
     $element['#suffix'] = '<div class="error messages">' . t('The phpCAS library was not found or could not be loaded.') . '</div>';
+  }
+  return $element;
+}
+
+/**
+ * Proxy chain object only exists with phpCAS version >= 1.3. As phpCAS CAS.php
+ * is include only after building element 'cas_library_dir', we must check it after it.
+ */
+function cas_proxy_list_version_check($element, &$form_state) {
+  if (!defined('PHPCAS_VERSION') || version_compare(PHPCAS_VERSION, '1.3', '<')) {
+    $element['#access'] = FALSE;
+  }
+  return $element;
+}
+
+/**
+ * Since 1.3, pgt format isn't supported and default to plain.
+ */
+function cas_pgtformat_version_check($element, &$form_state) {
+  if (!defined('PHPCAS_VERSION') || version_compare(PHPCAS_VERSION, '1.3', '>')) {
+    $element['#access'] = FALSE;
   }
   return $element;
 }

@@ -37,6 +37,12 @@ function hsu_kalatheme_location_form() {
     '#default_value' =>theme_get_setting('fax'),
   );
 
+  $form['open_hsu_contact_info']['email'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Email'),
+      '#default_value' =>theme_get_setting('email'),
+  );
+
   return $form;
 }
 

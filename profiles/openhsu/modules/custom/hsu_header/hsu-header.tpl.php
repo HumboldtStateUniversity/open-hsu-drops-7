@@ -15,7 +15,7 @@
               <a href="http://humboldt.edu" id="logo">
                 <img src="<?php
 // an example to retrieve the url to a png file in module
-echo base_path() . drupal_get_path('module', 'custom') . 'profiles/openhsu/modules/custom/hsu_header/img/logo.png';
+echo base_path() . drupal_get_path('module', 'custom') . 'profiles/openhsu/modules/custom/hsu_header/img/hsu-wm@2x.png';
 ?>" alt="Humboldt State University" />
               </a>
               <span class="visuallyhidden">Humboldt State University</span>

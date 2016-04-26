@@ -55,9 +55,6 @@ a.utility-menu-link {
   @media screen and (min-width: 43.75em) {
     a.utility-menu-link {
       display: none; } 
-.hsumark img {
-    width:80% !important;
-  }
 }
 
 .no-js a.utility-menu-link {
@@ -242,13 +239,26 @@ a.utility-menu-link {
   padding: 8px 0px 0px;
   padding: 0.5rem 0rem 0rem;
   margin: 0 auto;
-  width: 100%; }
+  width: 100%;
+}
+.hsumark img {
+  width: 100%;
+  text-align: center;
+}
+@media screen and (min-width: 480px) {
   .hsumark img {
-    width: 100%;
-    text-align: center; }
-    @media screen and (min-width: 480px) {
-      .hsumark img {
-        width: 75%; } }
-    @media screen and (min-width: 768px) {
-      .hsumark img {
-        width: 450px; } }
+    width: 80%; } 
+}
+@media screen and (min-width: 700px) {
+  .hsumark img {
+    width: 100%; } 
+}
+@media screen and (min-width: 1100px) {
+  .hsumark img {
+    width: 450px; } 
+}
+/*@media screen and (min-width: 768px) {
+  .hsumark img {
+    width: 450px; 
+  } 
+}*/

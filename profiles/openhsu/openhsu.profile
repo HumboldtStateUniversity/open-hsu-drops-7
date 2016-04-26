@@ -84,6 +84,7 @@ function openhsu_enable_theme($form, &$form_state) {
   $theme_settings['citystatezip'] = $form_state['values']['citystatezip'];
   $theme_settings['phone'] = $form_state['values']['phone'];
   $theme_settings['fax'] = $form_state['values']['fax'];
+  $theme_settings['email'] = $form_state['values']['email'];
   // Banner things
   $theme_settings['use_banner'] = $form_state['values']['use_banner'];
   $theme_settings['header_file'] = $form_state['values']['header_file'];
