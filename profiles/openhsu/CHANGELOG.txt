@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.11 2016-04-26
+-----------------------
+- Bumping version number because the commit was missing panopoly updates.
+- This version includes all of the panopoly updates that where supposed to be in 1.1
+
 OpenHSU 7.x-1.1 2016-04-26
 -----------------------
 - Updated to Panopoly 7.x-1.34 (https://www.drupal.org/node/2710517): Includes security fixes and minor updates as well as some security fixes from 7.x-1.33 (https://www.drupal.org/node/2706361).
