@@ -5654,7 +5654,7 @@ blockquote {
 .department-brand p {
   margin: 4px 16px 0px;
   margin: 0.25rem 1rem 0rem;
-  text-transform: capitalize; }
+  text-transform: none; }
 
 .panopoly-spotlight {
   margin-bottom: 32px;

@@ -92,6 +92,6 @@ blockquote {
 	}
 	p {
 		@include rem-fallback(margin, $pad-quarter, $pad, 0);	
-		text-transform: capitalize;
+		text-transform: none;
 	}
 }

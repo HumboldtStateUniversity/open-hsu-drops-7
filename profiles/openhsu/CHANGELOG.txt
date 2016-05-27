@@ -1,3 +1,10 @@
+OpenHSU 7.x-1.2 2016-05-27
+-----------------------
+- Updated to Panopoly 7.x-1.35 (https://www.drupal.org/node/2719143):
+This release includes a fix for a moderately critical security vulnerability in Fieldable Panels Panes (SA-CONTRIB-2016-025). Beyond the security update, this release also includes a few non-security module updates.
+- Fixed an issue with hsu_header module that made dropdown menus not work in IE and Firefox
+- WYSIWYG get overrides that include tables, link and imce browser as well as imce profiles for admin and editor roles.
+
 OpenHSU 7.x-1.11 2016-04-26
 -----------------------
 - Bumping version number because the commit was missing panopoly updates.

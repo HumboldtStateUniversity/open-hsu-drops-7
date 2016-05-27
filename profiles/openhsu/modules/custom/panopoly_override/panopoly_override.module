@@ -59,4 +59,4 @@ require_once $override_path . '/features/panopoly_admin.inc';
 // Extend panopoly_widgets
 // require_once $override_path . '/features/panopoly_widgets.inc';
 // Extend panopoly_wysiwyg
-// require_once $override_path . '/features/panopoly_wysiwyg.inc';
+require_once $override_path . '/features/panopoly_wysiwyg.inc';

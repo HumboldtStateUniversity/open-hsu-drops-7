@@ -5,6 +5,7 @@
     var $menu = $('#utility-menu'),
     $menulink = $('.utility-menu-link'),
     $menuTrigger = $('.has-subnav > a');
+    var e = window.event || e;
     
     $menulink.click(function(e) {
       e.preventDefault();
@@ -14,7 +15,7 @@
     
     $menuTrigger.click(function(e) {
       e.preventDefault();
-      event.stopPropagation();
+      e.stopPropagation();
       var $this = $(this);
       $this.toggleClass('test').next('ul').toggleClass('active');
     });

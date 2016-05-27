@@ -11,20 +11,6 @@ include_once 'hsu_core.features.inc';
  */
 
 /**
- * Implements hook_filter_default_formats_alter()
- *
- * THIS REALLY SHOULD BE IN ITS OWN MODULE BUT IM PUTTING IT HERE FOR NOW
- */
-if (!function_exists('panopoly_wysiwyg_filter_default_formats_alter')) {
-  function panopoly_wysiwyg_filter_default_formats_alter(&$data) {
-    // This allows users to enter in more then one extra line
-    if (isset($data['panopoly_wysiwyg_text'])) {
-      $data['panopoly_wysiwyg_text']['filters']['wysiwyg']['settings']['valid_elements'] .= ',#p';
-    }
-  }
-}
-
-/**
  * Implements hook_update_projects_alter()
  *
  * This function will remove any module managed by hsu WebSpark from
