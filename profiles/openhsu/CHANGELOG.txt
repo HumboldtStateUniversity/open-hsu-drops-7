@@ -1,3 +1,14 @@
+OpenHSU 7.x-1.4 2016-08-29
+-----------------------
+- Updated to Panopoly 7.x-1.40 (https://www.drupal.org/project/panopoly/releases/7.x-1.40)
+- This release includes security fixes from Panopoly 7.x-1.39 and 7.x-1.38 for Panels, Panelizer and Administration Views
+
+Changes to OpenHSU functionality
+- Page titles are on by default
+- Section Links style added to Kalacustomize plugin and the placeholder styles removed
+- Account Center quick link updated
+
+
 OpenHSU 7.x-1.3 2016-06-27
 -----------------------
 - Updated to Panopoly 7.x-1.37 (https://www.drupal.org/project/panopoly/releases/7.x-1.37):

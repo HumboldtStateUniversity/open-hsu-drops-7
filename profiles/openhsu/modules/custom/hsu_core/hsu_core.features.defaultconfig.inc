@@ -254,12 +254,11 @@ function hsu_core_defaultconfig_strongarm() {
     'magic' => TRUE,
     'subtheme_name' => '',
     'subtheme_base' => 'kalatheme',
-    'always_show_page_title' => 0,
+    'always_show_page_title' => 1,
     'responsive_toggle' => 1,
     'pane_styles_toggle' => 1,
     'pane_classes' => array(
-      'josh' => 'josh',
-      'matt' => 'matt',
+      'section-links' => 'Section Links',
     ),
     'use_banner' => 0,
     'header_file' => '',
@@ -267,11 +266,11 @@ function hsu_core_defaultconfig_strongarm() {
     'citystatezip' => '',
     'phone' => '',
     'fax' => '',
+    'email' => '',
     'twitter' => '',
     'facebook' => '',
     'instagram' => '',
     'youtube' => '',
-    'email' => '',
   );
   $export['theme_hsu_kalatheme_settings'] = $strongarm;
 

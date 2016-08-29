@@ -71,7 +71,7 @@ echo base_path() . drupal_get_path('module', 'custom') . 'profiles/openhsu/modul
           <li><a href="http://www.humboldt.edu/riskmgmt/lease_facility.html">Facility Rental</a></li>
           <li class="heading">Tools</li>
           <li><a href="http://humboldt.edu/myhumboldt">myHumboldt</a></li>
-          <li><a href="http://accountcenter.humboldt.edu">Account Center</a></li>
+          <li><a href="https://idm-prov.humboldt.edu/identity/self-service/hsu/caslogin.jsp">Account Settings</a></li>
           <li><a href="http://humboldt.edu/reset">Reset HSU Password</a></li>
           <li><a href="http://myhousing.humboldt.edu">MyHousing</a></li>
           <li class="heading">Course Info</li>

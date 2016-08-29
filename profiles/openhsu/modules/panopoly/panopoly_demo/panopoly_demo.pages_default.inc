@@ -73,6 +73,8 @@ function panopoly_demo_default_page_manager_pages() {
   $display->cache = array();
   $display->title = 'Homepage Demo';
   $display->uuid = 'b7a6867e-81e2-4492-b887-5ef5422d53cf';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_panopoly_demo_panel_panel_context';
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
