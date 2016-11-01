@@ -28,6 +28,7 @@
 }
 .logo {
   @include rem-fallback(margin, 1.5, 0, 0);
+  max-width:640px;
   img {
     max-width: 100%;
   }
@@ -35,14 +36,23 @@
 .department-brand {
   color:$white;
   @include rem-fallback(padding-bottom, 1);
+  h1 {
+    color:$white;
+    font-weight: 300;
+    @include rem-fallback(margin, $pad, 0, 0);
+  }
+  p {
+    text-transform: none;
+  }
   a {
     color:$white;
     text-decoration: none;
-    &:hover{
-      color:rgba($white, .5);
+    &:hover {
+      color: rgba($white, .5);
     }
   }
 }
+
 .header-image {
   position: relative;
 }

@@ -8,7 +8,7 @@
  * Implements hook_ctools_plugin_api().
  */
 function hsu_people_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "field_group" && $api == "field_group") {
+  if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
   if ($module == "panelizer" && $api == "panelizer") {
@@ -78,6 +78,22 @@ function hsu_people_image_default_styles() {
           'anchor' => 'center-center',
         ),
         'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: hsu_people_w280.
+  $styles['hsu_people_w280'] = array(
+    'label' => 'hsu_people_w280',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 280,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
       ),
     ),
   );

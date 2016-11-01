@@ -19,6 +19,12 @@ function hsu_header_theme($existing, $type, $theme, $path) {
  * Implements hook_page_build().
  */
 function hsu_header_page_build(&$page){
+  // Exclude if active theme is seven.
+  global $theme_key;
+  if ( $theme_key == 'seven' ) {
+    return;
+  }
+
   $page['page_top']['hsu_header'] = array(
     '#pre_render' => array('hsu_header_attach'),
   );

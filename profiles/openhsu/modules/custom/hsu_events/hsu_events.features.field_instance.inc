@@ -10,7 +10,7 @@
 function hsu_events_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-hsu_event-body'
+  // Exported field_instance: 'node-hsu_event-body'.
   $field_instances['node-hsu_event-body'] = array(
     'bundle' => 'hsu_event',
     'default_value' => NULL,
@@ -67,7 +67,7 @@ function hsu_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_event-field_hsu_event_date'
+  // Exported field_instance: 'node-hsu_event-field_hsu_event_date'.
   $field_instances['node-hsu_event-field_hsu_event_date'] = array(
     'bundle' => 'hsu_event',
     'deleted' => 0,
@@ -149,7 +149,7 @@ function hsu_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_event-field_hsu_event_location'
+  // Exported field_instance: 'node-hsu_event-field_hsu_event_location'.
   $field_instances['node-hsu_event-field_hsu_event_location'] = array(
     'bundle' => 'hsu_event',
     'default_value' => NULL,

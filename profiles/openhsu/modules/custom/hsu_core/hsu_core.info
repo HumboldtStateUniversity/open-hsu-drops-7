@@ -22,6 +22,4 @@ features[defaultconfig][] = strongarm:jquery_update_jquery_migrate_trace
 features[defaultconfig][] = strongarm:jquery_update_jquery_migrate_warnings
 features[defaultconfig][] = strongarm:theme_hsu_kalatheme_settings
 features[features_api][] = api:2
-features[variable][] = imce_profiles
-features[variable][] = imce_roles_profiles
 features[variable][] = theme_default

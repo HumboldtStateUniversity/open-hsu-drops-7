@@ -10,7 +10,7 @@
 function hsu_people_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_hsu_people'
+  // Exported field_base: 'field_hsu_people'.
   $field_bases['field_hsu_people'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_hsu_people_courses_taught'
+  // Exported field_base: 'field_hsu_people_courses_taught'.
   $field_bases['field_hsu_people_courses_taught'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -50,7 +50,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hsu_people_cv'
+  // Exported field_base: 'field_hsu_people_cv'.
   $field_bases['field_hsu_people_cv'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -73,7 +73,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_hsu_people_degrees'
+  // Exported field_base: 'field_hsu_people_degrees'.
   $field_bases['field_hsu_people_degrees'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -94,7 +94,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hsu_people_email'
+  // Exported field_base: 'field_hsu_people_email'.
   $field_bases['field_hsu_people_email'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -109,7 +109,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_hsu_people_first_name'
+  // Exported field_base: 'field_hsu_people_first_name'.
   $field_bases['field_hsu_people_first_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -130,7 +130,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hsu_people_job_class'
+  // Exported field_base: 'field_hsu_people_job_class'.
   $field_bases['field_hsu_people_job_class'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -156,7 +156,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_hsu_people_job_title'
+  // Exported field_base: 'field_hsu_people_job_title'.
   $field_bases['field_hsu_people_job_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -182,7 +182,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_hsu_people_last_name'
+  // Exported field_base: 'field_hsu_people_last_name'.
   $field_bases['field_hsu_people_last_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -203,7 +203,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hsu_people_location'
+  // Exported field_base: 'field_hsu_people_location'.
   $field_bases['field_hsu_people_location'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -224,7 +224,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hsu_people_phone_number'
+  // Exported field_base: 'field_hsu_people_phone_number'.
   $field_bases['field_hsu_people_phone_number'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -241,7 +241,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'phone',
   );
 
-  // Exported field_base: 'field_hsu_people_profile_image'
+  // Exported field_base: 'field_hsu_people_profile_image'.
   $field_bases['field_hsu_people_profile_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -263,7 +263,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_hsu_people_publications'
+  // Exported field_base: 'field_hsu_people_publications'.
   $field_bases['field_hsu_people_publications'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -284,7 +284,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hsu_people_research'
+  // Exported field_base: 'field_hsu_people_research'.
   $field_bases['field_hsu_people_research'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -303,7 +303,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_hsu_people_teaching'
+  // Exported field_base: 'field_hsu_people_teaching'.
   $field_bases['field_hsu_people_teaching'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -322,7 +322,7 @@ function hsu_people_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_hsu_people_website'
+  // Exported field_base: 'field_hsu_people_website'.
   $field_bases['field_hsu_people_website'] = array(
     'active' => 1,
     'cardinality' => 1,

@@ -1,3 +1,12 @@
+OpenHSU 7.x-1.5 2016-11-1
+-----------------------
+- Added basic styling for tables placed in body fields and text panes.
+- Added responsive video to videos placed in body fields and text panes.
+- Fixed an issue with default image in people nodes.
+- Added node creation permissions to the editor role or existing content types.
+- Some changes to HSU People feature including conditional logic on for icons, and the addition of list view and taxonomy views.
+- Disable HSU Header module when using Seven as the admin theme.
+
 OpenHSU 7.x-1.4 2016-08-29
 -----------------------
 - Updated to Panopoly 7.x-1.40 (https://www.drupal.org/project/panopoly/releases/7.x-1.40)

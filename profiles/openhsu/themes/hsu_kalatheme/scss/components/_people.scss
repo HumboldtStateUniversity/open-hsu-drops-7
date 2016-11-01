@@ -7,10 +7,6 @@
 .people-list {
 	@include rem-fallback(margin-top, $pad);
 	min-height:220px;
-	ul {
-		padding-left: 0;
-		list-style: none;
-	}
 	h3,h4 {
 		@include rem-fallback(margin-top, 0);
 		@include rem-fallback(margin-bottom, 0);
@@ -23,18 +19,31 @@
             vertical-align: middle;
         }
 	}
+	img {
+		max-width: 100%;
+		height:auto;
+		@include rem-fallback(padding, .25);
+		background: $light-gray;
+		border: solid 1px $light-green;
+		opacity: 1;
+	}
+}
+.people-contact {
+	padding-left: 0;
+	list-style: none;
+
 	li {
 		&:before {
-		 	display: inline-block;
+			display: inline-block;
 			font: $icon-font;
 			font-size: inherit;
 			text-rendering: auto;
 			transform: translate(0, 0);
 			text-decoration:none;
-		    @include rem-fallback(margin-right, .5);
-		    @include rem-fallback(font-size, 1.25);
-		    color: $light-green;
-		}	
+			@include rem-fallback(margin-right, .5);
+			@include rem-fallback(font-size, 1.25);
+			color: $light-green;
+		}
 	}
 }
 
@@ -60,14 +69,6 @@ a.people {
 		}
 	}
 }
-.hsu-people-detail {
-	max-width: 100%;
-	height:auto;
-	@include rem-fallback(padding, .25);
-	background: $light-gray;
-	border: solid 1px $light-green;
-	opacity: 1;
-}
 a .hsu-people-detail {
 	transition: opacity .25s ease-in-out;
 	-moz-transition: opacity .25s ease-in-out;
@@ -90,5 +91,37 @@ a .hsu-people-detail {
 .location {
 	 &:before {
 	 	content: "\f124";
+	}
+}
+
+.people-alpha {
+	.people-list {
+		margin: 3rem;
+		min-height: 0;
+	}
+	.views-row-first {
+		margin-top: 1.5rem;
+	}
+	.views-row-last {
+		margin-bottom: 1rem;
+	}
+
+	// alphabet group headers
+	.view-content > h3 {
+		color: $light-green;
+		font-size: 2.5rem;
+		font-weight: normal;
+		margin: 1rem 0;
+		position: relative;
+		padding: 0 .25rem;
+
+		&:before {
+			content:'';
+			border: 1px solid lighten($gray, 35%);
+			margin: 0 3.75rem;
+			position: absolute;
+			top: 50%;
+			width: calc(100% - 7.5rem);
+		}
 	}
 }

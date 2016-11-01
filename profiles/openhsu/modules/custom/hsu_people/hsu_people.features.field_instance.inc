@@ -10,7 +10,7 @@
 function hsu_people_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-hsu_people-body'
+  // Exported field_instance: 'node-hsu_people-body'.
   $field_instances['node-hsu_people-body'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -19,9 +19,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'featured' => array(
@@ -38,6 +37,12 @@ function hsu_people_field_default_field_instances() {
         ),
         'type' => 'text_summary_or_trimmed',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -66,7 +71,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people'.
   $field_instances['node-hsu_people-field_hsu_people'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -75,9 +80,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'featured' => array(
@@ -91,6 +95,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -117,7 +127,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_courses_taught'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_courses_taught'.
   $field_instances['node-hsu_people-field_hsu_people_courses_taught'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -126,9 +136,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'featured' => array(
@@ -142,6 +151,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
@@ -168,7 +183,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_cv'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_cv'.
   $field_instances['node-hsu_people-field_hsu_people_cv'] = array(
     'bundle' => 'hsu_people',
     'deleted' => 0,
@@ -176,11 +191,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'text' => 'Curriculum Vitae',
-        ),
-        'type' => 'file_download_link',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'featured' => array(
@@ -194,6 +206,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -237,7 +255,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_degrees'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_degrees'.
   $field_instances['node-hsu_people-field_hsu_people_degrees'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -246,9 +264,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 6,
       ),
       'featured' => array(
@@ -262,6 +279,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -288,7 +311,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_email'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_email'.
   $field_instances['node-hsu_people-field_hsu_people_email'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -297,9 +320,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'email',
         'settings' => array(),
-        'type' => 'email_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'featured' => array(
@@ -313,6 +335,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -333,7 +361,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_first_name'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_first_name'.
   $field_instances['node-hsu_people-field_hsu_people_first_name'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -357,6 +385,13 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'node',
@@ -383,7 +418,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_job_class'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_job_class'.
   $field_instances['node-hsu_people-field_hsu_people_job_class'] = array(
     'bundle' => 'hsu_people',
     'default_value' => array(
@@ -412,6 +447,12 @@ function hsu_people_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hsu_people_job_class',
@@ -429,7 +470,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_job_title'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_job_title'.
   $field_instances['node-hsu_people-field_hsu_people_job_title'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -438,9 +479,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'featured' => array(
@@ -454,6 +494,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -475,7 +521,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_last_name'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_last_name'.
   $field_instances['node-hsu_people-field_hsu_people_last_name'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -499,6 +545,13 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'node',
@@ -525,7 +578,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_location'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_location'.
   $field_instances['node-hsu_people-field_hsu_people_location'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -534,9 +587,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'featured' => array(
@@ -550,6 +602,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -576,7 +634,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_phone_number'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_phone_number'.
   $field_instances['node-hsu_people-field_hsu_people_phone_number'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -585,9 +643,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'phone',
         'settings' => array(),
-        'type' => 'phone',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'featured' => array(
@@ -601,6 +658,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -624,7 +687,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_profile_image'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_profile_image'.
   $field_instances['node-hsu_people-field_hsu_people_profile_image'] = array(
     'bundle' => 'hsu_people',
     'deleted' => 0,
@@ -632,12 +695,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => 'hsu_people_detail',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'featured' => array(
@@ -652,6 +711,12 @@ function hsu_people_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hsu_people_profile_image',
@@ -659,8 +724,8 @@ function hsu_people_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'default_image' => 50,
-      'file_directory' => 'hsu_people/image',
+      'default_image' => 0,
+      'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'filefield_paths' => array(
         'active_updating' => 0,
@@ -726,7 +791,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_publications'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_publications'.
   $field_instances['node-hsu_people-field_hsu_people_publications'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -735,9 +800,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 8,
       ),
       'featured' => array(
@@ -751,6 +815,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'node',
@@ -777,7 +847,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_research'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_research'.
   $field_instances['node-hsu_people-field_hsu_people_research'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -786,9 +856,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'featured' => array(
@@ -802,6 +871,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -828,7 +903,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_teaching'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_teaching'.
   $field_instances['node-hsu_people-field_hsu_people_teaching'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -837,9 +912,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'featured' => array(
@@ -853,6 +927,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -879,7 +959,7 @@ function hsu_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hsu_people-field_hsu_people_website'
+  // Exported field_instance: 'node-hsu_people-field_hsu_people_website'.
   $field_instances['node-hsu_people-field_hsu_people_website'] = array(
     'bundle' => 'hsu_people',
     'default_value' => NULL,
@@ -888,9 +968,8 @@ function hsu_people_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 6,
       ),
       'featured' => array(
@@ -904,6 +983,12 @@ function hsu_people_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',

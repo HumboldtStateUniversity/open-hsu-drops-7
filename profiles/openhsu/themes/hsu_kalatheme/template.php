@@ -183,11 +183,21 @@ function hsu_kalatheme_handle_menu(&$variables){
     $variables['action_links'] = FALSE;
   }
 
-  // Get the entire main menu tree.
+// Get the entire main menu tree.
   $main_menu_tree = array();
   $main_menu_tree = menu_tree_all_data('main-menu', NULL, 2);
-  
-  // Add the rendered output to the $main_menu_expanded variable.
+
+  if ( module_exists('domain_conf')) {
+    $domainGet = domain_get_domain();
+    $domain_id = $domainGet['domain_id'];
+    $domain_menu_source = domain_conf_variable_get($domain_id, $variable = 'menu_main_links_source');
+
+    if ($domain_menu_source) {
+      $main_menu_tree = menu_tree_all_data($domain_menu_source, NULL, 2);
+    }
+  }
+
+// Add the rendered output to the $main_menu_expanded variable.
   $variables['main_menu_expanded'] = menu_tree_output($main_menu_tree);
 }
 
