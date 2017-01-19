@@ -36,7 +36,18 @@ function hsu_people_image_default_styles() {
   $styles['hsu_people_detail'] = array(
     'label' => 'hsu_people_detail',
     'effects' => array(
-      3 => array(
+      10 => array(
+        'name' => 'manualcrop_crop',
+        'data' => array(
+          'width' => 280,
+          'height' => '',
+          'keepproportions' => 0,
+          'reuse_crop_style' => '',
+          'style_name' => 'hsu_people_detail',
+        ),
+        'weight' => 0,
+      ),
+      8 => array(
         'name' => 'image_scale',
         'data' => array(
           'width' => 280,
@@ -45,7 +56,7 @@ function hsu_people_image_default_styles() {
         ),
         'weight' => 1,
       ),
-      4 => array(
+      9 => array(
         'name' => 'image_crop',
         'data' => array(
           'width' => 280,
@@ -61,7 +72,15 @@ function hsu_people_image_default_styles() {
   $styles['hsu_people_listing'] = array(
     'label' => 'hsu_people_listing',
     'effects' => array(
-      1 => array(
+      11 => array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'hsu_people_detail',
+          'apply_all_effects' => 0,
+        ),
+        'weight' => 0,
+      ),
+      5 => array(
         'name' => 'image_scale',
         'data' => array(
           'width' => 120,
@@ -70,7 +89,7 @@ function hsu_people_image_default_styles() {
         ),
         'weight' => 1,
       ),
-      2 => array(
+      6 => array(
         'name' => 'image_crop',
         'data' => array(
           'width' => 120,
@@ -86,7 +105,15 @@ function hsu_people_image_default_styles() {
   $styles['hsu_people_w280'] = array(
     'label' => 'hsu_people_w280',
     'effects' => array(
-      1 => array(
+      12 => array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'hsu_people_detail',
+          'apply_all_effects' => 0,
+        ),
+        'weight' => 0,
+      ),
+      3 => array(
         'name' => 'image_scale',
         'data' => array(
           'width' => 280,

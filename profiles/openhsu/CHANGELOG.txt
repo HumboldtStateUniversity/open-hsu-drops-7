@@ -1,3 +1,9 @@
+OpenHSU 7.x-1.6 2017-1-18
+-----------------------
+- Update Panopoly 1.41 and Drupal 7.53 including previous core updates. Due to a possible issue with Drupal core, users may see errors/warnings when running update.php or running a fresh install like the following—"The following module is missing from the file system..." . Clearing the cache seems to remedy the errors. See issue https://www.drupal.org/node/2765117 for further explanation.
+- Fix manual crop on People content type
+- Accessibility fixes
+
 OpenHSU 7.x-1.5 2016-11-1
 -----------------------
 - Added basic styling for tables placed in body fields and text panes.

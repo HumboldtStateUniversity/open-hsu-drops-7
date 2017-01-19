@@ -5,24 +5,24 @@
  */
 ?>
 <!-- HSU Wordmark -->
-<header role="banner">
+<header>
   <div class="masthead">
     <div class="container">
     <div class="row">
       <div>
           <div class='brand col-6'>
             <p class="hsumark">
-              <a href="http://humboldt.edu" id="logo">
+              <a href="http://humboldt.edu">
                 <img src="<?php
 // an example to retrieve the url to a png file in module
-echo base_path() . drupal_get_path('module', 'custom') . 'profiles/openhsu/modules/custom/hsu_header/img/hsu-wm@2x.png';
+print base_path() . drupal_get_path('module', 'hsu_header') . '/img/hsu-wm@2x.png';
 ?>" alt="Humboldt State University" />
               </a>
               <span class="visuallyhidden">Humboldt State University</span>
             </p>
           </div>
           <div class="col-6">
-          <a href="#menu" class="utility-menu-link">HSU Menu</a>
+          <a href="#utility-menu" class="utility-menu-link">HSU Menu</a>
 <div class="utility-wrap" id="utility-menu" role="navigation" aria-label="Humboldt State A-Z Index">
   <ul class="utility-links clearfix">
     <li class="has-subnav index clearfix">

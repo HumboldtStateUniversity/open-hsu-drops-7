@@ -14,3 +14,10 @@
 		display: inline;
 	}
 }
+// change colors of invisible elements to avoid accessibility errors
+#skip-link > a {
+	background: $white;
+}
+.navbar-nav .element-invisible {
+	color: #fff;
+}

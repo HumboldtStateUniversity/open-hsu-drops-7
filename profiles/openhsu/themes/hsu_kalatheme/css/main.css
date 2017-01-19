@@ -5558,6 +5558,12 @@ a.active {
 .pane-panopoly-news-articles-by-author .clearfix:before {
   display: inline; }
 
+#skip-link > a {
+  background: #fff; }
+
+.navbar-nav .element-invisible {
+  color: #fff; }
+
 /* Define your base font-size here; most elements will inherit this. */
 html {
   font-size: 1em;

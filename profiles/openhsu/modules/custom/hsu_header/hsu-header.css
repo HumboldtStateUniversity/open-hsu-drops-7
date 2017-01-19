@@ -245,6 +245,9 @@ a.utility-menu-link {
   width: 100%;
   text-align: center;
 }
+.hsumark span {
+  background: #fff;
+}
 @media screen and (min-width: 480px) {
   .hsumark img {
     width: 80%; } 
