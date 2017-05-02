@@ -42,7 +42,7 @@ function hsu_header_attach() {
         $module_path . '/hsu-header.js',
       ),
       'css' => array(
-        $module_path . '/hsu-header.css',
+        $module_path . '/css/hsu-header.css',
       ),
     ),
   );

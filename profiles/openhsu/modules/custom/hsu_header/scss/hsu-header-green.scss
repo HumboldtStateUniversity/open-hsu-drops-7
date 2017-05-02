@@ -1,0 +1,186 @@
+* {
+  box-sizing: border-box;
+}
+
+.hsu-header-links {
+  max-width: 1280px;
+  margin: 0 -1rem;
+  font-size: .75rem;
+  line-height: 1.4;
+  border-bottom: 1px solid #5c8021;
+  position: relative;
+  overflow: hidden;
+
+  @media screen and (min-width: 43.75em) {
+    border-bottom: 0;
+    margin: 0;
+    overflow: visible;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li a {
+    color: #333;
+    display: block;
+    text-decoration: none;
+    padding: .25rem .5rem;
+
+    &:hover, &:focus {
+      background: #25551b;
+      color: #fff;
+    }
+  }
+
+  > ul {
+    > li {
+      float: left;
+      width: 33.333%;
+      text-align: center;
+      border-left: solid 1px #5c8021;
+      position: relative;
+
+      > a { // top level links - az index, quicklinks, myhumboldt
+        padding: .375rem .25rem;
+        color: #fff;
+        background: #0c4301;
+
+        @media screen and (min-width: 43.75em) {
+          background: #25551b;
+          padding: 1.125rem .25rem;
+
+          &:hover, &:focus {
+            background: #0c4301;
+          }
+        }
+      }
+    }
+    ul {
+      overflow: hidden;
+      max-height: 0;
+      background: #fff;
+      width: 100vw;
+
+      @media screen and (min-width: 43.75em) {
+        position: absolute;
+        z-index: 200;
+        width: 100%;
+      }
+
+      &.active {
+        max-height: 150em;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        background-clip: padding-box;
+      }
+      li {
+        width: auto;
+        text-align: left;
+      }
+    }
+  }
+  .hsu-header-quicklinks {
+    ul {
+      margin-left: calc(-50vw + 50%);
+
+      @media screen and (min-width: 43.75em) {
+        margin-left: 0;
+      }
+    }
+  }
+  .hsu-header-az-index {
+    border-left: 0;
+
+    ul {
+      background: #e0e4e0;
+
+      @media screen and (min-width: 43.75em) {
+        width: 320px;
+      }
+
+      li a {
+        background: #fff;
+        float: left;
+        margin: .25rem;
+        padding: .5rem;
+        text-align: center;
+        width: 2rem;
+
+        &:hover {
+          background: #25551b;
+        }
+      }
+    }
+  }
+}
+
+.quicklinks-heading {
+  border-bottom: solid 1px #444;
+  border-top: solid 1px #444;
+  font-weight: 700;
+  background: #e0e4e0;
+  padding: .25rem .5rem;
+}
+
+@media screen and (min-width: 43.75em) {
+  .hsu-header-col-6 {
+    width: 50%;
+  }
+  .hsu-header-links {
+    float: right;
+  }
+  .hsu-header-mark {
+    float: left;
+  }
+}
+
+.hsu-header-mast {
+  background: #25551b;
+  position: relative;
+  width: 100%;
+}
+
+.hsu-header-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 1rem;
+}
+
+.hsu-header-mark p {
+  line-height: 34px;
+  padding: .25rem 0;
+  margin: 0 auto;
+  width: 100%;
+
+  @media screen and (min-width: 30em) {
+    line-height: 1.5rem;
+    padding: 10px 0;
+  }
+
+  @media screen and (min-width: 43.75em) {
+    padding: 13px 0;
+  }
+
+  svg {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+
+    @media screen and (min-width: 43.75em) {
+      max-width: 100%;
+      width: 390px;
+    }
+  }
+}
+
+.hsu-humboldt {
+  fill: #fafbfb;
+}
+.hsu-state-university {
+  fill: #f7f3a5;
+}
+#hsuTitle {
+  color: #256918; //accessible contrast
+}

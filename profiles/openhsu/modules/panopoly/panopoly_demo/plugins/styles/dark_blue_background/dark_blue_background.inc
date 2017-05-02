@@ -22,7 +22,7 @@ function theme_panopoly_demo_dark_blue_background_render_pane($vars) {
   $display = $vars['display'];
   $plugin = $vars['style'];
   
-  $content->css_class .= ' pane-dark-blue-background';
+  $content->css_class = (!empty($content->css_class) ? $content->css_class . ' ' : '') . 'pane-dark-blue-background';
   
   // if the style is gone or has no theme of its own, just display the output.
   return theme('panels_pane', array('content' => $content, 'pane' => $pane, 'display' => $display));

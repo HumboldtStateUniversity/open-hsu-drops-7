@@ -1,3 +1,10 @@
+OpenHSU 7.x-1.7 2017-5-2
+-----------------------
+- Update Panopoly 1.44 and Drupal 7.54.
+- Changes to social media icon look.
+- Changes to hsu_header that removes hamburger menu and places three links above HSU wordmark.
+- More accessibility fixes.
+
 OpenHSU 7.x-1.6 2017-1-18
 -----------------------
 - Update Panopoly 1.41 and Drupal 7.53 including previous core updates. Due to a possible issue with Drupal core, users may see errors/warnings when running update.php or running a fresh install like the following—"The following module is missing from the file system..." . Clearing the cache seems to remedy the errors. See issue https://www.drupal.org/node/2765117 for further explanation.

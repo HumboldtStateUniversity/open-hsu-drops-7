@@ -18,9 +18,9 @@ features[views_view][] = panopoly_demo
 files[] = import/panopoly_demo.node.inc
 files[] = import/panopoly_demo.menu.inc
 
-; Information added by Drupal.org packaging script on 2016-11-17
-version = "7.x-1.41"
+; Information added by Drupal.org packaging script on 2017-04-13
+version = "7.x-1.44"
 core = "7.x"
 project = "panopoly_demo"
-datestamp = "1479408727"
+datestamp = "1492098280"
 

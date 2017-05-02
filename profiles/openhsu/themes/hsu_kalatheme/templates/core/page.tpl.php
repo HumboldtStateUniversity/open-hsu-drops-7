@@ -171,22 +171,22 @@
         <div class="col-sm-4 last-col social">
           <?php if ($hsu_twitter): ?>
             <a href="<?php print $hsu_twitter; ?>">
-              <i class="fa fa-twitter-square fa-3x"><span class="element-invisible">Twitter</span></i>
+              <i class="fa fa-twitter"><span class="element-invisible">Twitter</span></i>
             </a>
           <?php endif; ?>
           <?php if ($hsu_facebook): ?>
             <a href="<?php print $hsu_facebook; ?>">
-              <i class="fa fa-facebook-square fa-3x"><span class="element-invisible">Facebook</span></i>
+              <i class="fa fa-facebook"><span class="element-invisible">Facebook</span></i>
             </a>
           <?php endif; ?>
           <?php if ($hsu_instagram): ?>
             <a href="<?php print $hsu_instagram; ?>">
-              <i class="fa fa-instagram fa-3x"><span class="element-invisible">Instagram</span></i>
+              <i class="fa fa-instagram"><span class="element-invisible">Instagram</span></i>
             </a>
           <?php endif; ?>
           <?php if ($hsu_youtube): ?>
             <a href="<?php print $hsu_youtube; ?>">
-              <i class="fa fa-youtube-square fa-3x"><span class="element-invisible">Youtube</span></i>
+              <i class="fa fa-youtube"><span class="element-invisible">Youtube</span></i>
             </a>
           <?php endif; ?>
         </div>

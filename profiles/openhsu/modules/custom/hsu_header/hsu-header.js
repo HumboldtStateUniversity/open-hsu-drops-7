@@ -1,27 +1,21 @@
-(function ($) {
-  jQuery(document).ready(function (){
+( function ($) {
+  jQuery( document ).ready( function (){
 
     // utility toggles
-    var $menu = $('#utility-menu'),
-    $menulink = $('.utility-menu-link'),
-    $menuTrigger = $('.has-subnav > a');
-    var e = window.event || e;
+    var $menuTrigger = $( '.hsu-header-has-subnav > a' ),
+        e = window.event || e;
     
-    $menulink.click(function(e) {
-      e.preventDefault();
-      $menulink.toggleClass('active');
-      $menu.toggleClass('active');
-    });
-    
-    $menuTrigger.click(function(e) {
+    $menuTrigger.click( function ( e ) {
       e.preventDefault();
       e.stopPropagation();
-      var $this = $(this);
-      $this.toggleClass('test').next('ul').toggleClass('active');
+      var $this = $( this );
+      $this.closest( '.hsu-header-has-subnav' ).siblings().children().removeClass( 'active' );
+      $this.next( 'ul' ).toggleClass( 'active' );
     });
-    $(document).click(function(){
-      $('ul').removeClass('active');
+
+    $( document ).click( function () {
+      $( '.hsu-header-has-subnav ul' ).removeClass( 'active' );
      });
 
   });
-}) (jQuery);
+}) ( jQuery );

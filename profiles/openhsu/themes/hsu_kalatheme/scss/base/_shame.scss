@@ -21,3 +21,13 @@
 .navbar-nav .element-invisible {
 	color: #fff;
 }
+
+// fix datepicker contrast
+.ui-datepicker-year, .ui-datepicker-month {
+	color: $black;
+}
+
+// fix wide invisible elements
+.element-invisible {
+	width: 1px;
+}
