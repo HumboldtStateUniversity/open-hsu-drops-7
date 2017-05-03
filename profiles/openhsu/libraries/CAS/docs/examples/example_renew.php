@@ -1,11 +1,11 @@
 <?php
 
 /**
- *  Example for a proxy with session usage
+ *   Example for a simple cas 2.0 client
  *
  * PHP Version 5
  *
- * @file     example_proxy_serviceWeb_chaining.php
+ * @file     example_renew.php
  * @category Authentication
  * @package  PhpCAS
  * @author   Joachim Fritschi <jfritschi@freenet.de>
@@ -25,7 +25,7 @@ phpCAS::setDebug();
 phpCAS::setVerbose(true);
 
 // Initialize phpCAS
-phpCAS::proxy(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
+phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 
 // For production use set the CA certificate that is the issuer of the cert
 // on the CAS server and uncomment the line below
@@ -37,35 +37,36 @@ phpCAS::proxy(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 phpCAS::setNoCasServerValidation();
 
 // force CAS authentication
-phpCAS::forceAuthentication();
+phpCAS::renewAuthentication();
 
 // at this step, the user has been authenticated by the CAS server
 // and the user's login name can be read with phpCAS::getUser().
 
-// moreover, a PGT was retrieved from the CAS server that will
-// permit to gain accesses to new services.
+// logout if desired
+if (isset($_REQUEST['logout'])) {
+    phpCAS::logout();
+}
 
+// logout if desired
+if (isset($_REQUEST['session'])) {
+    session_unset();
+    session_destroy();
+    unset($_REQUEST['session']);
+    header("Location: ".$_SERVER['PHP_SELF']);
+}
+
+// for this test, simply print that the authentication was successfull
 ?>
 <html>
   <head>
-    <title>phpCAS proxy example #2</title>
-    <link rel="stylesheet" type='text/css' href='example.css'/>
+    <title>phpCAS simple client</title>
   </head>
   <body>
-    <h1>phpCAS proxied proxy example</h1>
+    <h1>Successfull Authentication!</h1>
     <?php require 'script_info.php' ?>
     <p>the user's login is <b><?php echo phpCAS::getUser(); ?></b>.</p>
-    <h2>Response from service <?php echo $serviceUrl2; ?></h2>
-<?php
-flush();
-// call a service and change the color depending on the result
-if (phpCAS::serviceWeb($serviceUrl2, $err_code, $output)) {
-    echo '<div class="success">';
-} else {
-    echo '<div class="error">';
-}
-echo $output;
-echo '</div>';
-                                                              ?>
+    <p>phpCAS version is <b><?php echo phpCAS::getVersion(); ?></b>.</p>
+    <p><a href="?logout=">Logout</a></p>
+    <p><a href="?session=">Kill local Session</a></p>
   </body>
 </html>
