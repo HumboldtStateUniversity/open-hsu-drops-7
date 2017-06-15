@@ -5,20 +5,9 @@
  */
 
 /**
- * Implements hook_theme().
- */
-function hsu_header_theme($existing, $type, $theme, $path) {
-  $items['hsu_header'] = array(
-    'variables' => array(),
-    'template' => 'hsu-header',
-  );
-  return $items;
-}
-
-/**
  * Implements hook_page_build().
  */
-function hsu_header_page_build(&$page){
+function hsu_header_page_build(&$page) {
   // Exclude if active theme is seven.
   global $theme_key;
   if ( $theme_key == 'seven' ) {
@@ -28,6 +17,17 @@ function hsu_header_page_build(&$page){
   $page['page_top']['hsu_header'] = array(
     '#pre_render' => array('hsu_header_attach'),
   );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function hsu_header_theme() {
+  $items['hsu_header'] = array(
+    'variables' => array('hsu_header_quicklinks' => hsu_header_quicklinks_json()),
+    'template' => 'hsu-header',
+  );
+  return $items;
 }
 
 /**
@@ -47,4 +47,30 @@ function hsu_header_attach() {
     ),
   );
   return $build;
+}
+
+/**
+ * Turn quicklinks JSON into list items.
+ */
+function hsu_header_quicklinks_json() {
+  $jsondata = file_get_contents("http://humboldt.edu/quicklinks/json");
+  $quicklinks = json_decode($jsondata, TRUE);
+
+  $output = "";
+
+  if ( !empty($quicklinks['data'])) {
+    $output .= "<li class=\"hsu-header-has-subnav hsu-header-quicklinks\"><a href=\"#\">quicklinks <i class=\"fa fa-caret-down\"></i></a><ul>";
+    foreach ($quicklinks['data'] as $value) {
+      if ($value['link_path'] == '<nolink>') {
+        $output .= "<li class=\"quicklinks-heading\">" . $value['link_title'] . "</li>\r\n";
+      }
+      else {
+        $output .= "<li><a href=\"" . $value['link_path'] . "\">" . $value['link_title'] . "</a></li>\r\n";
+      }
+    }
+    $output .= "</ul></li>";
+  } else {
+    $output .= "<li class=\"hsu-header-quicklinks\"><a href=\"http://humboldt.edu/quicklinks-menu\">quicklinks</a></li>";
+  }
+  return $output;
 }

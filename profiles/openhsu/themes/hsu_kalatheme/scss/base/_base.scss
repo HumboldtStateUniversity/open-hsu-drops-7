@@ -1,6 +1,11 @@
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
+ // responsive images in cases that aren't place using media module-filter-tabs
+ img {
+   max-width: 100%;
+   height: auto;
+ }
  *,:after,:before {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -14,6 +19,7 @@
   padding-left: 0;
   padding-right: 0;
  }
+
 .header-image {
   max-height: 300px;
   overflow: hidden;
@@ -126,7 +132,7 @@ h1,h2,h3,h4,h5,h6{
     left: 50%;
     transform: translate(-50%, -50%);
   }
-} 
+}
 
 // Some weirdness on the IPE.
 .panels-ipe-portlet-marker .panels-ipe-newblock {
@@ -211,5 +217,5 @@ div.admin-panel .description {
   width:auto;
  @media screen and (min-width: $screen-lg-min) {
     width:48%;
-   } 
+   }
 }

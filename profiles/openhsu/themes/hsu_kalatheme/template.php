@@ -4,6 +4,16 @@
  * Primary pre/preprocess functions and alterations.
  */
 
+   // Implements hook_form_FORM_ID_alter to manipulate the search block
+   function hsu_kalatheme_form_search_block_form_alter(&$form, &$form_state, $form_id) {
+     $form['search_block_form']['#size'] = 40;  // define size of the textfield
+     $form['search_block_form']['#attributes']['class'][] = 'searchbox-input';
+     $form['actions']['submit']['#attributes']['class'][] = 'searchbox-submit';
+     $form['#attributes']['onsubmit'] = "if(this.search_block_form.value=='Search'){ alert('Please enter a search'); return false; }";
+
+     // Alternative (HTML5) placeholder attribute instead of using the javascript
+     $form['search_block_form']['#attributes']['placeholder'] = t('Search');
+}
 /**
  * Implements hook_theme().
  *
@@ -12,19 +22,6 @@
  */
 function hsu_kalatheme_theme($existing, $type, $theme, $path) {
   return array(
-    'hsu_site_header' => array(
-      'template' => 'templates/sections/hsu-site-header',
-      'variables' => array(
-        'front_page' => FALSE,
-        'logo' => '',
-        'site_name' => '',
-        'hide_site_name' => FALSE,
-        'site_slogan' => '',
-        'hide_site_slogan' => FALSE,
-        'hsu_banner' => '',
-        'hsu_header' => '',
-      ),
-    ),
     'hsu_navbar' => array(
       'template' => 'templates/bootstrap/hsu-navbar',
       'variables' => array(
@@ -39,53 +36,15 @@ function hsu_kalatheme_theme($existing, $type, $theme, $path) {
   );
 }
 
-/**
- * Implements hook_preprocess_hsu_site_header.
- */
-function hsu_kalatheme_preprocess_hsu_site_header(&$vars){
-  // Find the managed file the the url that matches what we got in the 
-  // hsu_header var. The file entity already has the height and width of the 
-  // image in it's metadata (which theme_picture NEEDS) so this is quicker than 
-  // using something like getimagesize() which seems to be super slow.
-  $files_dir = file_create_url('public://');
-  $file_path = str_replace($files_dir, '', $vars['hsu_header']);
-  $entity_type = 'file';
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', $entity_type)
-    ->propertyCondition('uri', 'public://' . $file_path);
-    
-  $result = $query->execute();
-  
-  // Make sure we have a match.
-  if (isset($result[$entity_type])) {
-    // Load the file entity.
-    $fid = reset($result[$entity_type])->fid;
-    $file_entity = file_load($fid);
-    
-    // Load the picture mappping.
-    $picture_mapping = picture_mapping_load('kalapicture_12');
-    $breakpoints = picture_get_mapping_breakpoints($picture_mapping);
-    $image_size = getimagesize($vars['hsu_header']);
-
-    // Add a render array that will output the goods.
-    $vars['hsu_header_image'] = array(
-      '#theme' => 'picture',
-      '#uri' => $file_path, // Note: picture module seems to need a path relative to the files dir.
-      '#width' => $file_entity->metadata['width'], 
-      '#height' => $file_entity->metadata['height'], 
-      '#alt' => $vars['site_name'],
-      '#breakpoints' => $breakpoints, 
-    );
-  }  
-}
-
 function hsu_kalatheme_preprocess_html(&$variables) {
 
   /**
   * loading web fonts and external css
   */
-  drupal_add_css('//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic', array('type' => 'external'));  
-} 
+  drupal_add_css('//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic', array('type' => 'external'));
+
+}
+
 /**
  * Override or insert variables into the page template.
  *
@@ -95,7 +54,21 @@ function hsu_kalatheme_preprocess_page(&$variables) {
   // Add Bootstrap JS and stock CSS.
   global $base_url;
   $base = parse_url($base_url);
-  
+
+  // Get a list of all the regions for this theme
+  if ( module_exists('block')) {
+      foreach (system_region_list($GLOBALS['theme']) as $region_key => $region_name) {
+
+      // Get the content for each region and add it to the $region variable
+      if ($blocks = block_get_blocks_by_region($region_key)) {
+        $variables['region'][$region_key] = $blocks;
+      }
+      else {
+        $variables['region'][$region_key] = array();
+      }
+    }
+  }
+
   // Use the CDN if not using libraries.
   if (!kalatheme_use_libraries()) {
     $library = theme_get_setting('bootstrap_library');
@@ -108,16 +81,16 @@ function hsu_kalatheme_preprocess_page(&$variables) {
     }
   }
   $font_awesome_active = FALSE;
-  
+
   // Use Font Awesome.
   if (theme_get_setting('font_awesome_cdn')) {
     $font_awesome_active = TRUE;
     drupal_add_css($base['scheme'] . ":" . KALATHEME_FONTAWESOME_CSS, 'external');
   }
-  
+
   // Let JS know that we have this enabled.
   drupal_add_js(array('kalatheme' => array('fontawesome' => $font_awesome_active)), 'setting');
-  
+
   // Various menu tweaks.
   hsu_kalatheme_handle_menu($variables);
 
@@ -131,10 +104,10 @@ function hsu_kalatheme_preprocess_page(&$variables) {
 
   // If panels arent being used at all.
   $variables['no_panels'] = !(module_exists('page_manager') && page_manager_get_current_page());
-  
+
   // Add theme settings as variables available to the page.tpl.php
   hsu_kalatheme_add_theme_setting_vars($variables);
-  
+
   // Add render arrays for the header and navbar.
   $variables['page']['hsu_site_header'] = array(
     '#theme' => 'hsu_site_header',
@@ -144,8 +117,6 @@ function hsu_kalatheme_preprocess_page(&$variables) {
     '#hide_site_name' => $variables['hide_site_name'],
     '#site_slogan' => $variables['site_slogan'],
     '#hide_site_slogan' => $variables['hide_site_slogan'],
-    '#hsu_header' => $variables['hsu_header'],
-    '#hsu_banner' => $variables['hsu_banner'],
   );
 
   $variables['page']['hsu_navbar'] = array(
@@ -155,7 +126,34 @@ function hsu_kalatheme_preprocess_page(&$variables) {
     '#secondary_menu'=> $variables['secondary_menu'],
     '#site_name' => $variables['site_name'],
     '#front_page' => $variables['front_page'],
-  );  
+  );
+
+
+  $default_theme = variable_get('theme_default', NULL);
+
+  if (theme_get_setting('hsu_kalatheme_image_toggle', $default_theme)) {
+    /**
+  		 * add css for header background image
+  		 */
+  	  $options = array(
+  	    'type'  => 'inline',
+  	    'group' => CSS_THEME,
+   	  );
+
+  	  //Get theme setting for header image
+  	  $image_file = theme_get_setting('hsu_kalatheme_header_image');
+
+  	  //Build full path to image
+  	  $image_path = base_path() . drupal_get_path('theme', 'hsu_kalatheme') . '/img/banners';
+  	  $image_path .= "/$image_file";
+
+  	  //Add selected header image as css background
+      if ($image_file != '') {
+        $css = ".header-container {position: relative;padding:1.5rem 0;color:#fff;background:url('$image_path') no-repeat center top;background-size:cover;}.hsu-header{background:none;}.hsu-header h1{float:left;background:rgba(255, 255, 255, .75);padding:.5rem;}.department-brand a{color:#25551b;}.department-brand a:hover{color:black;}";
+    	  drupal_add_css($css, $options);
+      }
+    }
+    // kpr($variables);
 }
 
 /**
@@ -246,17 +244,16 @@ function hsu_kalatheme_add_theme_setting_vars(&$variables){
   $theme_settings = array(
     // Check if we're to always print the page title, even on panelized pages.
     'always_show_page_title' => 'always_show_page_title',
-    
+
     // Add in location theme settings into vars
     'hsu_street' => 'street',
     'hsu_city' => 'citystatezip',
     'hsu_phone' => 'phone',
     'hsu_fax' => 'fax',
     'hsu_email' => 'email',
-    
-    // Add header info
-    'hsu_banner' => 'use_banner',
-    'hsu_header' => 'header_file',
+
+    //Add backround header image
+    'hsu_kalatheme_header_image' => 'hsu_kalatheme_header_image',
 
     // Add social info
     'hsu_twitter' => 'twitter',
@@ -264,8 +261,8 @@ function hsu_kalatheme_add_theme_setting_vars(&$variables){
     'hsu_instagram' => 'instagram',
     'hsu_youtube' => 'youtube',
   );
-  
+
   foreach ($theme_settings as $key => $setting) {
     $variables[$key] = theme_get_setting($setting) ? theme_get_setting($setting) : NULL;
-  }  
+  }
 }

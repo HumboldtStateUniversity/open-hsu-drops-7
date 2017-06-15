@@ -11,6 +11,8 @@ function hsu_kalatheme_location_form() {
     '#type' => 'fieldset',
     '#title' => 'Site Contact Info',
     '#weight' => -98,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
   );
 
   $form['open_hsu_contact_info']['street'] = array(
@@ -53,6 +55,8 @@ function hsu_kalatheme_social_form() {
     '#type' => 'fieldset',
     '#title' => 'Social Media Info',
     '#weight' => -97,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
   );
 
   $form['open_hsu_social_info']['twitter'] = array(
@@ -82,83 +86,138 @@ function hsu_kalatheme_social_form() {
   return $form;
 }
 
-
-
-function hsu_kalatheme_header_image_form() {
-  $form = array();
-
-  $form['open_hsu_header_image'] = array (
-    '#type' => 'fieldset',
-    '#title' => 'Site Banner Image',
-    '#weight' => -99,
+function hsu_kalatheme_header_bgimage_form() {
+  $form['hsu_kalatheme_image'] = array(
+    "#type"  => "fieldset",
+    "#title" => "Header Image for OpenHSU",
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
   );
 
-  $form['open_hsu_header_image']['use_banner'] = array (
-    '#type' => 'checkbox',
-    '#title' => t('Add a custom banner image.'),
-    '#default_value' => theme_get_setting('use_banner'),
-  );
-
-  $form['open_hsu_header_image']['header_file'] = array(
-    '#type' => 'file',
-    '#title' => t('File'),
-    '#description' => t('Upload a file, allowed extensions: jpg, jpeg, png'),
-    '#default_value' => theme_get_setting('header_file'),
-    '#states' => array(
-      'visible' => array(
-        ':input[name="use_banner"]' => array('checked' => TRUE),
-      ),
+  // Manually set hsu_kalatheme header images
+  $header_options = array(
+    t('OpenHSU Headers')  => array(
+      'gold-hgh.jpg'        => t('Harry Griffith Hall & Autumn Leaves'),
+      'lostcoast.jpg'       => t('Backpacking the Lost Coast'),
+      'bios012115_004.jpg'  => t('Old Home Beach, Trinidad'),
+      'bios093011_276.jpg'  => t('Indian Beach, Trinidad Bay'),
+      'bios022109_458.jpg'  => t('Mossy Forest'),
+      'fore031314_119.jpg'  => t('Redwoods'),
+      'land101608_122.jpg'  => t('Ferns'),
+      'bios012115_019.jpg'  => t('Cloudy Sky'),
+      'dunes.jpg'           => t('Buckwheat Beach Dunes'),
+      'founders.jpg'        => t('Founders Hall'),
+      'kra.jpg'             => t('Student Recreation Center'),
+      'library.jpg'         => t('Library'),
+      'quad-night.jpg'      => t('UC Quad at Night'),
+      'students.jpg'        => t('Students'),
+      'college-creek.jpg'   => t('College Creek'),
+      'canoe.jpg'           => t('Canoes'),
+      'redwoods.jpg'        => t('Redwood Needles'),
+      'students-beach.jpg'  => t('Students at the Beach'),
+      'bicycle.jpg'         => t('Bicycles'),
+      'students-zoo.jpg'    => t('Students at the Zoo'),
+      'jacks-fans.jpg'      => t('Lumberjack Fans'),
+      'campus-night.jpg'    => t('Campus Rooftops at Night'),
+      'bss.jpg'             => t('Behavioral & Social Sciences'),
     ),
   );
 
-  if (theme_get_setting('header_file')) {
-    $using = (theme_get_setting('header_file')) ? theme_get_setting('header_file') : '<em>No file set</em>';
-    $form['open_hsu_header_image']['header_file']['#description'] .= '<br>Currently using ' . $using;
-  }
+  //Header image is optional
+  $form['hsu_kalatheme_image']['hsu_kalatheme_image_toggle'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use a header image'),
+    '#default_value' => theme_get_setting('hsu_kalatheme_image_toggle'),
+    '#description' => t('Check if you want to set a header image that will appear behind your site name.'),
+  );
 
-  $form['#validate'][] = 'hsu_kalatheme_header_image_form_validate';
-  $form['#submit'][] = 'hsu_kalatheme_header_image_form_submit';
+  // Select Header Image
+  $form['hsu_kalatheme_image']['hsu_kalatheme_header_image'] = array(
+    '#type'          => 'select',
+    '#title'         => t('Select an Image'),
+    '#options'       => $header_options,
+    '#description'   => t('<div style="padding:10px;margin:15px 0;border:solid 1px #ccc;"><p>The image will appear behind your site name near the top of your site. <a href="https://brand.humboldt.edu/standards/web/banner-images" target="_blank"><strong>Preview all images</strong></a> <i class="fa fa-external-link"></i></p></div>'),
+    '#default_value' => theme_get_setting('hsu_kalatheme_header_image'),
+    //Disable ajax callback because it is busted when using with Domain Access
+    // '#ajax'          => array(
+    //   'callback'     => 'hsu_kalatheme_image_preview_callback',
+    //   'wrapper'      => 'header_image_div',
+    //  ),
+     '#states' => array(
+       'invisible' => array(
+         ':input[name="hsu_kalatheme_image_toggle"]' => array('checked' => FALSE),
+       ),
+     ),
+  );
 
+  //Disable ajax callback because it is busted when using with Domain Access
+  // Header Image Preview
+  // $form['hsu_kalatheme_image']['hsu_kalatheme_header_image_preview'] = array(
+  //   '#type'          => 'fieldset',
+  //   '#title'         => t('Preview of the Currently Selected Image'),
+  //   'image'          => hsu_kalatheme_image_preview_initial(),
+  //   '#collapsible'   => TRUE,
+  //   '#collapsed'     => FALSE,
+  //   '#states' => array(
+  //     'invisible' => array(
+  //       ':input[name="hsu_kalatheme_image_toggle"]' => array('checked' => FALSE),
+  //     ),
+  //   ),
+  // );
   return $form;
-}
-
-function hsu_kalatheme_header_image_form_validate($form, &$form_state) {
-  if ($_FILES['files']['name']['header_file']) {
-    $file = file_save_upload('header_file', array(
-      // Validates file is really an image.
-      'file_validate_is_image' => array(),
-      // Validate extensions.
-      'file_validate_extensions' => array('png jpg jpeg'),
-    ));
-    // If the file passed validation:
-    if ($file) {
-      // Move the file into the Drupal file system.
-      if ($file = file_move($file, 'public://')) {
-        // Save the file for use in the submit handler.
-        $form_state['storage']['header_file'] = $file;
-        $form_state['values']['header_file'] = file_create_url($file->uri);
-      }
-      else {
-        form_set_error('header_file', t("Failed to write the uploaded file to the site's file folder."));
-      }
-    }
-    else {
-      $form_state['storage']['header_file'] = $file;
-      form_set_error('header_file', t('No file was uploaded.'));
-    }
   }
-}
 
-function hsu_kalatheme_header_image_form_submit($form, &$form_state) {
-  if (isset($form_state['storage']['header_file'])) {
-    $file = $form_state['storage']['header_file'];
-    // We are done with the file, remove it from storage.
-    unset($form_state['storage']['header_file']);
-    // Make the storage of the file permanent.
-    $file->status = FILE_STATUS_PERMANENT;
-    // Save file status.
-    file_save($file);
-    // Set a response to the user.
-    drupal_set_message(t('The form has been submitted and the image has been saved, filename: @filename.', array('@filename' => $file->filename)));
+
+  /**
+  * Display the initial header image
+  */
+  function hsu_kalatheme_image_preview_initial() {
+
+  //Get theme setting for header image
+  $image_file = theme_get_setting('hsu_kalatheme_header_image');
+
+  return hsu_kalatheme_image_preview($image_file);
+
   }
+
+  /**
+  * Ajax callback for selected header image
+  */
+  function hsu_kalatheme_image_preview_callback($form, $form_state) {
+
+  //Get current header image from $form_state
+  $image_file = $form_state['values']['hsu_kalatheme_header_image'];
+
+  return hsu_kalatheme_image_preview($image_file);
+
+  }
+
+  /**
+  * Preview the selected header image
+  */
+  function hsu_kalatheme_image_preview($image_file) {
+
+  $image_preview = array();
+
+  //Build full path to image
+  $image_path = drupal_get_path('theme', 'hsu_kalatheme') . '/img/banners';
+  $image_path .= "/$image_file";
+
+  $variables = array(
+    'path' => "$image_path",
+    'alt' => 'Preview of header image',
+    'title' => 'Preview of header image',
+    'width' => '100%',
+    'height' => 'auto',
+  );
+
+  // Image preview
+  $image_preview = array(
+    '#markup' => theme('image', $variables),
+    '#prefix' => '<div id="header_image_div">',
+    '#suffix' => '</div>',
+
+  );
+
+  return $image_preview;
 }

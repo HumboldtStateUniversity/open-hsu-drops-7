@@ -82,12 +82,43 @@
  * @ingroup themeable
  */
 ?>
-
 <div id="page-wrapper"><div id="page">
 
   <!-- Site Header -->
-  <?php print render($page['hsu_site_header']); ?>
+  <header role="banner" class="header-container">
 
+    <div class="hsu-header">
+      <div class="container department-brand">
+      <?php if ($logo): ?>
+        <div class="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+                <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+              </a>
+          </div>
+      <?php endif; ?>
+
+      <?php if ($site_name): ?>
+        <h1 <?php if ($hide_site_name) { print ' class="element-invisible"'; } ?> <?php {print ' class="kilo"'; }?>>
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+        </h1>
+      <?php endif; ?>
+
+      <?php if ($site_slogan): ?>
+        <div id="site-slogan"<?php if ($hide_site_slogan) { print ' class="element-invisible"'; } ?>>
+          <p class="department-slogan"><?php print $site_slogan; ?></p>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($page['header_search']): ?>
+        <div class="searchbox">
+          <?php print render($region['header_search']); ?>
+          <span class="searchbox-icon">GO</span>
+        </div>
+        <?php endif; ?>
+
+      </div> <!-- /#name-and-slogan -->
+
+    </div>
+  </header>
   <!-- Site Navigation -->
   <?php print render($page['hsu_navbar']); ?>
 
@@ -166,7 +197,7 @@
           </div>
         </div>
         <div class="col-sm-4">
-          
+
         </div>
         <div class="col-sm-4 last-col social">
           <?php if ($hsu_twitter): ?>

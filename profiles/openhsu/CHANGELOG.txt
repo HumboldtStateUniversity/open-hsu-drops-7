@@ -1,3 +1,12 @@
+OpenHSU 7.x-1.8 2017-6-15
+-----------------------
+- Update to Panopoly 1.45 and Drupal 7.55.
+- Removed original header image in theme settings and replaced with background image functionality that allows site builders to toggle on/off and select from a pool of images (preview images at https://brand.humboldt.edu/standards/web/banner-images)
+- Added Fancy Search like admissions.humboldt and housing.humboldt.edu
+- Fixed css issue for responsive images
+- In hsu_kalatheme removed hsu-site-header.tpl.php and placed header markup in page.tpl.php
+- Added json based quicklinks to hsu_header
+
 OpenHSU 7.x-1.7 2017-5-2
 -----------------------
 - Update Panopoly 1.44 and Drupal 7.54.

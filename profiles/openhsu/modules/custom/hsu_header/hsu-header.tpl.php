@@ -40,40 +40,7 @@
               <li><a href="http://humboldt.edu/siteindex/z">Z</a></li>
             </ul>
           </li>
-          <li class="hsu-header-has-subnav hsu-header-quicklinks">
-            <a href="#">quicklinks <i class="fa fa-caret-down"></i></a>
-            <ul>
-              <li class="quicklinks-heading">Directories</li>
-              <li><a href="http://www.humboldt.edu/departments">Academic Departments</a></li>
-              <li><a href="//humboldt.edu/tns/directory.php">Staff &amp; Faculty</a></li>
-              <li><a href="//humboldt.edu/tns/student_email.php">Students</a></li>
-              <li class="quicklinks-heading">Campus Info</li>
-              <li><a href="http://www.humboldt.edu/events">Calendars &amp; Events</a></li>
-              <li><a href="http://www.collegeportraits.org/CA/HSU">College Portrait</a></li>
-              <li><a href="http://www.humboldt.edu/hsuhr/vacancies.html">Employment</a></li>
-              <li><a href="http://www.humboldt.edu/maps">Maps</a></li>
-              <li><a href="http://www.humboldt.edu/risksafety/node/37">Facility Rental</a></li>
-              <li class="quicklinks-heading">Tools</li>
-              <li><a href="http://humboldt.edu/myhumboldt">myHumboldt</a></li>
-              <li><a href="https://idm-prov.humboldt.edu/identity/self-service/hsu/caslogin.jsp">Account Settings</a></li>
-              <li><a href="http://humboldt.edu/reset">Reset HSU Password</a></li>
-              <li><a href="http://myhousing.humboldt.edu">myHousing</a></li>
-              <li class="quicklinks-heading">Course Info</li>
-              <li><a href="http://www.humboldt.edu/registrar/catalog/">Catalog</a></li>
-              <li><a href="http://www.humboldt.edu/oaa/classes.shtml">Class Schedule</a></li>
-              <li><a href="http://humboldt.edu/studentcenter/">Registration</a></li>
-              <li class="quicklinks-heading">Student Services</li>
-              <li><a href="http://associatedstudents.humboldt.edu">Associated Students</a></li>
-              <li><a href="http://www.hsubookstore.com/">Bookstore</a></li>
-              <li><a href="http://www.humboldt.edu/finaid">Financial Aid</a></li>
-              <li><a href="http://library.humboldt.edu">Library</a></li>
-              <li><a href="http://www.humboldt.edu/registrar">Registrar</a></li>
-              <li class="quicklinks-heading">Tuition &amp; Fee Payment</li>
-              <li><a href="http://humboldt.edu/studentcenter/">Through Student Center</a></li>
-              <li><a href="https://commerce.cashnet.com/HUMBOLDTACH">Electronic Payments</a></li>
-              <li><a href="http://www.humboldt.edu/studentfinancial/">More Information</a></li>
-            </ul>
-          </li>
+          <?php print $hsu_header_quicklinks ?>
           <li><a href="http://humboldt.edu/myhumboldt">myHumboldt</a></li>
         </ul>
       </div><!--/ .col-6 with links -->

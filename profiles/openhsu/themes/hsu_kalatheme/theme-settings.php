@@ -17,9 +17,10 @@ function hsu_kalatheme_form_system_theme_settings_alter(&$form, &$form_state) {
   $form['backend_check']['#access'] =false;
 
   // Add the location form
-  $form += hsu_kalatheme_header_image_form();
   $form += hsu_kalatheme_location_form();
   $form += hsu_kalatheme_social_form();
+  $form += hsu_kalatheme_header_bgimage_form();
 
   $form_state['build_info']['files'][] = drupal_get_path('theme', 'hsu_kalatheme') . '/includes/config.inc';
+
 }

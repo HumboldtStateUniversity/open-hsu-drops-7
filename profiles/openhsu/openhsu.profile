@@ -57,7 +57,6 @@ function openhsu_hsu_configure_form($form, &$form_state) {
 
   // OpenHSU settings
   $form = array();
-  $form += hsu_kalatheme_header_image_form();
   $form += hsu_kalatheme_location_form();
   $form += hsu_kalatheme_social_form();
   $form = system_settings_form($form);
@@ -85,9 +84,6 @@ function openhsu_enable_theme($form, &$form_state) {
   $theme_settings['phone'] = $form_state['values']['phone'];
   $theme_settings['fax'] = $form_state['values']['fax'];
   $theme_settings['email'] = $form_state['values']['email'];
-  // Banner things
-  $theme_settings['use_banner'] = $form_state['values']['use_banner'];
-  $theme_settings['header_file'] = $form_state['values']['header_file'];
   // Social things
   $theme_settings['twitter'] = $form_state['values']['twitter'];
   $theme_settings['facebook'] = $form_state['values']['facebook'];

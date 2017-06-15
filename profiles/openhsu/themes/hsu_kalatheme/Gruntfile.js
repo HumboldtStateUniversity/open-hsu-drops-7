@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       },
       themeJs: {
         files: {
-          'js/dist/hsu_kalatheme.js': 'js/dist/hsu_kalatheme.js'
+          'js/hsu_kalatheme.js': 'js/dist/hsu_kalatheme.js'
         }
       }
     },
