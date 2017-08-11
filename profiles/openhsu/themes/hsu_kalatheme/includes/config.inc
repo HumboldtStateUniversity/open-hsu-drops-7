@@ -86,6 +86,38 @@ function hsu_kalatheme_social_form() {
   return $form;
 }
 
+
+function hsu_kalatheme_custom_css_form() {
+  $form = array();
+
+  $form['hsu_custom_css'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Add custom css file'),
+    '#weight' => -90,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['hsu_custom_css']['custom_css_file'] = array(
+    '#type' => 'textfield',
+    '#title' => t('File name in sites/all/modules/libraries/custom-css'),
+    '#default_value' =>theme_get_setting('custom_css_file'),
+  );
+
+  $form['#validate'][] = 'hsu_kalatheme_custom_css_form_validate';
+
+  return $form;
+}
+
+function hsu_kalatheme_custom_css_form_validate($form, &$form_state) {
+  $file = $form_state['values']['custom_css_file'];
+  $filepath = libraries_get_path('custom-css') . '/' . $file;
+
+  if ( $file != '' && !file_exists($filepath)) {
+    form_set_error('custom_css_file', t('The file ' . $file . ' does not exist in the custom-css library directory.'));
+  }
+}
+
 function hsu_kalatheme_header_bgimage_form() {
   $form['hsu_kalatheme_image'] = array(
     "#type"  => "fieldset",

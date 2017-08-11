@@ -1,3 +1,11 @@
+OpenHSU 7.x-1.8 2017-8-11
+-----------------------
+- Update to Panopoly 1.46 and Drupal 7.56
+- Add ability to add custom css files to theme settings
+- Add trumba module and js_alter to template.php in hsu_kalatheme
+- Add redirect module to profile
+- Update Font Awesome to 4.7.0
+
 OpenHSU 7.x-1.8 2017-6-15
 -----------------------
 - Update to Panopoly 1.45 and Drupal 7.55.

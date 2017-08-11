@@ -153,7 +153,6 @@ function hsu_kalatheme_preprocess_page(&$variables) {
     	  drupal_add_css($css, $options);
       }
     }
-    // kpr($variables);
 }
 
 /**
@@ -264,5 +263,14 @@ function hsu_kalatheme_add_theme_setting_vars(&$variables){
 
   foreach ($theme_settings as $key => $setting) {
     $variables[$key] = theme_get_setting($setting) ? theme_get_setting($setting) : NULL;
+  }
+}
+
+// Swap out trumba spuds.js to use 25live version.
+function hsu_kalatheme_js_alter(&$javascript) {
+   // Only on pages where it exists
+  if (isset($javascript['https://www.trumba.com/scripts/spuds.js'])) {
+    unset($javascript['https://www.trumba.com/scripts/spuds.js']);
+      drupal_add_js('//25livepub.collegenet.com/scripts/spuds.js', array('type' => 'external'));
   }
 }
