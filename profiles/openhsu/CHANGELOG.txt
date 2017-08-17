@@ -1,4 +1,8 @@
-OpenHSU 7.x-1.8 2017-8-11
+OpenHSU 7.x-1.10 2017-8-17
+-----------------------
+- Updating to Panopoly 1.47 for views and entity reference security updates
+
+OpenHSU 7.x-1.9 2017-8-11
 -----------------------
 - Update to Panopoly 1.46 and Drupal 7.56
 - Add ability to add custom css files to theme settings
