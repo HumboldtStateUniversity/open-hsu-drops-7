@@ -170,11 +170,6 @@ function hsu_kalatheme_header_bgimage_form() {
     '#options'       => $header_options,
     '#description'   => t('<div style="padding:10px;margin:15px 0;border:solid 1px #ccc;"><p>The image will appear behind your site name near the top of your site. <a href="https://brand.humboldt.edu/standards/web/banner-images" target="_blank"><strong>Preview all images</strong></a> <i class="fa fa-external-link"></i></p></div>'),
     '#default_value' => theme_get_setting('hsu_kalatheme_header_image'),
-    //Disable ajax callback because it is busted when using with Domain Access
-    // '#ajax'          => array(
-    //   'callback'     => 'hsu_kalatheme_image_preview_callback',
-    //   'wrapper'      => 'header_image_div',
-    //  ),
      '#states' => array(
        'invisible' => array(
          ':input[name="hsu_kalatheme_image_toggle"]' => array('checked' => FALSE),
@@ -182,74 +177,75 @@ function hsu_kalatheme_header_bgimage_form() {
      ),
   );
 
-  //Disable ajax callback because it is busted when using with Domain Access
-  // Header Image Preview
-  // $form['hsu_kalatheme_image']['hsu_kalatheme_header_image_preview'] = array(
-  //   '#type'          => 'fieldset',
-  //   '#title'         => t('Preview of the Currently Selected Image'),
-  //   'image'          => hsu_kalatheme_image_preview_initial(),
-  //   '#collapsible'   => TRUE,
-  //   '#collapsed'     => FALSE,
-  //   '#states' => array(
-  //     'invisible' => array(
-  //       ':input[name="hsu_kalatheme_image_toggle"]' => array('checked' => FALSE),
-  //     ),
-  //   ),
-  // );
   return $form;
-  }
+}
 
+function hsu_kalatheme_footer_settings_form() {
+  $form = array();
 
-  /**
-  * Display the initial header image
-  */
-  function hsu_kalatheme_image_preview_initial() {
-
-  //Get theme setting for header image
-  $image_file = theme_get_setting('hsu_kalatheme_header_image');
-
-  return hsu_kalatheme_image_preview($image_file);
-
-  }
-
-  /**
-  * Ajax callback for selected header image
-  */
-  function hsu_kalatheme_image_preview_callback($form, $form_state) {
-
-  //Get current header image from $form_state
-  $image_file = $form_state['values']['hsu_kalatheme_header_image'];
-
-  return hsu_kalatheme_image_preview($image_file);
-
-  }
-
-  /**
-  * Preview the selected header image
-  */
-  function hsu_kalatheme_image_preview($image_file) {
-
-  $image_preview = array();
-
-  //Build full path to image
-  $image_path = drupal_get_path('theme', 'hsu_kalatheme') . '/img/banners';
-  $image_path .= "/$image_file";
-
-  $variables = array(
-    'path' => "$image_path",
-    'alt' => 'Preview of header image',
-    'title' => 'Preview of header image',
-    'width' => '100%',
-    'height' => 'auto',
+  $form['hsu_kalatheme_footer_settings'] = array (
+    '#type' => 'fieldset',
+    '#title' => 'Footer Settings',
+    '#weight' => -90,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
 
-  // Image preview
-  $image_preview = array(
-    '#markup' => theme('image', $variables),
-    '#prefix' => '<div id="header_image_div">',
-    '#suffix' => '</div>',
+  $form['hsu_kalatheme_footer_settings']['footer_first_css'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CSS classes for Footer first'),
+    '#default_value' => theme_get_setting('footer_first_css'),
+  );
+
+  $form['hsu_kalatheme_footer_settings']['footer_second_css'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CSS classes for Footer second'),
+    '#default_value' => theme_get_setting('footer_second_css'),
 
   );
 
-  return $image_preview;
+  $form['hsu_kalatheme_footer_settings']['footer_third_css'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CSS classes for Footer third'),
+    '#default_value' => theme_get_setting('footer_third_css'),
+  );
+
+  $form['hsu_kalatheme_footer_settings']['footer_last_css'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CSS classes for Footer last'),
+    '#default_value' => theme_get_setting('footer_last_css'),
+  );
+
+  $form['hsu_kalatheme_footer_settings']['footer_location_display'] = array(
+    '#type' => 'select',
+    '#title' => t('Select column for location information'),
+    '#options' => array(
+      0 => t('Footer first'),
+      1 => t('Footer second'),
+      2 => t('Footer third'),
+      3 => t('Footer last'),
+    ),
+    '#default_value' => theme_get_setting('footer_location_display'),
+  );
+
+  $form['hsu_kalatheme_footer_settings']['footer_social_display'] = array(
+    '#type' => 'select',
+    '#title' => t('Select column for social icons'),
+    '#options' => array(
+      0 => t('No Display'),
+      1 => t('Footer first'),
+      2 => t('Footer second'),
+      3 => t('Footer third'),
+      4 => t('Footer last'),
+    ),
+    '#default_value' => theme_get_setting('footer_social_display'),
+  );
+
+  $form['hsu_kalatheme_footer_settings']['footer_social_align'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Align social icons right on large screen'),
+    '#default_value' => theme_get_setting('footer_social_align'),
+  );
+
+  return $form;
 }

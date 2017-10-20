@@ -11,6 +11,7 @@ dependencies[] = imce_wysiwyg
 dependencies[] = panopoly_override
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
+features[defaultconfig][] = strongarm:admin_theme
 features[defaultconfig][] = strongarm:imce_profiles
 features[defaultconfig][] = strongarm:imce_roles_profiles
 features[defaultconfig][] = strongarm:jquery_update__active_tab

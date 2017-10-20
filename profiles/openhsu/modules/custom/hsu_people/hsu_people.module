@@ -49,3 +49,16 @@ watchdog('hsu_people', '<pre>' . print_r($field, true) . '</pre>');
   }
 }
 */
+
+/**
+ * Implements hook_node_presave()
+ *
+ * Sets title as alt on people profile image if empty
+ */
+function hsu_people_node_presave($node) {
+  if ($node->type =='hsu_people') {
+    if ( (isset($node->field_hsu_people_profile_image['und'][0])) && (empty($node->field_hsu_people_profile_image[LANGUAGE_NONE][0]['alt'])) ) {
+      $node->field_hsu_people_profile_image[LANGUAGE_NONE][0]['alt'] = $node->title;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+name = OpenHSU Permissions
+description = Permissions on OpenHSU
+core = 7.x
+package = OpenHSU
+version = 7.x-1.0-dev
+dependencies[] = features
+dependencies[] = file_entity
+dependencies[] = panelizer
+dependencies[] = system
+features[features_api][] = api:2
+features[user_permission][] = administer panelizer node panopoly_landing_page defaults
+features[user_permission][] = administer panelizer node panopoly_page defaults
+features[user_permission][] = administer panelizer taxonomy_term panopoly_categories defaults
+features[user_permission][] = create files
+features[user_permission][] = view the administration theme

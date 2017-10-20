@@ -90,15 +90,16 @@
     <div class="hsu-header">
       <div class="container department-brand">
       <?php if ($logo): ?>
-        <div class="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-                <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-              </a>
-          </div>
+        <div class="logo">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+          </a>
+        </div>
       <?php endif; ?>
 
       <?php if ($site_name): ?>
         <h1 <?php if ($hide_site_name) { print ' class="element-invisible"'; } ?> <?php {print ' class="kilo"'; }?>>
-              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
         </h1>
       <?php endif; ?>
 
@@ -111,13 +112,11 @@
       <?php if ($page['header_search']): ?>
         <div class="searchbox">
           <?php print render($region['header_search']); ?>
-          <span class="searchbox-icon">GO</span>
+          <button class="searchbox-icon">GO</button>
         </div>
-        <?php endif; ?>
+      <?php endif; ?>
+    </div><!-- /.department-brand -->
 
-      </div> <!-- /#name-and-slogan -->
-
-    </div>
   </header>
   <!-- Site Navigation -->
   <?php print render($page['hsu_navbar']); ?>
@@ -166,61 +165,33 @@
     <div class="container">
       <div class="circleh"><a href="/"><span class="element-invisible">Humboldt State University</span></a></div>
       <div class="row">
-        <div class="col-sm-4"><div id="block-block-6" class="block block-block">
-          <div class="content">
-            <p>
-              <?php if ($site_name): ?>
-                <span class="heading"><?php print $site_name; ?></span>
-              <?php endif; ?>
-
-              <?php if ($hsu_street): ?>
-                <br /><?php print $hsu_street; ?>
-              <?php endif; ?>
-
-              <?php if ($hsu_city): ?>
-                <br /><?php print $hsu_city; ?>
-              <?php endif; ?>
-
-              <?php if ($hsu_phone): ?>
-                <br />Phone: <?php print $hsu_phone; ?>
-              <?php endif; ?>
-
-              <?php if ($hsu_fax): ?>
-                <br />Fax: <?php print $hsu_fax; ?>
-              <?php endif; ?>
-
-              <?php if ($hsu_email): ?>
-                <br /><a href="mailto:<?php print $hsu_email; ?>"><?php print $hsu_email; ?></a>
-              <?php endif; ?>
-
+        <?php if ($page['footer_first'] || $footer_first_column_display): ?>
+          <div class="<?php print $hsu_footer_first_css; ?>">
+            <?php print $footer_first_column_display; ?>
+            <?php print render($page['footer_first']); ?>
           </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
+        <?php endif; ?>
 
-        </div>
-        <div class="col-sm-4 last-col social">
-          <?php if ($hsu_twitter): ?>
-            <a href="<?php print $hsu_twitter; ?>">
-              <i class="fa fa-twitter"><span class="element-invisible">Twitter</span></i>
-            </a>
-          <?php endif; ?>
-          <?php if ($hsu_facebook): ?>
-            <a href="<?php print $hsu_facebook; ?>">
-              <i class="fa fa-facebook"><span class="element-invisible">Facebook</span></i>
-            </a>
-          <?php endif; ?>
-          <?php if ($hsu_instagram): ?>
-            <a href="<?php print $hsu_instagram; ?>">
-              <i class="fa fa-instagram"><span class="element-invisible">Instagram</span></i>
-            </a>
-          <?php endif; ?>
-          <?php if ($hsu_youtube): ?>
-            <a href="<?php print $hsu_youtube; ?>">
-              <i class="fa fa-youtube"><span class="element-invisible">Youtube</span></i>
-            </a>
-          <?php endif; ?>
-        </div>
+        <?php if ($page['footer_second'] || $footer_second_column_display): ?>
+          <div class="<?php print $hsu_footer_second_css; ?>">
+            <?php print $footer_second_column_display; ?>
+            <?php print render($page['footer_second']); ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if ($page['footer_third'] || $footer_third_column_display): ?>
+          <div class="<?php print $hsu_footer_third_css; ?>">
+            <?php print $footer_third_column_display; ?>
+            <?php print render($page['footer_third']); ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if ($page['footer_last'] || $footer_last_column_display): ?>
+          <div class="<?php print $hsu_footer_last_css; ?>">
+            <?php print $footer_last_column_display; ?>
+            <?php print render($page['footer_last']); ?>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </div>

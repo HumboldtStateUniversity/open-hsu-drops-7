@@ -21,6 +21,7 @@ function hsu_kalatheme_form_system_theme_settings_alter(&$form, &$form_state) {
   $form += hsu_kalatheme_social_form();
   $form += hsu_kalatheme_header_bgimage_form();
   $form += hsu_kalatheme_custom_css_form();
+  $form += hsu_kalatheme_footer_settings_form();
 
   $form_state['build_info']['files'][] = drupal_get_path('theme', 'hsu_kalatheme') . '/includes/config.inc';
 

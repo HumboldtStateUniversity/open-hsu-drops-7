@@ -1,11 +1,40 @@
 .panopoly-image-video {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
 }
 
 .panopoly-image-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Video Widget */
+.media-youtube-video
+.media-vimeo-video {
+  max-width: 100%;
+}
+
+.media-vimeo-video,
+.media-youtube-video {
+  position: relative;
+  padding-bottom: 55%;
+  padding-top: 0px;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.media-vimeo-video iframe,
+.media-vimeo-video object,
+.media-vimeo-video embed,
+.media-youtube-video iframe,
+.media-youtube-video object,
+.media-youtube-video embed {
   position: absolute;
   top: 0;
   left: 0;

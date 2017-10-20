@@ -1,3 +1,12 @@
+OpenHSU 7.x-1.11 2017-10-20
+-----------------------
+- Add new default permissions for editor role. Upload files, save as draft.
+- Remove editor permissions to save content type as default layout.
+- Accessibility fixes
+- Make Seven default admin theme
+- Make videos added in text pane responsive
+- Add footer regions to HSU Kalatheme
+
 OpenHSU 7.x-1.10 2017-8-17
 -----------------------
 - Updating to Panopoly 1.47 for views and entity reference security updates

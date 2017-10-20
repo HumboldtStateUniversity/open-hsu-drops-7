@@ -2,27 +2,23 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  var themeJs = [
-        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-        'js/hsu_kalatheme.js'
-      ];
+  // var themeJs = [
+  //       'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+  //       'js/src/hsu_kalatheme.js'
+  //     ];
 
   grunt.initConfig({
-
-    concat: {
-      themeJs: {
-        files: {
-          'js/dist/hsu_kalatheme.js': themeJs
-        }
-      }
-    },
+    // concat: {
+    //   themeJs: {
+    //     files: {
+    //       'js/dist/hsu_kalatheme.js': themeJs
+    //     }
+    //   }
+    // },
     uglify: {
-      options: {
-        sourceMap: false
-      },
-      themeJs: {
+      target: {
         files: {
-          'js/hsu_kalatheme.js': 'js/dist/hsu_kalatheme.js'
+          'js/hsu_kalatheme.js': ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js', 'js/src/hsu_kalatheme.js']
         }
       }
     },
@@ -47,9 +43,9 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-      themeJs: {
-        files: themeJs,
-        tasks: ['concat:themeJs']
+      scripts: {
+        files: 'js/src/hsu_kalatheme.js',
+        tasks: ['uglify']
       }
     },
     sass: {
@@ -80,21 +76,21 @@ module.exports = function(grunt) {
         }
       }
     },
-    jshint: {
-      themeJs: {
-        files: {
-          src: ['js/hsu_kalatheme.js']
-        },
-        options: {
-          reporter: require('jshint-stylish'),
-          jshintrc: '.jshintrc'
-        }
-      }
-    }
+    // jshint: {
+    //   themeJs: {
+    //     files: {
+    //       src: ['js/src/hsu_kalatheme.js']
+    //     },
+    //     options: {
+    //       reporter: require('jshint-stylish'),
+    //       jshintrc: '.jshintrc'
+    //     }
+    //   }
+    // }
   });
 
-  grunt.registerTask("productionbuild", ['newer:concat', 'uglify', 'sass:dist', 'cssmin', 'guide']);
-  grunt.registerTask("devbuild", ['newer:concat', 'sass:dev']);
+  grunt.registerTask("productionbuild", ['uglify', 'sass:dist', 'cssmin']);
+  grunt.registerTask("devbuild", ['uglify', 'sass:dev']);
   grunt.registerTask("develop", ['devbuild','watch']);
   return grunt.registerTask("default", ['develop']);
 };

@@ -43,12 +43,12 @@ function hsu_kalatheme_preprocess_html(&$variables) {
   */
   drupal_add_css('//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic', array('type' => 'external'));
 
+  // add custom css file from theme-settings
   $use_custom_css_file = theme_get_setting('custom_css_file');
 
   if ( $use_custom_css_file ) {
     drupal_add_css(libraries_get_path('custom-css') . '/' . $use_custom_css_file, array('group' => CSS_THEME));
   }
-
 }
 
 /**
@@ -159,6 +159,88 @@ function hsu_kalatheme_preprocess_page(&$variables) {
     	  drupal_add_css($css, $options);
       }
     }
+
+  // Output hsu location information.
+  $street = $variables['hsu_street'];
+  $city = $variables['hsu_city'];
+  $phone = $variables['hsu_phone'];
+  $fax = $variables['hsu_fax'];
+  $email = $variables['hsu_email'];
+  $name = $variables['site_name'];
+
+  $hsu_location_output = "<p><span class=\"heading\">$name</span>";
+
+  if ($street) { $hsu_location_output .= "<br />$street"; }
+  if ($city) { $hsu_location_output .= "<br />$city"; }
+  if ($phone) { $hsu_location_output .= "<br />Phone: $phone"; }
+  if ($fax) { $hsu_location_output .= "<br />Fax: $fax"; }
+  if ($email) { $hsu_location_output .= "<br /><a href=\"$email\">$email</a>"; }
+
+  $hsu_location_output .= "</p>";
+
+  $location_info = theme_get_setting('footer_location_display');
+
+  $footer_first_output = "";
+  $footer_second_output = "";
+  $footer_third_output = "";
+  $footer_last_output = "";
+
+  switch ($location_info) {
+    case 0:
+      $footer_first_output .= $hsu_location_output;
+      break;
+    case 1:
+      $footer_second_output .= $hsu_location_output;
+      break;
+    case 2:
+      $footer_third_output .= $hsu_location_output;
+      break;
+    case 3:
+      $footer_last_output .= $hsu_location_output;
+      break;
+  }
+
+  // Output hsu social icons.
+  $twitter = $variables['hsu_twitter'];
+  $facebook = $variables['hsu_facebook'];
+  $instagram = $variables['hsu_instagram'];
+  $youtube = $variables['hsu_youtube'];
+  $social_align = $variables['hsu_footer_social_align'];
+
+  $hsu_social_output = "<div class=\"social\">";
+
+  if ($social_align) { $hsu_social_output = "<div class=\"social social-right\">"; }
+  if ($twitter) { $hsu_social_output .= "<a href=\"$twitter\"><i class=\"fa fa-twitter\"><span class=\"sr-only\">Twitter</span></i></a>"; }
+  if ($facebook) { $hsu_social_output .= "<a href=\"$facebook\"><i class=\"fa fa-facebook\"><span class=\"sr-only\">Facebook</span></i></a>"; }
+  if ($instagram) { $hsu_social_output .= "<a href=\"$instagram\"><i class=\"fa fa-instagram\"><span class=\"sr-only\">Instagram</span></i></a>"; }
+  if ($youtube) { $hsu_social_output .= "<a href=\"$youtube\"><i class=\"fa fa-youtube\"><span class=\"sr-only\">Youtube</span></i></a>"; }
+
+  $hsu_social_output .= "</div>";
+
+  $social_icons = theme_get_setting('footer_social_display');
+
+  switch ($social_icons) {
+    case 0:
+      break;
+    case 1:
+      $footer_first_output .= $hsu_social_output;
+      break;
+    case 2:
+      $footer_second_output .= $hsu_social_output;
+      break;
+    case 3:
+      $footer_third_output .= $hsu_social_output;
+      break;
+    case 4:
+      $footer_last_output .= $hsu_social_output;
+      break;
+  }
+
+  // Page variables for footer.
+  $variables['footer_first_column_display'] = $footer_first_output;
+  $variables['footer_second_column_display'] = $footer_second_output;
+  $variables['footer_third_column_display'] = $footer_third_output;
+  $variables['footer_last_column_display'] = $footer_last_output;
 }
 
 /**
@@ -265,6 +347,13 @@ function hsu_kalatheme_add_theme_setting_vars(&$variables){
     'hsu_facebook' => 'facebook',
     'hsu_instagram' => 'instagram',
     'hsu_youtube' => 'youtube',
+
+    // footer
+    'hsu_footer_first_css' => 'footer_first_css',
+    'hsu_footer_last_css' => 'footer_last_css',
+    'hsu_footer_second_css' => 'footer_second_css',
+    'hsu_footer_third_css' => 'footer_third_css',
+    'hsu_footer_social_align' => 'footer_social_align',
   );
 
   foreach ($theme_settings as $key => $setting) {

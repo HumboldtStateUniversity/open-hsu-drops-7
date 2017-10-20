@@ -2,7 +2,7 @@
 name = OpenHSU
 distribution_name = "OpenHSU"
 description = "A Panopoly based sub-distro for Humboldt State University"
-version = "7.x-1.9"
+version = "7.x-11"
 core = "7.x"
 exclusive = 1
 
@@ -66,4 +66,5 @@ dependencies[] = hsu_events
 dependencies[] = hsu_people
 dependencies[] = hsu_news
 dependencies[] = hsu_carousel
+dependencies[] = hsu_permissions
 dependencies[] = hsu_header
