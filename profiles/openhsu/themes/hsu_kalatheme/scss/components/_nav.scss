@@ -64,9 +64,7 @@
 }
 // pane style to apply to sub-nav panes "Section Links"
 .section-links {
-    h4.pane-title {
-        @include rem-fallback(margin-bottom, -$pad-half);
-    }
+    
     @extend .view-hsu-news;
     ul {
         @include rem-fallback(padding, 0);
@@ -83,6 +81,29 @@
     }
 
 }
+
 a.active {
         color:$black;
+}
+
+.footer-wrapper {
+  ul{
+    padding-left: 0;
+    li{
+      list-style: none;
+      padding-bottom: 5px;
+    }
+  }
+  .block-menu-block a {
+    &:link {
+      &:before {
+        font: $icon-font;
+        content: "\f054   ";
+      }
+    }
+    &.active {
+      color: $light-gray;
+    }
+  }
+
 }

@@ -1,4 +1,15 @@
 .well {
-  padding: 0 $pad;
-  @include rem-fallback(margin-top, 3);
+  @include rem-fallback(padding, 2);
+
+  h1,h2,h3,h4,h5,h6,.light {
+    @include rem-fallback(margin-bottom, 0);
+    @include rem-fallback(padding-top, 1);
+    @include rem-fallback(margin-top, 0);
+    &:first-child {
+      @include rem-fallback(margin-bottom, .5);
+    	@include rem-fallback(padding-top, 0);
+      @include rem-fallback(margin-top, 0);
+    }
+  }
+
 }

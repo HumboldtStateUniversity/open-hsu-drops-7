@@ -45,10 +45,10 @@ function hsu_cas_form_alter(&$form, &$form_state, $form_id) {
 
 /*
  * Implements hook_form_FORM_ID_alter()
- * 
+ *
  */
 function hsu_cas_form_cas_admin_settings_alter(&$form, &$form_state){
-  // Fix CAS role issue by adding CAS role enabled by default and disable it 
+  // Fix CAS role issue by adding CAS role enabled by default and disable it
   // from being unchecked.
   $roles = array_map('check_plain', user_roles(TRUE));
   unset($form['account']['cas_auto_assigned_role']);
@@ -66,7 +66,7 @@ function hsu_cas_form_cas_admin_settings_alter(&$form, &$form_state){
       $rid = $key;
     }
   }
-  
+
   // Preventing CAS role from being taken away from CAS user
   $cas_authenticated = array(
     '#type' => 'checkbox',
@@ -88,10 +88,9 @@ function hsu_cas_form_cas_admin_settings_alter(&$form, &$form_state){
     DRUPAL_AUTHENTICATED_RID => $checkbox_authenticated,
     $rid => $cas_authenticated,
   );
-  
+
   // Prefill a bunch of the CAS config so that they don't need setting up each
   // time the profile gets installed.
-  $form['server']['cas_server']['#default_value'] = 'cas-dev2.humboldt.edu';
   $form['server']['cas_uri']['#default_value'] = '/cas';
   $form['login']['cas_login_form']['#default_value'] = 2;
   $form['login']['cas_login_invite']['#default_value'] = t('Log in using CAS');
@@ -143,4 +142,3 @@ function hsu_cas_form_user_profile_form_alter(&$form, &$form_state) {
     $form['account']['cas_name']['#description'] = '';
   }
 }
-

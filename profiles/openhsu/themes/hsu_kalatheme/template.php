@@ -174,7 +174,7 @@ function hsu_kalatheme_preprocess_page(&$variables) {
   if ($city) { $hsu_location_output .= "<br />$city"; }
   if ($phone) { $hsu_location_output .= "<br />Phone: $phone"; }
   if ($fax) { $hsu_location_output .= "<br />Fax: $fax"; }
-  if ($email) { $hsu_location_output .= "<br /><a href=\"$email\">$email</a>"; }
+  if ($email) { $hsu_location_output .= "<br /><a href=\"mailto:$email\">$email</a>"; }
 
   $hsu_location_output .= "</p>";
 

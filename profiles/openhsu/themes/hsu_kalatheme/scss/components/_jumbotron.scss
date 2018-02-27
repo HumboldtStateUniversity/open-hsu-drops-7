@@ -12,13 +12,15 @@
   .pane-title {
     color: $jumbotron-heading-color;
     margin-top: 0;
+    padding-top: 0;
+    font-weight: 300;
+    line-height: 1.2;
   }
   p {
-    margin-bottom: ($jumbotron-padding / 2);
+    margin: 0;
     font-size: $jumbotron-font-size;
     font-weight: 300;
   }
-
   > hr {
     border-top-color: darken($jumbotron-bg, 10%);
   }

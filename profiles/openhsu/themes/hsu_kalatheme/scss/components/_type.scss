@@ -3,7 +3,7 @@ html{
 	font-size:1em;      /* Assuming 16px... */
 	line-height:1.5;    /* 24px (This is now our magic number; all subsequent margin-bottoms and line-heights want to be a multiple of this number in order to maintain vertical rhythm.) */
 
-	-webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; -ms-text-rendering: optimizeLegibility; -o-text-rendering: optimizeLegibility; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; -ms-font-smoothing: antialiased; -o-font-smoothing: antialiased; font-smoothing: antialiased; 
+	-webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; -ms-text-rendering: optimizeLegibility; -o-text-rendering: optimizeLegibility; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; -ms-font-smoothing: antialiased; -o-font-smoothing: antialiased; font-smoothing: antialiased;
 
 }
 
@@ -20,9 +20,20 @@ hr{
 }
 h1,h2,h3,h4,h5,h6,.light{
 	@include rem-fallback(margin-bottom, 1);
-	@include rem-fallback(margin-top, 3);
+	@include rem-fallback(margin-top, 2);
+
 	color:$orange;
+	font-weight:500;
+
 }
+
+
+p {
+	margin: 0 0 8px;
+}
+
+
+
 /* These handle massive type, for less frequently occuring bits of text (e.g. in mastheads and banners). */
 .giga{
 	@include rem-fallback(font-size, 5); //80px
@@ -39,12 +50,12 @@ h1,h2,h3,h4,h5,h6,.light{
 
 /* Define headings and their associated classes here. */
 h1,.alpha{
-	@include rem-fallback(font-size, 3.5); //32px
+	@include rem-fallback(font-size, 3.125); //32px
 	line-height:1.2; //48px
 	font-weight: 300;
 }
 h2,.beta{
-	@include rem-fallback(font-size, 2.75); //24px
+	@include rem-fallback(font-size, 2.618); //36px
 	line-height:1; //24px
 	font-weight: 300;
 }
@@ -52,23 +63,23 @@ p.beta, p.gamma, p.delta{
 	line-height:1.5;
 }
 h3,.gamma{
-	@include rem-fallback(font-size, 2); //20px
-	line-height:1.2; //24px
+	@include rem-fallback(font-size, 1.931); //32px
+	line-height:1.2; //32px
 	font-weight: 300;
 }
 h4,.delta{
-	@include rem-fallback(font-size, 1.5); //18px
-	line-height:1.333; //24px
+	@include rem-fallback(font-size, 1.618); //28px
+	line-height:1.333; //28px
 	font-weight: 400;
 }
 h5,.epsilon{
-	@include rem-fallback(font-size, 1.25); //16px
+	@include rem-fallback(font-size, 1.194); //24px
 	line-height:1.5; //24px
 	font-weight: 400;
 }
 h6,.zeta{
-	@include rem-fallback(font-size, 1); //16px
-	line-height:1.25; //24px
+	@include rem-fallback(font-size, 1); //20px
+	line-height:1.25; //20px
 	font-weight: 400;
 }
 
@@ -79,7 +90,19 @@ small,.milli {
 }
 blockquote {
 	padding: ($line-height-computed / 2) $line-height-computed;
-	margin: 0 0 $line-height-computed;
+	margin:$line-height-computed 0;
 	font-size: $blockquote-font-size;
 	border-left: 3px solid $blockquote-border-color;
+	p {
+		margin: 0;
+	}
+}
+
+ul, ol {
+	margin-top: 0;
+	@include rem-fallback(margin-bottom, 1.5);
+}
+/* Added to properly place icons in pane linkbar */
+ul.panels-ipe-linkbar {
+	margin-top: 15px;
 }

@@ -6637,6 +6637,7 @@ body {
 .header-image {
   position: relative; }
 
+/* Footer Styles */
 .footer-wrapper {
   background: #25551b;
   margin: 0 auto;
@@ -6648,6 +6649,32 @@ body {
     color: #efe988; }
     .footer-wrapper a:hover {
       color: #fff; }
+    .footer-wrapper a .active {
+      color: #808080 !important; }
+  .footer-wrapper h1, .footer-wrapper h2, .footer-wrapper h3, .footer-wrapper h4, .footer-wrapper h5, .footer-wrapper h6 {
+    color: #fff;
+    margin-top: 0;
+    padding-top: 0; }
+  .footer-wrapper h1 {
+    font-size: 36px;
+    font-size: 2.25rem; }
+  .footer-wrapper h2 {
+    font-size: 28px;
+    font-size: 1.75rem; }
+  .footer-wrapper h3 {
+    font-size: 24px;
+    font-size: 1.5rem; }
+  .footer-wrapper h4 {
+    font-size: 20px;
+    font-size: 1.25rem; }
+  .footer-wrapper h5 {
+    font-size: 16px;
+    font-size: 1rem; }
+  .footer-wrapper h6 {
+    font-size: 12px;
+    font-size: 0.75rem; }
+  .footer-wrapper .row {
+    padding-top: 50px; }
 
 .circleh {
   background: transparent url(../img/circleh-footer.svg) no-repeat center top;
@@ -6664,7 +6691,7 @@ body {
 a {
   color: #b65300; }
   a:hover {
-    color: #25551b; }
+    color: #333; }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-decoration: none; }
@@ -6771,6 +6798,16 @@ div.admin-panel .description {
     #modal-content .ctools-auto-submit-full-form fieldset {
       width: 48%; } }
 
+.view-display-id-list_of_content {
+  margin: 10px 0; }
+  .view-display-id-list_of_content .views-row {
+    margin: 0 0 20px; }
+    .view-display-id-list_of_content .views-row .views-field-title {
+      font-size: 18px; }
+
+a.btn, a.fake-ok {
+  text-decoration: none; }
+
 .navbar-nav > li > a {
   text-decoration: none; }
 
@@ -6826,10 +6863,6 @@ div.admin-panel .description {
   /* Dropdowns in main menu */
   float: none; }
 
-.section-links h4.pane-title {
-  margin-bottom: -8px;
-  margin-bottom: -0.5rem; }
-
 .section-links ul {
   padding: 0px;
   padding: 0rem; }
@@ -6843,6 +6876,19 @@ div.admin-panel .description {
 
 a.active {
   color: #333; }
+
+.footer-wrapper ul {
+  padding-left: 0; }
+  .footer-wrapper ul li {
+    list-style: none;
+    padding-bottom: 5px; }
+
+.footer-wrapper .block-menu-block a:link:before {
+  font: normal normal normal 14px/1 FontAwesome;
+  content: "\f054   "; }
+
+.footer-wrapper .block-menu-block a.active {
+  color: #f9f9f9; }
 
 /* Increase the z-index of the UI dialog so it is higher than Panels 'add content' modal */
 .ui-dialog.ui-front {
@@ -6893,9 +6939,13 @@ hr {
 h1, h2, h3, h4, h5, h6, .light {
   margin-bottom: 16px;
   margin-bottom: 1rem;
-  margin-top: 48px;
-  margin-top: 3rem;
-  color: #b65300; }
+  margin-top: 32px;
+  margin-top: 2rem;
+  color: #b65300;
+  font-weight: 500; }
+
+p {
+  margin: 0 0 8px; }
 
 /* These handle massive type, for less frequently occuring bits of text (e.g. in mastheads and banners). */
 .giga {
@@ -6915,14 +6965,14 @@ h1, h2, h3, h4, h5, h6, .light {
 
 /* Define headings and their associated classes here. */
 h1, .alpha {
-  font-size: 56px;
-  font-size: 3.5rem;
+  font-size: 50px;
+  font-size: 3.125rem;
   line-height: 1.2;
   font-weight: 300; }
 
 h2, .beta {
-  font-size: 44px;
-  font-size: 2.75rem;
+  font-size: 41.888px;
+  font-size: 2.618rem;
   line-height: 1;
   font-weight: 300; }
 
@@ -6930,20 +6980,20 @@ p.beta, p.gamma, p.delta {
   line-height: 1.5; }
 
 h3, .gamma {
-  font-size: 32px;
-  font-size: 2rem;
+  font-size: 30.896px;
+  font-size: 1.931rem;
   line-height: 1.2;
   font-weight: 300; }
 
 h4, .delta {
-  font-size: 24px;
-  font-size: 1.5rem;
+  font-size: 25.888px;
+  font-size: 1.618rem;
   line-height: 1.333;
   font-weight: 400; }
 
 h5, .epsilon {
-  font-size: 20px;
-  font-size: 1.25rem;
+  font-size: 19.104px;
+  font-size: 1.194rem;
   line-height: 1.5;
   font-weight: 400; }
 
@@ -6961,9 +7011,20 @@ small, .milli {
 
 blockquote {
   padding: 10px 20px;
-  margin: 0 0 20px;
+  margin: 20px 0;
   font-size: 17.5px;
   border-left: 3px solid #87a625; }
+  blockquote p {
+    margin: 0; }
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem; }
+
+/* Added to properly place icons in pane linkbar */
+ul.panels-ipe-linkbar {
+  margin-top: 15px; }
 
 .panopoly-spotlight {
   margin-bottom: 32px;
@@ -7381,9 +7442,22 @@ a .hsu-people-detail {
   z-index: 1; }
 
 .well {
-  padding: 0 1rem;
-  margin-top: 48px;
-  margin-top: 3rem; }
+  padding: 32px;
+  padding: 2rem; }
+  .well h1, .well h2, .well h3, .well h4, .well h5, .well h6, .well .light {
+    margin-bottom: 0px;
+    margin-bottom: 0rem;
+    padding-top: 16px;
+    padding-top: 1rem;
+    margin-top: 0px;
+    margin-top: 0rem; }
+    .well h1:first-child, .well h2:first-child, .well h3:first-child, .well h4:first-child, .well h5:first-child, .well h6:first-child, .well .light:first-child {
+      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
+      padding-top: 0px;
+      padding-top: 0rem;
+      margin-top: 0px;
+      margin-top: 0rem; }
 
 .ui-accordion {
   margin: 48px 0;
@@ -7487,9 +7561,12 @@ h4.ui-accordion-header.ui-state-default:last-of-type {
   background-color: #eeeeee; }
   .jumbotron .pane-title {
     color: inherit;
-    margin-top: 0; }
+    margin-top: 0;
+    padding-top: 0;
+    font-weight: 300;
+    line-height: 1.2; }
   .jumbotron p {
-    margin-bottom: 15px;
+    margin: 0;
     font-size: 21px;
     font-weight: 300; }
   .jumbotron > hr {

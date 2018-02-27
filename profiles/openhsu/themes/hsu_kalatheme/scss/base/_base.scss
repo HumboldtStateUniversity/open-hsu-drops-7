@@ -62,6 +62,9 @@
 .header-image {
   position: relative;
 }
+
+/* Footer Styles */
+
 .footer-wrapper {
   background: $brand-primary;
   margin: 0 auto;
@@ -74,6 +77,35 @@
     &:hover {
       color:$white;
     }
+    .active {
+      color: $gray !important;
+    }
+  }
+  h1,h2,h3,h4,h5,h6 {
+    color: #fff;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  h1{
+    @include rem-fallback(font-size, 2.25);
+  }
+  h2{
+    @include rem-fallback(font-size, 1.75);
+  }
+  h3{
+    @include rem-fallback(font-size, 1.5);
+  }
+  h4{
+    @include rem-fallback(font-size, 1.25);
+  }
+  h5{
+    @include rem-fallback(font-size, 1);
+  }
+  h6{
+    @include rem-fallback(font-size, .75);
+  }
+  .row{
+    padding-top:50px;
   }
 }
 
@@ -92,7 +124,7 @@
 a{
   color:$orange;
   &:hover {
-    color:$brand-primary;
+    color:$black;
   }
 }
 h1,h2,h3,h4,h5,h6{
@@ -220,4 +252,19 @@ div.admin-panel .description {
  @media screen and (min-width: $screen-lg-min) {
     width:48%;
    }
+}
+
+
+.view-display-id-list_of_content {
+  margin: 10px 0;
+  .views-row{
+    margin:0 0 20px;
+
+    .views-field-title {
+      font-size: 18px;
+    }
+  }
+}
+a.btn {
+  text-decoration: none;
 }
