@@ -1,3 +1,7 @@
+OpenHSU 7.x-1.13 2018-03-28
+-----------------------
+- Update to Drupal 7.58, highly Critical security update.
+
 OpenHSU 7.x-1.12 2017-02-26
 -----------------------
 - Update to Panopoly 1.51 and Drupal 7.57 for security updates.

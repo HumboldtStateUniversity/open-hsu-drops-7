@@ -100,7 +100,7 @@ function hsu_kalatheme_custom_css_form() {
 
   $form['hsu_custom_css']['custom_css_file'] = array(
     '#type' => 'textfield',
-    '#title' => t('File name in sites/all/modules/libraries/custom-css'),
+    '#title' => t('File name in sites/all/libraries/custom-css'),
     '#default_value' =>theme_get_setting('custom_css_file'),
   );
 
