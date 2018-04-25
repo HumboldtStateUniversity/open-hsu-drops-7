@@ -2,7 +2,7 @@
 name = OpenHSU
 distribution_name = "OpenHSU"
 description = "A Panopoly based sub-distro for Humboldt State University"
-version = "7.x-1.13"
+version = "7.x-1.14"
 core = "7.x"
 exclusive = 1
 
