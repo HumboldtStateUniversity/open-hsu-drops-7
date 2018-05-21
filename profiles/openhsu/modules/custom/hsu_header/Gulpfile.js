@@ -7,7 +7,7 @@ var del = require ('del');
 gulp.task('styles', function () {
   return gulp.src('scss/**/*.scss')
     .pipe(sass())
-    .pipe(minifyCSS())
+    .pipe(minifyCSS({ zindex: false }))
     .pipe(prefix())
     .pipe(gulp.dest('css'));
 });

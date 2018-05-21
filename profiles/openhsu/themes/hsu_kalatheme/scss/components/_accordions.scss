@@ -92,3 +92,25 @@ h4.ui-accordion-header.ui-state-default:last-of-type {
   height: 20px;
   width: 20px;
 }
+.accordion-content h2:first-child, .accordion-content h3:first-child, .accordion-content h4:first-child {
+    margin-top: 1rem;
+}
+h4.ui-accordion-header.ui-state-default {
+    background-color: #fff;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #e6e6e6;
+    color: #333;
+    font-size: 1.25rem;
+    text-transform: initial;
+    background: #e0e4e0;
+    padding-left: 20px;
+}
+h4.ui-accordion-header.ui-corner-all,
+h4.ui-accordion-header.ui-corner-top {
+  border-radius: 0;
+}
+.ui-accordion .accordion-content {
+    color: #333;
+}

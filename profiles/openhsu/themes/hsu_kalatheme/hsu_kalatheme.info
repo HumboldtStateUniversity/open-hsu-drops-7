@@ -19,3 +19,6 @@ settings[footer_social_align] = 1
 stylesheets[all][] = css/main.css
 
 scripts[] = js/hsu_kalatheme.js
+
+; Panels layouts
+plugins[panels][layouts] = layouts

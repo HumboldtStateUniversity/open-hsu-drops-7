@@ -28,11 +28,6 @@ h1,h2,h3,h4,h5,h6,.light{
 }
 
 
-p {
-	margin: 0 0 8px;
-}
-
-
 
 /* These handle massive type, for less frequently occuring bits of text (e.g. in mastheads and banners). */
 .giga{
@@ -102,6 +97,10 @@ ul, ol {
 	margin-top: 0;
 	@include rem-fallback(margin-bottom, 1.5);
 }
+ul ul, ol ol {
+	margin-bottom: 0px;
+}
+
 /* Added to properly place icons in pane linkbar */
 ul.panels-ipe-linkbar {
 	margin-top: 15px;

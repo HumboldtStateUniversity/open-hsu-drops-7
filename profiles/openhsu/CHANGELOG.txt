@@ -1,3 +1,13 @@
+OpenHSU 7.x-1.15 2018-05-21
+-----------------------
+- Properly update Drupal 7.59, Panopoly 1.54, and Media Module
+- Bring back paragraph margins
+- Fix quicklinks overlay issue
+- Add accordion improvements, css and layout files
+- Inline date/time fields for webforms
+- Remove bottom margin on nested list items
+- override firefox's bold font rendering
+
 OpenHSU 7.x-1.14 2018-04-25
 -----------------------
 - Update to Drupal 7.59, highly Critical security update.

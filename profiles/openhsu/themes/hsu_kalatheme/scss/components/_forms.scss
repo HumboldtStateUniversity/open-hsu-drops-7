@@ -1,3 +1,12 @@
 #modal-content .view-settings-wrapper .form-radio{
 	margin-left: -18px;
 }
+// inline date/time fields when set to labels inline
+.webform-container-inline .month,
+.webform-container-inline .day,
+.webform-container-inline .year,
+.webform-container-inline .hour,
+.webform-container-inline .minute  {
+		display:inline;
+		width:auto;
+}
