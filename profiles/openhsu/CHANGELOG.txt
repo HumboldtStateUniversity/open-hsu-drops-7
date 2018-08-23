@@ -1,3 +1,12 @@
+OpenHSU 7.x-1.16 2018-08-23
+----------------------- 
+- Update to Panopoly 1.55
+- Update File (fields) Paths module Fixes SA-CONTRIB-2018-056
+- Add support for multiple accordions on a node (issue https://www.drupal.org/project/panopoly/issues/2777847)
+- Add Pantheon modules to our dependencies so they get installed (fixing an issue where the pantheon api module isn't enabled on new installs)
+- Make php 5.6 the new default for sites.
+- Now able to manipulate the Circle H svg in the footer with CSS
+
 OpenHSU 7.x-1.15 2018-05-21
 -----------------------
 - Properly update Drupal 7.59, Panopoly 1.54, and Media Module

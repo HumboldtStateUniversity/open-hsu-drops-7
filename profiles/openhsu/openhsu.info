@@ -2,7 +2,7 @@
 name = OpenHSU
 distribution_name = "OpenHSU"
 description = "A Panopoly based sub-distro for Humboldt State University"
-version = "7.x-1.15"
+version = "7.x-1.16"
 core = "7.x"
 exclusive = 1
 
@@ -29,6 +29,14 @@ dependencies[] = field_ui
 dependencies[] = file
 dependencies[] = dblog
 dependencies[] = update
+
+;Pantheon
+;dependencies[] = apachesolr
+;dependencies[] = apachesolr_search
+dependencies[] = pantheon_api
+dependencies[] = pantheon_login
+;dependencies[] = pantheon_apachesolr
+files[] = pantheon.profile
 
 ; Panopoly Foundation
 dependencies[] = panopoly_core

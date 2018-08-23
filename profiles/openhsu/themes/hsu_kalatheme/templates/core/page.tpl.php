@@ -163,7 +163,14 @@
 
   <div class="footer-wrapper">
     <div class="container">
-      <div class="circleh"><a href="/"><span class="element-invisible">Humboldt State University</span></a></div>
+      <div class="circleh">
+        <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-labelledby="hsuTitle" role="img">
+        <title>Humboldt State University</title>
+        <ellipse cx="25.1" cy="24.9" rx="25.1" ry="24.9" style="fill:#fff"/>
+        <path  class="circleh-color" d="M25.1,3A21.9,21.9,0,1,0,47,24.9,21.89,21.89,0,0,0,25.1,3ZM36.8,36.8H28.1v-.5c.7-.1,1.1-.6,1.3-1.5s.2-2.9.2-6.3V27H20.5v1.4a62.43,62.43,0,0,0,.2,6.3A1.52,1.52,0,0,0,22,36.2v.5H13.4v-.5c.7-.1,1.1-.6,1.3-1.7.1-.9.2-3.6.2-8.2V22.6c0-4.2-.1-6.8-.2-7.6-.1-1.1-.5-1.6-1.2-1.7v-.5h8.4v.5q-.9.15-1.2,1.5c-.1.8-.2,2.9-.2,6.4v1.1h9.1V21.2a62.43,62.43,0,0,0-.2-6.3c-.1-.9-.5-1.4-1.1-1.5v-.5h8.3v.5c-.6.1-.9.6-1.1,1.7-.1.9-.2,3.4-.2,7.6v3.7c0,4.5.1,7.3.2,8.2.1,1.1.6,1.7,1.3,1.7Z"/>
+        </svg>
+        <span class="element-invisible">Humboldt State University</span>
+      </div>
       <div class="row">
         <?php if ($page['footer_first'] || $footer_first_column_display): ?>
           <div class="<?php print $hsu_footer_first_css; ?>">

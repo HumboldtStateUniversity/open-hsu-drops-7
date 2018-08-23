@@ -129,14 +129,20 @@ html {
   }
 }
 
+/* Circle H styles */
 .circleh {
-  background: transparent url(../img/circleh-footer.svg) no-repeat center top;
-  width: 100%;
+  width: 50px;
+  height: 50px;
   float: left;
+  margin-left: 47%;
   height: 50px;
   @include rem-fallback(margin-top, -$pad-and-half);
   position: relative;
 }
+.circleh-color {
+  fill: #25551b;
+}
+
 .brand {
   // @include rem-fallback(padding, $pad-half, $pad, 0, $pad);
   margin: 0;
