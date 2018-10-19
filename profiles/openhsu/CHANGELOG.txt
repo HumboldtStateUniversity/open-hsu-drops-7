@@ -1,4 +1,4 @@
-OpenHSU 7.x-1.16 2018-08-23
+OpenHSU 7.x-1.17 2018-08-23
 ----------------------- 
 - Update to Drupal Core to 7.60 for SA-CORE-2018-006
 - Update to Panopoly 1.57
