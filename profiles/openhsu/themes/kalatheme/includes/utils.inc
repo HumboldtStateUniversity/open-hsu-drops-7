@@ -6,7 +6,7 @@
  */
 
 // Constants
-define('KALATHEME_BOOTSWATCH_API', 'http://api.bootswatch.com/3/');
+define('KALATHEME_BOOTSWATCH_API', 'https://bootswatch.com/api/3.json');
 
 // Use Libraries intregration if applicable
 if (kalatheme_use_libraries()) {
@@ -34,10 +34,13 @@ function kalatheme_updater_info_alter(&$updaters) {
 /**
  * Loads all dependencies necessary for Kalatheme to operate.
  *
+ * @param $display_errors
+ *   Whether or not to display error messages when dependencies are not met.
+ *
  * @return string
  *   Name of the function for kalatheme_status_messages to call
  */
-function _kalatheme_load_dependencies() {
+function _kalatheme_load_dependencies($display_errors = FALSE) {
   // If we've already loaded dependencies, just return the correct function to
   // call for status messages.
   $dependencies_loaded = &drupal_static(__FUNCTION__);
@@ -67,7 +70,7 @@ function _kalatheme_load_dependencies() {
       $panels = TRUE;
     }
   }
-  if (!$panels) {
+  if (!$panels && $display_errors) {
     drupal_set_message(t('Kalatheme requires at least Panels 3.4.'), 'error');
   }
 
@@ -82,7 +85,7 @@ function _kalatheme_load_dependencies() {
       $jq = TRUE;
     }
   }
-  if (!$jq) {
+  if (!$jq && $display_errors) {
     drupal_set_message(t('Kalatheme requires a 2.x version of JQuery Update that uses at least JQuery 1.7'), 'error');
   }
 
@@ -116,7 +119,7 @@ function _kalatheme_load_dependencies() {
         $boot = TRUE;
       }
     }
-    if (!$boot) {
+    if (!$boot && $display_errors) {
       drupal_set_message(t('You do not have a Bootstrap library installed but that is ok! To get equipped either check out our <a href="@setup_guide">Start Up Guide</a> or run our <a href="@setup_url">Setup Wizard.</a>', array(
         '@setup_guide' => 'https://drupal.org/node/2167149',
         '@setup_url' => url('admin/appearance/kalasetup'),
@@ -147,19 +150,28 @@ function kalatheme_prepare_config_form(&$form) {
   // Provide needed ajax wrappers
   $form['actions']['submit']['#prefix'] = "<div id='kala-submit-change-title'>";
   $form['actions']['submit']['#suffix'] = "</div>";
+
   // Add custom submit and validate functions to handle custom bootstrap
-  // libraries
-  if (isset($form['#submit']) && is_array($form['#submit']) && !in_array('kalatheme_custom_bootstrap_library_submit', $form['#submit'])) {
-    // Add our submit function first
-    array_unshift($form['#submit'], 'kalatheme_custom_bootstrap_library_submit');
-    // Remove system_theme_settings_submit here to prevent form_execute_handlers
-    // from adding the submit function to the control batch
-    // We will add it back in later if needed
-    if (($key = array_search('system_theme_settings_submit', $form['#submit'])) !== FALSE) {
-      unset($form['#submit'][$key]);
+  // libraries. Note that because of https://www.drupal.org/node/943212 it's
+  // possible for this function to end up getting called before #submit exists.
+  if (isset($form['#submit'])) {
+    if (!in_array('kalatheme_custom_bootstrap_library_submit', $form['#submit'])) {
+      // Add our submit function first.
+      array_unshift($form['#submit'], 'kalatheme_custom_bootstrap_library_submit');
+
+      // Remove system_theme_settings_submit here to prevent form_execute_handlers
+      // from adding the submit function to the control batch. We will add it back
+      // in later if needed.
+      if (($key = array_search('system_theme_settings_submit', $form['#submit'])) !== FALSE) {
+        unset($form['#submit'][$key]);
+      }
     }
   }
-  if (isset($form['#validate']) && is_array($form['#validate']) && !in_array('kalatheme_custom_bootstrap_library_validate', $form['#validate'])) {
+  else {
+    $form['#submit'][] = 'kalatheme_custom_bootstrap_library_submit';
+  }
+
+  if (!isset($form['#validate']) || isset($form['#validate']) && !in_array('kalatheme_custom_bootstrap_library_validate', $form['#validate'])) {
     $form['#validate'][] = 'kalatheme_custom_bootstrap_library_validate';
   }
 
@@ -263,10 +275,18 @@ function kalatheme_get_bootswatch_themes() {
         $bootswatches = $data->themes;
       }
     }
+    else {
+      $error_msg = t('@error. If this persists please post an issue on the !link.', array('@error' => $bootswatch_info->error, '!link' => l('Kalatheme Github issue queue', 'https://github.com/drupalprojects/kalatheme/issues')));
+      drupal_set_message($error_msg, 'error');
+
+      // Make sure $bootswatches is an array to prevent further errors.
+      $bootswatches = array();
+    }
   }
   else {
     $bootswatches = $bootswatches->data;
   }
+
   // For the default option
   // add to the front
   $default = new stdClass();
@@ -331,15 +351,12 @@ function kalatheme_backend_check() {
 /**
  * Check whether Kalatheme has write access to libraries and modules directories.
  *
+ * This check indicates whether we have enough access to be able to use
+ * authorize.php and the updater.
+ *
  * @return boolean
  */
 function kalatheme_has_write_access() {
-  return is_writable(drupal_realpath(kalatheme_lib_dir())) && is_writable(drupal_realpath('sites/all/modules'));
-}
-
-/**
- * Return the libraries dir to check
- */
-function kalatheme_lib_dir() {
-  return is_dir('sites/all/libraries') ? 'sites/all/libraries' : 'sites/all';
+  $libs_or_sites_all = is_dir('sites/all/libraries') ? 'sites/all/libraries' : 'sites/all';
+  return is_writable(drupal_realpath($libs_or_sites_all)) && is_writable(drupal_realpath('sites/all/modules'));
 }

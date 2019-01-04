@@ -52,13 +52,17 @@ function kalatheme_theme($existing, $type, $theme, $path) {
  */
 function kalatheme_css_alter(&$css) {
   // Unset some panopoly css.
-  $panopoly_admin_path = drupal_get_path('module', 'panopoly_admin');
-  if (isset($css[$panopoly_admin_path . '/panopoly-admin.css'])) {
-    unset($css[$panopoly_admin_path . '/panopoly-admin.css']);
+  if (module_exists('panopoly_admin')) {
+    $panopoly_admin_path = drupal_get_path('module', 'panopoly_admin');
+    if (isset($css[$panopoly_admin_path . '/panopoly-admin.css'])) {
+      unset($css[$panopoly_admin_path . '/panopoly-admin.css']);
+    }
   }
-  $panopoly_magic_path = drupal_get_path('module', 'panopoly_magic');
-  if (isset($css[$panopoly_magic_path . '/css/panopoly-modal.css'])) {
-    unset($css[$panopoly_magic_path . '/css/panopoly-modal.css']);
+  if (module_exists('panopoly_magic')) {
+    $panopoly_magic_path = drupal_get_path('module', 'panopoly_magic');
+    if (isset($css[$panopoly_magic_path . '/css/panopoly-modal.css'])) {
+      unset($css[$panopoly_magic_path . '/css/panopoly-modal.css']);
+    }
   }
   // Unset some core css.
   unset($css['modules/system/system.menus.css']);
@@ -116,8 +120,15 @@ function kalatheme_process_page(&$variables) {
   if (!kalatheme_use_libraries()) {
     $library = theme_get_setting('bootstrap_library');
     if ($library !== 'none' && !empty($library)) {
-      // Add the JS
-      drupal_add_js($base['scheme'] . ":" . KALATHEME_BOOTSTRAP_JS, 'external');
+      // Add the JS. Note that we have to put Bootstrap after jQuery, but before jQuery UI.
+      $url = $base['scheme'] . ":" . KALATHEME_BOOTSTRAP_JS;
+      $jquery_ui_library = drupal_get_library('system', 'ui');
+      $jquery_ui_js = reset($jquery_ui_library['js']);
+      drupal_add_js($url, array(
+        'type' => 'external',
+        'group' => JS_LIBRARY,
+        'weight' => $jquery_ui_js['weight'] - 1,
+      ));
 
       // Add the CSS
       if ($library == 'default') {
@@ -151,15 +162,16 @@ function kalatheme_process_page(&$variables) {
 
   // Add local actions as the last item in the local tasks.
   if (!empty($variables['action_links'])) {
-    $variables['tabs']['#primary'][]['#markup'] = theme('menu_local_actions', array('menu_actions' => $variables['action_links'], 'attributes' => $dropdown_attributes));
+    if (empty($variables['tabs']['#primary'])) {
+      $variables['tabs']['#primary'] = array();
+    }
+    $variables['tabs']['#primary'][] = array(
+      '#theme' => 'menu_local_actions',
+      '#menu_actions' => $variables['action_links'],
+      '#attributes' => $dropdown_attributes,
+    );
     $variables['action_links'] = FALSE;
   }
-
-  // Get the entire main menu tree.
-  $main_menu_tree = array();
-  $main_menu_tree = menu_tree_all_data('main-menu', NULL, 2);
-  // Add the rendered output to the $main_menu_expanded variable.
-  $variables['main_menu_expanded'] = menu_tree_output($main_menu_tree);
 
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
@@ -195,6 +207,63 @@ function kalatheme_process_page(&$variables) {
 
   // Check if we're to always print the page title, even on panelized pages.
   $variables['always_show_page_title'] = theme_get_setting('always_show_page_title') ? TRUE : FALSE;
+}
+
+/**
+ * Override or insert variables into the page template at a later stage compared
+ * to template_process_page()
+ *
+ * Implements template_preprocess_page().
+ */
+function kalatheme_preprocess_page(&$variables) {
+  // Get the menu tree for the menu that is set as 'Source for the Main links'.
+  $main_links_menu = variable_get('menu_main_links_source', 'main-menu');
+  $main_menu_tree = menu_tree_all_data($main_links_menu, NULL, 2);
+
+  // Add the rendered output to the $main_menu_expanded variable.
+  $main_menu_expanded = menu_tree_output($main_menu_tree);
+
+  // Prepare the primary_nav
+  $pri_attributes = array(
+    'class' => array(
+      'nav',
+      'navbar-nav',
+      'links',
+      'clearfix',
+    ),
+  );
+  if (!$variables['main_menu']) {
+    $pri_attributes['class'][] = 'sr-only';
+  }
+  $variables['primary_nav'] = array(
+    '#theme' => 'links__system_main_menu',
+    '#links' => $main_menu_expanded,
+    '#attributes' => $pri_attributes,
+    '#heading' => array(
+      'text' => t('Main menu'),
+      'level' => 'h2',
+      'class' => array('sr-only'),
+    ),
+  );
+
+  // Prepare the secondary_nav
+  $sec_attributes = array(
+    'id' => 'secondary-menu-links',
+    'class' => array('nav', 'navbar-nav', 'secondary-links'),
+  );
+  if (!$variables['secondary_menu']) {
+    $sec_attributes['class'][] = 'sr-only';
+  }
+  $variables['secondary_nav'] = array(
+    '#theme' => 'links__system_secondary_menu',
+    '#links' => $variables['secondary_menu'],
+    '#attributes' => $sec_attributes,
+    '#heading' => array(
+      'text' => t('Secondary menu'),
+      'level' => 'h2',
+      'class' => array('sr-only'),
+    ),
+  );
 }
 
 /**
@@ -234,6 +303,6 @@ function kalatheme_preprocess_node(&$variables) {
 function kalatheme_preprocess_block(&$variables) {
   // In the header region visually hide block titles.
   if ($variables['block']->region == 'header') {
-    $variables['title_attributes_array']['class'][] = 'element-invisible';
+    $variables['title_attributes_array']['class'][] = 'sr-only';
   }
 }

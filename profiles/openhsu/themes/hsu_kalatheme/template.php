@@ -79,8 +79,15 @@ function hsu_kalatheme_preprocess_page(&$variables) {
   if (!kalatheme_use_libraries()) {
     $library = theme_get_setting('bootstrap_library');
     if ($library !== 'none' && !empty($library)) {
-      // Add the JS.
-      drupal_add_js($base['scheme'] . ":" . KALATHEME_BOOTSTRAP_JS, 'external');
+      // Add the JS. Note that we have to put Bootstrap after jQuery, but before jQuery UI.
+      $url = $base['scheme'] . ":" . KALATHEME_BOOTSTRAP_JS;
+      $jquery_ui_library = drupal_get_library('system', 'ui');
+      $jquery_ui_js = reset($jquery_ui_library['js']);
+      drupal_add_js($url, array(
+        'type' => 'external',
+        'group' => JS_LIBRARY,
+        'weight' => $jquery_ui_js['weight'] - 1,
+      ));
       // Add the CSS.
       $css = ($library === 'default') ? KALATHEME_BOOTSTRAP_CSS : kalatheme_get_bootswatch_theme($library)->cssCdn;
       drupal_add_css($base['scheme'] . ":" . $css, 'external');
@@ -264,7 +271,14 @@ function hsu_kalatheme_handle_menu(&$variables){
 
   // Add local actions as the last item in the local tasks.
   if (!empty($variables['action_links'])) {
-    $variables['tabs']['#primary'][]['#markup'] = theme('menu_local_actions', array('menu_actions' => $variables['action_links'], 'attributes' => $dropdown_attributes));
+     if (empty($variables['tabs']['#primary'])) {
+      $variables['tabs']['#primary'] = array();
+    }
+    $variables['tabs']['#primary'][] = array(
+      '#theme' => 'menu_local_actions',
+      '#menu_actions' => $variables['action_links'],
+      '#attributes' => $dropdown_attributes,
+    );
     $variables['action_links'] = FALSE;
   }
 

@@ -1,3 +1,10 @@
+OpenHSU 7.x-1.18 2019-01-03
+----------------------- 
+- Update to Drupal Core to 7.61 for PHP 7.2 compatibility
+- Update to Panopoly 1.58
+- Make PHP 7.2 the default
+- Update to Kalatheme 3.5 for better PHP 7.1 compatibility
+
 OpenHSU 7.x-1.17 2018-10-19
 ----------------------- 
 - Update to Drupal Core to 7.60 for SA-CORE-2018-006

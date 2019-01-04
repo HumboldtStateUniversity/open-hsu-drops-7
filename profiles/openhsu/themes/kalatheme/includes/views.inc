@@ -9,7 +9,6 @@
 // since we cant use the files[] directive in a theme .info file
 require_once dirname(__FILE__) . '/../views/plugins/views_plugin_style_grid_bootstrap.inc';
 
-
 /**
  * Implement hook_views_plugins_alter()
  *
@@ -31,11 +30,14 @@ function kalatheme_views_plugins_alter(&$plugins) {
 function kalatheme_preprocess_views_view_grid(&$variables) {
   $variables['gridsize'] = kalatheme_get_grid_size();
   $responsive_tiers = array('xs', 'sm', 'lg');
+  $responsive_toggle_off = !isset($variables['options']['responsive_toggle']) || !$variables['options']['responsive_toggle'];
   foreach ($responsive_tiers as $tier) {
-    if (!$variables['options']['responsive_toggle']) {
+    if ($responsive_toggle_off) {
       $variables['options']['columns_' . $tier] = 1;
     }
-    if ($variables['gridsize'] % $variables['options']['columns_' . $tier] === 0) {
+    if (!empty($variables['options']['columns_' . $tier]) &&
+      $variables['gridsize'] % $variables['options']['columns_' . $tier] === 0
+    ) {
       $variables[$tier] = $variables['gridsize'] / $variables['options']['columns_' . $tier];
     }
   }
@@ -43,7 +45,7 @@ function kalatheme_preprocess_views_view_grid(&$variables) {
   if ($variables['gridsize'] % $variables['options']['columns'] === 0) {
     $variables['md'] = $variables['gridsize'] / $variables['options']['columns'];
     // We need to do ths too
-    if (!$variables['options']['responsive_toggle']) {
+    if ($responsive_toggle_off)  {
       $variables['lg'] = $variables['gridsize'] / $variables['options']['columns'];
     }
   }
@@ -144,7 +146,7 @@ function kalatheme_views_mini_pager($vars) {
       'items' => $items,
       'title' => NULL,
       'type' => 'ul',
-      'attributes' => array('class' => array('pagination')),
+      'attributes' => array('class' => array('pager', 'pagination')),
     ));
   }
 }
