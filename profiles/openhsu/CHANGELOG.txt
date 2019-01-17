@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.19 2019-01-16
+----------------------- 
+- Update to Drupal Core to 7.63 hot fix to 7.62 release to address some drush installs being broken.
+- Update to Drupal Core to 7.62 for SA-CORE-2019-001 & SA-CORE-2019-002
+
 OpenHSU 7.x-1.18 2019-01-03
 ----------------------- 
 - Update to Drupal Core to 7.61 for PHP 7.2 compatibility
