@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.21 2019-03-20
+----------------------- 
+- Update Drupal core to 7.65 which addresses security issue SA-CORE-2019-004
+- Update Panopoly to 1.64 which includes fixes for Views security issues SA-CONTRIB-2019-034, SA-CONTRIB-2019-035, SA-CONTRIB-2019-036.
+
 OpenHSU 7.x-1.20 2019-02-21
 ----------------------- 
 - Update to Panopoly 1.62 which includes a fix for a Critical security vulnerability in the Link module. - SA-CONTRIB-2019-020
