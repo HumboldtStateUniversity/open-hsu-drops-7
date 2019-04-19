@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.22 2019-04-19
+----------------------- 
+- Update Drupal core to 7.66 which addresses security issue SA-CORE-2019-006
+- Update Panopoly to 1.66 which includes fixes for TableField - Critical - Remote Code Execution - SA-CONTRIB-2019-045.
+
 OpenHSU 7.x-1.21 2019-03-20
 ----------------------- 
 - Update Drupal core to 7.65 which addresses security issue SA-CORE-2019-004
