@@ -1,3 +1,7 @@
+OpenHSU 7.x-1.23 2019-05-08
+----------------------- 
+- Update to Drupal 7.67 which addresses security issue SA-CORE-2019-007
+
 OpenHSU 7.x-1.22 2019-04-19
 ----------------------- 
 - Update Drupal core to 7.66 which addresses security issue SA-CORE-2019-006
