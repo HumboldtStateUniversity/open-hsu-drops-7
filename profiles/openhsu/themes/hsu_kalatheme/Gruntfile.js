@@ -1,20 +1,13 @@
-module.exports = function(grunt) {
+const sass = require('node-sass');
+
+module.exports = function (grunt) {
+
+  "use strict";
 
   require('load-grunt-tasks')(grunt);
 
-  // var themeJs = [
-  //       'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-  //       'js/src/hsu_kalatheme.js'
-  //     ];
 
   grunt.initConfig({
-    // concat: {
-    //   themeJs: {
-    //     files: {
-    //       'js/dist/hsu_kalatheme.js': themeJs
-    //     }
-    //   }
-    // },
     uglify: {
       target: {
         files: {
@@ -50,6 +43,7 @@ module.exports = function(grunt) {
     },
     sass: {
       options: {
+        implementation: sass,
         sourceMap: true,
         trace: true,
         includePaths: [
@@ -91,6 +85,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask("productionbuild", ['uglify', 'sass:dist', 'cssmin']);
   grunt.registerTask("devbuild", ['uglify', 'sass:dev']);
-  grunt.registerTask("develop", ['devbuild','watch']);
+  grunt.registerTask("develop", ['devbuild', 'watch']);
   return grunt.registerTask("default", ['develop']);
 };

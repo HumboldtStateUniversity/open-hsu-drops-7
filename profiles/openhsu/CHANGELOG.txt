@@ -1,3 +1,12 @@
+OpenHSU 7.x-1.24 2019-06-20
+----------------------- 
+- Update theme to use Google Tag manager instead of Google Analytics.
+- Update Panopoly to 1.69 This and previous release includes fixes for multiple Moderately Critical security vulnerabilities. You can learn more in the security advisory:
+    - TableField - Moderately critical - Access bypass and Cross Site Scripting - SA-CONTRIB-2019-051
+    - Universally Unique IDentifier - Moderately critical - Access bypass - SA-CONTRIB-2019-052
+- Known issue — TableField Module — Triggers false negative, max_input_vars helper function (https://www.drupal.org/project/tablefield/issues/3059243). Shows following warning: "This table is too large to be safely edited. To assure that no data is lost, please import a new CSV file to make changes to this table."
+- Update theme node dependencies to address security vulnerabilities.
+
 OpenHSU 7.x-1.23 2019-05-08
 ----------------------- 
 - Update to Drupal 7.67 which addresses security issue SA-CORE-2019-007
