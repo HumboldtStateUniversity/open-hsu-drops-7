@@ -1,3 +1,15 @@
+Panopoly Demo 7.x-1.72, 2019-12-19
+-------------------
+- No changes since last release.
+
+Panopoly Demo 7.x-1.71, 2019-11-19
+-------------------
+- No changes since last release.
+
+Panopoly Demo 7.x-1.70, 2019-06-28
+-------------------
+- No changes since last release.
+
 7.x-1.69, 2019-06-07
 -------------------
 - No changes since last release.

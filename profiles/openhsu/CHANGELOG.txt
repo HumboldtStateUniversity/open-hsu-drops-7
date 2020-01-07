@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.25 2020-01-02
+-----------------------
+- Update to Drupal 7.69 for SA-CORE-2019-012
+- Update Panopoly to 1.72
+
 OpenHSU 7.x-1.24 2019-06-20
 ----------------------- 
 - Update theme to use Google Tag manager instead of Google Analytics.
