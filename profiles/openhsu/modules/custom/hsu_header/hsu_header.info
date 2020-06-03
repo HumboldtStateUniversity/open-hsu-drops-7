@@ -2,5 +2,5 @@ name = HSU Header
 description = Adds HSU Wordmark and Utility Links to top of site
 core = 7.x
 package = OpenHSU
-version = 7.x-1.25
+version = 7.x-1.26
 project = hsu_header

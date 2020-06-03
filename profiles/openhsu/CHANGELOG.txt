@@ -1,10 +1,18 @@
+OpenHSU 7.x-1.26 2020-06-03
+-----------------------
+- Update to Drupal 7.71 (maintenance release)
+- Update to Drupal 7.70 for SA-CORE-2020-002 SA-CORE-2020-003
+- Update Panopoly to 1.74
+- Added high resolution favicon for modern browsers and included fallbacks
+- Additions to OpenHSU permissions module
+
 OpenHSU 7.x-1.25 2020-01-02
 -----------------------
 - Update to Drupal 7.69 for SA-CORE-2019-012
 - Update Panopoly to 1.72
 
 OpenHSU 7.x-1.24 2019-06-20
------------------------ 
+-----------------------
 - Update theme to use Google Tag manager instead of Google Analytics.
 - Update Panopoly to 1.69 This and previous release includes fixes for multiple Moderately Critical security vulnerabilities. You can learn more in the security advisory:
     - TableField - Moderately critical - Access bypass and Cross Site Scripting - SA-CONTRIB-2019-051
@@ -13,43 +21,43 @@ OpenHSU 7.x-1.24 2019-06-20
 - Update theme node dependencies to address security vulnerabilities.
 
 OpenHSU 7.x-1.23 2019-05-08
------------------------ 
+-----------------------
 - Update to Drupal 7.67 which addresses security issue SA-CORE-2019-007
 
 OpenHSU 7.x-1.22 2019-04-19
------------------------ 
+-----------------------
 - Update Drupal core to 7.66 which addresses security issue SA-CORE-2019-006
 - Update Panopoly to 1.66 which includes fixes for TableField - Critical - Remote Code Execution - SA-CONTRIB-2019-045.
 
 OpenHSU 7.x-1.21 2019-03-20
------------------------ 
+-----------------------
 - Update Drupal core to 7.65 which addresses security issue SA-CORE-2019-004
 - Update Panopoly to 1.64 which includes fixes for Views security issues SA-CONTRIB-2019-034, SA-CONTRIB-2019-035, SA-CONTRIB-2019-036.
 
 OpenHSU 7.x-1.20 2019-02-21
------------------------ 
+-----------------------
 - Update to Panopoly 1.62 which includes a fix for a Critical security vulnerability in the Link module. - SA-CONTRIB-2019-020
 - Update to Drupal Core to 7.64
 
 OpenHSU 7.x-1.19 2019-01-16
------------------------ 
+-----------------------
 - Update to Drupal Core to 7.63 hot fix to 7.62 release to address some drush installs being broken.
 - Update to Drupal Core to 7.62 for SA-CORE-2019-001 & SA-CORE-2019-002
 
 OpenHSU 7.x-1.18 2019-01-03
------------------------ 
+-----------------------
 - Update to Drupal Core to 7.61 for PHP 7.2 compatibility
 - Update to Panopoly 1.58
 - Make PHP 7.2 the default
 - Update to Kalatheme 3.5 for better PHP 7.1 compatibility
 
 OpenHSU 7.x-1.17 2018-10-19
------------------------ 
+-----------------------
 - Update to Drupal Core to 7.60 for SA-CORE-2018-006
 - Update to Panopoly 1.57
 
 OpenHSU 7.x-1.16 2018-08-23
------------------------ 
+-----------------------
 - Update to Panopoly 1.55
 - Update File (fields) Paths module Fixes SA-CONTRIB-2018-056
 - Add support for multiple accordions on a node (issue https://www.drupal.org/project/panopoly/issues/2777847)
