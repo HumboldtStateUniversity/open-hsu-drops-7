@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.27 2020-06-24
+-----------------------
+- Update to Drupal 7.72 for SA-CORE-2020-004
+- Update Panopoly to 1.75
+
 OpenHSU 7.x-1.26 2020-06-03
 -----------------------
 - Update to Drupal 7.71 (maintenance release)
