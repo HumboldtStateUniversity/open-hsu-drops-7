@@ -17,35 +17,36 @@ html {
   }
 }
 
-
 /*!
  * Kalatheme (http://drupal.org/project/kalatheme)
  */
- // responsive images in cases that aren't place using media module-filter-tabs
- img {
-   max-width: 100%;
-   height: auto;
- }
- *,:after,:before {
+// responsive images in cases that aren't place using media module-filter-tabs
+img {
+  max-width: 100%;
+  height: auto;
+}
+*,
+:after,
+:before {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
- body {
+body {
   font-family: $font-family-sans-serif;
-  color:$black;
- }
- .container-fluid {
+  color: $black;
+}
+.container-fluid {
   padding-left: 0;
   padding-right: 0;
- }
+}
 
 .header-image {
   max-height: 300px;
   overflow: hidden;
   img {
     display: block;
-    width:100%;
+    width: 100%;
     height: auto;
   }
 }
@@ -54,16 +55,16 @@ html {
 }
 .logo {
   @include rem-fallback(margin, 1.5, 0, 0);
-  max-width:640px;
+  max-width: 640px;
   img {
     max-width: 100%;
   }
 }
 .department-brand {
-  color:$white;
+  color: $white;
   @include rem-fallback(padding-bottom, 1);
   h1 {
-    color:$white;
+    color: $white;
     font-weight: 300;
     @include rem-fallback(margin, $pad, 0, 0);
   }
@@ -71,10 +72,10 @@ html {
     text-transform: none;
   }
   a {
-    color:$white;
+    color: $white;
     text-decoration: none;
     &:hover {
-      color: rgba($white, .5);
+      color: rgba($white, 0.5);
     }
   }
   #site-slogan {
@@ -95,40 +96,45 @@ html {
   clear: both;
   color: $white;
 
-  a{
-    color:$gold;
+  a {
+    color: $gold;
     &:hover {
-      color:$white;
+      color: $white;
     }
     .active {
       color: $gray !important;
     }
   }
-  h1,h2,h3,h4,h5,h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #fff;
     margin-top: 0;
     padding-top: 0;
   }
-  h1{
+  h1 {
     @include rem-fallback(font-size, 2.25);
   }
-  h2{
+  h2 {
     @include rem-fallback(font-size, 1.75);
   }
-  h3{
+  h3 {
     @include rem-fallback(font-size, 1.5);
   }
-  h4{
+  h4 {
     @include rem-fallback(font-size, 1.25);
   }
-  h5{
+  h5 {
     @include rem-fallback(font-size, 1);
   }
-  h6{
-    @include rem-fallback(font-size, .75);
+  h6 {
+    @include rem-fallback(font-size, 0.75);
   }
-  .row{
-    padding-top:50px;
+  .row {
+    @include rem-fallback(padding-top, 1);
   }
 }
 
@@ -146,13 +152,18 @@ html {
   // @include rem-fallback(padding, $pad-half, $pad, 0, $pad);
   margin: 0;
 }
-a{
-  color:$orange;
+a {
+  color: $orange;
   &:hover {
-    color:$black;
+    color: $black;
   }
 }
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   a {
     text-decoration: none;
   }
@@ -165,8 +176,8 @@ h1,h2,h3,h4,h5,h6{
     border-radius: 50%;
     box-sizing: content-box;
     display: inline-block;
-    margin: .125rem .375rem .125rem 0;
-    padding: .75rem;
+    margin: 0.125rem 0.375rem 0.125rem 0;
+    padding: 0.75rem;
     position: relative;
     width: 1.25rem;
     height: 1.25rem;
@@ -273,17 +284,16 @@ div.admin-panel .description {
 
 //modal tweaks to make it more usable
 #modal-content .ctools-auto-submit-full-form fieldset {
-  width:auto;
- @media screen and (min-width: $screen-lg-min) {
-    width:48%;
-   }
+  width: auto;
+  @media screen and (min-width: $screen-lg-min) {
+    width: 48%;
+  }
 }
-
 
 .view-display-id-list_of_content {
   margin: 10px 0;
-  .views-row{
-    margin:0 0 20px;
+  .views-row {
+    margin: 0 0 20px;
 
     .views-field-title {
       font-size: 18px;
