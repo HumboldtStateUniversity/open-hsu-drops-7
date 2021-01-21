@@ -1,3 +1,9 @@
+OpenHSU 7.x-1.23 2021-01-21
+-----------------------
+- Update to Drupal 7.78 for SA-CORE-2021-001
+- Update Panopoly to 1.79
+- Addition of HSU hours module
+
 OpenHSU 7.x-1.29 2020-11-30
 -----------------------
 - Update to Drupal 7.75 for SA-CORE-2020-013

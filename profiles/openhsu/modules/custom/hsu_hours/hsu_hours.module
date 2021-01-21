@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Code for the hsu Hours feature.
+ */
+
+include_once 'hsu_hours.features.inc';
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function hsu_hours_entity_info_alter(&$entity_info)
+{
+  $entity_info['fieldable_panels_pane']['bundles']['office_hours']['pane category'] = t('Hours');
+  $entity_info['fieldable_panels_pane']['bundles']['office_hours']['pane top level'] = TRUE;
+}
