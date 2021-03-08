@@ -19,7 +19,7 @@ projects[panopoly_images][subdir] = panopoly
 
 projects[panopoly_theme][version] = 1.79
 projects[panopoly_theme][subdir] = panopoly
-projects[panopoly_theme][patch][2777947] = https://www.drupal.org/files/issues/accordion-style-id-fix.2777947.8.patch
+projects[panopoly_theme][patch][2777847] = https://www.drupal.org/files/issues/accordion-style-id-fix.2777847.8.patch
 
 
 projects[panopoly_magic][version] = 1.79
