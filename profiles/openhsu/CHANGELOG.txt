@@ -1,4 +1,8 @@
-OpenHSU 7.x-1.23 2021-01-21
+OpenHSU 7.x-1.31 2021-04-22
+-----------------------
+- Update to Drupal 7.80 for SA-CORE-2021-002
+
+OpenHSU 7.x-1.30 2021-01-21
 -----------------------
 - Update to Drupal 7.78 for SA-CORE-2021-001
 - Update Panopoly to 1.79
