@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * panopoly_demo.pages_default.inc
@@ -55,6 +56,10 @@ function panopoly_demo_default_page_manager_pages() {
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => '',
+    'panels_breadcrumbs_paths' => '',
+    'panels_breadcrumbs_home' => 0,
   );
   $display = new panels_display();
   $display->layout = 'radix_burr_flipped';
