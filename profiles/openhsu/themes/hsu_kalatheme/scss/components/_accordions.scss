@@ -114,3 +114,9 @@ h4.ui-accordion-header.ui-corner-top {
 .ui-accordion .accordion-content {
     color: #333;
 }
+// Improve visibility of focus state
+h4.ui-state-focus:focus {
+border: solid 1px $mid-gray;
+background:$gray;
+color:white;
+}

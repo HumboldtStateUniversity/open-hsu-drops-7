@@ -1,0 +1,135 @@
+/*******************************************************/
+/******************* FULL WIDTH CSS ********************/
+/*******************************************************/
+
+/* Full width content containers span width of browser */
+.fwidth {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.fwidth-dark{
+  background: #5C8021;
+  padding: 30px 0;
+}
+
+.fwidth-dark.shadow {
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.45);
+  -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.45);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.45);
+}
+
+.fwidth-light {
+  background: #f3f3f3;
+  padding: 30px 0;
+}
+
+.fwidth-light.shadow {
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+}
+
+/* full width container - css class applied on pane or view */
+.fwidth > .pane-content {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.fwidth > .pane-content:before, .fwidth > .pane-content:after {
+  content: " ";
+  display: table;
+}
+.fwidth > .pane-content:after {
+  clear: both;
+}
+@media (min-width: 768px) {
+  .fwidth > .pane-content {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .fwidth > .pane-content {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .fwidth > .pane-content {
+    width: 1230px;
+  }
+}
+
+/* full width container for region, css class APPLIED IN LAYOUT FILE */
+.fwidth .fwidth-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.fwidth .fwidth-container:before, .fwidth .pane-content:after {
+  content: " ";
+  display: table;
+}
+.fwidth .fwidth-container:after {
+  clear: both;
+}
+@media (min-width: 768px) {
+  .fwidth .fwidth-container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .fwidth .fwidth-container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .fwidth .fwidth-container {
+    width: 1230px;
+  }
+}
+
+
+/* override for text color on fwidth-dark */
+.fwidth-dark h1, .fwidth-dark h2, .fwidth-dark h3, .fwidth-dark h4, .fwidth-dark h5, .fwidth-dark h6, .fwidth-dark p, .fwidth-dark li {
+  color: #fff !important;
+}
+
+.fwidth h4.pane-title, .fwidth-dark h4.pane-title {
+  max-width: 100%;
+}
+
+.fwidth-dark a:link {
+  text-decoration: underline;
+}
+
+.fwidth-dark a.btn:link {
+  text-decoration:none;
+}
+
+.fwidth-dark a:link, .fwidth-dark a:visited, .fwidth-dark a:hover {
+  color: #fff;
+}
+
+/* Buttons */
+.fwidth-dark .btn-primary {
+  background: #25551b;
+}
+
+.fwidth-dark .btn-default {
+  background: #f6f6f6;
+  color: #25551b !important;
+}
+
+/* button hover - fix text color */
+.fwidth-dark .btn-primary:hover, .fwidth-dark .btn-primary:focus  {
+  background: #0c4301;
+}
+.fwidth-dark .btn-default:hover, .fwidth-dark .btn-default:focus  {
+  background: #E6E6E6;
+}
+

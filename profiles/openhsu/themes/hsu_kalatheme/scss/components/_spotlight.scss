@@ -37,7 +37,7 @@
       position: absolute;
     }
 }
-// full pager 
+// full pager
 
 .pane-bundle-spotlight .panopoly-spotlight-buttons-wrapper li {
   background: $orange;
@@ -73,7 +73,7 @@
       color:$orange;
     }
 }
-.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-previous {  
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-previous {
       @include rem-fallback(padding, $pad-half, 0, $pad-half, .5);
   &:before {
     margin-bottom:$pad-half;
@@ -82,7 +82,7 @@
     display: inline-block;
   }
 }
-.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-next {  
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-next {
   @include rem-fallback(padding, $pad-half, 0, $pad-half, .5);
   &:before {
     content: "\f054";
@@ -91,7 +91,7 @@
     display: inline-block;
   }
 }
-.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-pause-play {  
+.pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-pause-play {
   @include rem-fallback(padding, $pad-half, 0, $pad-half, .5);
   &:before {
     content: "\f04c";
@@ -113,4 +113,9 @@
 }
 .panopoly-spotlight-pause-play {
   left: 45%;
+}
+
+.pane-bundle-spotlight .panopoly-spotlight-label {
+  line-height: 1.2;
+  min-height: fit-content;
 }

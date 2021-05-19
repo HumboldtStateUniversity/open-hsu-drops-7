@@ -1,3 +1,14 @@
+OpenHSU 7.x-1.33 2021-05-19
+-----------------------
+- Improve focus state for accordions
+- Add content top regions
+- Add full width css support
+- Various css improvements
+
+OpenHSU 7.x-1.32 2021-04-29
+-----------------------
+- Update Panopoly version number, No changes since last release.
+
 OpenHSU 7.x-1.31 2021-04-22
 -----------------------
 - Update to Drupal 7.80 for SA-CORE-2021-002

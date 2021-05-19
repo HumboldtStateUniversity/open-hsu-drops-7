@@ -3,6 +3,7 @@ description = A Kalatheme subtheme powered by Twitter Bootstrap & Science.
 base theme = kalatheme
 core = 7.x
 
+regions[content_top] = Content Top
 regions[content] = Content
 regions[header_search] = Search
 regions[footer_first] = Footer first

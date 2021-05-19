@@ -115,11 +115,18 @@
           <button class="searchbox-icon">GO</button>
         </div>
       <?php endif; ?>
-    </div><!-- /.department-brand -->
-
+      </div><!-- /.department-brand -->
+    </div><!-- /.hsu-header -->
   </header>
   <!-- Site Navigation -->
   <?php print render($page['hsu_navbar']); ?>
+
+  <!-- Content Top -->
+  <?php if ($page['content_top']): ?>
+    <div class="content_top">
+      <?php print render($page['content_top']); ?>
+    </div>
+  <?php endif; ?>
 
   <!-- Page Main -->
   <div id="main-wrapper" class="clearfix">

@@ -1,3 +1,9 @@
+/* removes horizontal scrollbar when using the .fwidth class */
+html, body {
+  overflow-x: hidden;
+  background: #fff;
+}
+
 /*
  * Fix fonts that render as bold in Firefox
  */
