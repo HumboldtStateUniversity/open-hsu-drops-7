@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.34 2021-06-18
+-----------------------
+- Update to Drupal 7.81
+- Update to Panopoly 1.81
+
 OpenHSU 7.x-1.33 2021-05-19
 -----------------------
 - Improve focus state for accordions
