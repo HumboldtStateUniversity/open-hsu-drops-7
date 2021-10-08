@@ -7267,7 +7267,7 @@ ul.panels-ipe-linkbar {
   width: auto; }
 
 .people-wrap > h2 {
-  margin-top: -.5rem;
+  margin-top: -0.5rem;
   font-size: 2.125rem;
   font-weight: 400; }
 
@@ -7282,7 +7282,8 @@ ul.panels-ipe-linkbar {
   margin-top: 16px;
   margin-top: 1rem;
   min-height: 220px; }
-  .people-list h3, .people-list h4 {
+  .people-list h3,
+  .people-list h4 {
     margin-top: 0px;
     margin-top: 0rem;
     margin-bottom: 0px;
@@ -7340,11 +7341,11 @@ a.people span {
     font-size: 1rem; }
 
 a .hsu-people-detail {
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
+  transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out; }
   a .hsu-people-detail:hover {
-    opacity: .5; }
+    opacity: 0.5; }
 
 .email:before {
   content: "\f01c"; }
@@ -7371,9 +7372,9 @@ a .hsu-people-detail {
   font-weight: normal;
   margin: 1rem 0;
   position: relative;
-  padding: 0 .25rem; }
+  padding: 0 0.25rem; }
   .people-alpha .view-content > h3:before {
-    content: '';
+    content: "";
     border: 1px solid #d9d9d9;
     margin: 0 3.75rem;
     position: absolute;
@@ -7382,6 +7383,10 @@ a .hsu-people-detail {
 
 .view-hsu-people-directory h3 {
   clear: both; }
+
+.view-hsu-people-directory.view-display-id-panel_pane_1 .views-row-odd,
+.view-hsu-people-directory.view-display-id-panel_pane_2 .views-row-odd {
+  clear: left; }
 
 /*style search block and container*/
 .navbar {

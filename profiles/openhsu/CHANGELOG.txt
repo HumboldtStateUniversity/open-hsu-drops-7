@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.36 2021-10-08
+-----------------------
+- Update to Panopoly 1.83
+- Fix row clearing issues with people list
+
 OpenHSU 7.x-1.35 2021-07-22
 -----------------------
 - Update to Drupal 7.84 for Third-party libraries - SA-CORE-2021-004
