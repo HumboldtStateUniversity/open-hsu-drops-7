@@ -4,6 +4,10 @@
  * @file
  * Install, update and schema hooks for the FlexSlider Picture module.
  */
+
+/**
+ * Implements hook_schema().
+ */
 function flexslider_picture_schema() {
   $schema = array();
   $schema['flexslider_picture_optionset'] = array(
@@ -23,7 +27,7 @@ function flexslider_picture_schema() {
         'type' => 'serial',
         'not null' => TRUE,
         'description' => 'The internal identifier.',
-        'no export' => TRUE, // Do not export database-only keys.
+        'no export' => TRUE,
       ),
       'flexslider_optionset' => array(
         'description' => 'The machine-readable option set name.',
@@ -57,6 +61,25 @@ function flexslider_picture_schema() {
     ),
   );
   return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function flexslider_picture_install() {
+  // For each existing flexslider config, add a record in
+  // {flexslider_picture_optionset}.
+  $q = db_select('flexslider_optionset', 'f');
+  $q->addField('f', 'name', 'flexslider_optionset');
+  $q->addExpression("'image_style'", 'imagestyle_type');
+  $q->addExpression("''", 'mapping');
+  $q->addExpression("''", 'fallback');
+  db_insert('flexslider_picture_optionset')->fields(array(
+    'flexslider_optionset',
+    'imagestyle_type',
+    'mapping',
+    'fallback',
+  ))->from($q)->execute();
 }
 
 /**
@@ -114,4 +137,23 @@ function flexslider_picture_update_7001() {
       )
     );
   }
+}
+
+/**
+ * Add flexslider_picture_optionsets for existing flexslider optionsets.
+ */
+function flexslider_picture_update_7201() {
+  // For each existing flexslider config, add a record in
+  // {flexslider_picture_optionset}.
+  $q = db_select('flexslider_optionset', 'f');
+  $q->addField('f', 'name', 'flexslider_optionset');
+  $q->addExpression("'image_style'", 'imagestyle_type');
+  $q->addExpression("''", 'mapping');
+  $q->addExpression("''", 'fallback');
+  db_insert('flexslider_picture_optionset')->fields(array(
+    'flexslider_optionset',
+    'imagestyle_type',
+    'mapping',
+    'fallback',
+  ))->from($q)->execute();
 }

@@ -5,13 +5,13 @@
  * Picture formatter with flexslider support.
  */
 
-
 /**
  * Process the items and prepare the item slides to be rendered.
  *
- * @param $vars
+ * @param array $vars
+ *   Variables.
  */
-function template_preprocess_flexslider_picture_list(&$vars) {
+function template_preprocess_flexslider_picture_list(array &$vars) {
   $optionset = &$vars['settings']['optionset'];
 
   // Check if this is a picture optionset.
@@ -24,7 +24,7 @@ function template_preprocess_flexslider_picture_list(&$vars) {
     $fallback_image_style = $optionset->fallback;
     $mappings = picture_mapping_load($optionset->mapping);
     if (!$mappings) {
-      trigger_error("Unable to load picture mapping {$optionset->mapping}.", E_USER_ERROR);
+      trigger_error(check_plain("Unable to load picture mapping {$optionset->mapping}."), E_USER_ERROR);
       return;
     }
     $breakpoint_styles = picture_get_mapping_breakpoints($mappings, $fallback_image_style);
@@ -41,7 +41,7 @@ function template_preprocess_flexslider_picture_list(&$vars) {
       $colorbox_fallback_image_style = $optionset->options['colorboxFallbackImageStyle'];
       $mappings = picture_mapping_load($optionset->options['colorboxImageStyle']);
       if (!$mappings) {
-        trigger_error("Unable to load picture mapping {$optionset->options['colorboxImageStyle']}.", E_USER_ERROR);
+        trigger_error(check_plain("Unable to load picture mapping {$optionset->options['colorboxImageStyle']}."), E_USER_ERROR);
         $optionset->options['colorboxEnabled'] = FALSE;
       }
       else {
@@ -53,7 +53,7 @@ function template_preprocess_flexslider_picture_list(&$vars) {
     }
 
     // Prepare the item slides to be passed to render().
-    foreach ($items as $i => &$item) {
+    foreach ($items as &$item) {
       if (isset($item['item'])) {
         $item['slide'] = array(
           '#theme' => 'picture',
@@ -91,6 +91,9 @@ function template_preprocess_flexslider_picture_list(&$vars) {
   }
 }
 
+/**
+ * Theme list item.
+ */
 function template_process_flexslider_picture_list_item(&$vars) {
   // Call the default process function first.
   template_process_flexslider_list_item($vars);
@@ -125,7 +128,7 @@ function theme_flexslider_picture_list(&$vars) {
     // Build the list.
     if (!empty($vars['items'])) {
       $output .= "<$type" . drupal_attributes($attributes) . '>';
-      foreach ($vars['items'] as $i => $item) {
+      foreach ($vars['items'] as $item) {
         $slide = render($item['slide']);
         $output .= theme('flexslider_list_item', array(
           'item' => $slide,

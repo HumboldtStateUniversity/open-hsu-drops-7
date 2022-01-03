@@ -1,3 +1,11 @@
+OpenHSU 7.x-1.37 2022-01-03
+-----------------------
+- Update to Drupal 7.84
+- Update field collection module
+- Update picture module
+- Update trumba module
+
+
 OpenHSU 7.x-1.36 2021-10-08
 -----------------------
 - Update to Panopoly 1.83
