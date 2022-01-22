@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.38 2022-01-22
+-----------------------
+- Update to Drupal 7.87
+- Update to Drupal 7.86 SA-CORE-2022-001 and SA-CORE-2022-002
+
 OpenHSU 7.x-1.37 2022-01-03
 -----------------------
 - Update to Drupal 7.84
