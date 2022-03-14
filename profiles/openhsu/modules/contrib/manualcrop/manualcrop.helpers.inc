@@ -207,7 +207,6 @@ function manualcrop_croptool_process(&$form, &$form_state, &$element, $file, $se
 
       // Create a file specific container.
       $element['manualcrop']['file_' . $file->fid] = array(
-        '#type' => 'value',
         '#default_value' => array(),
         '#element_validate' => array('manualcrop_croptool_validate'),
         '#parents' => array('manualcrop', 'file_' . $file->fid),

@@ -1,3 +1,9 @@
+OpenHSU 7.x-1.39 2022-03-14
+-----------------------
+- Update to Drupal 7.89
+- Update to Drupal 7.88 SA-CORE-2022-003
+- Panopoly 1.87
+
 OpenHSU 7.x-1.38 2022-01-22
 -----------------------
 - Update to Drupal 7.87

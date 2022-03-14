@@ -1,8 +1,8 @@
 ; Packaging information for OpenHSU
 name = OpenHSU
 distribution_name = "OpenHSU"
-description = "A Panopoly based sub-distro for Humboldt State University"
-version = "7.x-1.38"
+description = "A Panopoly based sub-distro for Cal Poly Humboldt"
+version = "7.x-1.39"
 core = "7.x"
 exclusive = 1
 
