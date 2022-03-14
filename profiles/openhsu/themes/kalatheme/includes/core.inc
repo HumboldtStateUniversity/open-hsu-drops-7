@@ -545,7 +545,7 @@ function kalatheme_pager($variables) {
   // last is the last page listed by this pager piece (re quantity)
   $pager_last = $pager_current + $quantity - $pager_middle;
   // max is the maximum page number
-  $pager_max = isset($pager_total[$element]);
+  $pager_max = $pager_total[$element];
   // End of marker calculations.
 
   // Prepare for generation loop.
@@ -567,7 +567,7 @@ function kalatheme_pager($variables) {
   $li_next = theme('pager_next', array('text' => (isset($tags[3]) ? $tags[3] : t('next ›')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
   $li_last = theme('pager_last', array('text' => (isset($tags[4]) ? $tags[4] : t('last »')), 'element' => $element, 'parameters' => $parameters));
 
-  if (isset($pager_total[$element]) > 1) {
+  if ($pager_total[$element] > 1) {
     if ($li_first) {
       $items[] = array(
         'class' => array('pager-first'),
