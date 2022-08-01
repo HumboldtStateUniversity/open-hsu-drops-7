@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.41 2022-08-01
+-----------------------
+- Update to Drupal 7.91 SA-CORE-2022-012
+- Update to Panopoly 1.90
+
 OpenHSU 7.x-1.40 2022-05-05
 -----------------------
 - Update to Panopoly 1.88 which contains Link module security update SA-CONTRIB-2022-034
