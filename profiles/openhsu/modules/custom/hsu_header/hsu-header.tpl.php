@@ -41,7 +41,7 @@
             </ul>
           </li>
           <?php print $hsu_header_quicklinks ?>
-          <li><a href="http://humboldt.edu/myhumboldt">myHumboldt</a></li>
+          <li><a href="http://my.humboldt.edu/">myHumboldt</a></li>
         </ul>
       </div><!--/ .col-6 with links -->
       <div class="hsu-header-col-6 hsu-header-mark">
