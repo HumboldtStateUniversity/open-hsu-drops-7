@@ -28,6 +28,7 @@ node_modules
 ######################
 *.log
 *.sql
+!**/tests/**/*.sql
 
 # OS generated files #
 ######################
