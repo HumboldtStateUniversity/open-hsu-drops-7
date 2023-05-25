@@ -72,7 +72,7 @@ Drupal.settings.spotlight_settings = Drupal.settings.spotlight_settings || {};
             }
           });
 
-          // Bind events to all the extra buttonts.
+          // Bind events to all the extra buttons.
           $widget.find('.panopoly-spotlight-pause-play').once('panopoly-spotlight').bind('click.panopoly-widgets-spotlight', function(event) {
             event.preventDefault();
             if ($(this).hasClass('paused')) {
@@ -113,7 +113,27 @@ Drupal.settings.spotlight_settings = Drupal.settings.spotlight_settings || {};
             });
           }
 
-          start();
+          // Detect focus on any links inside of slides and pause, until focus
+          // transitions away.
+          $slides.find('a')
+            .focus(function () {
+              stop();
+            })
+            .blur(function () {
+              if (!$widget.find('.panopoly-spotlight-pause-play').hasClass('paused')) {
+                start();
+              }
+            });
+
+          var prefers_reduced_motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+          if (!prefers_reduced_motion || !prefers_reduced_motion.matches) {
+            start()
+          }
+          else {
+            $widget.find('.panopoly-spotlight-pause-play')
+              .text(Drupal.t('Play'))
+              .addClass('paused');
+          }
         });
       }
     }

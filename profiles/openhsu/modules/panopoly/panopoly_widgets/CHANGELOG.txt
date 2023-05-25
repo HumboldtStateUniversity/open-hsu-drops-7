@@ -1,3 +1,8 @@
+Panopoly Widgets 7.x-1.91, 2023-04-05
+-------------------
+- Spotlight should respect prefers-reduced-motion.
+- Pause spotlight when links inside of slides are focused.
+
 Panopoly Widgets 7.x-1.90, 2022-07-22
 -------------------
 - Multiple contrib updates to Panopoly.

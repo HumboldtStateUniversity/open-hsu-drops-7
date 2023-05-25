@@ -13,7 +13,7 @@ if [ -f openhsu.make ]; then
   if [ $SELECTION = "1" ]; then
 
     echo "Building OpenHSU! install profile in release mode..."
-    drush make --no-core --no-gitinfofile --contrib-destination=. openhsu.make
+    lando drush make --no-core --no-gitinfofile --contrib-destination=. openhsu.make
 
   else
    echo "Invalid selection."
