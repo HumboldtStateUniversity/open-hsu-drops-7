@@ -1,7 +1,6 @@
 .people-wrap > h2 {
   margin-top: -0.5rem;
   font-size: 2.125rem;
-  font-weight: 400;
 }
 .page-people .views-row-last {
   @include clearfix;
@@ -112,7 +111,6 @@ a .hsu-people-detail {
   .view-content > h3 {
     color: $light-green;
     font-size: 2.5rem;
-    font-weight: normal;
     margin: 1rem 0;
     position: relative;
     padding: 0 0.25rem;

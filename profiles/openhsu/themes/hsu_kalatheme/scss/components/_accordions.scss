@@ -1,122 +1,51 @@
 .ui-accordion {
   margin: 48px 0;
-  color: #2a2a2a;
   font-family: $font-family-sans-serif;
   font-size: 16px;
-  font-weight: 200;
   line-height: 1.44;
 }
-
-.ui-accordion .ui-accordion-header {
-  margin-top: 0;
-}
-
-h4.ui-accordion-header {
-  padding: 10px 20px;
-  text-transform: uppercase;
-  font-size: 16px;
-}
-
-h4.ui-accordion-header.ui-corner-all,
-h4.ui-accordion-header.ui-corner-top {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-
 h4.ui-accordion-header.ui-state-default {
-  background-color: #fff;
-  border-top: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
-  border-bottom: 1px solid #fff;
-  border-left: 1px solid #e6e6e6;
-  color: #909090;
+  color: #FFF;
+  font-size: 1.25rem;
+  background: $brand-primary;
+  padding-left: 20px;
 }
 
-h4.ui-accordion-header.ui-state-hover {
-  color: #111;
+
+h4.ui-accordion-header.ui-state-default:after {
+  //content: "\f055"; // plus sign with circle
+  content: "\f067"; // plus without circle
+  font-size:20px;
+  font-weight: 300;
+  font-family: FontAwesome;
+  position: absolute;
+  right:20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  color: #FFC72C;
+  transition: transform 300ms ease-in-out;
 }
 
-h4.ui-accordion-header.ui-state-active {
-  border-top: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
-  border-bottom: 3px solid #111;
-  border-left: 1px solid #e6e6e6;
-  color: #111;
-}
-
-h4.ui-accordion-header.ui-state-default:last-of-type {
-  border-top: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
-  border-bottom: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
-}
-
-.ui-accordion .ui-accordion-content {
-  top: 0;
-  border-top: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
-  border-bottom: 0 none;
-  border-left: 1px solid #e6e6e6;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 20px;
-}
-
-.ui-accordion .ui-accordion-content:last-of-type {
-  border-bottom: 1px solid #e6e6e6;
+h4.ui-accordion-header.ui-state-active:after {
+  transform: translateY(-50%) rotate(-135deg);
+  transition: transform 300ms ease-in-out;
 }
 
 .ui-accordion .accordion-content {
-  color: #2a2a2a;
+  color: $brand-primary;
   font-family: $font-family-sans-serif;
   font-size: 16px;
-  font-weight: 200;
   line-height: 1.44;
 }
 
 .ui-accordion .ui-accordion-header .ui-icon {
-  left: auto;
-  right: 0.5em;
+  display:none;
 }
 
-.ui-accordion .ui-state-active .ui-icon,
-.ui-accordion .ui-state-default .ui-icon,
-.ui-accordion .ui-accordion .ui-state-active .ui-icon {
+.ui-accordion a.btn-primary {
+  color: #FFF;
 }
-
-.ui-accordion .ui-icon-triangle-1-e {
-  background-position: 0 0;
-}
-
-.ui-accordion .ui-icon {
-  height: 20px;
-  width: 20px;
-}
-.accordion-content h2:first-child, .accordion-content h3:first-child, .accordion-content h4:first-child {
-    margin-top: 1rem;
-}
-h4.ui-accordion-header.ui-state-default {
-    background-color: #fff;
-    border-top: 1px solid #e6e6e6;
-    border-right: 1px solid #e6e6e6;
-    border-bottom: 1px solid #fff;
-    border-left: 1px solid #e6e6e6;
-    color: #333;
-    font-size: 1.25rem;
-    text-transform: initial;
-    background: #e0e4e0;
-    padding-left: 20px;
-}
-h4.ui-accordion-header.ui-corner-all,
-h4.ui-accordion-header.ui-corner-top {
-  border-radius: 0;
-}
-.ui-accordion .accordion-content {
-    color: #333;
-}
-// Improve visibility of focus state
-h4.ui-state-focus:focus {
-border: solid 1px $mid-gray;
-background:$gray;
-color:white;
+.ui-accordion a.btn-primary:hover, .ui-accordion a.btn-primary:active, .ui-accordion a.btn-primary:focus {
+  color: #004c46;
+  background-color: #FFF;
 }

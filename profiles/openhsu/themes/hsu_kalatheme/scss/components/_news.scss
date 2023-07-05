@@ -1,13 +1,21 @@
 // Override some panopoly news styles
 .pane-hsu-news-panel-pane-1 .pane-title{
-	@include rem-fallback(padding, $pad/2, 0, $pad/4, $pad*2.5);
-	background: url(../img/bullet.png) no-repeat 0 $pad-quarter;
+	@include rem-fallback(padding, $pad/2, 0, $pad/4, 0);
 	@include rem-fallback(margin-bottom, 0);
+	&:before {
+		  font: $icon-font;
+			content: "\f1ea  ";
+			font-size: 1.618rem;
+	}
 }
 .pane-hsu-events-panel-pane-1 .pane-title{
-	@include rem-fallback(padding, $pad/2, 0, $pad/4, $pad*2.5);
-	background: url(../img/calendar.png) no-repeat 0 $pad-quarter;
+	@include rem-fallback(padding, $pad/2, 0, $pad/4, 0);
 	@include rem-fallback(margin-bottom, 0);
+	&:before {
+		  font: $icon-font;
+			content: "\f073  ";
+			font-size: 1.618rem;
+	}
 }
 
 .view-hsu-news, .view-hsu-events {
@@ -30,7 +38,7 @@
 		}
 	}
 	a {
-		text-decoration: none;
+		text-decoration: underline;
 	}
 	.view-footer {
 		@include rem-fallback(padding-left, 2.5);
@@ -43,7 +51,7 @@
 	span.date-display-single {
 		display: block;
 		font-weight: 700;
-		color: #b65300;
+		color: $brand-primary;
 	}
 
 }

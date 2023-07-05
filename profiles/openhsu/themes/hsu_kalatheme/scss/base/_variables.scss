@@ -1,5 +1,6 @@
 //Fonts
-$font-family-sans-serif: 'Lato', sans-serif;
+$font-family-sans-serif: 'poppins', sans-serif;
+$font-family-serif: motiva-sans, sans-serif;
 $icon-font: normal normal normal 14px/1 FontAwesome;
 
 //Fontawesome path to font files
@@ -7,26 +8,38 @@ $fa-font-path:        "../webfonts";
 
 
 //Colors
-$black : #333;
+$black : #000;
 $gray : #808080;
 $mid-gray:#b0b0b0;
 $light-gray: #f9f9f9;
 $white : #fff;
 
 //Spirit palette
-$brand-primary: #25551b;
+$brand-primary: #004c46;
+$light-green: #00856a;
+$gold: #FFC72C;
+$sand: #F5F3E7;
+$orange:#F2A900;
+
+// not used it seems
 $dark-green: #0c4301;
+// not used it seems
 $green2:#256918;
-$light-green: #5c8021;
+// not used now replaced with light-green above
 $light-green2: #87a625;
+// not used
 $gray-green: #e0e4e0;
+// not used
 $mint:#e8efdc;
+// not used
 $light-gold: #dddebc;
-$gold: #efe988;
+// not used
 $brick: #933621;
+// not used
 $dark-brick:#5e2417;
-$orange:#b65300;
+// not used
 $dark-orange:#984907;
+// not used
 $brown: #543e2a;
 
 

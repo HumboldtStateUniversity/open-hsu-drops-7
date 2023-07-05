@@ -42,6 +42,7 @@ function hsu_kalatheme_preprocess_html(&$variables) {
   * loading web fonts and external css
   */
   drupal_add_css('//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic', array('type' => 'external'));
+  drupal_add_css('//use.typekit.net/bju8ezq.css', array('type' => 'external'));
 
   // add custom css file from theme-settings
   $use_custom_css_file = theme_get_setting('custom_css_file');
@@ -162,7 +163,7 @@ function hsu_kalatheme_preprocess_page(&$variables) {
 
   	  //Add selected header image as css background
       if ($image_file != '') {
-        $css = ".header-container {position: relative;padding:1.5rem 0;color:#fff;background:url('$image_path') no-repeat center top;background-size:cover;}.hsu-header{background:none;}.hsu-header h1{float:left;background:rgba(255, 255, 255, .75);padding:.5rem;}.department-brand a{color:#25551b;}.department-brand a:hover{color:black;}";
+        $css = ".header-container {position: relative;padding:1.5rem 0;color:#fff;background:url('$image_path') no-repeat center top;background-size:cover;}.hsu-header{background:none;}.hsu-header h1{float:left;background:rgba(255, 255, 255, .75);padding:.5rem;}.department-brand a{color:#004c46;}.department-brand a:hover{color:#00856a;}";
     	  drupal_add_css($css, $options);
       }
     }

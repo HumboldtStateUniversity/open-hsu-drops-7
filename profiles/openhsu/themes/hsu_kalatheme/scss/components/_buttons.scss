@@ -1,0 +1,62 @@
+a.btn {
+  text-decoration: none;
+  font-family: "pt-mono",monospace;
+  font-weight: 700;
+}
+.btn {
+  border: 1.5px solid #004C46;
+  font-family: "pt-mono",monospace;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-bottom: 1.25rem;
+  transition: all 300ms ease-in-out;
+  font-size: 16px;
+  white-space: normal;
+}
+.btn-primary {
+  background: $brand-primary;
+  color:#FFF;
+  border-color: #FFF;
+  font-weight: 700;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background: #FFF;
+  color: $brand-primary;
+  border-color: $brand-primary;
+}
+.btn-default {
+  background: #FFF;
+  color: $brand-primary;
+  border-color: $brand-primary;
+  font-weight: 700;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active {
+  background: $brand-primary;
+  color: #FFF;
+  border-color: #FFF;
+}
+.btn-secondary {
+  background: $gold;
+  color: $brand-primary;
+  border-color: $brand-primary;
+}
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+  background: #FFF;
+  color: $brand-primary;
+  border-color: $brand-primary;
+}
+
+.btn-lg {
+  font-size: 18px;
+}
+.btn-sm {
+  font-size: 14px;
+  padding: 5px 20px;
+}
+
+
+// Hack carousel button controls
+.img-6-text-left .carousel-control-wrapper .carousel-control.left, .img-6-text-left .carousel-control-wrapper .carousel-control.right {
+  border-radius: 0.9375rem;
+  border-color: $light-green;
+}

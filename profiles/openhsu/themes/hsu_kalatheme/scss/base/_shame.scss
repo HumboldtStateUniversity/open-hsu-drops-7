@@ -8,7 +8,7 @@
 	@extend .btn-primary;
 
 }
-// Added to override the clearfix bootstrap clash that caused list item content to wrap below the bullet 
+// Added to override the clearfix bootstrap clash that caused list item content to wrap below the bullet
 .pane-panopoly-news-articles-by-author {
 	.clearfix:before {
 		display: inline;

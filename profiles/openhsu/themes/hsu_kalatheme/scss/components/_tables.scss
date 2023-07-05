@@ -2,7 +2,8 @@
 
 .field table {
   background-color: $table-bg;
-  color: $black;
+  color: $brand-primary;
+
   // Was causing table border to disappear in some browsers
   // overflow: hidden;
   min-width: 300px; // adjust to your needs
@@ -13,10 +14,10 @@
   tr {
     border: 1px solid $table-border-color;
     &:nth-child(odd) {
-      background-color: $table-bg-accent;
+      background-color: $white;
     }
     &:hover {
-      background-color: $table-bg-hover;
+      //background-color: $table-bg-hover;
     }
   }
 
@@ -24,10 +25,10 @@
     padding: .5em 1em;
     border-right: 1px solid $table-border-color;
     &:last-child{
-      border-right:0; 
+      border-right:0;
     }
     &:first-child{
-      border-left:0; 
+      border-left:0;
     }
   }
 
@@ -37,8 +38,9 @@
   }
 
   th {
-    background-color: #ddd;
-    border: 1px solid #ccc;
+    background-color: $brand-primary;
+    color: $white;
+    border: 1px solid #DDD;
     vertical-align: text-bottom;
   }
 }

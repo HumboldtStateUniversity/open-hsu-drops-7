@@ -1,18 +1,19 @@
 /* removes horizontal scrollbar when using the .fwidth class */
 html, body {
   overflow-x: hidden;
-  background: #fff;
+  background: $sand;
+
 }
 
 /*
  * Fix fonts that render as bold in Firefox
  */
-html {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: 400;
-}
+//html {
+//  -moz-osx-font-smoothing: grayscale;
+//  -webkit-font-smoothing: antialiased;
+//  font-smoothing: antialiased;
+//  font-weight: 500;
+//}
 
 /*
  * Firefox specific rule
@@ -40,7 +41,7 @@ img {
 }
 body {
   font-family: $font-family-sans-serif;
-  color: $black;
+  color: $brand-primary;
 }
 .container-fluid {
   padding-left: 0;
@@ -70,8 +71,8 @@ body {
   color: $white;
   @include rem-fallback(padding-bottom, 1);
   h1 {
+    font-style: normal;
     color: $white;
-    font-weight: 300;
     @include rem-fallback(margin, $pad, 0, 0);
   }
   p {
@@ -146,12 +147,13 @@ body {
 
 /* Circle H styles */
 .circleh {
-  @include rem-fallback(margin-top, -$pad-and-half);
+  //@include rem-fallback(margin-top, -$pad-and-half);
+  margin-top: -32px;
   text-align: center;
 }
 
 .circleh-color {
-  fill: #25551b;
+  fill: $light-green;
 }
 
 .brand {
@@ -159,9 +161,10 @@ body {
   margin: 0;
 }
 a {
-  color: $orange;
+  color: $brand-primary;
+  text-decoration: underline;
   &:hover {
-    color: $black;
+    color: $light-green;
   }
 }
 h1,
@@ -177,7 +180,7 @@ h6 {
 .social {
   @include rem-fallback(margin-bottom, $pad);
   a {
-    color: $light-green;
+    color: $brand-primary;
     background: $white;
     border-radius: 50%;
     box-sizing: content-box;
@@ -191,7 +194,7 @@ h6 {
     transition: all 0.3s ease-in-out;
 
     &:hover {
-      background: $light-green2;
+      background: $light-green;
       color: $white;
     }
   }
@@ -306,6 +309,4 @@ div.admin-panel .description {
     }
   }
 }
-a.btn {
-  text-decoration: none;
-}
+

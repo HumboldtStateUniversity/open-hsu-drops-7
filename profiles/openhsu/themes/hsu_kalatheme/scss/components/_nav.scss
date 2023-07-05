@@ -3,6 +3,7 @@
 .navbar-nav {
     > li > a {
     	text-decoration: none;
+      padding: 17px 15px 13px 15px;
     }
   }
 .navbar-toggle {
@@ -12,7 +13,6 @@
 			height: 3px !important;
 	}
 }
-
 .menu-text {
     display: inline;
     text-transform: uppercase;
@@ -21,15 +21,17 @@
     position: absolute;
     color: $white;
     font-size: .85em;
-    font-weight: 700;
 }
 // Dropdowns
 .navbar-default .navbar-nav > .open > a:focus {
     background-color: rgba($white, .5);
 }
-.caret {
-    margin:0 5px;
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #000 !important;
+  background-color: #CDDAD5;
 }
+
 .dropdown-menu {
     min-width: 190px;
     > li > a {
@@ -57,14 +59,13 @@
 .dropdown-menu > .active > a {
     background:transparent;
     color: $navbar-default-bg;
-    font-weight: 700;
 }
 .navbar .nav > .dropdown > a { /* Dropdowns in main menu */
   float: none;
 }
 // pane style to apply to sub-nav panes "Section Links"
 .section-links {
-    
+
     @extend .view-hsu-news;
     ul {
         @include rem-fallback(padding, 0);

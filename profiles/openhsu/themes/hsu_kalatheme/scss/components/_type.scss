@@ -1,107 +1,157 @@
 /* Define your base font-size here; most elements will inherit this. */
-html{
-	font-size:1em;      /* Assuming 16px... */
-	line-height:1.5;    /* 24px (This is now our magic number; all subsequent margin-bottoms and line-heights want to be a multiple of this number in order to maintain vertical rhythm.) */
-
-	-webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; -ms-text-rendering: optimizeLegibility; -o-text-rendering: optimizeLegibility; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; -ms-font-smoothing: antialiased; -o-font-smoothing: antialiased; font-smoothing: antialiased;
-
+html {
+  font-size: 0.92em; /* Assuming 16px... */
+  line-height: 1.5; /* 24px (This is now our magic number; all subsequent margin-bottoms and line-heights want to be a multiple of this number in order to maintain vertical rhythm.) */
+  font-family: $font-family-sans-serif;
+  font-weight: 500;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
 }
 
 /* Common margin-bottom for vertical rhythm. */
-h1,h2,h3,h4,h5,h6,
-ul,ol,dl,
+ul,
+ol,
+dl,
 fieldset,
 p,
 table,
 pre,
-hr{
-
-	font-family:$font-family-sans-serif;
-}
-h1,h2,h3,h4,h5,h6,.light{
-	@include rem-fallback(margin-bottom, 1);
-	@include rem-fallback(margin-top, 2);
-
-	color:$orange;
-	font-weight:500;
+hr {
 
 }
-
-
-
-/* These handle massive type, for less frequently occuring bits of text (e.g. in mastheads and banners). */
-.giga{
-	@include rem-fallback(font-size, 5); //80px
-	line-height:1.2; //96px
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.light {
+  font-family: $font-family-serif;
+  color: $brand-primary;
+  @include rem-fallback(margin-bottom, 1);
+  @include rem-fallback(margin-top, 2);
+  font-weight: 900;
 }
-.mega{
-	@include rem-fallback(font-size, 4); //64px
-	line-height:1.125; //72px
+h1 {
+  letter-spacing: -0.05rem;
+  color: #004C46;
+  font-size: 3.25rem;
 }
-.kilo, h1.title{
-	@include rem-fallback(font-size, 3); //48px
-	line-height:1; //48px
+h2 {
+  letter-spacing: -0.05rem;
+  color: #004C46;
+  font-size: 2.375rem;
+  padding-bottom: 1.125rem
+}
+@media only screen and (min-width: 992px) {
+  h2 {
+    font-size:2.375rem
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  h2 {
+    font-size:2.375rem
+  }
+}
+
+/* These handle massive type, for less frequently occurring bits of text (e.g. in mastheads and banners). */
+.giga {
+  @include rem-fallback(font-size, 5); //80px
+  line-height: 1.2; //96px
+  color: $brand-primary;
+}
+.mega {
+  @include rem-fallback(font-size, 4); //64px
+  line-height: 1.125; //72px
+  color: $brand-primary;
+}
+.giga,
+.mega,
+.kilo,
+.alpha {
+  @include rem-fallback(margin-bottom, 1);
+  @include rem-fallback(margin-top, 2);
+}
+.kilo,
+h1.title {
+  @include rem-fallback(font-size, 3); //48px
+  line-height: 1; //48px
+  color: $brand-primary;
 }
 
 /* Define headings and their associated classes here. */
-h1,.alpha{
-	@include rem-fallback(font-size, 3.125); //32px
-	line-height:1.2; //48px
-	font-weight: 300;
+h1,
+.alpha {
+  @include rem-fallback(font-size, 3.125); //32px
+  line-height: 1.2; //48px
 }
-h2,.beta{
-	@include rem-fallback(font-size, 2.618); //36px
-	line-height:1; //24px
-	font-weight: 300;
+h2,
+.beta {
+  @include rem-fallback(font-size, 2.618); //36px
+  line-height: 1; //24px
 }
-p.beta, p.gamma, p.delta{
-	line-height:1.5;
+p.beta,
+p.gamma,
+p.delta {
+  line-height: 1.5;
 }
-h3,.gamma{
-	@include rem-fallback(font-size, 1.931); //32px
-	line-height:1.2; //32px
-	font-weight: 300;
+h3,
+.gamma {
+  @include rem-fallback(font-size, 1.931); //32px
+  line-height: 1.2; //32px
 }
-h4,.delta{
-	@include rem-fallback(font-size, 1.618); //28px
-	line-height:1.333; //28px
-	font-weight: 400;
+h4,
+.delta {
+  @include rem-fallback(font-size, 1.618); //28px
+  line-height: 1.333; //28px
 }
-h5,.epsilon{
-	@include rem-fallback(font-size, 1.194); //24px
-	line-height:1.5; //24px
-	font-weight: 400;
+h5,
+.epsilon {
+  @include rem-fallback(font-size, 1.194); //24px
+  line-height: 1.5; //24px
 }
-h6,.zeta{
-	@include rem-fallback(font-size, 1); //20px
-	line-height:1.25; //20px
-	font-weight: 400;
+h6,
+.zeta {
+  @include rem-fallback(font-size, 1); //20px
+  line-height: 1.25; //20px
 }
 
 /* Smaller-than-body-copy sizes here. */
-small,.milli {
-	@include rem-fallback(font-size, .75); //12px
-	line-height:2; //24px
+small,
+.milli {
+  @include rem-fallback(font-size, 0.75); //12px
+  line-height: 2; //24px
 }
 blockquote {
-	padding: ($line-height-computed / 2) $line-height-computed;
-	margin:$line-height-computed 0;
-	font-size: $blockquote-font-size;
-	border-left: 3px solid $blockquote-border-color;
-	p {
-		margin: 0;
-	}
+  padding: ($line-height-computed / 2) $line-height-computed;
+  margin: $line-height-computed 0;
+  font-size: $blockquote-font-size;
+  border-left: 3px solid $blockquote-border-color;
+  p {
+    margin: 0;
+  }
 }
 
-ul, ol {
-	margin-top: 0;
-	@include rem-fallback(margin-bottom, 1.5);
+ul,
+ol {
+  margin-top: 0;
+  @include rem-fallback(margin-bottom, 1.5);
 }
-ul ul, ol ol {
-	margin-bottom: 0px;
+ul ul,
+ol ol {
+  margin-bottom: 0px;
 }
 
 /* Added to properly place icons in pane linkbar */
 ul.panels-ipe-linkbar {
-	margin-top: 15px;
+  margin-top: 15px;
 }

@@ -14,11 +14,11 @@
 }
 .pane-bundle-spotlight {
   .panopoly-spotlight-label {
-    color: $orange;
+    color: $brand-primary;
     opacity: .80;
     a {
     text-decoration: none;
-    color: $orange;
+    color: $brand-primary;
     &:after {
       font: $icon-font;
       content: " \f101";
@@ -40,7 +40,7 @@
 // full pager
 
 .pane-bundle-spotlight .panopoly-spotlight-buttons-wrapper li {
-  background: $orange;
+  background: $brand-primary;
   color:$white;
   border: none !important;
   width: 30px;
@@ -66,11 +66,11 @@
   width: 30px;
   overflow: hidden;
   border-color:$white;
-  background: $orange;
+  background: $brand-primary;
   border: none !important;
     &:hover {
       background: $white;
-      color:$orange;
+      color:$brand-primary;
     }
 }
 .pane-bundle-spotlight .panopoly-spotlight-function-buttons a.panopoly-spotlight-previous {

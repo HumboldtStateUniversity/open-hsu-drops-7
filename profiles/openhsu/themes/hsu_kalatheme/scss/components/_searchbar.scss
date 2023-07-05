@@ -33,14 +33,14 @@
     top:0;
     right:0;
     border:0;
-    background:#dcddd8;
+    background:$sand;
     outline: 0;
     width:100% !important;
     height:50px;
     margin:0;
     padding:0px 55px 0px 20px;
     font-size:20px;
-    color:black;
+    color:$brand-primary;
     position: absolute;
 }
 .searchbox-input::-webkit-input-placeholder {

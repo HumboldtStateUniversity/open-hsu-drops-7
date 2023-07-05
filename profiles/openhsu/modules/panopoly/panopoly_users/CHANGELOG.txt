@@ -1,3 +1,7 @@
+Panopoly Users 7.x-1.92, 2023-06-12
+-------------------
+- No changes since last release.
+
 Panopoly Users 7.x-1.91, 2023-04-05
 -------------------
 - No changes since last release.
