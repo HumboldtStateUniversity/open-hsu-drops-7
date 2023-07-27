@@ -7,11 +7,11 @@
 <header>
   <div class="hsu-header-mast clearfix">
     <div class="hsu-header-container">
-      <div class="hsu-header-col-6 hsu-header-links" id="utility-menu" role="navigation" aria-label="Humboldt State A-Z Index">
-        <ul class="clearfix">
-          <li class="hsu-header-has-subnav hsu-header-az-index clearfix">
-            <a href="#">A-Z Index <i class="fa fa-caret-down"></i></a>
-            <ul>
+      <div class="hsu-header-col-6 hsu-header-links dropdown" id="utility-menu" role="navigation" aria-label="Cal Poly Humboldt A-Z Index">
+        <ul class="clearfix ">
+          <li class="dropdown hsu-header-has-subnav hsu-header-az-index clearfix" role="presentation">
+            <a href="#" class="expanded" role="button" data-toggle="dropdown">A-Z Index <i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu" role="menu">
               <li><a href="http://humboldt.edu/siteindex/a">A</a></li>
               <li><a href="http://humboldt.edu/siteindex/b">B</a></li>
               <li><a href="http://humboldt.edu/siteindex/c">C</a></li>

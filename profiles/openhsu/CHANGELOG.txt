@@ -1,3 +1,9 @@
+OpenHSU 7.x-1.44 2023-07-27
+-----------------------
+- Improve usability of hyperlink colors
+- Accessibility enhancements for a-z index and quicklinks menus
+- More obvious focus states for various elements
+
 OpenHSU 7.x-1.43 2023-07-05
 -----------------------
 - Applied new brand colors, logos, and fonts

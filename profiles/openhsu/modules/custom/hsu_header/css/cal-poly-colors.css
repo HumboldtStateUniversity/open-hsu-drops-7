@@ -15,7 +15,8 @@
   background: #FFF;
   color: #004c46;
 }
-.hsu-header-links {
+.hsu-header-links,
+.hsu-header-links .dropdown-menu {
   line-height: 2rem;
   /* border-bottom: 1px solid #FFF; */
   font-size: 13px;
@@ -56,7 +57,35 @@
 }
 
 /* vertically align poppins */
-.hsu-header-links li a {
+.hsu-header-links li a,
+.hsu-header-links .dropdown-menu a {
   padding: 0.15rem 0.5rem 0;
 
 }
+/*line 74 start End 93/94*/
+.hsu-header-links > ul ul.active,
+.open > ul.dropdown-menu {
+    max-height: 150em;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+    position:relative;
+}
+@media screen and (min-width: 43.75em) {
+    .open > ul.dropdown-menu {
+        position:absolute;
+    }
+}
+.dropdown-backdrop {
+    display: none;
+}
+/* .dropdown-menu > li > a:hover {
+
+} */
+.hsu-header-links .dropdown-menu > li > a {
+    clear: none;
+    line-height: 2rem;
+    white-space: normal;
+}
+/* .hsu-header-links .dropdown-menu {
+  font-size: 13px;
+} */

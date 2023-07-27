@@ -54,12 +54,12 @@ li.open .caret::after {
 //---------------END-customizations--------------
 
 // The dropdown wrapper (div)
-.dropdown {
+.navbar .dropdown {
   position: relative;
 }
 
 // Prevent the focus on the dropdown toggle when closing dropdowns
-.dropdown-toggle:focus {
+.navbar .dropdown-toggle:focus {
   outline: 0;
 }
 
@@ -109,7 +109,7 @@ li.open .caret::after {
 }
 
 // Hover/Focus state
-.dropdown-menu > li > a {
+.navbar .dropdown-menu > li > a {
   &:hover,
   &:focus {
     text-decoration: none;
@@ -119,7 +119,7 @@ li.open .caret::after {
 }
 
 // Active state
-.dropdown-menu > .active > a {
+.navbar .dropdown-menu > .active > a {
   &,
   &:hover,
   &:focus {
@@ -134,7 +134,7 @@ li.open .caret::after {
 //
 // Gray out text and ensure the hover/focus state remains gray
 
-.dropdown-menu > .disabled > a {
+.navbar .dropdown-menu > .disabled > a {
   &,
   &:hover,
   &:focus {
@@ -142,7 +142,7 @@ li.open .caret::after {
   }
 }
 // Nuke hover/focus effects
-.dropdown-menu > .disabled > a {
+.navbar .dropdown-menu > .disabled > a {
   &:hover,
   &:focus {
     text-decoration: none;

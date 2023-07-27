@@ -38,9 +38,9 @@ function hsu_header_attach() {
   $build = array(
     '#theme' => 'hsu_header',
     '#attached'=> array(
-      'js' => array(
-        $module_path . '/hsu-header.js',
-      ),
+//      'js' => array(
+//        $module_path . '/hsu-header.js',
+//      ),
       'css' => array(
         $module_path . '/css/hsu-header.css',
         $module_path . '/css/cal-poly-colors.css',
@@ -54,13 +54,13 @@ function hsu_header_attach() {
  * Turn quicklinks JSON into list items.
  */
 function hsu_header_quicklinks_json() {
-  $jsondata = file_get_contents("http://commencement.humboldt.edu/quicklinks/json");
+  $jsondata = file_get_contents("https://commencement.humboldt.edu/quicklinks/json");
   $quicklinks = json_decode($jsondata, TRUE);
 
   $output = "";
 
   if ( !empty($quicklinks['data'])) {
-    $output .= "<li class=\"hsu-header-has-subnav hsu-header-quicklinks\"><a href=\"#\">quicklinks <i class=\"fa fa-caret-down\"></i></a><ul>";
+    $output .= "<li class=\"hsu-header-quicklinks dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">quicklinks <i class=\"fa fa-caret-down\"></i></a><ul class=\"dropdown-menu\" role=\"menu\">";
     foreach ($quicklinks['data'] as $value) {
       if ($value['link_path'] == '<nolink>') {
         $output .= "<li class=\"quicklinks-heading\">" . $value['link_title'] . "</li>\r\n";
@@ -71,7 +71,7 @@ function hsu_header_quicklinks_json() {
     }
     $output .= "</ul></li>";
   } else {
-    $output .= "<li class=\"hsu-header-quicklinks\"><a href=\"http://humboldt.edu/quicklinks-menu\">quicklinks</a></li>";
+    $output .= "<li class=\"hsu-header-quicklinks\"><a href=\"https://humboldt.edu/quicklinks-menu\">quicklinks</a></li>";
   }
   return $output;
 }

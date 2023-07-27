@@ -105,9 +105,14 @@ body {
 
   a {
     color: $gold;
-    &:hover {
+    &:hover{
       color: $white;
+      text-decoration: none;
     }
+     &:focus {
+      color: $white;
+      text-decoration: none;
+     }
     .active {
       color: $gray !important;
     }
@@ -160,12 +165,23 @@ body {
   // @include rem-fallback(padding, $pad-half, $pad, 0, $pad);
   margin: 0;
 }
-a {
-  color: $brand-primary;
+a, .ui-widget-content a {
+  color: $link-color;
   text-decoration: underline;
   &:hover {
     color: $light-green;
+    text-decoration: none;
   }
+}
+.ui-widget-content a.btn-default {
+background: #FFF;
+    color: #004c46;
+    border-color: #004c46;
+    &:hover {
+      background: #004c46;
+      color: #FFF;
+      border-color: #FFF;
+    }
 }
 h1,
 h2,
@@ -193,7 +209,7 @@ h6 {
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 
-    &:hover {
+    &:hover, &:focus {
       background: $light-green;
       color: $white;
     }

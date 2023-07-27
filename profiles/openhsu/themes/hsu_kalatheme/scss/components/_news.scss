@@ -39,6 +39,9 @@
 	}
 	a {
 		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
 	}
 	.view-footer {
 		@include rem-fallback(padding-left, 2.5);

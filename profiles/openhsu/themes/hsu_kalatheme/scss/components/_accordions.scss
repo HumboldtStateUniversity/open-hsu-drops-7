@@ -10,7 +10,9 @@ h4.ui-accordion-header.ui-state-default {
   background: $brand-primary;
   padding-left: 20px;
 }
-
+h4.ui-accordion-header.ui-state-default:focus {
+  outline: 2px solid #d71ef7;
+}
 
 h4.ui-accordion-header.ui-state-default:after {
   //content: "\f055"; // plus sign with circle
@@ -34,7 +36,7 @@ h4.ui-accordion-header.ui-state-active:after {
 .ui-accordion .accordion-content {
   color: $brand-primary;
   font-family: $font-family-sans-serif;
-  font-size: 16px;
+  font-size: .92em;
   line-height: 1.44;
 }
 
