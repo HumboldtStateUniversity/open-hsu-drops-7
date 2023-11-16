@@ -24,6 +24,7 @@
     "node-sass": "^4.12.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "bower": "^1.8.14"
   }
 }

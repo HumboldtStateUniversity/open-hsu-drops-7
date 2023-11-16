@@ -4,7 +4,12 @@
 @import "base/variables";
 @import "base/bootstrap-variables";
 @import "bootstrap";
-@import "font-awesome";
+@import "fontawesome";
+@import "solid";
+@import "brands";
+@import "regular";
+@import "shims";
+
 
 // Pull in other custom stuff
 @import "mixins/mixins";

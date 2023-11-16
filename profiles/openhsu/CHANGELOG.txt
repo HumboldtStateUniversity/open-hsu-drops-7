@@ -1,3 +1,9 @@
+OpenHSU 7.x-1.45 2023-11-16
+-----------------------
+- Add accessibility link in footer
+- Update to fontawesome 6
+- Replace twitter logo with x
+
 OpenHSU 7.x-1.44 2023-07-27
 -----------------------
 - Improve usability of hyperlink colors

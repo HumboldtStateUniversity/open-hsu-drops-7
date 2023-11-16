@@ -57,7 +57,7 @@
 }
 .searchbox-icon:before {
     content: "\f002 ";
-    font-family: FontAwesome;
+    font: $icon-font;
     margin: 19px;
 }
 .searchbox-icon,

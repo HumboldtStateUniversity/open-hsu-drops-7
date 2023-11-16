@@ -16,10 +16,9 @@ h4.ui-accordion-header.ui-state-default:focus {
 
 h4.ui-accordion-header.ui-state-default:after {
   //content: "\f055"; // plus sign with circle
+  font: $icon-font;
   content: "\f067"; // plus without circle
-  font-size:20px;
-  font-weight: 300;
-  font-family: FontAwesome;
+  font-size: 23px;
   position: absolute;
   right:20px;
   top: 50%;

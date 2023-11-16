@@ -206,6 +206,7 @@
           <div class="<?php print $hsu_footer_last_css; ?>">
             <?php print $footer_last_column_display; ?>
             <?php print render($page['footer_last']); ?>
+            <div style="text-align:right;"><a href="https://web.humboldt.edu/content/web-accessibility"><i class="fa-solid fa-universal-access fa-lg"></i> Web Accessibility</a></div>
           </div>
         <?php endif; ?>
       </div>

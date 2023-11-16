@@ -49,7 +49,8 @@ module.exports = function (grunt) {
         includePaths: [
           'bower_components',
           'bower_components/bootstrap-sass-official/assets/stylesheets/',
-          'bower_components/fontawesome/scss/'
+          'node_modules/@fortawesome/fontawesome-free/scss'
+
         ]
       },
       dev: {
