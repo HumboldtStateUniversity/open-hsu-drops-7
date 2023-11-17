@@ -218,10 +218,10 @@ function hsu_kalatheme_preprocess_page(&$variables) {
   $hsu_social_output = "<div class=\"social\">";
 
   if ($social_align) { $hsu_social_output = "<div class=\"social social-right\">"; }
-  if ($twitter) { $hsu_social_output .= "<a href=\"$twitter\"><i class=\"fa fa-twitter\"><span class=\"sr-only\">Twitter</span></i></a>"; }
-  if ($facebook) { $hsu_social_output .= "<a href=\"$facebook\"><i class=\"fa fa-facebook\"><span class=\"sr-only\">Facebook</span></i></a>"; }
-  if ($instagram) { $hsu_social_output .= "<a href=\"$instagram\"><i class=\"fa fa-instagram\"><span class=\"sr-only\">Instagram</span></i></a>"; }
-  if ($youtube) { $hsu_social_output .= "<a href=\"$youtube\"><i class=\"fa fa-youtube\"><span class=\"sr-only\">Youtube</span></i></a>"; }
+  if ($twitter) { $hsu_social_output .= "<a href=\"$twitter\"><i class=\"fa-brands fa-x-twitter fa-2xl\"><span class=\"sr-only\">Twitter</span></i></a>"; }
+  if ($facebook) { $hsu_social_output .= "<a href=\"$facebook\"><i class=\"fa-brands fa-facebook fa-2xl\"><span class=\"sr-only\">Facebook</span></i></a>"; }
+  if ($instagram) { $hsu_social_output .= "<a href=\"$instagram\"><i class=\"fa-brands fa-instagram fa-2xl\"><span class=\"sr-only\">Instagram</span></i></a>"; }
+  if ($youtube) { $hsu_social_output .= "<a href=\"$youtube\"><i class=\"fa-brands fa-youtube fa-2xl\"><span class=\"sr-only\">Youtube</span></i></a>"; }
 
   $hsu_social_output .= "</div>";
 
