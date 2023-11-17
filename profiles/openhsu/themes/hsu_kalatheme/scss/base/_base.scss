@@ -99,7 +99,7 @@ body {
 .footer-wrapper {
   background: $brand-primary;
   margin: 0 auto;
-  @include rem-fallback(padding, 0, $pad);
+  @include rem-fallback(padding, 0, $pad,  $pad-half);
   clear: both;
   color: $white;
 

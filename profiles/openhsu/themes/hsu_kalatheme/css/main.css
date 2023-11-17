@@ -14173,8 +14173,8 @@ body {
 .footer-wrapper {
   background: #004c46;
   margin: 0 auto;
-  padding: 0px 16px;
-  padding: 0rem 1rem;
+  padding: 0px 16px 8px;
+  padding: 0rem 1rem 0.5rem;
   clear: both;
   color: #fff; }
   .footer-wrapper a {
