@@ -994,6 +994,7 @@ interface SearchApiQueryFilterInterface {
 /**
  * Provides a standard implementation of SearchApiQueryFilterInterface.
  */
+#[\AllowDynamicProperties]
 class SearchApiQueryFilter implements SearchApiQueryFilterInterface {
 
   /**

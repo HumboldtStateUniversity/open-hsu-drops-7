@@ -726,6 +726,9 @@ function ctools_file_download($filepath) {
  * class-based plugins.
  */
 function ctools_registry_files_alter(&$files, $indexed_modules) {
+  if (drupal_get_bootstrap_phase() < DRUPAL_BOOTSTRAP_FULL) {
+    return;
+  }
   ctools_include('registry');
   return _ctools_registry_files_alter($files, $indexed_modules);
 }

@@ -1,3 +1,8 @@
+Search API Database Search 1.9 (2023-11-02):
+--------------------------------------------
+- #3273638 by Erno, drunken monkey: Fixed bug when filtering text with OR
+  conjunction.
+
 Search API Database Search 1.8 (2021-01-11):
 --------------------------------------------
 - #3191489 by drunken monkey, borisson_, Amir Simantov: Fixed searches with

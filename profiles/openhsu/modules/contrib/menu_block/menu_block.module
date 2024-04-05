@@ -189,7 +189,9 @@ function menu_block_block_view_alter(&$data, $block) {
 function template_preprocess_menu_block_wrapper(&$variables) {
   $variables['classes_array'][] = 'menu-block-' . $variables['delta'];
   $variables['classes_array'][] = 'menu-name-' . $variables['config']['menu_name'];
-  $variables['classes_array'][] = 'parent-mlid-' . menu_block_clean_css_identifier($variables['config']['parent_mlid']);
+  if (!empty($variables['config']['parent_mlid'])) {
+    $variables['classes_array'][] = 'parent-mlid-' . menu_block_clean_css_identifier($variables['config']['parent_mlid']);
+  }
   $variables['classes_array'][] = 'menu-level-' . $variables['config']['level'];
 }
 
@@ -307,7 +309,9 @@ function menu_block_get_config($delta = NULL) {
       // Exported blocks generally have 'menu_name' and 'parent_mlid' defined
       // but not 'parent'
       if (!isset($config['parent'])) {
-        $config['parent'] = $config['menu_name'] . ':' . $config['parent_mlid'];
+        $menu_name = isset($config['menu_name']) ? $config['menu_name'] : '';
+        $parent_mlid = !empty($config['parent_mlid']) ? ':' . $config['parent_mlid'] : '';
+        $config['parent'] = $menu_name . $parent_mlid;
       }
     }
 
@@ -346,9 +350,9 @@ function menu_tree_block_data(array &$config) {
   // Determine the max depth based on level and depth setting.
   $max_depth = ($config['depth'] == 0) ? NULL : min($config['level'] + $config['depth'] - 1, MENU_MAX_DEPTH);
 
-  if ($config['expanded'] || $config['parent_mlid']) {
+  if ($config['expanded'] || !empty($config['parent_mlid'])) {
     // Get the full, un-pruned tree.
-    if ($config['parent_mlid'] || !empty($config['depth_relative'])) {
+    if (!empty($config['parent_mlid']) || !empty($config['depth_relative'])) {
       $tree = menu_tree_all_data($config['menu_name']);
     }
     else {
@@ -376,8 +380,8 @@ function menu_tree_block_data(array &$config) {
   }
 
   // Prune the tree along the active trail to the specified level.
-  if ($config['level'] > 1 || $config['parent_mlid']) {
-    if ($config['parent_mlid']) {
+  if ($config['level'] > 1 || !empty($config['parent_mlid'])) {
+    if (!empty($config['parent_mlid'])) {
       $parent_item = menu_link_load($config['parent_mlid']);
       if (!$parent_item) {
         watchdog('menu_block', "Menu block @delta is set to use parent menu link @plid but the menu link was not loadable or does not exist.", array(
@@ -399,7 +403,7 @@ function menu_tree_block_data(array &$config) {
   }
 
   // If the menu-item-based tree is not "expanded", trim the tree to the active path.
-  if ($config['parent_mlid'] && !$config['expanded']) {
+  if (!empty($config['parent_mlid']) && !$config['expanded']) {
     menu_tree_trim_active_path($tree);
   }
 

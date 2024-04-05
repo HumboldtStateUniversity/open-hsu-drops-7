@@ -7,6 +7,7 @@
 /**
  * Represents a Linkit entity search plugin.
  */
+#[AllowDynamicProperties]
 class LinkitSearchPluginEntity extends LinkitSearchPlugin {
 
   /**

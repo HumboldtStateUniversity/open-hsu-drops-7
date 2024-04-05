@@ -62,6 +62,13 @@ class SearchApiDbService extends SearchApiAbstractService {
   protected $warnings = array();
 
   /**
+   * Counter for generated aliases, to always have them unique.
+   *
+   * @var int
+   */
+  protected $aliasCounter = 0;
+
+  /**
    * {@inheritdoc}
    */
   public function __construct(SearchApiServer $server) {
@@ -1181,6 +1188,7 @@ class SearchApiDbService extends SearchApiAbstractService {
   public function search(SearchApiQueryInterface $query) {
     $time_method_called = microtime(TRUE);
     $this->ignored = $this->warnings = array();
+    $this->aliasCounter = 0;
     $index = $query->getIndex();
     if (empty($this->options['indexes'][$index->machine_name])) {
       throw new SearchApiException(t('Unknown index @id.', array('@id' => $index->machine_name)));
@@ -1569,7 +1577,7 @@ class SearchApiDbService extends SearchApiAbstractService {
           $db_query->groupBy($info['table'] . '.' . $column);
         }
 
-        foreach ($words as $i => $word) {
+        foreach ($words as $word) {
           $like = '%' . $this->connection->escapeLike($word) . '%';
           $db_or->condition('t.word', $like, 'LIKE');
 
@@ -1578,7 +1586,7 @@ class SearchApiDbService extends SearchApiAbstractService {
           // result multiple times if a single indexed word (partially) matches
           // multiple keywords. We also remember the column name so we can
           // afterwards verify that each word matched at least once.
-          $alias = 'w' . $i;
+          $alias = 'w' . $this->aliasCounter++;
           $alias = $db_query->addExpression("CASE WHEN t.word LIKE :like_$alias THEN 1 ELSE 0 END", $alias, array(":like_$alias" => $like));
           $db_query->groupBy($alias);
           $word_hits[] = $alias;

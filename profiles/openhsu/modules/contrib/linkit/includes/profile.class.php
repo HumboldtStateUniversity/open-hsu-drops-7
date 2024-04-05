@@ -7,6 +7,7 @@
 /**
  * Linkit Profile class implementation.
  */
+#[AllowDynamicProperties]
 class LinkitProfile {
 
   /**

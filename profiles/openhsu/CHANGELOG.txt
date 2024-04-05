@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.46 2024-04-05
+-----------------------
+- Update to Drupal 7.100
+- Update to Panopoly 1.94
+
 OpenHSU 7.x-1.45 2023-11-16
 -----------------------
 - Add accessibility link in footer

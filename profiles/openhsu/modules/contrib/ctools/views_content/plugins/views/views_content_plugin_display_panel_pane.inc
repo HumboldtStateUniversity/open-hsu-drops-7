@@ -59,7 +59,7 @@ class views_content_plugin_display_panel_pane extends views_plugin_display {
     $this->set_option('pane_conf', $conf);
     $this->view->dom_id = !empty($this->view->dom_id) ? $this->view->dom_id : md5($this->view->name . REQUEST_TIME . rand());
     if ($set_cache) {
-      cache_set('view_panel_pane_' . $this->view->dom_id, $conf);
+      cache_set('view_panel_pane_' . $this->view->dom_id, $conf, 'cache', REQUEST_TIME + 3600);
     }
     $this->has_pane_conf = TRUE;
   }
