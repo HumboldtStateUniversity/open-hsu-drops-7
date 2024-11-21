@@ -3,7 +3,7 @@ description = Provide CAS-SSO functionality.
 core = 7.x
 package = OpenHSU
 php = 5.2.4
-version = 7.x-1.46
+version = 7.x-1.47
 project = hsu_cas
 
 dependencies[] = cas
