@@ -1,3 +1,8 @@
+OpenHSU 7.x-1.48 2024-12-18
+-----------------------
+- Update to Drupal 7.103
+- Tag1 Drupal 7 Extended Support (D7ES) module
+
 OpenHSU 7.x-1.47 2024-11-21
 -----------------------
 - Update to Drupal 7.102 SA-CORE-2024-005
