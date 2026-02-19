@@ -54,7 +54,7 @@ function hsu_header_attach() {
  * Turn quicklinks JSON into list items.
  */
 function hsu_header_quicklinks_json() {
-  $jsondata = file_get_contents("https://commencement.humboldt.edu/quicklinks/json");
+  $jsondata = file_get_contents("https://live-hsu-p.pantheonsite.io/quicklinks/json");
   $quicklinks = json_decode($jsondata, TRUE);
 
   $output = "";
@@ -71,7 +71,7 @@ function hsu_header_quicklinks_json() {
     }
     $output .= "</ul></li>";
   } else {
-    $output .= "<li class=\"hsu-header-quicklinks\"><a href=\"https://humboldt.edu/quicklinks-menu\">quicklinks</a></li>";
+    $output .= "<li class=\"hsu-header-quicklinks\"><a href=\"https://humboldt.edu/\">quicklinks</a></li>";
   }
   return $output;
 }
