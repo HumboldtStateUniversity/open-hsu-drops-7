@@ -9,6 +9,29 @@
  */
 
 /**
+ * Sanitizes a CSV cell value to prevent CSV/Formula injection.
+ *
+ * @param string $value
+ *   The raw cell value.
+ *
+ * @return string
+ *   The sanitized cell value safe for inclusion in a CSV file.
+ *
+ * @see https://owasp.org/www-community/attacks/CSV_Injection
+ */
+function _tablefield_sanitize_csv_cell($value) {
+  // Characters that spreadsheet applications interpret as formula starters.
+  $dangerous_chars = ['=', '+', '-', '@', "\t", "\r", "\n", '＝', '＋', '－', '＠'];
+  foreach ($dangerous_chars as $char) {
+    if (mb_substr($value, 0, mb_strlen($char)) === $char) {
+      // Prepend a tab so the cell is treated as text, not a formula.
+      return "\t" . $value;
+    }
+  }
+  return $value;
+}
+
+/**
  * Implements hook_help().
  */
 function tablefield_help($path, $arg) {
@@ -126,7 +149,7 @@ function tablefield_export_csv($entity_type, $entity_id, $field_name, $langcode,
     foreach ($table['tabledata'] as $row) {
       // Remove the weight column.
       array_pop($row);
-      fputcsv($fp, $row, variable_get('tablefield_csv_separator', ','));
+      fputcsv($fp, array_map('_tablefield_sanitize_csv_cell', $row), variable_get('tablefield_csv_separator', ','));
     }
 
     fclose($fp);
@@ -1001,7 +1024,7 @@ function tablefield_field_formatter_view($entity_type, $entity, $field, $instanc
               if ($settings['xml']) {
                 switch ($settings['xml_safe']) {
                   case 'htmlspecialchars':
-                    $value = str_replace(array("\r", "\n"), '', htmlspecialchars($value, ENT_COMPAT));
+                    $value = str_replace(array("\r", "\n"), '', htmlspecialchars($value));
                     break;
 
                   case 'cdata':
@@ -1568,7 +1591,7 @@ function tablefield_field_widget_form(&$form, &$form_state, $field, $instance, $
     $element['tablefield']['rebuild'] = array(
       '#type' => 'fieldset',
       '#tree' => TRUE,
-      '#title' => t('Change number of rows/columns.'),
+      '#title' => t('Number of rows/columns and header orientation'),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
     );
@@ -2574,7 +2597,7 @@ function array_to_xml($data, &$xml_data) {
       array_to_xml($value, $subnode);
     }
     else {
-      $xml_data->addChild("$key", htmlspecialchars("$value", ENT_COMPAT));
+      $xml_data->addChild("$key", htmlspecialchars("$value"));
     }
   }
 }

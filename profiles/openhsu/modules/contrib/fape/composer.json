@@ -1,0 +1,16 @@
+{
+  "name": "drupal/fape",
+  "type": "drupal-module",
+  "description": "Adds a contextual link to Field API Panel Panes to edit that field value.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "authors": [],
+  "support": {},
+  "require": {
+    "drupal/ctools": "^1.4",
+    "drupal/entity": "^1.11"
+  },
+  "require-dev": {
+
+  }
+}

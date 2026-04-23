@@ -6,9 +6,8 @@ php = 5.4
 package = Fields
 dependencies[] = field
 configure = admin/config/content/tablefield
+files[] = tests/tablefield_csv.test
 
-; Information added by Drupal.org packaging script on 2020-04-10
-version = "7.x-3.6"
-core = "7.x"
-project = "tablefield"
-datestamp = "1586523940"
+version = 7.x-3.7
+project = tablefield
+datestamp = 1776271132

@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * @file
+ * Some tests for the FAPE module.
+ */
+
+/**
+ * Tests access control on the field edit route.
+ */
+class FapeAccessTestCase extends DrupalWebTestCase {
+
+  protected $contentType;
+  protected $node;
+
+  public static function getInfo() {
+    return array(
+      'name' => 'FAPE access control',
+      'description' => 'Ensures the field edit page enforces access control.',
+      'group' => 'fape',
+    );
+  }
+
+  public function setUp(array $modules = array()) {
+    $modules[] = 'fape';
+    $modules[] = 'field';
+    $modules[] = 'text';
+    parent::setUp($modules);
+
+    // Create a unique content type with a body field.
+    $this->contentType = $this->drupalCreateContentType();
+    node_add_body_field($this->contentType);
+    $this->node = $this->drupalCreateNode(array('type' => $this->contentType->type));
+  }
+
+  /**
+   * Anonymous users must not access the field edit page.
+   */
+  public function testAnonymousAccessDenied() {
+    $this->drupalGet("admin/field/edit/node/{$this->node->nid}/body");
+    $this->assertResponse(403);
+  }
+
+  /**
+   * Authenticated users without edit permission must be denied.
+   */
+  public function testUnprivilegedAccessDenied() {
+    $account = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($account);
+    $this->drupalGet("admin/field/edit/node/{$this->node->nid}/body");
+    $this->assertResponse(403);
+  }
+
+  /**
+   * Users with edit permission must be allowed through.
+   */
+  public function testPrivilegedAccessAllowed() {
+    $account = $this->drupalCreateUser(array('edit any ' . $this->contentType->type . ' content'));
+    $this->drupalLogin($account);
+    $this->drupalGet("admin/field/edit/node/{$this->node->nid}/body");
+    $this->assertResponse(200);
+    // Verify the body widget actually rendered rather than just a bare 200.
+    $this->assertFieldByName('body[und][0][value]');
+  }
+
+  /**
+   * A non-existent field name must be denied (tests the !$field null check).
+   */
+  public function testNonExistentFieldDenied() {
+    $account = $this->drupalCreateUser(array('edit any ' . $this->contentType->type . ' content'));
+    $this->drupalLogin($account);
+    $this->drupalGet("admin/field/edit/node/{$this->node->nid}/no_such_field");
+    $this->assertResponse(403);
+  }
+
+  /**
+   * A non-existent entity ID must be denied (access callback returns FALSE,
+   * not MENU_NOT_FOUND, so the response is 403 rather than 404).
+   */
+  public function testNonExistentEntityDenied() {
+    $account = $this->drupalCreateUser(array('edit any ' . $this->contentType->type . ' content'));
+    $this->drupalLogin($account);
+    $this->drupalGet('admin/field/edit/node/99999999/body');
+    $this->assertResponse(403);
+  }
+
+}
+
+/**
+ * Test basic functionality of FAPE.
+ */
+class FapeBasicTestCase extends DrupalWebTestCase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'FAPE basic test',
+      'description' => 'Confirm that the FAPE module can be enabled.',
+      'group' => 'fape',
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    // Enable this custom module.
+    $modules[] = 'fape';
+    parent::setUp($modules);
+  }
+
+  /**
+   * Make sure the site still works. For now just check the front page.
+   */
+  public function testTheSiteStillWorks() {
+    // Load the front page.
+    $this->drupalGet('<front>');
+
+    // Confirm that the site didn't throw a server error or something else.
+    $this->assertResponse(200);
+
+    // Confirm that the front page contains the standard text.
+    $this->assertText(t('Welcome to Drupal'));
+  }
+
+}

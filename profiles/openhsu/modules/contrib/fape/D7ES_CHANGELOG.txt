@@ -1,0 +1,6 @@
+Field API Pane Editor 7.x-1.xxx, xxxx-xx-xx (development verion)
+------------------------
+
+Field API Pane Editor 7.x-1.3, 2026-xx-xx
+-----------------------
+- Security: Access Bypass via Missing Access Control on Field Edit Page.

@@ -1,0 +1,11 @@
+{
+  "name": "drupal/tablefield",
+  "type": "drupal-module",
+  "description": "This module allows you to attach tabular data to an entity.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "authors": [],
+  "support": {},
+  "require": {},
+  "require-dev": {}
+}

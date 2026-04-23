@@ -1,0 +1,127 @@
+<?php
+
+/**
+ * @file
+ * Unit tests for CSV injection sanitization in tablefield.module.
+ */
+
+/**
+ * Tests for _tablefield_sanitize_csv_cell().
+ */
+class TablefieldCsvSanitizeTest extends DrupalUnitTestCase {
+
+  public static function getInfo() {
+    return [
+      'name' => 'CSV cell sanitization',
+      'description' => 'Tests that _tablefield_sanitize_csv_cell() prevents CSV/Formula injection.',
+      'group' => 'TableField',
+    ];
+  }
+
+  public function setUp() {
+    parent::setUp();
+    require_once dirname(dirname(__FILE__)) . '/tablefield.module';
+  }
+
+  // ---------------------------------------------------------------------------
+  // Safe values – must be returned unchanged.
+  // ---------------------------------------------------------------------------
+
+  public function testSafeValueIsReturnedUnchanged() {
+    $this->assertEqual('hello world', _tablefield_sanitize_csv_cell('hello world'));
+  }
+
+  public function testEmptyStringIsReturnedUnchanged() {
+    $this->assertEqual('', _tablefield_sanitize_csv_cell(''));
+  }
+
+  public function testValueWithDangerousCharInMiddleIsReturnedUnchanged() {
+    // '=' in the middle is fine; only leading characters are dangerous.
+    $this->assertEqual('a=SUM(1)', _tablefield_sanitize_csv_cell('a=SUM(1)'));
+  }
+
+  public function testNumericStringIsReturnedUnchanged() {
+    $this->assertEqual('42', _tablefield_sanitize_csv_cell('42'));
+  }
+
+  // ---------------------------------------------------------------------------
+  // Dangerous ASCII starters – must be prefixed with a tab.
+  // ---------------------------------------------------------------------------
+
+  public function testLeadingEqualsIsPrefixed() {
+    $this->assertEqual("\t=SUM(A1)", _tablefield_sanitize_csv_cell('=SUM(A1)'));
+  }
+
+  public function testLeadingPlusIsPrefixed() {
+    $this->assertEqual("\t+cmd|' /C calc'!A0", _tablefield_sanitize_csv_cell("+cmd|' /C calc'!A0"));
+  }
+
+  public function testLeadingMinusIsPrefixed() {
+    $this->assertEqual("\t-2+3", _tablefield_sanitize_csv_cell('-2+3'));
+  }
+
+  public function testLeadingAtIsPrefixed() {
+    $this->assertEqual("\t@SUM(1+1)*cmd|' /C calc'!A0", _tablefield_sanitize_csv_cell("@SUM(1+1)*cmd|' /C calc'!A0"));
+  }
+
+  public function testLeadingTabIsPrefixed() {
+    $this->assertEqual("\t\tindented", _tablefield_sanitize_csv_cell("\tindented"));
+  }
+
+  public function testLeadingCarriageReturnIsPrefixed() {
+    $this->assertEqual("\t\rvalue", _tablefield_sanitize_csv_cell("\rvalue"));
+  }
+
+  public function testLeadingNewlineIsPrefixed() {
+    $this->assertEqual("\t\nvalue", _tablefield_sanitize_csv_cell("\nvalue"));
+  }
+
+  // ---------------------------------------------------------------------------
+  // Dangerous fullwidth Unicode starters – must be prefixed with a tab.
+  // ---------------------------------------------------------------------------
+
+  public function testLeadingFullwidthEqualsIsPrefixed() {
+    // U+FF1D FULLWIDTH EQUALS SIGN
+    $this->assertEqual("\t＝SUM(A1)", _tablefield_sanitize_csv_cell('＝SUM(A1)'));
+  }
+
+  public function testLeadingFullwidthPlusIsPrefixed() {
+    // U+FF0B FULLWIDTH PLUS SIGN
+    $this->assertEqual("\t＋1", _tablefield_sanitize_csv_cell('＋1'));
+  }
+
+  public function testLeadingFullwidthMinusIsPrefixed() {
+    // U+FF0D FULLWIDTH HYPHEN-MINUS
+    $this->assertEqual("\t－1", _tablefield_sanitize_csv_cell('－1'));
+  }
+
+  public function testLeadingFullwidthAtIsPrefixed() {
+    // U+FF20 FULLWIDTH COMMERCIAL AT
+    $this->assertEqual("\t＠user", _tablefield_sanitize_csv_cell('＠user'));
+  }
+
+  // ---------------------------------------------------------------------------
+  // Idempotency – already-prefixed values get another tab prepended.
+  // ---------------------------------------------------------------------------
+
+  public function testAlreadyPrefixedValueGetsAnotherTab() {
+    // A value that already starts with a tab still starts with a tab,
+    // so the function must prepend one more tab.
+    $this->assertEqual("\t\t=SUM(A1)", _tablefield_sanitize_csv_cell("\t=SUM(A1)"));
+  }
+
+  // ---------------------------------------------------------------------------
+  // array_map integration – every cell in a row is sanitized.
+  // ---------------------------------------------------------------------------
+
+  public function testArrayMapSanitizesAllCells() {
+    $row = ['safe', '=DANGER()', '+bad', 'also safe'];
+    $sanitized = array_map('_tablefield_sanitize_csv_cell', $row);
+
+    $this->assertEqual('safe',        $sanitized[0]);
+    $this->assertEqual("\t=DANGER()", $sanitized[1]);
+    $this->assertEqual("\t+bad",      $sanitized[2]);
+    $this->assertEqual('also safe',   $sanitized[3]);
+  }
+
+}

@@ -374,9 +374,7 @@ function field_collection_item_access($op, FieldCollectionItemEntity $item = NUL
   if ($op !== 'view' && isset($item) && !$item->isInUse()) {
     return FALSE;
   }
-  if (user_access('edit field collections', $account)) {
-    return TRUE;
-  }
+  // Administrators bypass all access checks.
   if (user_access('administer field collections', $account)) {
     return TRUE;
   }
@@ -387,10 +385,17 @@ function field_collection_item_access($op, FieldCollectionItemEntity $item = NUL
 
   // Access is determined by the entity and field containing the reference.
   $field = field_info_field($item->field_name);
-  $hostEntity = $item->hostEntity() !== FALSE ? $item->hostEntity() : NULL;
-  $entity_access = entity_access($op === 'view' ? 'view' : 'update', $item->hostEntityType(), $hostEntity, $account);
+  $hostEntity = $item->hostEntity();
+  // Deny access if the host entity cannot be loaded; passing NULL to
+  // entity_access() may return TRUE for some entity types.
+  if (!$hostEntity) {
+    return FALSE;
+  }
+  $entity_access = entity_access('update', $item->hostEntityType(), $hostEntity, $account);
 
-  return $entity_access && field_access($op, $field, $item->hostEntityType(), $hostEntity, $account);
+  // Users must have access to the parent entity. The 'edit field collections'
+  // permission bypasses field-level access but not parent entity access.
+  return $entity_access && (user_access('edit field collections', $account) || field_access($op, $field, $item->hostEntityType(), $hostEntity, $account));
 }
 
 /**

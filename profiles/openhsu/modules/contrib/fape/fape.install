@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Update scripts for the FAPE module.
+ */
+
+/**
+ * Implementations of hook_update_N()
+ */
+
+/**
+ * For a menu cache reload.
+ */
+function fape_update_7100() {
+  // Nothing to do here.
+}

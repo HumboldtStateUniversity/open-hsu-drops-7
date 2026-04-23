@@ -11,9 +11,9 @@ dependencies[] = entity
 ; dependencies[] = panels
 ; dependencies[] = contextual
 
-; Information added by Drupal.org packaging script on 2014-04-30
-version = "7.x-1.2"
-core = "7.x"
-project = "fape"
-datestamp = "1398870831"
+; Tests.
+files[] = tests/fape.test
 
+version = 7.x-1.3
+project = fape
+datestamp = 1776879220

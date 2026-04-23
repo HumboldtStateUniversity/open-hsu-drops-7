@@ -1,0 +1,6 @@
+TableField 7.x-3.xxx, xxxx-xx-xx (development version)
+------------------------
+
+TableField 7.x-3.7, 2026-04-15
+-----------------------
+- Security: Address CSV injection via unsanitized table cell values in CSV export.

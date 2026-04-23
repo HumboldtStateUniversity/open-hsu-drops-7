@@ -11,54 +11,50 @@
 function fape_menu() {
   $items = array();
   $items['admin/field/edit/%/%/%'] = array(
-    // Access is controlled after we have inspected the entity which
-    // can't easily happen until the callback.
-    'access arguments' => array(TRUE),
-    'access callback' => TRUE,
     'page callback' => 'fape_field_edit_page',
     'page arguments' => array(3, 4, 5),
+    'access callback' => 'fape_field_edit_access',
+    'access arguments' => array(3, 4, 5),
   );
 
   return $items;
 }
 
 /**
+ * Access callback for the field edit page.
+ */
+function fape_field_edit_access($entity_type, $entity_id, $field_name) {
+  $entities = entity_load($entity_type, array($entity_id));
+  if (!$entities) {
+    return FALSE;
+  }
+  $entity = reset($entities);
+  if (!$entity) {
+    return FALSE;
+  }
+
+  if (!entity_access('update', $entity_type, $entity)) {
+    return FALSE;
+  }
+
+  $field = field_info_field($field_name);
+  if (!$field || !field_access('edit', $field, $entity_type, $entity)) {
+    return FALSE;
+  }
+
+  return TRUE;
+}
+
+/**
  * Page callback to edit an entity field.
  */
 function fape_field_edit_page($entity_type, $entity_id, $field_name, $langcode = NULL) {
-  // Ensure the entity type is valid:
-  if (empty($entity_type)) {
-    return MENU_NOT_FOUND;
-  }
-
   $entity_info = entity_get_info($entity_type);
-  if (!$entity_info) {
-    return MENU_NOT_FOUND;
-  }
-
   $entities = entity_load($entity_type, array($entity_id));
-  if (!$entities) {
-    return MENU_NOT_FOUND;
-  }
-
   $entity = reset($entities);
-  if (!$entity) {
-    return MENU_NOT_FOUND;
-  }
 
   if (!isset($langcode)) {
     $langcode = entity_language($entity_type, $entity);
-  }
-
-  // Ensure access to update the entity is granted.
-  if (!entity_access('update', $entity_type, $entity)) {
-    return MENU_ACCESS_DENIED;
-  }
-
-  // Ensure access to actually update this particular field is granted.
-  $field = field_info_field($field_name);
-  if (!field_access('edit', $field, $entity_type, $entity)) {
-    return MENU_ACCESS_DENIED;
   }
 
   list( , , $bundle) = entity_extract_ids($entity_type, $entity);
