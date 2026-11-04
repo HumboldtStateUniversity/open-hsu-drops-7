@@ -1,0 +1,15 @@
+{
+  "name": "drupal/cas",
+  "type": "drupal-module",
+  "description": "Provides single sign-on Central Authentication Services (CAS)", 
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "authors": [],
+  "support": {},
+  "require": {
+
+  },
+  "require-dev": {
+
+  }
+}

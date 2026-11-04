@@ -77,6 +77,11 @@ function _caption_filter_replace($matches) {
 
   // Determine the caption value from the formal attributes of [caption]
   $caption = (isset($caption_attributes['caption'])) ? $caption_attributes['caption'] : '';
+  // The attribute value is decoded by stripcslashes() after the format's HTML
+  // filter has run, so it must be filtered again before it is output.
+  if (!empty($caption)) {
+    $caption = filter_xss($caption, _caption_filter_allowed_tags());
+  }
 
   // Legacy fallback - If there is no formal attribute, try to infer from the HTML
   // and then assign the caption to $caption and the $item to the remainder
@@ -104,6 +109,7 @@ function _caption_filter_replace($matches) {
   if (strpos($align, 'align') === 0) {
     $align = substr($align, 5);
   }
+  $align = drupal_html_class($align);
 
   // If we have a caption, output markup to wrap the caption in a specific tag and class
   if (!empty($caption)) {
@@ -112,6 +118,13 @@ function _caption_filter_replace($matches) {
   else {
     return '<div class="caption caption-'. $align .'"><div class="caption-width-container" style="width: '. $width .';"><div class="caption-inner">'. $content . '</div></div></div>';
   }
+}
+
+/**
+ * Returns the HTML tags allowed in a caption given as a [caption] attribute.
+ */
+function _caption_filter_allowed_tags() {
+  return array('a', 'em', 'strong', 'cite', 'code', 'b', 'i', 'u', 'br', 'span', 'small', 'sub', 'sup');
 }
 
 /**

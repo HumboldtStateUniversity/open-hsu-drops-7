@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * Tests the output of [caption] shortcode attributes.
+ */
+
+/**
+ * Ensures the caption filter sanitizes the align and caption attributes.
+ */
+class CaptionFilterAttributeXssTestCase extends DrupalWebTestCase {
+
+  /**
+   * Machine names of the text formats used by the tests.
+   *
+   * The first format limits HTML before the caption filter runs, as the
+   * default Filtered HTML format does. The second runs the caption filter
+   * alone, since the HTML filter is not a requirement of this module.
+   *
+   * @var array
+   */
+  protected $formats = array('caption_test_html', 'caption_test_only');
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Caption attribute XSS',
+      'description' => 'Ensures the [caption] align and caption attributes cannot inject markup.',
+      'group' => 'Caption Filter',
+    );
+  }
+
+  public function setUp() {
+    parent::setUp(array('caption_filter'));
+
+    $caption_filter = array(
+      'status' => 1,
+      'weight' => 20,
+      'settings' => array(),
+    );
+
+    filter_format_save((object) array(
+      'format' => 'caption_test_html',
+      'name' => 'Caption test with HTML filter',
+      'filters' => array(
+        'filter_html' => array(
+          'status' => 1,
+          'weight' => -10,
+          'settings' => array(
+            'allowed_html' => '<a> <em> <strong> <img> <p> <div>',
+            'filter_html_help' => 0,
+            'filter_html_nofollow' => 0,
+          ),
+        ),
+        'caption_filter' => $caption_filter,
+      ),
+    ));
+
+    filter_format_save((object) array(
+      'format' => 'caption_test_only',
+      'name' => 'Caption test without HTML filter',
+      'filters' => array(
+        'caption_filter' => $caption_filter,
+      ),
+    ));
+  }
+
+  /**
+   * Filters text through each test format.
+   *
+   * @return array
+   *   The filtered text, keyed by format machine name.
+   */
+  protected function filter($text) {
+    $output = array();
+    foreach ($this->formats as $format) {
+      $output[$format] = check_markup($text, $format);
+    }
+    return $output;
+  }
+
+  /**
+   * Tests that legitimate captions keep rendering.
+   */
+  public function testLegitimateCaption() {
+    foreach ($this->filter('[caption align="alignright" caption="A <em>red</em> fox"]<img src="/misc/druplicon.png" width="88" />[/caption]') as $format => $output) {
+      $this->assertIdentical($output, '<div class="caption caption-right"><div class="caption-width-container" style="width: 88px;"><div class="caption-inner"><img src="/misc/druplicon.png" width="88" /><p class="caption-text">A <em>red</em> fox</p></div></div></div>', format_string('A caption with allowed markup and alignment renders unchanged in @format.', array('@format' => $format)));
+    }
+  }
+
+  /**
+   * Tests that the align attribute cannot break out of the class attribute.
+   */
+  public function testAlignAttribute() {
+    $payloads = array(
+      'a literal quote' => '[caption align=\'x" onmouseover="alert(1)\']<img src="/misc/druplicon.png" width="88" />[/caption]',
+      'an escaped quote' => '[caption align="x\x22 onmouseover=\x22alert(1)"]<img src="/misc/druplicon.png" width="88" />[/caption]',
+    );
+    foreach ($payloads as $type => $text) {
+      foreach ($this->filter($text) as $format => $output) {
+        $args = array('@type' => $type, '@format' => $format);
+        $this->assertNoXss($output, 'onmouseover=', format_string('The align attribute with @type does not add an event handler attribute in @format.', $args));
+        $this->assertTrue(strpos($output, '<div class="caption caption-x-onmouseoveralert1">') === 0, format_string('The align attribute with @type is reduced to a single class name in @format.', $args));
+      }
+    }
+  }
+
+  /**
+   * Tests that escape sequences in the caption attribute cannot add tags.
+   */
+  public function testCaptionAttribute() {
+    foreach ($this->filter('[caption caption="\x3cscript\x3ealert(2)\x3c/script\x3e\x3cimg src=x onerror=alert(3)\x3e\x3cem\x3eok\x3c/em\x3e"]<img src="/misc/druplicon.png" width="88" />[/caption]') as $format => $output) {
+      $args = array('@format' => $format);
+      $this->assertNoXss($output, '<script', format_string('The caption attribute does not add a script element in @format.', $args));
+      $this->assertNoXss($output, 'onerror=', format_string('The caption attribute does not add an event handler attribute in @format.', $args));
+      $this->assertTrue(strpos($output, '<p class="caption-text">alert(2)<em>ok</em></p>') !== FALSE, format_string('Allowed caption markup is kept and disallowed markup is removed in @format.', $args));
+    }
+  }
+
+  /**
+   * Tests that allowed caption tags cannot carry dangerous attributes.
+   */
+  public function testCaptionAllowedTagAttributes() {
+    foreach ($this->filter('[caption caption="\x3ca href=\x22javascript:alert(4)\x22 onmouseover=\x22alert(5)\x22\x3elink\x3c/a\x3e \x3cspan onclick=\x22alert(6)\x22 style=\x22color:red\x22\x3etext\x3c/span\x3e"]<img src="/misc/druplicon.png" width="88" />[/caption]') as $format => $output) {
+      $args = array('@format' => $format);
+      $this->assertNoXss($output, 'javascript:', format_string('The caption link does not keep a javascript URL in @format.', $args));
+      $this->assertNoXss($output, 'onmouseover=', format_string('The caption link does not keep an event handler attribute in @format.', $args));
+      $this->assertNoXss($output, 'onclick=', format_string('The caption span does not keep an event handler attribute in @format.', $args));
+      $this->assertNoXss($output, 'style="color', format_string('The caption span does not keep a style attribute in @format.', $args));
+      $this->assertTrue(strpos($output, '<p class="caption-text"><a href="alert(4)">link</a> <span>text</span></p>') !== FALSE, format_string('The allowed caption tags are kept without their dangerous attributes in @format.', $args));
+    }
+  }
+
+  /**
+   * Asserts that a string is absent from filtered output.
+   */
+  protected function assertNoXss($output, $needle, $message) {
+    return $this->assertTrue(stripos($output, $needle) === FALSE, $message);
+  }
+
+}

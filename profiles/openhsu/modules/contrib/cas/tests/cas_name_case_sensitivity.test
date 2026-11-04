@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @file
+ * Tests that CAS usernames are matched case sensitively.
+ */
+
+/**
+ * Tests the {cas_user}.cas_name lookup for case and trailing space handling.
+ */
+class CasNameCaseSensitivityTestCase extends DrupalWebTestCase {
+
+  /**
+   * The account mapped to the CAS username 'kathy'.
+   *
+   * @var object
+   */
+  protected $kathy;
+
+  /**
+   * Test case metadata.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'CAS username case sensitivity',
+      'description' => 'Tests that a CAS username is matched exactly, so that a distinct external identity cannot resolve to another account.',
+      'group' => 'CAS',
+    );
+  }
+
+  /**
+   * Enables the CAS module and maps one account to the CAS username 'kathy'.
+   */
+  function setUp() {
+    parent::setUp('cas');
+
+    $this->kathy = $this->drupalCreateUser();
+    $this->kathy = user_save($this->kathy, array('cas_name' => 'kathy'));
+  }
+
+  /**
+   * Tests that only the exact CAS username loads the mapped account.
+   */
+  function testCasNameLookupIsCaseSensitive() {
+    $account = cas_user_load_by_name('kathy');
+    $this->assertTrue(!empty($account) && $account->uid == $this->kathy->uid, 'The exact CAS username loads the mapped account.');
+
+    foreach (array('kATHy', 'KATHY', 'KaThY') as $variant) {
+      $account = cas_user_load_by_name($variant);
+      $this->assertFalse($account, format_string('The CAS username %variant does not load the account mapped to kathy.', array('%variant' => $variant)));
+    }
+
+    $account = cas_user_load_by_name('kathy ');
+    $this->assertFalse($account, 'A CAS username with a trailing space does not load the account mapped to kathy.');
+  }
+
+  /**
+   * Tests that CAS usernames differing only in case are distinct identities.
+   */
+  function testCasNamesDifferingInCaseAreDistinct() {
+    $other = $this->drupalCreateUser();
+    try {
+      $other = user_save($other, array('cas_name' => 'kATHy'));
+      $stored = TRUE;
+    }
+    catch (Exception $e) {
+      $stored = FALSE;
+    }
+    $this->assertTrue($stored, 'A CAS username differing from an existing one only in case can be stored.');
+
+    if ($stored) {
+      $account = cas_user_load_by_name('kATHy');
+      $this->assertTrue(!empty($account) && $account->uid == $other->uid, 'The CAS username kATHy loads its own account.');
+
+      $account = cas_user_load_by_name('kathy');
+      $this->assertTrue(!empty($account) && $account->uid == $this->kathy->uid, 'The CAS username kathy still loads its own account.');
+    }
+  }
+
+  /**
+   * Tests that the blocked account check is bound to the exact CAS username.
+   */
+  function testBlockedCheckIsCaseSensitive() {
+    user_save($this->kathy, array('status' => 0));
+
+    $this->assertTrue((bool) _cas_external_user_is_blocked('kathy'), 'The blocked account is reported as blocked for its own CAS username.');
+    $this->assertFalse((bool) _cas_external_user_is_blocked('kATHy'), 'A blocked account is not reported as blocked for a CAS username that differs only in case.');
+  }
+
+}

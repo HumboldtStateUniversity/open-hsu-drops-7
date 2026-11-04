@@ -1,0 +1,6 @@
+Caption Filter 7.x-1.x, xxxx-xx-xx (development version)
+-----------------------
+
+Caption Filter 7.x-1.4, 2026-11-04
+-----------------------
+- Security: Addresses stored cross site scripting via the [caption] shortcode align and caption attributes. Users who could post in a text format with the caption filter enabled could run script in the browsers of visitors viewing that content.

@@ -1,0 +1,15 @@
+{
+  "name": "drupal/caption_filter",
+  "type": "drupal-module",
+  "description": "Filter to parse [caption] tags and allow image alignment.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "authors": [],
+  "support": {},
+  "require": {
+
+  },
+  "require-dev": {
+
+  }
+}

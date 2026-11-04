@@ -1,0 +1,19 @@
+CAS 7.x-1.x, xxxx-xx-xx (development version)
+-----------------------
+
+CAS 7.x-1.9, 2026-11-04
+-----------------------
+- Security: Addresses an access bypass where a CAS username that differs from a mapped one only in letter case authenticates as the Drupal account that mapping belongs to.
+
+  Upgrade note: CAS usernames are now matched case sensitively. If your CAS
+  server returns a username in a different case from the one stored in
+  {cas_user}.cas_name, that user can no longer log in to the existing account.
+  With "Automatically create Drupal accounts" enabled, the login instead fails
+  with "username already in use" or creates a second account. Nothing is logged
+  for this. Before updating, check that the stored CAS usernames match what the
+  CAS server returns. Sites that relied on the old case insensitive matching
+  and store lowercase CAS usernames can restore it in a custom module:
+
+    function mymodule_cas_user_alter(&$cas_user) {
+      $cas_user['name'] = drupal_strtolower($cas_user['name']);
+    }
